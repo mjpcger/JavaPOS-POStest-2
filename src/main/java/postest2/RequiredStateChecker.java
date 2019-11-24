@@ -1,6 +1,6 @@
 package postest2;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.*;
 
 import javafx.scene.Node;
 import jpos.BaseJposControl;
@@ -9,7 +9,7 @@ import jpos.JposException;
 
 /**
  * This Class provides the functionality that a Field with the RequiredState-Annotation is disabled/enabled 
- * corresponding to the given Value (CLOSED, OPENED, CLAIMED, ENABLED) of the Variable
+ * corresponding to the given Value (CLOSED, OPENED, CLAIMED, ENABLED, OPENEDNOTENABLED) of the Variable
  *
  */
 public class RequiredStateChecker {
@@ -26,7 +26,7 @@ public class RequiredStateChecker {
 				//Get only those fields which are a JavaFX Node
 				if(Node.class.isAssignableFrom(fields[i].getType())){
 					Node c = (Node) fields[i].get(theObject);
-					if(requiredState != null){
+					if(requiredState != null && c != null){
 						//get the Value of each Annotation
 						JposState componentState = requiredState.value();
 						//Disable/Enable corresponding to the current deviceState and the requiredState
@@ -46,6 +46,13 @@ public class RequiredStateChecker {
 						} 
 						if(componentState == JposState.ENABLED){
 							if(deviceState == JposState.ENABLED){
+								c.setDisable(false);
+							} else {
+								c.setDisable(true);
+							}
+						}
+						if(componentState == JposState.OPENEDNOTENABLED){
+							if(deviceState == JposState.OPENED || deviceState == JposState.CLAIMED){
 								c.setDisable(false);
 							} else {
 								c.setDisable(true);

@@ -162,9 +162,9 @@ public class CoinDispenserController extends CommonController implements Initial
 
 	@FXML
 	public void handleDispenseCash(ActionEvent e) {
-		if (!adjustCashCounts.getText().isEmpty()) {
+		if (!dispenseCash_cashCounts.getText().isEmpty()) {
 			try {
-				((CoinDispenser) service).adjustCashCounts(adjustCashCounts.getText());
+				((CoinDispenser) service).dispenseChange(Integer.parseInt(dispenseCash_cashCounts.getText()));
 			} catch (JposException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();

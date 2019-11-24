@@ -271,6 +271,7 @@ public class LineDisplayController extends CommonController implements Initializ
 
 			} else {
 				((LineDisplay) service).setDeviceEnabled(false);
+				setUpScreenMode();
 			}
 			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {

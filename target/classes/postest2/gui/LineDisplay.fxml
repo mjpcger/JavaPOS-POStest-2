@@ -4,7 +4,6 @@
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <?scenebuilder-stylesheet win7glass.css?>
 
@@ -16,7 +15,7 @@
           <children>
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
-            <TabPane fx:id="functionTab" layoutX="33.0" layoutY="71.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE" visible="${!deviceEnabled.selected}">
+            <TabPane fx:id="functionTab" layoutX="33.0" layoutY="71.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE" visible="${deviceEnabled.selected}">
               <tabs>
                 <Tab text="Display Text">
                   <content>
@@ -197,7 +196,7 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <TabPane fx:id="notEnabledTab" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE" visible="${deviceEnabled.selected}">
+            <TabPane fx:id="notEnabledTab" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE" visible="${!deviceEnabled.selected}">
               <tabs>
                 <Tab text="Screen Mode">
                   <content>

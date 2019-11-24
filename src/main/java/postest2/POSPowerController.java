@@ -31,7 +31,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class POSPowerController extends CommonController implements Initializable, StatusUpdateListener {
+public class POSPowerController extends SharableController implements Initializable, StatusUpdateListener {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -116,7 +116,7 @@ public class POSPowerController extends CommonController implements Initializabl
 	public void handleOCE(ActionEvent e) {
 		super.handleOCE(e);
 		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
+			if(getDeviceState(service) == JposState.OPENED){
 				deviceEnabled.setSelected(true);
 				handleDeviceEnable(e);
 			}

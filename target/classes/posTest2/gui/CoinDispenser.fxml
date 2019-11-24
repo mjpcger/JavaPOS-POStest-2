@@ -47,15 +47,10 @@
                 <Label layoutX="557.0" layoutY="109.0" text="Discrepancy:" />
                 <Label fx:id="readCashCount_cashCount" layoutX="643.0" layoutY="84.0" prefWidth="91.0" />
                 <Label fx:id="readCashCount_discrepancy" layoutX="643.0" layoutY="109.0" prefWidth="91.0" />
-                <TextField id="adjustCashCounts" layoutX="390.0" layoutY="80.0" prefWidth="122.0" />
+                <TextField fx:id="dispenseCash_cashCounts" layoutX="390.0" layoutY="80.0" prefWidth="122.0" />
                 <Label alignment="CENTER" font="$x1" layoutX="35.0" layoutY="165.0" prefWidth="272.0" text="DirectIO" underline="true" />
               </children>
             </Pane>
-            <Text fill="RED" layoutX="50.0" layoutY="680.0" scaleX="1.078" strokeType="OUTSIDE" strokeWidth="0.0" text="Not tested with a Device! If any Errors occur, please contact us on our Sourceforge Projectsite.">
-              <font>
-                <Font size="16.0" />
-              </font>
-            </Text>
           </children>
         </Pane>
       </center>

@@ -1,11 +1,12 @@
 package postest2;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,9 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,12 +23,16 @@ import javax.xml.parsers.ParserConfigurationException;
 import jpos.CAT;
 import jpos.JposException;
 
+import jpos.events.ErrorEvent;
+import jpos.events.ErrorListener;
+import jpos.events.OutputCompleteEvent;
+import jpos.events.OutputCompleteListener;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class CATController extends CommonController implements Initializable {
+public class CATController extends CommonController implements Initializable, ErrorListener, OutputCompleteListener {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -76,6 +79,8 @@ public class CATController extends CommonController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new CAT();
+		((CAT)service).addErrorListener(this);
+		((CAT)service).addOutputCompleteListener(this);
 		setUpLogicalNameComboBox("CAT");
 		RequiredStateChecker.invokeThis(this, service);
 	}
@@ -96,6 +101,14 @@ public class CATController extends CommonController implements Initializable {
 			}
 		} catch (JposException e1) {
 			e1.printStackTrace();
+		}
+	}
+
+	@Override
+	public void handleClose(ActionEvent e) {
+		super.handleClose(e);
+		if (asyncMode.isSelected()) {
+			asyncMode.setSelected(false);
 		}
 	}
 
@@ -234,6 +247,12 @@ public class CATController extends CommonController implements Initializable {
 				((CAT) service).accessDailyLog(Integer.parseInt(accessDailyLog_sequenceNumber.getText()),
 						CATConstantMapper.getConstantNumberFromString(accessDailyLog_type.getSelectionModel()
 								.getSelectedItem()), Integer.parseInt(accessDailyLog_timeout.getText()));
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -256,6 +275,12 @@ public class CATController extends CommonController implements Initializable {
 				((CAT) service).authorizeCompletion(Integer.parseInt(authorize_sequenceNumber.getText()),
 						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
 						Integer.parseInt(authorize_timeout.getText()));
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -277,6 +302,12 @@ public class CATController extends CommonController implements Initializable {
 				((CAT) service).authorizePreSales(Integer.parseInt(authorize_sequenceNumber.getText()),
 						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
 						Integer.parseInt(authorize_timeout.getText()));
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -300,6 +331,12 @@ public class CATController extends CommonController implements Initializable {
 						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
 
 						Integer.parseInt(authorize_timeout.getText()));
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -324,6 +361,12 @@ public class CATController extends CommonController implements Initializable {
 						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
 
 						Integer.parseInt(authorize_timeout.getText()));
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -348,6 +391,12 @@ public class CATController extends CommonController implements Initializable {
 						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
 
 						Integer.parseInt(authorize_timeout.getText()));
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -370,6 +419,12 @@ public class CATController extends CommonController implements Initializable {
 				((CAT) service).authorizeVoidPreSales(Integer.parseInt(authorize_sequenceNumber.getText()),
 						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
 						Integer.parseInt(authorize_timeout.getText()));
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -389,6 +444,12 @@ public class CATController extends CommonController implements Initializable {
 			try {
 				((CAT) service).cashDeposit(Integer.parseInt(cashDeposit_sequenceNumber.getText()),
 						Long.parseLong(cashDeposit_amount.getText()), Integer.parseInt(cashDeposit_timeout.getText()));
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -408,6 +469,12 @@ public class CATController extends CommonController implements Initializable {
 				((CAT) service).checkCard(Integer.parseInt(checkCard_sequenceNumber.getText()),
 						Integer.parseInt(checkCard_timeout.getText()));
 
+				if (asyncMode.isSelected()) {
+					setStatusLabel();
+				}
+				else {
+					updateWritableProperties();
+				}
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -423,6 +490,12 @@ public class CATController extends CommonController implements Initializable {
 		try {
 			((CAT) service).lockTerminal();
 
+			if (asyncMode.isSelected()) {
+				setStatusLabel();
+			}
+			else {
+				updateWritableProperties();
+			}
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
@@ -433,6 +506,12 @@ public class CATController extends CommonController implements Initializable {
 	public void handleUnlockTerminal(ActionEvent e) {
 		try {
 			((CAT) service).unlockTerminal();
+			if (asyncMode.isSelected()) {
+				setStatusLabel();
+			}
+			else {
+				updateWritableProperties();
+			}
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
@@ -474,6 +553,48 @@ public class CATController extends CommonController implements Initializable {
 		setUpAccessDailyLogType();
 	}
 
-	
 
+	@Override
+	public void errorOccurred(ErrorEvent e) {
+		JOptionPane.showMessageDialog(null, "Asynchronous operation failed: " + e.getErrorCode() + "/" + e.getErrorCodeExtended());
+		try {
+			((CAT)service).clearOutput();
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
+		setStatusLabel();
+	}
+
+	@Override
+	public void outputCompleteOccurred(OutputCompleteEvent outputCompleteEvent) {
+		Platform.runLater(new Runnable() {
+			public void run() {
+				updateWritableProperties();
+			}
+		});
+		setStatusLabel();
+	}
+
+	private void updateWritableProperties() {
+		try {
+			additionalSecurityInformation.setText(((CAT)service).getAdditionalSecurityInformation());
+			int medium = ((CAT)service).getPaymentMedia();
+			String mediumText = paymentMedia.getValue();
+			if (medium == CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getContantNumber())
+				mediumText = CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getConstant();
+			else if (medium == CATConstantMapper.CAT_MEDIA_NONDEFINE.getContantNumber())
+				mediumText = CATConstantMapper.CAT_MEDIA_NONDEFINE.getConstant();
+			else if (medium == CATConstantMapper.CAT_MEDIA_CREDIT.getContantNumber())
+				mediumText = CATConstantMapper.CAT_MEDIA_CREDIT.getConstant();
+			else if (medium == CATConstantMapper.CAT_MEDIA_DEBIT.getContantNumber())
+				mediumText = CATConstantMapper.CAT_MEDIA_DEBIT.getConstant();
+			else if (medium == CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getContantNumber())
+				mediumText = CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getConstant();
+
+			if (medium != CATConstantMapper.getConstantNumberFromString(paymentMedia.getValue()))
+				paymentMedia.setValue(mediumText);
+		} catch (JposException e) {
+			e.printStackTrace();
+		}
+	}
 }
