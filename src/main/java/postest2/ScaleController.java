@@ -21,19 +21,23 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import jpos.JposException;
-import jpos.Scale;
+import jpos.*;
 
+import jpos.events.*;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class ScaleController extends CommonController implements Initializable {
+public class ScaleController extends CommonController implements Initializable, ErrorListener {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
 	public Pane functionPane;
+
+	@FXML
+	@RequiredState(JposState.OPENEDNOTENABLED)
+	public Pane statusNotifyPane;
 
 	@FXML
 	@RequiredState(JposState.OPENED)
@@ -59,6 +63,8 @@ public class ScaleController extends CommonController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new Scale();
+		((Scale)service).addDataListener(this);
+		((Scale)service).addErrorListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("Scale");
 	}
@@ -73,6 +79,12 @@ public class ScaleController extends CommonController implements Initializable {
 		try {
 			if (deviceEnabled.isSelected()) {
 				((Scale) service).setDeviceEnabled(true);
+				if (tareWeight.getText().equals("")){
+					tareWeight.setText(Integer.toString(((Scale)service).getTareWeight()));
+				}
+				if (unitPrice.getText().equals("")){
+					unitPrice.setText(Long.toString(((Scale)service).getUnitPrice()));
+				}
 				setUpComboBoxes();
 			} else {
 				((Scale) service).setDeviceEnabled(false);
@@ -82,6 +94,20 @@ public class ScaleController extends CommonController implements Initializable {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+	}
+
+	@Override
+	public void handleClose(ActionEvent e) {
+		super.handleClose(e);
+		tareWeight.setText("");
+		unitPrice.setText("");
+		asyncMode.setSelected(false);
+	}
+
+	@Override
+	public void handleOpen(ActionEvent e) {
+		super.handleOpen(e);
+		setUpStatusNotify();
 	}
 
 	@Override
@@ -249,6 +275,9 @@ public class ScaleController extends CommonController implements Initializable {
 			try {
 				((Scale) service).readWeight(weightData, Integer.parseInt(readWeight_timeout.getText()));
 				readWeight_weightData.setText("" + weightData[0]);
+				if (asyncMode.selectedProperty().getValue()){
+					setStatusLabel();
+				}
 			} catch (JposException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -284,12 +313,29 @@ public class ScaleController extends CommonController implements Initializable {
 		zeroValid.getItems().clear();
 		zeroValid.getItems().add(true);
 		zeroValid.getItems().add(false);
-		zeroValid.setValue(true);
+		zeroValid.setValue(false);
 	}
 
 	private void setUpComboBoxes() {
 		setUpZeroValid();
-		setUpStatusNotify();
 	}
 
+	@Override
+	public void dataOccurred(DataEvent e) {
+		super.dataOccurred(e);
+		readWeight_weightData.setText("" + e.getStatus());
+		setStatusLabel();
+	}
+
+	@Override
+	public void errorOccurred(ErrorEvent e) {
+		setStatusLabel();
+		JOptionPane.showMessageDialog(null, "Asynchronous operation failed: " + e.getErrorCode() + "/" + e.getErrorCodeExtended());
+		try {
+			((Scale)service).clearInput();
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
+		setStatusLabel();
+	}
 }

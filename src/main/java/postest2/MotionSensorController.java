@@ -28,7 +28,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class MotionSensorController extends CommonController implements Initializable {
+public class MotionSensorController extends SharableController implements Initializable {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -72,7 +72,7 @@ public class MotionSensorController extends CommonController implements Initiali
 	public void handleOCE(ActionEvent e) {
 		super.handleOCE(e);
 		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
+			if(getDeviceState(service) == JposState.OPENED){
 				deviceEnabled.setSelected(true);
 				handleDeviceEnable(e);
 			}

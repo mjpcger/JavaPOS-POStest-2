@@ -3,6 +3,7 @@ package postest2;
 import java.awt.Dimension;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,15 +22,15 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import jpos.JposException;
-import jpos.RemoteOrderDisplay;
-
+import javafx.scene.text.Text;
+import jpos.*;
+import jpos.events.*;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class RemoteOrderDisplayController extends CommonController implements Initializable {
+public class RemoteOrderDisplayController extends CommonController implements Initializable, ErrorListener, OutputCompleteListener {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -198,11 +199,16 @@ public class RemoteOrderDisplayController extends CommonController implements In
 	public ComboBox<String> videoSound_units;
 	@FXML
 	public ComboBox<String> updateVideoRegionAttribute_units;
+	@FXML
+	public Text inputLabel;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new RemoteOrderDisplay();
+		((RemoteOrderDisplay)service).addDataListener(this);
+		((RemoteOrderDisplay)service).addErrorListener(this);
+		((RemoteOrderDisplay)service).addOutputCompleteListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("RemoteOrderDisplay");
 	}
@@ -221,6 +227,7 @@ public class RemoteOrderDisplayController extends CommonController implements In
 			} else {
 				((RemoteOrderDisplay) service).setDeviceEnabled(false);
 			}
+			inputLabel.setText("Input: ");
 			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
@@ -667,7 +674,7 @@ public class RemoteOrderDisplayController extends CommonController implements In
 						.getConstantNumberFromString(saveVideoRegion_units.getSelectionModel().getSelectedItem()),
 						Integer.parseInt(saveVideoRegion_row.getText()), Integer.parseInt(saveVideoRegion_column
 								.getText()), Integer.parseInt(saveVideoRegion_height.getText()), Integer
-								.parseInt(saveVideoRegion_height.getText()), saveVideoRegion_bufferID
+								.parseInt(saveVideoRegion_width.getText()), saveVideoRegion_bufferID
 								.getSelectionModel().getSelectedItem());
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -1055,5 +1062,82 @@ public class RemoteOrderDisplayController extends CommonController implements In
 		checkBox.getItems().add(RemoteOrderDisplayConstantMapper.ROD_UID_31.getConstant());
 		checkBox.getItems().add(RemoteOrderDisplayConstantMapper.ROD_UID_32.getConstant());
 		checkBox.setValue(RemoteOrderDisplayConstantMapper.ROD_UID_1.getConstant());
+	}
+
+	@Override
+	public void dataOccurred(DataEvent e) {
+		int date = e.getStatus();
+		int row = (date & 0xff000000) >> 24;
+		int column = (date & 0xff0000) >> 16;
+		String type = getStringFromConstant(date & 0xffff, "ROD_DE_TOUCH_");
+		try {
+			String unit = getStringFromConstant(((RemoteOrderDisplay)service).getEventUnitID(), "ROD_UID_");
+			((RemoteOrderDisplay)service).setDataEventEnabled(true);
+			String text = String.format("Input: %-11s%3d/%-3d %s", unit, row, column, type);
+			inputLabel.setText(text);
+			return;
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
+		inputLabel.setText(String.format("Input: "));
+	}
+
+	private String getStringFromConstant(int value, String prefix) {
+		try {
+			Field[] fields = Class.forName(new RemoteOrderDisplayConstantMapper().getClass().getName()).getFields();
+			for (Field field : fields) {
+				String name = field.getName();
+				if (name.length() > prefix.length() && prefix.equals(field.getName().substring(0, prefix.length()))) {
+					ConstantConverter conv = (ConstantConverter)field.get(null);
+					if (value == conv.getContantNumber())
+						return conv.getConstant();
+				}
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return prefix + value;
+	}
+
+	@Override
+	public void handleClose(ActionEvent e) {
+		super.handleClose(e);
+		inputLabel.setText("Input: ");
+	}
+
+	@Override
+	public void errorOccurred(ErrorEvent e) {
+		setStatusLabel();
+		String message = "Asynchronous operation failed: Error " + e.getErrorCode() + "/" + e.getErrorCodeExtended();
+		int units = 0;
+		try {
+			message += " on units " + (units = ((RemoteOrderDisplay)service).getErrorUnits())
+					+ " - " + ((RemoteOrderDisplay)service).getErrorString();
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
+		JOptionPane.showMessageDialog(null, message);
+		try {
+			for (int unit = 1; units != 0; unit *= 2) {
+				if ((units & unit) != 0) {
+					units &= ~unit;
+					((RemoteOrderDisplay)service).setCurrentUnitID(unit);
+					if (e.getErrorLocus() == JposConst.JPOS_EL_OUTPUT)
+						((RemoteOrderDisplay) service).clearOutput();
+					else
+						((RemoteOrderDisplay) service).clearInput();
+				}
+			}
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
+		setStatusLabel();
+	}
+
+	@Override
+	public void outputCompleteOccurred(OutputCompleteEvent outputCompleteEvent) {
+		setStatusLabel();
 	}
 }

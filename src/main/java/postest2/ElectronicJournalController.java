@@ -24,12 +24,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import jpos.ElectronicJournal;
 import jpos.JposException;
 
+import jpos.events.*;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class ElectronicJournalController extends CommonController implements Initializable {
+public class ElectronicJournalController extends CommonController implements Initializable, OutputCompleteListener, ErrorListener {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -94,6 +95,9 @@ public class ElectronicJournalController extends CommonController implements Ini
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new ElectronicJournal();
+		((ElectronicJournal)service).addDataListener(this);
+		((ElectronicJournal)service).addErrorListener(this);
+		((ElectronicJournal)service).addOutputCompleteListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("ElectronicJournal");
 	}
@@ -112,6 +116,7 @@ public class ElectronicJournalController extends CommonController implements Ini
 			} else {
 				((ElectronicJournal) service).setDeviceEnabled(false);
 			}
+			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
@@ -251,6 +256,9 @@ public class ElectronicJournalController extends CommonController implements Ini
 	public void handleEraseMedium(ActionEvent e) {
 		try {
 			((ElectronicJournal) service).eraseMedium();
+			if (asyncMode.selectedProperty().getValue()){
+				setStatusLabel();
+			}
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
@@ -261,6 +269,9 @@ public class ElectronicJournalController extends CommonController implements Ini
 	public void handleInitializeMedium(ActionEvent e) {
 		if (initializeMedium_mediumID.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Field should have a value!");
+			if (asyncMode.selectedProperty().getValue()){
+				setStatusLabel();
+			}
 		} else {
 			try {
 				((ElectronicJournal) service).initializeMedium(initializeMedium_mediumID.getText());
@@ -275,6 +286,9 @@ public class ElectronicJournalController extends CommonController implements Ini
 	public void handleCancelPrintContent(ActionEvent e) {
 		try {
 			((ElectronicJournal) service).cancelPrintContent();
+			if (asyncMode.selectedProperty().getValue()){
+				setStatusLabel();
+			}
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
@@ -283,16 +297,15 @@ public class ElectronicJournalController extends CommonController implements Ini
 
 	@FXML
 	public void handlePrintContent(ActionEvent e) {
-		if (printContent_fromMarker.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Field should have a value!");
-		} else {
-			try {
-				((ElectronicJournal) service).printContent(printContent_fromMarker.getText(),
-						printContent_toMarker.getText());
-			} catch (JposException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage());
-				e1.printStackTrace();
+		try {
+			((ElectronicJournal) service).printContent(printContent_fromMarker.getText(),
+					printContent_toMarker.getText());
+			if (asyncMode.selectedProperty().getValue()) {
+				setStatusLabel();
 			}
+		} catch (JposException e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+			e1.printStackTrace();
 		}
 	}
 
@@ -303,6 +316,9 @@ public class ElectronicJournalController extends CommonController implements Ini
 		} else {
 			try {
 				((ElectronicJournal) service).printContentFile(printContentFile_fileName.getText());
+				if (asyncMode.selectedProperty().getValue()){
+					setStatusLabel();
+				}
 			} catch (JposException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -332,13 +348,15 @@ public class ElectronicJournalController extends CommonController implements Ini
 
 	@FXML
 	public void handleQueryContent(ActionEvent e) {
-		if (queryContent_fileName.getText().isEmpty() || queryContent_fromMarker.getText().isEmpty()
-				|| queryContent_toMarker.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Every Field should have a value!");
+		if (queryContent_fileName.getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "File name should have a value!");
 		} else {
 			try {
 				((ElectronicJournal) service).queryContent(queryContent_fileName.getText(),
 						queryContent_fromMarker.getText(), queryContent_toMarker.getText());
+				if (asyncMode.selectedProperty().getValue()){
+					setStatusLabel();
+				}
 			} catch (JposException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -370,6 +388,9 @@ public class ElectronicJournalController extends CommonController implements Ini
 	public void handleCancelQueryContent(ActionEvent e) {
 		try {
 			((ElectronicJournal) service).cancelQueryContent();
+			if (asyncMode.selectedProperty().getValue()){
+				setStatusLabel();
+			}
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
@@ -413,7 +434,7 @@ public class ElectronicJournalController extends CommonController implements Ini
 			String[] marker = new String[1];
 			try {
 				((ElectronicJournal) service).retrieveMarker(ElectronicJournalConstantMapper
-						.getConstantNumberFromString(retrieveCurrentMarker_markerType.getSelectionModel()
+						.getConstantNumberFromString(retrieveMarker_markerType.getSelectionModel()
 								.getSelectedItem()),
 						Integer.parseInt(retrieveMarker_sessionNumber.getText()), Integer
 								.parseInt(retrieveMarker_documentNumber.getText()), marker);
@@ -437,7 +458,7 @@ public class ElectronicJournalController extends CommonController implements Ini
 			String[] marker = new String[1];
 			try {
 				((ElectronicJournal) service).retrieveMarkerByDateTime(ElectronicJournalConstantMapper
-						.getConstantNumberFromString(retrieveCurrentMarker_markerType.getSelectionModel()
+						.getConstantNumberFromString(retrieveMarkerByDateTime_markerType.getSelectionModel()
 								.getSelectedItem()), retrieveMarkerByDateTime_dateTime.getText(),
 						retrieveMarkerByDateTime_markerNumber.getText(), marker);
 				retrieveMarkerByDateTime_marker.setText(marker[0]);
@@ -540,5 +561,28 @@ public class ElectronicJournalController extends CommonController implements Ini
 		setUpRetrieveCurrentMarkerMarkerType();
 		setUpRetrieveMarkerByDateTimeMarkerType();
 		setUpRetrieveMarkerMarkerType();
+	}
+
+	@Override
+	public void dataOccurred(DataEvent errorEvent) {
+		System.out.println("Output complete");
+		super.dataOccurred(errorEvent);
+		setStatusLabel();
+	}
+
+	@Override
+	public void errorOccurred(ErrorEvent e) {
+		JOptionPane.showMessageDialog(null, "Asynchronous operation failed: " + e.getErrorCode() + "/" + e.getErrorCodeExtended());
+		try {
+			((ElectronicJournal)service).clearInput();
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
+		setStatusLabel();
+	}
+
+	@Override
+	public void outputCompleteOccurred(OutputCompleteEvent outputCompleteEvent) {
+		setStatusLabel();
 	}
 }

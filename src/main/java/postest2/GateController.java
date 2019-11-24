@@ -27,7 +27,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class GateController extends CommonController implements Initializable {
+public class GateController extends SharableController implements Initializable {
 
 	@FXML @RequiredState(JposState.ENABLED)
 	public Pane functionPane;
@@ -69,7 +69,7 @@ public class GateController extends CommonController implements Initializable {
 	public void handleOCE(ActionEvent e) {
 		super.handleOCE(e);
 		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
+			if(getDeviceState(service) == JposState.OPENED){
 				deviceEnabled.setSelected(true);
 				handleDeviceEnable(e);
 			}

@@ -20,4 +20,34 @@ public class CoinDispenserConstantMapper implements IMapWrapper {
 		return this;
 	}
 
+	/**
+	 * Get Constant Number from String - Needed because ComboBoxes just hold the
+	 * String and not the Object
+	 *
+	 * @param constant
+	 * @return
+	 */
+	public static int getConstantNumberFromString(String constant){
+		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_OK.getConstant())) {
+			return CoinDispenserConstantMapper.COIN_STATUS_OK.getContantNumber();
+		}
+
+		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_NEAREMPTY.getConstant())) {
+			return CoinDispenserConstantMapper.COIN_STATUS_NEAREMPTY.getContantNumber();
+		}
+
+		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_EMPTY.getConstant())) {
+			return CoinDispenserConstantMapper.COIN_STATUS_EMPTY.getContantNumber();
+		}
+
+		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_JAM.getConstant())) {
+			return CoinDispenserConstantMapper.COIN_STATUS_JAM.getContantNumber();
+		}
+
+		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_OK.getConstant())) {
+			return CoinDispenserConstantMapper.COIN_STATUS_OK.getContantNumber();
+		}
+
+		return Integer.parseInt(constant);
+	}
 }

@@ -31,7 +31,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class CashDrawerController extends CommonController implements Initializable, StatusUpdateListener {
+public class CashDrawerController extends SharableController implements Initializable, StatusUpdateListener {
 	
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -65,11 +65,23 @@ public class CashDrawerController extends CommonController implements Initializa
 		try {
 			if (deviceEnabled.isSelected()) {
 				((CashDrawer) service).setDeviceEnabled(true);
+				if (waitForDrawerClose_beepTimeout.getText().equals("")) {
+					waitForDrawerClose_beepTimeout.setText("100");
+				}
+				if (waitForDrawerClose_beepFrequency.getText().equals("")) {
+					waitForDrawerClose_beepFrequency.setText("500");
+				}
+				if (waitForDrawerClose_beepDuration.getText().equals("")) {
+					waitForDrawerClose_beepDuration.setText("100");
+				}
+				if (waitForDrawerClose_beepDelay.getText().equals("")) {
+					waitForDrawerClose_beepDelay.setText("200");
+				}
 			} else {
 				((CashDrawer) service).setDeviceEnabled(false);
 			}
 			RequiredStateChecker.invokeThis(this, service);
-		} catch (JposException je) {   
+		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
@@ -80,7 +92,7 @@ public class CashDrawerController extends CommonController implements Initializa
 	public void handleOCE(ActionEvent e) {
 		super.handleOCE(e);
 		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
+			if(getDeviceState(service) == JposState.OPENED){
 				deviceEnabled.setSelected(true);
 				handleDeviceEnable(e);
 			}
@@ -93,6 +105,7 @@ public class CashDrawerController extends CommonController implements Initializa
 	public void handleOpenCash(ActionEvent e) {
 		try {
 			((CashDrawer) service).openDrawer();
+			textAreaActionLog.appendText("Cash drawer opened.\n");
 		} catch (JposException je) {
 			je.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Exception in openDrawer: " + je.getMessage(), "Exception",
@@ -109,19 +122,26 @@ public class CashDrawerController extends CommonController implements Initializa
 				textAreaActionLog.appendText("Cash drawer is closed.\n");
 			}
 		} catch (JposException je) {
-			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
+			JOptionPane.showMessageDialog(null, je.getMessage());
 		}
 	}
 
 	@FXML
 	public void handleWaitForDrawer(ActionEvent e) {
 		try {
-			((CashDrawer) service).waitForDrawerClose(100, 500, 100, 200);
+			int beepTimeout = Integer.parseInt(waitForDrawerClose_beepTimeout.getText());
+			int beepFrequency = Integer.parseInt(waitForDrawerClose_beepFrequency.getText());
+			int beepDuration = Integer.parseInt(waitForDrawerClose_beepDuration.getText());
+			int beepDelay = Integer.parseInt(waitForDrawerClose_beepDelay.getText());
+			((CashDrawer) service).waitForDrawerClose(beepTimeout, beepFrequency, beepDuration, beepDelay);
 			textAreaActionLog.appendText("Cash drawer is closed.\n");
 		} catch (JposException je) {
-			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
+			JOptionPane.showMessageDialog(null, je.getMessage());
+		} catch (NumberFormatException ne) {
+			ne.printStackTrace();
+			JOptionPane.showMessageDialog(null, ne.getMessage());
 		}
 	}
 
@@ -204,5 +224,4 @@ public class CashDrawerController extends CommonController implements Initializa
 			break;
 		}
 	}
-	
 }

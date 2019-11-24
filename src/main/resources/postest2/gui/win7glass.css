@@ -20,6 +20,7 @@ menu item is being hovered.
 .root {
     -fx-text-base-color: #000000;
     -fx-background-color: #BCC6CC;
+    -fx-disabled-opacity: 0.3
 }
 
 .pane {

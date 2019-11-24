@@ -4,5 +4,6 @@ public enum JposState {
 	CLOSED,
 	OPENED,
 	CLAIMED,
-	ENABLED;
+	ENABLED,
+	OPENEDNOTENABLED
 }
