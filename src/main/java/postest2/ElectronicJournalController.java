@@ -95,6 +95,7 @@ public class ElectronicJournalController extends CommonController implements Ini
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new ElectronicJournal();
+		((ElectronicJournal)service).addStatusUpdateListener(this);
 		((ElectronicJournal)service).addDataListener(this);
 		((ElectronicJournal)service).addErrorListener(this);
 		((ElectronicJournal)service).addOutputCompleteListener(this);

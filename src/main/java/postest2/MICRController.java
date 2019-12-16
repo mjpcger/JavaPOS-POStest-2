@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ import jpos.CashDrawer;
 import jpos.JposException;
 import jpos.MICR;
 
+import jpos.events.DataEvent;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -32,12 +34,17 @@ public class MICRController extends CommonController implements Initializable {
 	@FXML
 	@RequiredState(JposState.ENABLED)
 	public Pane functionPane;
+	@FXML
+	@RequiredState(JposState.ENABLED)
+	public TextArea deviceMessages;
 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new MICR();
+		((MICR) service).addStatusUpdateListener(this);
+		((MICR) service).addDataListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("MICR");
 	}
@@ -49,6 +56,7 @@ public class MICRController extends CommonController implements Initializable {
 
 	@FXML
 	public void handleDeviceEnable(ActionEvent e) {
+		deviceMessages.setText("");
 		try {
 			if (deviceEnabled.isSelected()) {
 				((MICR) service).setDeviceEnabled(true);
@@ -180,4 +188,13 @@ public class MICRController extends CommonController implements Initializable {
 		}
 	}
 
+	@Override
+	public void dataOccurred(DataEvent dataEvent) {
+		super.dataOccurred(dataEvent);
+		try {
+			deviceMessages.appendText(((MICR) service).getRawData() + "\n");
+		} catch (JposException e) {
+
+		}
+	}
 }

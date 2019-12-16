@@ -17,6 +17,7 @@
           <children>
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
+            <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
             <AnchorPane fx:id="anchorPane" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" styleClass="whiteBackground">
               <children>
                 <Label layoutX="534.0" layoutY="89.0" text="Command:" />
@@ -106,6 +107,8 @@
             <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" prefHeight="21.0" prefWidth="113.0" />
             <Text fontSmoothingType="LCD" layoutX="277.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " />
             <Text fx:id="statusLabel" font="$x1" fontSmoothingType="LCD" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_S_CLOSED" />
+            <Text fontSmoothingType="LCD" layoutX="470.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power State: " />
+            <Text fx:id="powerLabel" font="$x1" fontSmoothingType="LCD" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_PS_UNKNOWN" />
             <Button fx:id="buttonOpen" layoutX="14.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleOpen" prefWidth="61.0" text="Open" />
             <Button fx:id="buttonClaim" layoutX="83.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleClaim" prefWidth="61.0" text="Claim" />
             <Button fx:id="buttonRelease" layoutX="152.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleRelease" prefWidth="61.0" text="Release" />

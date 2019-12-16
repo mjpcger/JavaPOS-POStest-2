@@ -79,6 +79,7 @@ public class CATController extends CommonController implements Initializable, Er
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new CAT();
+		((CAT)service).addStatusUpdateListener(this);
 		((CAT)service).addErrorListener(this);
 		((CAT)service).addOutputCompleteListener(this);
 		setUpLogicalNameComboBox("CAT");

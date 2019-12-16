@@ -45,6 +45,7 @@ public class POSPowerController extends SharableController implements Initializa
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new POSPower();
+		((POSPower) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("POSPower");
 		setUpReason();
@@ -198,6 +199,7 @@ public class POSPowerController extends SharableController implements Initializa
 
 	@Override
 	public void statusUpdateOccurred(StatusUpdateEvent e) {
+		super.statusUpdateOccurred(e);
 		try {
 			int status = ((POSPower) service).getUPSChargeState();
 			if (status == POSPowerConst.PWR_SUE_BAT_CAPACITY_REMAINING) {

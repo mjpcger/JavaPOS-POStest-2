@@ -39,6 +39,8 @@ public class POSKeyboardController extends CommonController implements Initializ
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new POSKeyboard();
+		((POSKeyboard) service).addStatusUpdateListener(this);
+		((POSKeyboard) service).addDataListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("POSKeyboard");
 		

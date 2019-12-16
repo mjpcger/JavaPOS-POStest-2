@@ -71,6 +71,7 @@ public class BumpBarController extends CommonController implements Initializable
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new BumpBar();
+		((BumpBar) service).addStatusUpdateListener(this);
 		setUpLogicalNameComboBox("BumpBar");
 		RequiredStateChecker.invokeThis(this, service);
 	}

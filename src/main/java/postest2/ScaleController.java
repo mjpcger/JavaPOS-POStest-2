@@ -63,6 +63,7 @@ public class ScaleController extends CommonController implements Initializable, 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new Scale();
+		((Scale)service).addStatusUpdateListener(this);
 		((Scale)service).addDataListener(this);
 		((Scale)service).addErrorListener(this);
 		RequiredStateChecker.invokeThis(this, service);

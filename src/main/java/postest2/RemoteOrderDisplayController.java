@@ -206,6 +206,7 @@ public class RemoteOrderDisplayController extends CommonController implements In
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new RemoteOrderDisplay();
+		((RemoteOrderDisplay)service).addStatusUpdateListener(this);
 		((RemoteOrderDisplay)service).addDataListener(this);
 		((RemoteOrderDisplay)service).addErrorListener(this);
 		((RemoteOrderDisplay)service).addOutputCompleteListener(this);

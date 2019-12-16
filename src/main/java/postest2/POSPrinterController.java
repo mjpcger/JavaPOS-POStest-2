@@ -50,7 +50,10 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class POSPrinterController extends CommonController implements Initializable {
+public class POSPrinterController extends CommonController implements Initializable,
+    OutputCompleteListener,
+    DirectIOListener,
+    ErrorListener {
 
 	// Common
 	@FXML
@@ -207,36 +210,35 @@ public class POSPrinterController extends CommonController implements Initializa
 	private boolean recLetterQuality = false;
 	private boolean slpLetterQuality = false;
 
-    private EventListener eventListener = new EventListener();
-	
-	private class EventListener implements StatusUpdateListener,
-    OutputCompleteListener,
-    DirectIOListener,
-    ErrorListener {
-
-		public void statusUpdateOccurred( StatusUpdateEvent sue ){
-			updateMessages("SUE: " + getSUEMessage(sue.getStatus()));            
-		}
-		
-		public void directIOOccurred( DirectIOEvent dioe){
-			updateMessages("Dir I/O:  Direct I/O Event " + dioe.getEventNumber() + " returned data = " + Integer.toString(dioe.getData()));            
-		}
-		
-		public void outputCompleteOccurred( OutputCompleteEvent oce){
-			updateMessages("OCE: Output Event" + oce.getOutputID() +" completed");            
-		}
-		
-		public void errorOccurred(ErrorEvent ee){
-			updateMessages("Error: Error Event" + ee);            
-		}
+	@Override
+	public void statusUpdateOccurred( StatusUpdateEvent sue ){
+		super.statusUpdateOccurred(sue);
+		updateMessages("SUE: " + getSUEMessage(sue.getStatus()));            
 	}
-	
+		
+	@Override
+	public void directIOOccurred( DirectIOEvent dioe){
+		updateMessages("Dir I/O:  Direct I/O Event " + dioe.getEventNumber() + " returned data = " + Integer.toString(dioe.getData()));            
+	}
+		
+	@Override
+	public void outputCompleteOccurred( OutputCompleteEvent oce){
+		updateMessages("OCE: Output Event" + oce.getOutputID() +" completed");            
+	}
+		
+	@Override
+	public void errorOccurred(ErrorEvent ee){
+		updateMessages("Error: Error Event" + ee);            
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new POSPrinter();
-
+		((POSPrinter) service).addStatusUpdateListener(this);
+		((POSPrinter) service).addErrorListener(this);
+		((POSPrinter) service).addOutputCompleteListener(this);
+		((POSPrinter) service).addDirectIOListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 
 		//printNormalEscapeSequenceList = new ArrayList<Integer>();
@@ -373,11 +375,6 @@ public class POSPrinterController extends CommonController implements Initializa
 				service.setDeviceEnabled(true);
 				setUpCheckboxes();
 				setUpPageModeLabels();
-				((POSPrinter)service).addStatusUpdateListener(eventListener);
-				((POSPrinter)service).addOutputCompleteListener(eventListener);
-				((POSPrinter)service).addErrorListener(eventListener);
-				((POSPrinter)service).addDirectIOListener(eventListener);
-				
 			} else {
 				service.setDeviceEnabled(false);
 			}

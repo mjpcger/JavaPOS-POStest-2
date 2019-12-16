@@ -58,6 +58,7 @@ public class BeltController extends CommonController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new Belt();
+		((Belt) service).addStatusUpdateListener(this);
 		setUpLogicalNameComboBox("Belt");
 		RequiredStateChecker.invokeThis(this, service);
 	}

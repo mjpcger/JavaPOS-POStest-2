@@ -205,6 +205,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new FiscalPrinter();
+		((FiscalPrinter) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("FiscalPrinter");
 	}

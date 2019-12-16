@@ -16,8 +16,9 @@
         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="root">
           <children>
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
-            <CheckBox fx:id="freezeEvents" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
-            <CheckBox fx:id="asyncMode" layoutX="140.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAsyncMode" text="Asynchronous Mode" />
+            <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
+            <CheckBox fx:id="powerNotify" layoutX="273.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
+            <CheckBox fx:id="asyncMode" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleAsyncMode" text="Asynchronous Mode" />
             <TabPane fx:id="functionTab" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="General Print Settings">
@@ -314,18 +315,13 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <CheckBox fx:id="duplicateReceipt" layoutX="273.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDuplicateReceipt" text="Duplicate Receipt" />
+            <CheckBox fx:id="duplicateReceipt" layoutX="391.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleDuplicateReceipt" text="Duplicate Receipt" />
             <CheckBox fx:id="checkTotal" layoutX="273.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleCheckTotal" text="Check Total" />
-            <CheckBox fx:id="flagWhenIdle" layoutX="140.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleFlagWhenIdle" text="Flag when Idle" />
-            <Button fx:id="beginTraining" layoutX="416.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleBeginTraining" text="Begin Training" />
-            <Button fx:id="endTraining" layoutX="522.0" layoutY="4.0" minWidth="97.0" mnemonicParsing="false" onAction="#handleEndTraining" text="End Training" />
-            <Button fx:id="clearOutput" layoutX="416.0" layoutY="36.0" minWidth="97.0" mnemonicParsing="false" onAction="#handleClearOutput" text="Clear Output" />
-            <Button fx:id="clearError" layoutX="522.0" layoutY="36.0" minWidth="97.0" mnemonicParsing="false" onAction="#handleClearError" text="Clear Error" />
-            <Text fill="RED" layoutX="50.0" layoutY="680.0" scaleX="1.078" strokeType="OUTSIDE" strokeWidth="0.0" text="Not tested with a Device! If any Errors occur, please contact us on our Sourceforge Projectsite.">
-              <font>
-                <Font size="16.0" />
-              </font>
-            </Text>
+            <CheckBox fx:id="flagWhenIdle" layoutX="155.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleFlagWhenIdle" text="Flag when Idle" />
+            <Button fx:id="beginTraining" layoutX="516.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleBeginTraining" text="Begin Training" />
+            <Button fx:id="endTraining" layoutX="622.0" layoutY="4.0" minWidth="97.0" mnemonicParsing="false" onAction="#handleEndTraining" text="End Training" />
+            <Button fx:id="clearOutput" layoutX="516.0" layoutY="36.0" minWidth="97.0" mnemonicParsing="false" onAction="#handleClearOutput" text="Clear Output" />
+            <Button fx:id="clearError" layoutX="622.0" layoutY="36.0" minWidth="97.0" mnemonicParsing="false" onAction="#handleClearError" text="Clear Error" />
           </children>
         </Pane>
       </center>
@@ -336,6 +332,8 @@
             <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" prefHeight="21.0" prefWidth="113.0" />
             <Text fontSmoothingType="LCD" layoutX="277.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " />
             <Text fx:id="statusLabel" font="$x2" fontSmoothingType="LCD" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_S_CLOSED" />
+            <Text fontSmoothingType="LCD" layoutX="470.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power State: " />
+            <Text fx:id="powerLabel" font="$x2" fontSmoothingType="LCD" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_PS_UNKNOWN" />
             <Button fx:id="buttonOpen" layoutX="14.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleOpen" prefWidth="61.0" text="Open" />
             <Button fx:id="buttonClaim" layoutX="83.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleClaim" prefWidth="61.0" text="Claim" />
             <Button fx:id="buttonRelease" layoutX="152.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleRelease" prefWidth="61.0" text="Release" />

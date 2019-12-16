@@ -86,6 +86,7 @@ public class RFIDScannerController extends CommonController implements Initializ
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new RFIDScanner();
+		((RFIDScanner) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("RFIDScanner");
 	}

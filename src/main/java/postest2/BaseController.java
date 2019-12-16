@@ -22,7 +22,7 @@ import java.awt.*;
 import java.io.*;
 import java.lang.reflect.Method;
 
-public abstract class BaseController implements Initializable, DataListener {
+public abstract class BaseController implements Initializable, DataListener, StatusUpdateListener {
 
     /* ************************************************************************
      * ************************ Action Handler ********************************
@@ -58,21 +58,16 @@ public abstract class BaseController implements Initializable, DataListener {
     @FXML
     public Text statusLabel;
     @FXML
+    public Text powerLabel;
+    @FXML
     @RequiredState(JposState.ENABLED)
     public CheckBox freezeEvents;
     @FXML
     @RequiredState(JposState.OPENED)
     public CheckBox dataEventEnabled;
-
-    // WaitForDrawerClose
     @FXML
-    public TextField waitForDrawerClose_beepTimeout;
-    @FXML
-    public TextField waitForDrawerClose_beepFrequency;
-    @FXML
-    public TextField waitForDrawerClose_beepDuration;
-    @FXML
-    public TextField waitForDrawerClose_beepDelay;
+    @RequiredState(JposState.OPENEDNOTENABLED)
+    public CheckBox powerNotify;
 
     // DirectIO
     @FXML
@@ -139,6 +134,20 @@ public abstract class BaseController implements Initializable, DataListener {
     }
 
     @FXML
+    public void handleClose(ActionEvent e) {
+        try {
+            service.close();
+            powerNotify.setSelected(false);
+            powerLabel.setText("JPOS_PS_UNKNOWN");
+        } catch (JposException je) {
+            je.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to close \""
+                            + logicalName.getSelectionModel().getSelectedItem() + "\"\nException: " + je.getMessage(),
+                    "Failed", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    @FXML
     public void handleClaim(ActionEvent e) {
         try {
             service.claim(0);
@@ -149,6 +158,10 @@ public abstract class BaseController implements Initializable, DataListener {
                             + logicalName.getSelectionModel().getSelectedItem() + "\"\nException: " + je.getMessage(),
                     "Failed", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    @FXML
+    public void handleRelease(ActionEvent e) {
     }
 
     public void handleInfo(ActionEvent e) {
@@ -209,6 +222,24 @@ public abstract class BaseController implements Initializable, DataListener {
         try {
             if (setDataEventEnabled != null) {
                 setDataEventEnabled.invoke(service, dataEventEnabled.selectedProperty().getValue());
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+            JOptionPane.showMessageDialog(null, e1.getMessage());
+        }
+    }
+
+    @FXML
+    public void handlePowerNotify(ActionEvent e) {
+        try {
+            Method setPowerNotify = getMethod(service, "setPowerNotify");
+            Method getCapPowerReporting = getMethod(service, "getCapPowerReporting");
+            Method getPowerNotify = getMethod(service, "getPowerNotify");
+            if (setPowerNotify != null && getCapPowerReporting != null && getPowerNotify != null) {
+                int capPowerReporting = (int) getCapPowerReporting.invoke(service);
+                int notify = powerNotify.selectedProperty().getValue() ? JposConst.JPOS_PN_ENABLED : JposConst.JPOS_PN_DISABLED;
+                if (capPowerReporting != JposConst.JPOS_PR_NONE && notify != (int) getPowerNotify.invoke(service))
+                    setPowerNotify.invoke(service, notify);
             }
         } catch (Exception e1) {
             e1.printStackTrace();
@@ -323,6 +354,41 @@ public abstract class BaseController implements Initializable, DataListener {
         if (service.getState() == JposConst.JPOS_S_ERROR) {
             statusLabel.setText("JPOS_S_ERROR");
         }
+
+    }
+
+    /**
+     * Set PowerState label corresponding to the Power status
+     */
+    public void setPowerLabel() {
+        Method getPowerState = getMethod(service, "getPowerState");
+        int powerState;
+        try {
+            powerState = (int) getPowerState.invoke(service);
+        } catch (Exception e) {
+            powerState = JposConst.JPOS_PS_UNKNOWN;
+        }
+
+        if (powerState == JposConst.JPOS_PS_UNKNOWN) {
+            powerLabel.setText("JPOS_PS_UNKNOWN");
+        }
+
+        if (powerState == JposConst.JPOS_PS_ONLINE) {
+            powerLabel.setText("JPOS_PS_ONLINE");
+        }
+
+        if (powerState == JposConst.JPOS_PS_OFF) {
+            powerLabel.setText("JPOS_PS_OFF");
+        }
+
+        if (powerState == JposConst.JPOS_PS_OFFLINE) {
+            powerLabel.setText("JPOS_PS_OFFLINE");
+        }
+
+        if (powerState == JposConst.JPOS_PS_OFF_OFFLINE) {
+            powerLabel.setText("JPOS_PS_OFF_OFFLINE");
+        }
+
     }
 
     protected void setUpLogicalNameComboBox(String devCategory) {
@@ -482,6 +548,11 @@ public abstract class BaseController implements Initializable, DataListener {
     @Override
     public void dataOccurred(DataEvent dataEvent) {
         dataEventEnabled.setSelected(false);
+    }
+
+    @Override
+    public void statusUpdateOccurred(StatusUpdateEvent sue) {
+        setPowerLabel();
     }
 
 }

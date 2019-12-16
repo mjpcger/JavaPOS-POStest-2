@@ -77,6 +77,7 @@ public class PINPadController extends CommonController implements Initializable 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new PINPad();
+		((PINPad) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("PINPad");
 

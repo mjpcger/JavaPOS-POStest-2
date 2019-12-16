@@ -18,6 +18,7 @@
           <children>
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
+            <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
             <Pane fx:id="functionPane" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" styleClass="whiteBackground">
               <children>
                 <Label alignment="CENTER" layoutX="108.0" layoutY="379.0" prefWidth="271.0" text="DirectIO" underline="true">
@@ -66,6 +67,12 @@
             <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" prefHeight="21.0" prefWidth="113.0" />
             <Text fontSmoothingType="LCD" layoutX="277.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " />
             <Text fx:id="statusLabel" fontSmoothingType="LCD" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_S_CLOSED">
+              <font>
+                <Font name="System Bold" size="12.0" />
+              </font>
+            </Text>
+            <Text fontSmoothingType="LCD" layoutX="470.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power State: " />
+            <Text fx:id="powerLabel" fontSmoothingType="LCD" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_PS_UNKNOWN">
               <font>
                 <Font name="System Bold" size="12.0" />
               </font>

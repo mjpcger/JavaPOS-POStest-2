@@ -61,6 +61,7 @@ public class BillDispenserController extends CommonController implements Initial
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		this.service = new BillDispenser();
+		((BillDispenser) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("BillDispenser");
 	}

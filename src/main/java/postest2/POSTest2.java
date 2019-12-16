@@ -26,7 +26,11 @@ public class POSTest2 extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch(args);
+		try {
+			launch(args);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

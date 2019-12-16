@@ -43,6 +43,7 @@ public class MotionSensorController extends SharableController implements Initia
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new MotionSensor();
+		((MotionSensor) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("MotionSensor");
 	}

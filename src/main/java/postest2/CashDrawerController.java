@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 import javax.swing.JOptionPane;
@@ -45,6 +46,16 @@ public class CashDrawerController extends SharableController implements Initiali
 	public Button buttonGetDrawer;
 	@FXML
 	public Button buttonWaitForDrawer;
+
+	// WaitForDrawerClose
+	@FXML
+	public TextField waitForDrawerClose_beepTimeout;
+	@FXML
+	public TextField waitForDrawerClose_beepFrequency;
+	@FXML
+	public TextField waitForDrawerClose_beepDuration;
+	@FXML
+	public TextField waitForDrawerClose_beepDelay;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -209,9 +220,8 @@ public class CashDrawerController extends SharableController implements Initiali
 
 	@Override
 	public void statusUpdateOccurred(StatusUpdateEvent sue) {
-		@SuppressWarnings("unused")
+		super.statusUpdateOccurred(sue);
 		String msg = "Status Update Event: ";
-		statusLabel.setText("" + sue.getStatus());
 		switch (sue.getStatus()) {
 		case CashDrawerConst.CASH_SUE_DRAWERCLOSED:
 			msg += "Drawer Closed\n";

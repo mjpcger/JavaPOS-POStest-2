@@ -87,6 +87,7 @@ public class ElectronicValueRWController extends CommonController implements Ini
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new ElectronicValueRW();
+		((ElectronicValueRW) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("ElectronicValueRW");
 	}

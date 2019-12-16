@@ -76,6 +76,7 @@ public class CashChangerController extends CommonController implements Initializ
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new CashChanger();
+		((CashChanger) service).addStatusUpdateListener(this);
 		setUpLogicalNameComboBox("CashChanger");
 		RequiredStateChecker.invokeThis(this, service);
 	}

@@ -61,11 +61,17 @@ public class RequiredStateChecker {
 					}
 				}
 			}
+			Method methods[] = Class.forName(theObject.getClass().getName()).getMethods();
+			for (Method method : methods){
+				if (method.getName().equals("setPowerLabel")){
+					method.invoke(theObject);
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Gets the current DeviceState
 	 * @param service

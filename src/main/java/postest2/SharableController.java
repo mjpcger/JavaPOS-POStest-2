@@ -7,6 +7,7 @@ import javafx.scene.control.CheckBox;
 
 import javax.swing.JOptionPane;
 
+import jpos.JposConst;
 import jpos.JposException;
 
 public abstract class SharableController extends BaseController implements Initializable {
@@ -22,6 +23,7 @@ public abstract class SharableController extends BaseController implements Initi
     public CheckBox deviceEnabled;
 
     @FXML
+    @Override
     public void handleRelease(ActionEvent e) {
         try {
             service.release();
@@ -33,15 +35,18 @@ public abstract class SharableController extends BaseController implements Initi
         } catch (JposException je) {
             je.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed to release \""
-                            + logicalName.getSelectionModel().getSelectedItem() + "\"\nException: " + je.getMessage(),
+                    + logicalName.getSelectionModel().getSelectedItem() + "\"\nException: " + je.getMessage(),
                     "Failed", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     @FXML
     public void handleClose(ActionEvent e) {
-        try {
-            service.close();
+        super.handleClose(e);
+        if (service.getState() == JposConst.JPOS_S_CLOSED) {
+            deviceEnabled.setSelected(false);
+            dataEventEnabled.setSelected(false);
+        } else {
             if (!deviceEnabled.isDisable()) {
                 deviceEnabled.setSelected(false);
             }
@@ -49,15 +54,9 @@ public abstract class SharableController extends BaseController implements Initi
             if (dataEventEnabled != null && !dataEventEnabled.isDisable()) {
                 dataEventEnabled.setSelected(false);
             }
-
-            RequiredStateChecker.invokeThis(this, service);
-            setStatusLabel();
-        } catch (JposException je) {
-            je.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed to close \""
-                            + logicalName.getSelectionModel().getSelectedItem() + "\"\nException: " + je.getMessage(),
-                    "Failed", JOptionPane.ERROR_MESSAGE);
         }
+        RequiredStateChecker.invokeThis(this, service);
+        setStatusLabel();
     }
 
     @FXML

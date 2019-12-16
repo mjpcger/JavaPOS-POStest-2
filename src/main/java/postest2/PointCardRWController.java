@@ -68,6 +68,7 @@ public class PointCardRWController extends CommonController implements Initializ
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new PointCardRW();
+		((PointCardRW) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("PointCardRW");
 		printEscapeSequenceList = new ArrayList<Integer>();

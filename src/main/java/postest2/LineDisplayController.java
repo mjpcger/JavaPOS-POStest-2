@@ -159,6 +159,7 @@ public class LineDisplayController extends CommonController implements Initializ
 		setUpTooltips();
 		setUpLogicalNameComboBox("LineDisplay");
 		service = new LineDisplay();
+		((LineDisplay) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		displayTextEscapeSequenceList = new ArrayList<Integer>();
 

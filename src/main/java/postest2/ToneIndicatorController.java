@@ -30,7 +30,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class ToneIndicatorController extends CommonController implements Initializable {
+public class ToneIndicatorController extends SharableController implements Initializable {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -69,6 +69,7 @@ public class ToneIndicatorController extends CommonController implements Initial
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new ToneIndicator();
+		((ToneIndicator) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("ToneIndicator");
 	}
@@ -99,7 +100,7 @@ public class ToneIndicatorController extends CommonController implements Initial
 	public void handleOCE(ActionEvent e) {
 		super.handleOCE(e);
 		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
+			if(getDeviceState(service) == JposState.OPENED){
 				deviceEnabled.setSelected(true);
 				handleDeviceEnable(e);
 			}

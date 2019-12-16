@@ -40,6 +40,7 @@ public class GateController extends SharableController implements Initializable 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new Gate();
+		((Gate) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("Gate");
 	}
