@@ -36,10 +36,6 @@ public class ScaleController extends CommonController implements Initializable, 
 	public Pane functionPane;
 
 	@FXML
-	@RequiredState(JposState.OPENEDNOTENABLED)
-	public Pane statusNotifyPane;
-
-	@FXML
 	@RequiredState(JposState.OPENED)
 	public CheckBox asyncMode;
 
@@ -52,9 +48,12 @@ public class ScaleController extends CommonController implements Initializable, 
 	@FXML
 	public TextField readWeight_weightData;
 	@FXML
+	public TextField salesPrice;
+	@FXML
 	public TextField readWeight_timeout;
 
 	@FXML
+	@RequiredState(JposState.OPENEDNOTENABLED)
 	public ComboBox<String> statusNotify;
 	@FXML
 	public ComboBox<Boolean> zeroValid;
@@ -86,11 +85,15 @@ public class ScaleController extends CommonController implements Initializable, 
 				if (unitPrice.getText().equals("")){
 					unitPrice.setText(Long.toString(((Scale)service).getUnitPrice()));
 				}
+				salesPrice.setText("" + ((Scale) service).getSalesPrice());
 				setUpComboBoxes();
 			} else {
 				((Scale) service).setDeviceEnabled(false);
 			}
 			RequiredStateChecker.invokeThis(this, service);
+			if (!deviceEnabled.isSelected() && !((Scale) service).getCapStatusUpdate()) {
+				statusNotify.setDisable(true);
+			}
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
@@ -102,13 +105,47 @@ public class ScaleController extends CommonController implements Initializable, 
 		super.handleClose(e);
 		tareWeight.setText("");
 		unitPrice.setText("");
+		salesPrice.setText("");
 		asyncMode.setSelected(false);
+	}
+
+	@Override
+	public void handleClaim(ActionEvent e) {
+		super.handleClaim(e);
+		try {
+			if (!((Scale) service).getCapStatusUpdate()) {
+				statusNotify.setDisable(true);
+			}
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void handleRelease(ActionEvent e) {
+		super.handleRelease(e);
+		try {
+			if (!((Scale) service).getCapStatusUpdate()) {
+				statusNotify.setDisable(true);
+			}
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	@Override
 	public void handleOpen(ActionEvent e) {
 		super.handleOpen(e);
-		setUpStatusNotify();
+		try {
+			if (((Scale) service).getCapStatusUpdate()) {
+				setUpStatusNotify();
+			}
+			else {
+				statusNotify.setDisable(true);
+			}
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	@Override
@@ -279,6 +316,9 @@ public class ScaleController extends CommonController implements Initializable, 
 				if (asyncMode.selectedProperty().getValue()){
 					setStatusLabel();
 				}
+				else {
+					salesPrice.setText("" + ((Scale) service).getSalesPrice());
+				}
 			} catch (JposException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
@@ -325,6 +365,11 @@ public class ScaleController extends CommonController implements Initializable, 
 	public void dataOccurred(DataEvent e) {
 		super.dataOccurred(e);
 		readWeight_weightData.setText("" + e.getStatus());
+		try {
+			salesPrice.setText("" + ((Scale) service).getSalesPrice());
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
 		setStatusLabel();
 	}
 
