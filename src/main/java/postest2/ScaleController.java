@@ -86,6 +86,7 @@ public class ScaleController extends CommonController implements Initializable, 
 					unitPrice.setText(Long.toString(((Scale)service).getUnitPrice()));
 				}
 				salesPrice.setText("" + ((Scale) service).getSalesPrice());
+				salesPrice.setEditable(false);
 				setUpComboBoxes();
 			} else {
 				((Scale) service).setDeviceEnabled(false);

@@ -20,9 +20,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import javafx.scene.text.Text;
 import jpos.CoinDispenser;
+import jpos.CoinDispenserConst;
 import jpos.JposException;
 
+import jpos.events.StatusUpdateEvent;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -35,9 +38,12 @@ public class CoinDispenserController extends CommonController implements Initial
 	public Pane functionPane;
 
 	@FXML
-	public Label readCashCount_cashCount;
+	public TextField readCashCount_cashCount;
 	@FXML
 	public Label readCashCount_discrepancy;
+	@FXML
+	@RequiredState(JposState.ENABLED)
+	public Text dispenserStatus;
 
 	@FXML
 	public TextField adjustCashCounts;
@@ -59,15 +65,30 @@ public class CoinDispenserController extends CommonController implements Initial
 	 * ***********************************************************************
 	 */
 
+	@Override
+	public void handleRelease(ActionEvent e) {
+		super.handleRelease(e);
+		dispenserStatus.setText("");
+	}
+
+	@Override
+	public void handleClose(ActionEvent e) {
+		super.handleClose(e);
+		dispenserStatus.setText("");
+	}
+
 	@FXML
 	public void handleDeviceEnable(ActionEvent e) {
 		try {
 			if (deviceEnabled.isSelected()) {
 				((CoinDispenser) service).setDeviceEnabled(true);
+				readCashCount_cashCount.setEditable(false);
 			} else {
 				((CoinDispenser) service).setDeviceEnabled(false);
+				dispenserStatus.setText("");
 			}
 			RequiredStateChecker.invokeThis(this, service);
+			setDispenserStatus();
 		} catch (JposException je) {
 			System.err.println("CoinDispenserPanel: CheckBoxListener: Jpos Exception" + je);
 		}
@@ -185,6 +206,36 @@ public class CoinDispenserController extends CommonController implements Initial
 		}
 		this.readCashCount_cashCount.setText(cashCounts[0]);
 		this.readCashCount_discrepancy.setText("" + discrepancy[0]);
+	}
+
+	@Override
+	public void statusUpdateOccurred(StatusUpdateEvent ev) {
+		super.statusUpdateOccurred(ev);
+		setDispenserStatus();
+	}
+
+	private void setDispenserStatus() {
+		try {
+			switch (((CoinDispenser)service).getDispenserStatus()) {
+				case CoinDispenserConst.COIN_STATUS_OK: {
+					dispenserStatus.setText("COIN_STATUS_OK");
+					break;
+				}
+				case CoinDispenserConst.COIN_STATUS_EMPTY: {
+					dispenserStatus.setText("COIN_STATUS_EMPTY");
+					break;
+				}
+				case CoinDispenserConst.COIN_STATUS_NEAREMPTY: {
+					dispenserStatus.setText("COIN_STATUS_NEAREMPTY");
+					break;
+				}
+				case CoinDispenserConst.COIN_STATUS_JAM: {
+					dispenserStatus.setText("COIN_STATUS_JAM");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/*

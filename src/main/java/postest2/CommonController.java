@@ -45,7 +45,9 @@ public abstract class CommonController extends BaseController implements Initial
 		super.handleClose(e);
 		if (service.getState() == JposConst.JPOS_S_CLOSED) {
 			deviceEnabled.setSelected(false);
-			dataEventEnabled.setSelected(false);
+			if (dataEventEnabled != null) {
+				dataEventEnabled.setSelected(false);
+			}
 		}
 		else {
 			if (!deviceEnabled.isDisable()) {
