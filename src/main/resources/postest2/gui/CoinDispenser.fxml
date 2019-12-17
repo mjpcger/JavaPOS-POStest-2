@@ -18,8 +18,8 @@
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
             <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
-            <Text fontSmoothingType="LCD" layoutX="470.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dispenser Status: " />
-            <Text fx:id="dispenserStatus" fontSmoothingType="LCD" layoutX="585.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+            <Label fx:id="dispenserStatusLabel" layoutX="470.0" layoutY="14.0" text="Dispenser Status: " />
+            <Text fx:id="dispenserStatus" fontSmoothingType="LCD" layoutX="585.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
               <font>
                 <Font name="System Bold" size="12.0" />
               </font>

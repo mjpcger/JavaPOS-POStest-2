@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
@@ -21,6 +22,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import javafx.scene.text.Text;
 import jpos.*;
 
 import jpos.events.*;
@@ -51,7 +53,14 @@ public class ScaleController extends CommonController implements Initializable, 
 	public TextField salesPrice;
 	@FXML
 	public TextField readWeight_timeout;
-
+	@FXML
+	@RequiredState(JposState.ENABLED)
+	public Label lastStatusLabel;
+	@FXML
+	public Text lastStatus;
+	@FXML
+	@RequiredState(JposState.OPENEDNOTENABLED)
+	public Label statusNotifyLabel;
 	@FXML
 	@RequiredState(JposState.OPENEDNOTENABLED)
 	public ComboBox<String> statusNotify;
@@ -90,10 +99,20 @@ public class ScaleController extends CommonController implements Initializable, 
 				setUpComboBoxes();
 			} else {
 				((Scale) service).setDeviceEnabled(false);
+				lastStatus.setText("");
 			}
 			RequiredStateChecker.invokeThis(this, service);
-			if (!deviceEnabled.isSelected() && !((Scale) service).getCapStatusUpdate()) {
-				statusNotify.setDisable(true);
+			if (!((Scale) service).getCapStatusUpdate()) {
+				if (deviceEnabled.isSelected()) {
+					lastStatusLabel.setDisable(true);
+				} else {
+					statusNotify.setDisable(true);
+					statusNotifyLabel.setDisable(true);
+				}
+			}
+			else if (deviceEnabled.isSelected() && ScaleConstantMapper.getConstantNumberFromString(statusNotify
+					.getSelectionModel().getSelectedItem()) == ScaleConst.SCAL_SN_DISABLED) {
+				lastStatusLabel.setDisable(true);
 			}
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
@@ -108,6 +127,7 @@ public class ScaleController extends CommonController implements Initializable, 
 		unitPrice.setText("");
 		salesPrice.setText("");
 		asyncMode.setSelected(false);
+		lastStatus.setText("");
 	}
 
 	@Override
@@ -116,6 +136,7 @@ public class ScaleController extends CommonController implements Initializable, 
 		try {
 			if (!((Scale) service).getCapStatusUpdate()) {
 				statusNotify.setDisable(true);
+				statusNotifyLabel.setDisable(true);
 			}
 		} catch (JposException ex) {
 			ex.printStackTrace();
@@ -128,7 +149,9 @@ public class ScaleController extends CommonController implements Initializable, 
 		try {
 			if (!((Scale) service).getCapStatusUpdate()) {
 				statusNotify.setDisable(true);
+				statusNotifyLabel.setDisable(true);
 			}
+			lastStatus.setText("");
 		} catch (JposException ex) {
 			ex.printStackTrace();
 		}
@@ -143,6 +166,7 @@ public class ScaleController extends CommonController implements Initializable, 
 			}
 			else {
 				statusNotify.setDisable(true);
+				statusNotifyLabel.setDisable(true);
 			}
 		} catch (JposException ex) {
 			ex.printStackTrace();
@@ -372,6 +396,32 @@ public class ScaleController extends CommonController implements Initializable, 
 			ex.printStackTrace();
 		}
 		setStatusLabel();
+	}
+
+	@Override
+	public void statusUpdateOccurred(StatusUpdateEvent e) {
+		super.statusUpdateOccurred(e);
+		switch (e.getStatus()) {
+			case ScaleConst.SCAL_SUE_STABLE_WEIGHT:
+				lastStatus.setText("STABLE_WEIGHT");
+				break;
+			case ScaleConst.SCAL_SUE_WEIGHT_UNSTABLE:
+				lastStatus.setText("WEIGHT_UNSTABLE");
+				break;
+			case ScaleConst.SCAL_SUE_WEIGHT_ZERO:
+				lastStatus.setText("WEIGHT_ZERO");
+				break;
+			// case ScaleConst.SCAL_SUE_WEIGHT_UNDERWEIGHT: Constant missing in JavaPOS implementation.
+			case ScaleConst.SCAL_SUE_WEIGHT_OVERWEIGHT:
+				lastStatus.setText("WEIGHT_OVERWEIGHT");
+				break;
+			case ScaleConst.SCAL_SUE_NOT_READY:
+				lastStatus.setText("NOT_READY");
+				break;
+			case ScaleConst.SCAL_SUE_WEIGHT_UNDER_ZERO:
+				lastStatus.setText("WEIGHT_UNDER_ZERO");
+				break;
+		}
 	}
 
 	@Override

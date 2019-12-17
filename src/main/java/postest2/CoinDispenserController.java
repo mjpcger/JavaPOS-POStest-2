@@ -43,6 +43,9 @@ public class CoinDispenserController extends CommonController implements Initial
 	public Label readCashCount_discrepancy;
 	@FXML
 	@RequiredState(JposState.ENABLED)
+	public Label dispenserStatusLabel;
+	@FXML
+	@RequiredState(JposState.ENABLED)
 	public Text dispenserStatus;
 
 	@FXML

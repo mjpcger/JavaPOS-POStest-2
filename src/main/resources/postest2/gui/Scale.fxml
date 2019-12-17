@@ -18,9 +18,16 @@
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
             <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
+            <Label fx:id="lastStatusLabel" layoutX="470.0" layoutY="14.0" text="Last Status: " />
+            <Text fx:id="lastStatus" fontSmoothingType="LCD" layoutX="585.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+              <font>
+                <Font name="System Bold" size="12.0" />
+              </font>
+            </Text>
             <CheckBox fx:id="dataEventEnabled" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleDataEventEnabled" text="DataEvent enabled" />
             <CheckBox fx:id="asyncMode" layoutX="155.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleAsyncMode" text="Asynchronous Mode" />
-            <ComboBox fx:id="statusNotify" layoutX="295.0" layoutY="38.0" prefHeight="21.0" prefWidth="150.0" onAction="#handleSetStatusNotify"/>
+            <Label fx:id="statusNotifyLabel" layoutX="295.0" layoutY="40.0" text="Notify Status: " />
+            <ComboBox fx:id="statusNotify" layoutX="380.0" layoutY="38.0" prefHeight="21.0" prefWidth="150.0" onAction="#handleSetStatusNotify"/>
             <Pane fx:id="functionPane" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" styleClass="whiteBackground">
               <children>
                 <Label layoutX="358.0" layoutY="376.0" text="Command:" />
