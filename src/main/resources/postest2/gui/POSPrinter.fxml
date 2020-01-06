@@ -215,12 +215,12 @@
                         <Label layoutX="27.0" layoutY="190.0" text="Line Spacing:" />
                         <TextField id="lineWidth" fx:id="lineSpacing" layoutX="103.0" layoutY="187.0" prefWidth="110.0" />
                         <Button layoutX="26.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleSetLineSpacing" text="Set Line Spacing" />
-                        <Button layoutX="278.0" layoutY="349.0" mnemonicParsing="false" text="Set Cartridge" />
+                        <Button layoutX="278.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleSetCurrentCartridge" text="Set Cartridge" />
                         <Label layoutX="278.0" layoutY="320.0" text="Cartridge:" />
                         <Label layoutX="278.0" layoutY="291.0" text="Set Current Cartridge for selected Device" underline="true" />
                         <ComboBox fx:id="currentCartridge" layoutX="354.0" layoutY="318.0" prefHeight="21.0" prefWidth="110.0" />
                         <ComboBox fx:id="cartridgeNotify" layoutX="594.0" layoutY="318.0" prefWidth="110.0" />
-                        <Button layoutX="505.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleMarkFeed" text="Set CartridgeNotify" />
+                        <Button layoutX="505.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleSetCartridgeNotify" text="Set CartridgeNotify" />
                         <Label layoutX="505.0" layoutY="320.0" text="CartridgeNotify:" />
                         <Label layoutX="505.0" layoutY="291.0" text="Set Cartridge Notify" underline="true" />
                       </children>

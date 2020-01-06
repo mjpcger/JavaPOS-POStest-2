@@ -1064,6 +1064,17 @@ public class POSPrinterController extends CommonController implements Initializa
 	}
 
 	@FXML
+	public void handleSetCartridgeNotify(ActionEvent e) {
+		try {
+			((POSPrinter) service).setCartridgeNotify(POSPrinterConstantMapper
+					.getConstantNumberFromString(cartridgeNotify.getSelectionModel().getSelectedItem()));
+		} catch (JposException e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+			e1.printStackTrace();
+		}
+	}
+
+	@FXML
 	public void handleSetCurrentCartridge(ActionEvent e) {
 		if (rbJournal.isSelected()) {
 			try {
@@ -1386,15 +1397,11 @@ public class POSPrinterController extends CommonController implements Initializa
 	private void setUpCharacterSet() {
 		characterSet.getItems().clear();
 		try {
-			for (int i = 0; i < ((POSPrinter) service).getCharacterSetList().split(",").length; i++) {
-				characterSet.getItems().add(
-						Integer.parseInt((((POSPrinter) service).getCharacterSetList().split(","))[i]));
-				if (i == 0) {
-					characterSet.setValue(Integer.parseInt((((POSPrinter) service).getCharacterSetList()
-							.split(","))[i]));
-				}
+			String[] charsets = ((POSPrinter) service).getCharacterSetList().split(",");
+			for (String charset : charsets) {
+				characterSet.getItems().add(Integer.parseInt(charset));
 			}
-
+			characterSet.setValue(((POSPrinter) service).getCharacterSet());
 		} catch (JposException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error occured when getting the CharacterSetList",
@@ -1406,7 +1413,12 @@ public class POSPrinterController extends CommonController implements Initializa
 		mapCharacterSet.getItems().clear();
 		mapCharacterSet.getItems().add(true);
 		mapCharacterSet.getItems().add(false);
-		mapCharacterSet.setValue(true);
+		try {
+			mapCharacterSet.setValue(((POSPrinter)service).getMapCharacterSet());
+		} catch (JposException e) {
+			e.printStackTrace();
+			mapCharacterSet.setValue(false);
+		}
 	}
 
 	private void setUpCurrentCartridge() {
@@ -1754,82 +1766,85 @@ public class POSPrinterController extends CommonController implements Initializa
 		return ret;
 	}
 	
-	private String getSUEMessage(int code){
-        String value = "Unknown";
-        switch(code){
-            case POSPrinterConst.PTR_SUE_COVER_OPEN:
-                value = "Cover Open";
-                break;
-            case POSPrinterConst.PTR_SUE_COVER_OK:
-                value = "Cover OK";
-                break;
-            case POSPrinterConst.PTR_SUE_JRN_EMPTY:
-                value = "Journal Paper Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_JRN_NEAREMPTY:
-                value = "Journal Paper Near Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_JRN_PAPEROK:
-                value = "Journal Papey OK";
-                break;
-            case POSPrinterConst.PTR_SUE_REC_EMPTY:
-                value = "Receipt Paper Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_REC_NEAREMPTY:
-                value = "Receipt Paper Near Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_REC_PAPEROK:
-                value = "Receipt Paper OK";
-                break;
-            case POSPrinterConst.PTR_SUE_SLP_EMPTY:
-                value = "Slip Paper Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_SLP_NEAREMPTY:
-                value = "Slip Paper Near Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_SLP_PAPEROK:
-                value = "Slip Paper OK";
-                break;
-            case POSPrinterConst.PTR_SUE_IDLE:
-                value = "Printer Idle";
-                break;
-            case POSPrinterConst.PTR_SUE_JRN_CARTRIDGE_EMPTY:
-                value = "Journal Cartridge Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_JRN_HEAD_CLEANING:
-                value = "Journal Head Cleaning Started";
-                break;
-            case POSPrinterConst.PTR_SUE_JRN_CARTRIDGE_NEAREMPTY:
-                value = "Journal Cartridge Near Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_JRN_CARTDRIGE_OK:
-                value = "Journal Cartridge OK";
-                break;
-            case POSPrinterConst.PTR_SUE_REC_CARTRIDGE_EMPTY:
-                value = "Receipt Cartridge Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_REC_HEAD_CLEANING:
-                value = "Receipt Head Cleaning Started";
-                break;
-            case POSPrinterConst.PTR_SUE_REC_CARTRIDGE_NEAREMPTY:
-                value = "Receipt Cartridge Near Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_REC_CARTDRIGE_OK:
-                value = "Receipt Cartridge OK";
-                break;
-            case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_EMPTY:
-                value = "Slip Cartridge Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_SLP_HEAD_CLEANING:
-                value = "Slip Head Cleaning Started";
-                break;
-            case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_NEAREMPTY:
-                value = "Slip Cartridge Near Empty";
-                break;
-            case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_OK:
-                value = "Slip Cartridge OK";
-                break;
-        }
+	public String getSUEMessage(int code){
+		String value = super.getSUEMessage(code);
+		if (value == null) {
+			value = "Unknown";
+			switch (code) {
+				case POSPrinterConst.PTR_SUE_COVER_OPEN:
+					value = "Cover Open";
+					break;
+				case POSPrinterConst.PTR_SUE_COVER_OK:
+					value = "Cover OK";
+					break;
+				case POSPrinterConst.PTR_SUE_JRN_EMPTY:
+					value = "Journal Paper Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_JRN_NEAREMPTY:
+					value = "Journal Paper Near Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_JRN_PAPEROK:
+					value = "Journal Papey OK";
+					break;
+				case POSPrinterConst.PTR_SUE_REC_EMPTY:
+					value = "Receipt Paper Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_REC_NEAREMPTY:
+					value = "Receipt Paper Near Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_REC_PAPEROK:
+					value = "Receipt Paper OK";
+					break;
+				case POSPrinterConst.PTR_SUE_SLP_EMPTY:
+					value = "Slip Paper Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_SLP_NEAREMPTY:
+					value = "Slip Paper Near Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_SLP_PAPEROK:
+					value = "Slip Paper OK";
+					break;
+				case POSPrinterConst.PTR_SUE_IDLE:
+					value = "Printer Idle";
+					break;
+				case POSPrinterConst.PTR_SUE_JRN_CARTRIDGE_EMPTY:
+					value = "Journal Cartridge Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_JRN_HEAD_CLEANING:
+					value = "Journal Head Cleaning Started";
+					break;
+				case POSPrinterConst.PTR_SUE_JRN_CARTRIDGE_NEAREMPTY:
+					value = "Journal Cartridge Near Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_JRN_CARTDRIGE_OK:
+					value = "Journal Cartridge OK";
+					break;
+				case POSPrinterConst.PTR_SUE_REC_CARTRIDGE_EMPTY:
+					value = "Receipt Cartridge Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_REC_HEAD_CLEANING:
+					value = "Receipt Head Cleaning Started";
+					break;
+				case POSPrinterConst.PTR_SUE_REC_CARTRIDGE_NEAREMPTY:
+					value = "Receipt Cartridge Near Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_REC_CARTDRIGE_OK:
+					value = "Receipt Cartridge OK";
+					break;
+				case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_EMPTY:
+					value = "Slip Cartridge Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_SLP_HEAD_CLEANING:
+					value = "Slip Head Cleaning Started";
+					break;
+				case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_NEAREMPTY:
+					value = "Slip Cartridge Near Empty";
+					break;
+				case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_OK:
+					value = "Slip Cartridge OK";
+					break;
+			}
+		}
         return value;
     }
 	
