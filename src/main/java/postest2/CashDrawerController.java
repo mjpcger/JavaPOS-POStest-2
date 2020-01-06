@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -116,7 +117,6 @@ public class CashDrawerController extends SharableController implements Initiali
 	public void handleOpenCash(ActionEvent e) {
 		try {
 			((CashDrawer) service).openDrawer();
-			textAreaActionLog.appendText("Cash drawer opened.\n");
 		} catch (JposException je) {
 			je.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Exception in openDrawer: " + je.getMessage(), "Exception",
@@ -146,7 +146,6 @@ public class CashDrawerController extends SharableController implements Initiali
 			int beepDuration = Integer.parseInt(waitForDrawerClose_beepDuration.getText());
 			int beepDelay = Integer.parseInt(waitForDrawerClose_beepDelay.getText());
 			((CashDrawer) service).waitForDrawerClose(beepTimeout, beepFrequency, beepDuration, beepDelay);
-			textAreaActionLog.appendText("Cash drawer is closed.\n");
 		} catch (JposException je) {
 			je.printStackTrace();
 			JOptionPane.showMessageDialog(null, je.getMessage());
@@ -218,20 +217,39 @@ public class CashDrawerController extends SharableController implements Initiali
 		statistics = "";
 	}
 
+	private class ActionLogAdder implements Runnable {
+		ActionLogAdder(String message) {
+			Message = message;
+		}
+		private String Message;
+		@Override
+		public void run() {
+			textAreaActionLog.appendText(Message);
+		}
+	}
+
+	@Override
+	public String getSUEMessage(int status) {
+		String message = super.getSUEMessage(status);
+		if (message == null) {
+			switch (status) {
+				case CashDrawerConst.CASH_SUE_DRAWERCLOSED:
+					return "Cash drawer closed";
+				case CashDrawerConst.CASH_SUE_DRAWEROPEN:
+					return "Cash drawer open";
+				default:
+					return "Unknown status: " + status;
+			}
+		}
+		return message;
+	}
+
 	@Override
 	public void statusUpdateOccurred(StatusUpdateEvent sue) {
 		super.statusUpdateOccurred(sue);
-		String msg = "Status Update Event: ";
-		switch (sue.getStatus()) {
-		case CashDrawerConst.CASH_SUE_DRAWERCLOSED:
-			msg += "Drawer Closed\n";
-			break;
-		case CashDrawerConst.CASH_SUE_DRAWEROPEN:
-			msg += "Drawer Opened\n";
-			break;
-		default:
-			msg += "Unknown Status: " + Integer.toString(sue.getStatus()) + "\n";
-			break;
+		String msg = getSUEMessage(sue.getStatus());
+		if (msg != null) {
+			Platform.runLater(new ActionLogAdder("Status Update Event: " + msg + "\n"));
 		}
 	}
 }
