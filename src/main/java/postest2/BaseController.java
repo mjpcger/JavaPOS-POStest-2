@@ -555,4 +555,33 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         setPowerLabel();
     }
 
+    public String getSUEMessage(int status) {
+        switch (status) {
+            case JposConst.JPOS_SUE_POWER_ONLINE:
+                return "Device online";
+            case JposConst.JPOS_SUE_POWER_OFF:
+                return "Device off";
+            case JposConst.JPOS_SUE_POWER_OFFLINE:
+                return "Device offline";
+            case JposConst.JPOS_SUE_POWER_OFF_OFFLINE:
+                return "Device off or offline";
+            case JposConst.JPOS_SUE_UF_COMPLETE:
+                return "Firmware update complete, device OK";
+            case JposConst.JPOS_SUE_UF_FAILED_DEV_OK:
+                return "Firmware update failed, device OK";
+            case JposConst.JPOS_SUE_UF_FAILED_DEV_UNRECOVERABLE:
+                return "Firmware update failed, device needs service";
+            case JposConst.JPOS_SUE_UF_FAILED_DEV_NEEDS_FIRMWARE:
+                return "Firmware update failed, device needs update";
+            case JposConst.JPOS_SUE_UF_FAILED_DEV_UNKNOWN:
+                return "Firmware updatefailed, device state unknown";
+            case JposConst.JPOS_SUE_UF_COMPLETE_DEV_NOT_RESTORED:
+                return "Firmware update complete, device reset";
+            default:
+                if (status >= JposConst.JPOS_SUE_UF_PROGRESS && status < JposConst.JPOS_SUE_UF_COMPLETE) {
+                    return "Updating firmware (" + (status - JposConst.JPOS_SUE_UF_PROGRESS) + "%)";
+                }
+        }
+        return null;
+    }
 }

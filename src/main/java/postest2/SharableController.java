@@ -41,6 +41,7 @@ public abstract class SharableController extends BaseController implements Initi
     }
 
     @FXML
+    @Override
     public void handleClose(ActionEvent e) {
         super.handleClose(e);
         if (service.getState() == JposConst.JPOS_S_CLOSED) {
