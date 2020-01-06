@@ -37,6 +37,9 @@ public class RemoteOrderDisplayController extends CommonController implements In
 	public CheckBox asyncMode;
 
 	@FXML
+	public Text onlineLabel;
+
+	@FXML
 	@RequiredState(JposState.ENABLED)
 	public TabPane functionPane;
 
@@ -212,6 +215,7 @@ public class RemoteOrderDisplayController extends CommonController implements In
 		((RemoteOrderDisplay)service).addOutputCompleteListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("RemoteOrderDisplay");
+		powerLabel.setVisible(false);
 	}
 
 	/* ************************************************************************
@@ -227,8 +231,9 @@ public class RemoteOrderDisplayController extends CommonController implements In
 				setUpComboBoxes();
 			} else {
 				((RemoteOrderDisplay) service).setDeviceEnabled(false);
+				inputLabel.setText("");
+				onlineLabel.setText("");
 			}
-			inputLabel.setText("Input: ");
 			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
@@ -1066,6 +1071,15 @@ public class RemoteOrderDisplayController extends CommonController implements In
 	}
 
 	@Override
+	public void statusUpdateOccurred(StatusUpdateEvent e) {
+		try {
+			onlineLabel.setText(Long.toBinaryString(0x100000000l + ((RemoteOrderDisplay)service).getUnitsOnline()).substring(1));
+		} catch (JposException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
 	public void dataOccurred(DataEvent e) {
 		int date = e.getStatus();
 		int row = (date & 0xff000000) >> 24;
@@ -1074,7 +1088,7 @@ public class RemoteOrderDisplayController extends CommonController implements In
 		try {
 			String unit = getStringFromConstant(((RemoteOrderDisplay)service).getEventUnitID(), "ROD_UID_");
 			((RemoteOrderDisplay)service).setDataEventEnabled(true);
-			String text = String.format("Input: %-11s%3d/%-3d %s", unit, row, column, type);
+			String text = String.format("%-11s%3d/%-3d %s", unit, row, column, type);
 			inputLabel.setText(text);
 			return;
 		} catch (JposException ex) {
@@ -1105,7 +1119,15 @@ public class RemoteOrderDisplayController extends CommonController implements In
 	@Override
 	public void handleClose(ActionEvent e) {
 		super.handleClose(e);
-		inputLabel.setText("Input: ");
+		inputLabel.setText("");
+		onlineLabel.setText("");
+	}
+
+	@Override
+	public void handleRelease(ActionEvent e) {
+		super.handleRelease(e);
+		inputLabel.setText("");
+		onlineLabel.setText("");
 	}
 
 	@Override

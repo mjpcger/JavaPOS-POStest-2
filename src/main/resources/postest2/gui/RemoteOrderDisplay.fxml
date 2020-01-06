@@ -292,12 +292,15 @@
                 <Font name="System Bold" size="12.0" />
               </font>
             </Text>
-            <Text fx:id="powerLabel" fontSmoothingType="LCD" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_PS_UNKNOWN">
+            <Text fontSmoothingType="LCD" layoutX="450.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Online: " />
+            <Text fx:id="powerLabel" layoutX="100" layoutY="100" text="" />
+            <Text fx:id="onlineLabel" fontSmoothingType="LCD" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
               <font>
                 <Font name="System Bold" size="12.0" />
               </font>
             </Text>
-            <Text fx:id="inputLabel" fontSmoothingType="LCD" layoutX="620.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input:                                     ">
+            <Text fontSmoothingType="LCD" layoutX="620.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last input: " />
+            <Text fx:id="inputLabel" fontSmoothingType="LCD" layoutX="690.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
               <font>
                 <Font name="System Bold" size="12.0" />
               </font>
