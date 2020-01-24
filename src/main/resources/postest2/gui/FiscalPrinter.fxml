@@ -25,45 +25,60 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set AdditionalHeader: " />
-                        <TextField fx:id="additionalHeader" layoutX="133.0" layoutY="175.0" prefWidth="168.0" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set AdditionalTrailer: " />
-                        <TextField fx:id="additionalTrailer" layoutX="133.0" layoutY="208.0" prefWidth="168.0" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set ChangeDue:" />
-                        <TextField fx:id="changeDue" layoutX="133.0" layoutY="282.0" prefWidth="168.0" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set VatValue:" />
-                        <TextField fx:id="vatValue" layoutX="133.0" layoutY="124.0" prefWidth="52.0" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set HeaderLine:" />
-                        <TextField fx:id="headerLine" layoutX="133.0" layoutY="16.0" prefWidth="168.0" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set TrailerLine:" />
-                        <TextField id="trailerLIne" fx:id="trailerLine" layoutX="133.0" layoutY="55.0" prefWidth="168.0" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VAT ID: " />
-                        <TextField fx:id="vatID" layoutX="133.0" layoutY="99.0" prefWidth="52.0" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Date:" />
-                        <TextField fx:id="date" layoutX="133.0" layoutY="249.0" prefWidth="168.0" />
-                        <Button layoutX="320.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSetHeaderLine" prefWidth="134.0" text="Set HeaderLine" />
-                        <Button layoutX="320.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleSetTrailerLine" prefWidth="134.0" text="Set TrailerLine" />
-                        <Button layoutX="320.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleSetVatValue" prefWidth="134.0" text="Set VatValue" />
-                        <Button layoutX="320.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleSetAdditionalHeader" text="Set AdditionalHeader" />
-                        <Button layoutX="320.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleSetAdditionalTrailer" prefWidth="134.0" text="Set AdditionalTrailer" />
-                        <Button layoutX="320.0" layoutY="247.0" mnemonicParsing="false" onAction="#handleSetDate" prefWidth="134.0" text="Set Date" />
-                        <Button layoutX="320.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleSetChangeDue" prefWidth="134.0" text="Set ChangeDue" />
-                        <CheckBox fx:id="doubleWidthHeader" layoutX="480.0" layoutY="19.0" mnemonicParsing="false" text="Double width" />
-                        <CheckBox fx:id="doubleWidthTrailer" layoutX="480.0" layoutY="55.0" mnemonicParsing="false" text="Double width" />
+                        <Text text="Set HeaderLine:" fontSmoothingType="LCD" layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <ComboBox fx:id="numHeaderLine" layoutX="133.0" layoutY="16.0" />
+                        <TextField fx:id="headerLine" layoutX="183.0" layoutY="16.0" prefWidth="170.0" />
+                        <Button text="Set HeaderLine" layoutX="370.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSetHeaderLine" prefWidth="134.0" />
+                        <CheckBox fx:id="doubleWidthHeader" layoutX="530.0" layoutY="19.0" mnemonicParsing="false" text="Double width" />
+                        <Text text="Set TrailerLine:" fontSmoothingType="LCD" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <ComboBox fx:id="numTrailerLine" layoutX="133.0" layoutY="55.0" />
+                        <TextField fx:id="trailerLine" layoutX="183.0" layoutY="55.0" prefWidth="170.0" />
+                        <Button text="Set TrailerLine" layoutX="370.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleSetTrailerLine" prefWidth="134.0" />
+                        <CheckBox fx:id="doubleWidthTrailer" layoutX="530.0" layoutY="55.0" mnemonicParsing="false" text="Double width" />
+                        <Text text="VAT ID: " fontSmoothingType="LCD" layoutX="14.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="vatID" layoutX="133.0" layoutY="89.0" prefWidth="52.0" />
                         <Text fontSmoothingType="LCD" layoutX="190.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(ID must be an integer)">
                           <font>
                             <Font name="System Italic" size="12.0" />
                           </font>
                         </Text>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Currency:" />
-                        <ComboBox fx:id="cbSetCurrency" layoutX="133.0" layoutY="317.0" prefHeight="21.0" prefWidth="168.0" />
-                        <Button layoutX="320.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleSetCurrency" prefWidth="134.0" text="Set Currency" />
-                        <Button layoutX="320.0" layoutY="92.0" mnemonicParsing="false" onAction="#handleSetVatTable" prefWidth="134.0" text="Set VatTable" />
-                        <Button layoutX="480.0" layoutY="92.0" mnemonicParsing="false" onAction="#handleBeginItemList" text="Begin Item List" />
-                        <Button layoutX="480.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleVerifyItem" prefWidth="99.0" text="Verify Item" />
-                        <Button layoutX="480.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleEndItemList" prefWidth="99.0" text="End Item List" />
-                        <TextField fx:id="itemName" layoutX="586.0" layoutY="127.0" prefWidth="100.0" />
-                        <Text fontSmoothingType="LCD" layoutX="608.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item name" />
+                        <Button text="Set VatTable" layoutX="370.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleSetVatTable" prefWidth="134.0" />
+                        <Text text="Set VatValue:" fontSmoothingType="LCD" layoutX="14.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="vatValue" layoutX="133.0" layoutY="114.0" prefWidth="52.0" />
+                        <Button text="Set VatValue" layoutX="370.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleSetVatValue" prefWidth="134.0" />
+                        <Text text="Opt. Args: " fontSmoothingType="LCD" layoutX="14.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="cbOptArgs" layoutX="133.0" layoutY="139.0" prefWidth="52.0" />
+                        <Text fontSmoothingType="LCD" layoutX="190.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(for getVATEntry)">
+                          <font>
+                            <Font name="System Italic" size="12.0" />
+                          </font>
+                        </Text>
+                        <Button text="Get VAT Entry" layoutX="370.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleGetVATEntry" prefWidth="134.0" />
+                        <Text text="VAT Rate: " fontSmoothingType="LCD" layoutX="530.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="vatRate" fontSmoothingType="LCD" layoutX="590.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+                        <Text text="Set AdditionalHeader: " fontSmoothingType="LCD" layoutX="14.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="additionalHeader" layoutX="133.0" layoutY="175.0" prefWidth="220.0" />
+                        <Button text="Set AdditionalHeader" layoutX="370.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleSetAdditionalHeader" />
+                        <Text text="Set AdditionalTrailer: " fontSmoothingType="LCD" layoutX="14.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="additionalTrailer" layoutX="133.0" layoutY="208.0" prefWidth="220.0" />
+                        <Button text="Set AdditionalTrailer" layoutX="370.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleSetAdditionalTrailer" prefWidth="134.0" />
+                        <Text text="Set Date:" fontSmoothingType="LCD" layoutX="14.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="date" layoutX="133.0" layoutY="249.0" prefWidth="220.0" />
+                        <Button text="Set Date" layoutX="370.0" layoutY="247.0" mnemonicParsing="false" onAction="#handleSetDate" prefWidth="134.0" />
+                        <Text text="Set ChangeDue:" fontSmoothingType="LCD" layoutX="14.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="changeDue" layoutX="133.0" layoutY="282.0" prefWidth="220.0" />
+                        <Button text="Set ChangeDue" layoutX="370.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleSetChangeDue" prefWidth="134.0" />
+                        <Text text="Set Currency:" fontSmoothingType="LCD" layoutX="14.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <ComboBox fx:id="cbSetCurrency" layoutX="133.0" layoutY="317.0" prefHeight="21.0" prefWidth="220.0" />
+                        <Button text="Set Currency" layoutX="370.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleSetCurrency" prefWidth="134.0" />
+                        <Text text="Set StoreFiscalID:" fontSmoothingType="LCD" layoutX="14.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="fiscalID" layoutX="133.0" layoutY="355.0" prefWidth="220.0" />
+                        <Button text="Set Store Fiscal ID" layoutX="370.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSetStoreFiscalID" prefWidth="134.0" />
+                        <Text text="Set POSID:" fontSmoothingType="LCD" layoutX="14.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="POSID" layoutX="133.0" layoutY="395.0" prefWidth="220.0" />
+                        <Text text="Cashier ID:" fontSmoothingType="LCD" layoutX="14.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="cashierID" layoutX="133.0" layoutY="420.0" prefWidth="220.0" />
+                        <Button text="Set POSID" layoutX="370.0" layoutY="405.0" mnemonicParsing="false" onAction="#handleSetPOSID" prefWidth="134.0" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -72,124 +87,105 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="469.0" prefWidth="700.0">
                       <children>
-                        <ComboBox fx:id="adjustmentType" layoutX="116.0" layoutY="12.0" prefHeight="21.0" prefWidth="173.0" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Receipt Message:" />
-                        <TextField fx:id="receiptMessage" layoutX="116.0" layoutY="44.0" prefWidth="173.0" />
-                        <TextField fx:id="description" layoutX="116.0" layoutY="73.0" prefWidth="173.0">
+                        <Text text="Receipt Properties:" layoutX="14.0" layoutY="26.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <ComboBox fx:id="receiptType" layoutX="116.0" layoutY="10.0" prefHeight="21.0" prefWidth="173.0" onAction="#handleSetReceiptType"/>
+                        <ComboBox fx:id="receiptStation" layoutX="320.0" layoutY="10.0" prefWidth="180.0" onAction="#handleSetFiscalReceiptStation" />
+                        <Text text="Set PreLine:" layoutX="14.0" layoutY="56.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="preLine" layoutX="116.0" layoutY="40.0" prefWidth="173.0">
                           <tooltip>
-                            <Tooltip text="describing the item sold">
+                            <Tooltip font="$x1" text="Additional specific line text. (e.g. &quot;Special offer&quot;)" />
+                          </tooltip>
+                        </TextField>
+                        <Text text="Set PostLine:" layoutX="14.0" layoutY="81.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="postLine" layoutX="116.0" layoutY="65.0" prefWidth="173.0">
+                          <tooltip>
+                            <Tooltip font="$x1" text="Additional specific line text. (e.g. &quot;Special offer&quot;)" />
+                          </tooltip>
+                        </TextField>
+                        <Text text="Message Type:" layoutX="14.0" layoutY="111.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <ComboBox fx:id="messageType" layoutX="116.0" layoutY="95.0" prefHeight="21.0" prefWidth="173.0" onAction="#handleSetMessageType" />
+                        <Text text="Text:" layoutX="14.0" layoutY="141.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="description" layoutX="116.0" layoutY="125.0" prefWidth="173.0">
+                          <tooltip>
+                            <Tooltip text="Describing text or message">
                               <font>
                                 <Font name="System Italic" size="11.0" fx:id="x1" />
                               </font>
                             </Tooltip>
                           </tooltip>
                         </TextField>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" />
-                        <TextField fx:id="preLine" layoutX="116.0" layoutY="101.0" prefWidth="173.0">
+                        <Text text="Price or Amount:" layoutX="14.0" layoutY="171.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="priceAmount" layoutX="116.0" layoutY="155.0" prefWidth="173.0">
                           <tooltip>
-                            <Tooltip font="$x1" text="Additional specific line text. (e.g. &quot;Special offer&quot;)" />
+                            <Tooltip font="$x1" text="Price or amount of position. (e.g. 23.70)" />
                           </tooltip>
                         </TextField>
-                        <TextField fx:id="postLine" layoutX="116.0" layoutY="131.0" prefWidth="173.0">
-                          <tooltip>
-                            <Tooltip font="$x1" text="Additional specific line text. (e.g. &quot;Special offer&quot;)" />
-                          </tooltip>
-                        </TextField>
-                        <TextField fx:id="price" layoutX="116.0" layoutY="161.0" prefWidth="173.0">
-                          <tooltip>
-                            <Tooltip font="$x1" text="Price of the line item. (e.g. 23.70)" />
-                          </tooltip>
-                        </TextField>
-                        <TextField fx:id="quantity" layoutX="116.0" layoutY="193.0" prefWidth="173.0">
+                        <Text text="Quantity:" layoutX="14.0" layoutY="201.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="quantity" layoutX="116.0" layoutY="185.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Number of items. If zero a single item is assumed." />
                           </tooltip>
                         </TextField>
-                        <TextField fx:id="vatInfo" layoutX="116.0" layoutY="275.0" prefWidth="173.0">
+                        <Text text="Vat ID:" layoutX="14.0" layoutY="231.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <ComboBox id="vatID" fx:id="cbVatID" layoutX="116.0" layoutY="215.0" prefHeight="21.0" prefWidth="173.0" />
+                        <Text text="Vat Info:" layoutX="14.0" layoutY="256.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="vatInfo" layoutX="116.0" layoutY="240.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="VAT rate identifier or amount" />
                           </tooltip>
                         </TextField>
-                        <TextField fx:id="unitPrice" layoutX="116.0" layoutY="328.0" prefWidth="173.0">
+                        <Text text="Unit Price:" layoutX="14.0" layoutY="286.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="unitPrice" layoutX="116.0" layoutY="270.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Price of each item. If not used a zero is transferred. (i.e. 10.65)" />
                           </tooltip>
                         </TextField>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set PreLine:" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set PostLine:" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:" />
-                        <Button layoutX="322.0" layoutY="101.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecItem" text="Print Rec Item" />
-                        <Button layoutX="485.0" layoutY="101.0" minWidth="187.0" mnemonicParsing="false" onAction="#handlePrintRecItemAdjustment" text="Print Rec Item Adjustment" />
-                        <Button layoutX="485.0" layoutY="135.0" mnemonicParsing="false" onAction="#handlePrintRecItemAdjustmentVoid" text="Print Rec Item Adjustment Void" />
-                        <Button layoutX="322.0" layoutY="169.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecItemFuel" text="Print Rec Item Fuel" />
-                        <Button layoutX="322.0" layoutY="203.0" mnemonicParsing="false" onAction="#handlePrintRecItemFuelVoid" text="Print Rec Item Fuel Void" />
-                        <Button layoutX="485.0" layoutY="169.0" minWidth="187.0" mnemonicParsing="false" onAction="#handlePrintRecItemRefund" text="Print Rec Item Refund" />
-                        <Button layoutX="485.0" layoutY="203.0" minWidth="187.0" mnemonicParsing="false" onAction="#handlePrintRecItemRefundVoid" text="Print Rec Item Refund Void" />
-                        <Button layoutX="322.0" layoutY="135.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecItemVoid" text="Print Rec Item Void" />
-                        <Button layoutX="309.0" layoutY="248.0" minWidth="207.0" mnemonicParsing="false" onAction="#handlePrintRecPackageAdjustment" text="Print Rec Package Adjustment" />
-                        <Button layoutX="309.0" layoutY="280.0" minWidth="207.0" mnemonicParsing="false" onAction="#handlePrintRecPackageAdjustmentVoid" text="Print Rec Package Adjustment Void" />
-                        <Button layoutX="539.0" layoutY="248.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecRefund" text="Print Rec Refund" />
-                        <Button layoutX="539.0" layoutY="280.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecRefundVoid" text="Print Rec Refund Void" />
-                        <Button layoutX="309.0" layoutY="325.0" minWidth="207.0" mnemonicParsing="false" onAction="#handlePrintRecSubtotal" text="Print Rec Subtotal" />
-                        <Button layoutX="309.0" layoutY="359.0" minWidth="207.0" mnemonicParsing="false" onAction="#handlePrintRecSubtotalAdjustment" text="Print Rec Subtotal Adjustment" />
-                        <Button layoutX="309.0" layoutY="394.0" mnemonicParsing="false" onAction="#handlePrintRecSubtotalAdjustmentVoid" text="Print Rec Subtotal Adjustment Void" />
-                        <Button layoutX="539.0" layoutY="325.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecVoid" text="Print Rec Void" />
-                        <Button layoutX="539.0" layoutY="359.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecVoidItem" text="Print Rec Void Item" />
-                        <Button layoutX="309.0" layoutY="437.0" mnemonicParsing="false" onAction="#handlePrintRecTaxId" text="Print Rec TaxID" />
-                        <Button layoutX="419.0" layoutY="437.0" mnemonicParsing="false" onAction="#handlePrintRecTotal" text="Print Rec Total" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vat Info:" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price:" />
-                        <TextField fx:id="unitName" layoutX="116.0" layoutY="357.0" prefWidth="173.0">
+                        <Text text="Unit Name:" layoutX="14.0" layoutY="311.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="unitName" layoutX="116.0" layoutY="295.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="i.e. &quot;kg&quot; or &quot;lt&quot;" />
                           </tooltip>
                         </TextField>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Name:" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of adj.:" />
-                        <TextField id="quantity" fx:id="amount" layoutX="116.0" layoutY="220.0" prefWidth="173.0">
+                        <Text text="Adjustment Type:" layoutX="14.0" layoutY="341.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <ComboBox fx:id="adjustmentType" layoutX="116.0" layoutY="325.0" prefHeight="21.0" prefWidth="173.0" />
+                        <Text text="Adjustment Amount:" layoutX="14.0" layoutY="366.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField id="quantity" fx:id="adjustment" layoutX="116.0" layoutY="350.0" prefWidth="173.0">
                           <tooltip>
-                            <Tooltip font="$x1" text="Amount of the adjustment. It is used for a discount or a surcharge of the last receipt item sold. (e.g. 15.45)" />
+                            <Tooltip font="$x1" text="Amount of the adjustment, payment or string containing a list of adjustment(s) for different Vat(s)." />
                           </tooltip>
                         </TextField>
-                        <TextField id="unitPrice" fx:id="specialTax" layoutX="116.0" layoutY="413.0" prefWidth="173.0">
+                        <Text text="Special Tax:" layoutX="14.0" layoutY="396.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="specialTax" id="unitPrice" layoutX="116.0" layoutY="380.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="e.g. road tax. If not used a zero must be transferred. (e.g. 17.42)" />
                           </tooltip>
                         </TextField>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Tax:" />
-                        <TextField id="unitName" fx:id="specialTaxName" layoutX="116.0" layoutY="441.0" prefWidth="173.0">
+                        <Text text="Special Tax Name:" layoutX="14.0" layoutY="421.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField id="unitName" fx:id="specialTaxName" layoutX="116.0" layoutY="405.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Name of the special tax." />
                           </tooltip>
                         </TextField>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Tax Name:" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Amount:" />
-                        <TextField id="unitName" layoutX="116.0" layoutY="385.0" prefWidth="173.0">
-                          <tooltip>
-                            <Tooltip font="$x1" text="Amount of each refund item. If not used a zero is transferred. (e.g. 18.82)" />
-                          </tooltip>
-                        </TextField>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vat Adjustment:" />
-                        <TextField id="vatInfo" fx:id="vatAdjustment" layoutX="116.0" layoutY="302.0" prefWidth="173.0">
-                          <tooltip>
-                            <Tooltip font="$x1" text="String containing a list of adjustment(s) for different Vat(s)." />
-                          </tooltip>
-                        </TextField>
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adjustment Type:" />
-                        <Button layoutX="539.0" layoutY="437.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecCash" text="Print Rec Cash" />
-                        <Button layoutX="320.0" layoutY="11.0" minWidth="147.0" mnemonicParsing="false" onAction="#handleBeginFiscalReceipt" text="Begin Fiscal Receipt" />
-                        <Button layoutX="483.0" layoutY="12.0" minWidth="147.0" mnemonicParsing="false" onAction="#handleEndFiscalReceipt" text="End Fiscal Receipt" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vat ID:" />
-                        <ComboBox id="vatID" fx:id="cbVatID" layoutX="116.0" layoutY="248.0" prefHeight="21.0" prefWidth="173.0" />
-                        <Button layoutX="320.0" layoutY="53.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecMessage" text="Print Rec Message" />
-                        <Button layoutX="483.0" layoutY="53.0" minWidth="147.0" mnemonicParsing="false" onAction="#handlePrintRecNotPaid" text="Print Rec Not Paid" />
-                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TaxID:" />
-                        <TextField id="unitName" fx:id="taxID" layoutX="116.0" layoutY="468.0" prefWidth="173.0">
-                          <tooltip>
-                            <Tooltip font="$x1" text="Name of the special tax." />
-                          </tooltip>
-                        </TextField>
+                        <Button onAction="#handleBeginFiscalReceipt" layoutX="320.0" layoutY="40.0" minWidth="180.0" mnemonicParsing="false" text="Begin Fiscal Receipt" />
+                        <CheckBox text="Print Header" fx:id="printHeader" layoutX="520.0" layoutY="46.0" mnemonicParsing="false" />
+                        <Button onAction="#handlePrintRecMessage" layoutX="320.0" layoutY="70.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Message" />
+                        <Button onAction="#handlePrintRecVoid" layoutX="320.0" layoutY="95.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Void" />
+                        <Button onAction="#handlePrintRecCash" layoutX="320.0" layoutY="120.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Cash" />
+                        <Button onAction="#handlePrintRecItem" layoutX="320.0" layoutY="150.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Item" />
+                        <Button onAction="#handlePrintRecItemFuel" layoutX="500.0" layoutY="150.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Item Fuel" />
+                        <Button onAction="#handlePrintRecItemRefund" layoutX="320.0" layoutY="176.7" minWidth="180.0" mnemonicParsing="false" text="Print Rec Item Refund" />
+                        <Button onAction="#handlePrintRecRefund" layoutX="500.0" layoutY="176.7" minWidth="180.0" mnemonicParsing="false" text="Print Rec Refund" />
+                        <Button onAction="#handlePrintRecItemAdjustment" layoutX="320.0" layoutY="203.3" minWidth="180.0" mnemonicParsing="false" text="Print Rec Item Adjustment" />
+                        <Button onAction="#handlePrintRecSubtotalAdjustment" layoutX="320.0" layoutY="230.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Subtotal Adjustment" />
+                        <Button onAction="#handlePrintRecPackageAdjustment" layoutX="500.0" layoutY="230.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Package Adjustment" />
+                        <Separator layoutX="690.0" layoutY="150.0" orientation="VERTICAL" prefHeight="110.0" />
+                        <CheckBox text="...Void" fx:id="voidSuffix" layoutX="700.0" layoutY="190.0" mnemonicParsing="false" />
+                        <Button onAction="#handlePrintRecVoidItem" layoutX="320.0" layoutY="260.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Void Item" />
+                        <Button onAction="#handlePrintRecSubtotal" layoutX="320.0" layoutY="290.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Subtotal" />
+                        <Button onAction="#handlePrintRecTotal" layoutX="320.0" layoutY="320.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Total" />
+                        <Button onAction="#handlePrintRecNotPaid" layoutX="500.0" layoutY="320.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec Not Paid" />
+                        <Button onAction="#handlePrintRecTaxId" layoutX="320.0" layoutY="350.0" minWidth="180.0" mnemonicParsing="false" text="Print Rec TaxID" />
+                        <Button onAction="#handleEndFiscalReceipt" layoutX="320.0" layoutY="380.0" minWidth="180.0" mnemonicParsing="false" text="End Fiscal Receipt" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -233,7 +229,7 @@
                         <ComboBox fx:id="reportType" layoutX="53.0" layoutY="166.0" prefHeight="21.0" prefWidth="146.0" />
                         <Button layoutX="315.0" layoutY="51.0" mnemonicParsing="false" onAction="#handlePrintReport" prefWidth="130.0" text="Print Report" />
                         <Button layoutX="315.0" layoutY="89.0" mnemonicParsing="false" onAction="#handlePrintXReport" prefWidth="130.0" text="Print X Report" />
-                        <Button layoutX="315.0" layoutY="127.0" mnemonicParsing="false" onAction="#handlePrintZReport" prefWidth="130.0" text="Print Y Report" />
+                        <Button layoutX="315.0" layoutY="127.0" mnemonicParsing="false" onAction="#handlePrintZReport" prefWidth="130.0" text="Print Z Report" />
                         <Button layoutX="315.0" layoutY="165.0" mnemonicParsing="false" onAction="#handlePrintPeriodicReport" text="Print Periodic Report" />
                       </children>
                     </AnchorPane>
@@ -243,13 +239,30 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <TextArea fx:id="data" layoutX="39.0" layoutY="55.0" prefHeight="187.0" prefWidth="267.0" wrapText="true" />
-                        <Text font="$x2" fontSmoothingType="LCD" layoutX="160.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                        <Button layoutX="370.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleBeginNonFiscal" text="Begin Non Fiscal" />
-                        <Button layoutX="370.0" layoutY="149.0" mnemonicParsing="false" onAction="#handlePrintNormal" prefWidth="108.0" text="Print Normal" />
-                        <Button layoutX="370.0" layoutY="197.0" mnemonicParsing="false" onAction="#handleEndNonFiscal" prefWidth="108.0" text="End Non Fiscal" />
-                        <ComboBox fx:id="station" layoutX="370.0" layoutY="53.0" prefHeight="21.0" prefWidth="155.0" />
-                        <Text fontSmoothingType="LCD" layoutX="323.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station:" />
+                        <ComboBox fx:id="station" layoutX="150.0" layoutY="40.0" prefHeight="21.0" prefWidth="160.0" />
+                        <Text fontSmoothingType="LCD" layoutX="39.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station:" />
+                        <Separator layoutX="50.0" layoutY="90.0" orientation="HORIZONTAL" prefWidth="430.0" />
+                        <TextArea fx:id="data" layoutX="39.0" layoutY="120.0" prefHeight="120.0" prefWidth="270.0" wrapText="true" />
+                        <Text font="$x2" fontSmoothingType="LCD" layoutX="165.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Button layoutX="370.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleBeginNonFiscal" prefWidth="130.0" text="Begin Non Fiscal" />
+                        <Button layoutX="370.0" layoutY="160.0" mnemonicParsing="false" onAction="#handlePrintNormal" prefWidth="130.0" text="Print Normal" />
+                        <Button layoutX="370.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleEndNonFiscal" prefWidth="130.0" text="End Non Fiscal" />
+                        <Separator layoutX="50.0" layoutY="260.0" orientation="HORIZONTAL" prefWidth="430.0" />
+                        <Text fontSmoothingType="LCD" layoutX="39" layoutY="300" strokeType="OUTSIDE" strokeWidth="0.0" text="documentType:" />
+                        <TextField fx:id="DocumentType" layoutX="150" layoutY="284" prefWidth="160"/>
+                        <Text fontSmoothingType="LCD" layoutX="39" layoutY="340" strokeType="OUTSIDE" strokeWidth="0.0" text="lineNumber:" />
+                        <TextField fx:id="LineNumber" layoutX="150" layoutY="324" prefWidth="160"/>
+                        <Text fontSmoothingType="LCD" layoutX="39" layoutY="380" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" />
+                        <TextField fx:id="Data" layoutX="100" layoutY="364" prefWidth="210"/>
+                        <Button layoutX="370.0" layoutY="284.0" mnemonicParsing="false" prefWidth="130.0" onAction="#handleBeginFixedOutput" text="Begin Fixed Output" />
+                        <Button layoutX="370.0" layoutY="324.0" mnemonicParsing="false" prefWidth="130.0" onAction="#handlePrintFixedOutput" text="Print Fixed Output" />
+                        <Button layoutX="370.0" layoutY="364.0" mnemonicParsing="false" prefWidth="130.0" onAction="#handleEndFixedOutput" text="End Fixed Output" />
+                        <Separator layoutX="520.0" layoutY="40.0" orientation="VERTICAL" prefHeight="350.0" />
+                        <Button layoutX="540.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleBeginItemList" text="Begin Item List" />
+                        <Button layoutX="540.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleVerifyItem" prefWidth="99.0" text="Verify Item" />
+                        <Button layoutX="540.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleEndItemList" prefWidth="99.0" text="End Item List" />
+                        <TextField fx:id="itemName" layoutX="646.0" layoutY="83.0" prefWidth="180.0" />
+                        <Text fontSmoothingType="LCD" layoutX="708.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item name" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -258,38 +271,34 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <RadioButton fx:id="rbFirmNum" layoutX="15.0" layoutY="20.0" mnemonicParsing="false" text="Firmware Release Number" />
-                        <RadioButton fx:id="rbPrinterID" layoutX="15.0" layoutY="45.0" mnemonicParsing="false" text="Printer's Fiscal ID" />
-                        <RadioButton fx:id="rbCurrentReceiptTotal" layoutX="15.0" layoutY="70.0" mnemonicParsing="false" text="Current Receipt Total" />
-                        <RadioButton fx:id="rbDailyTotal" layoutX="15.0" layoutY="95.0" mnemonicParsing="false" text="Daily Total" />
-                        <RadioButton fx:id="rbPrinterGrandTotal" layoutX="15.0" layoutY="120.0" mnemonicParsing="false" text="Fiscal Printer's Grand Total" />
-                        <RadioButton fx:id="rbTotalNumVoidRec" layoutX="15.0" layoutY="145.0" mnemonicParsing="false" text="Total Number of Voided Receipts" />
-                        <RadioButton fx:id="rbNumDailySaleRec" layoutX="15.0" layoutY="170.0" mnemonicParsing="false" text="Num of Daily Fiscal Sale Receipts" />
-                        <RadioButton fx:id="rbNumFiscalRecPrinted" layoutX="15.0" layoutY="195.0" mnemonicParsing="false" text="Num of Fiscal Receipts Printed" />
-                        <RadioButton fx:id="rbCurrentTotalRefund" layoutX="15.0" layoutY="220.0" mnemonicParsing="false" text="Current Total of Refunds" />
-                        <RadioButton fx:id="rbNumDailyVoidSalesRec" layoutX="15.0" layoutY="245.0" mnemonicParsing="false" text="Num of Daily Voided Fiscal Sales Receipt" />
-                        <RadioButton fx:id="rbNumDailyNonSalesRec" layoutX="15.0" layoutY="270.0" mnemonicParsing="false" text="Num of Daily Non Fiscal Sales Receipt" />
-                        <RadioButton fx:id="rbZREport" layoutX="15.0" layoutY="295.0" mnemonicParsing="false" text="Z Report" />
-                        <Button layoutX="68.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleGetData" text="GetData" />
-                        <TextArea fx:id="textOutput" layoutX="15.0" layoutY="380.0" prefHeight="105.0" prefWidth="233.0" wrapText="true" />
-                        <Text font="$x2" fontSmoothingType="LCD" layoutX="96.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text Output" />
-                        <Button layoutX="160.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleResetPrinter" text="Reset Printer" />
-                        <Separator layoutX="349.0" layoutY="14.0" orientation="VERTICAL" prefHeight="470.0" />
-                        <RadioButton fx:id="dailyTotalizer" layoutX="381.0" layoutY="20.0" mnemonicParsing="false" text="Daily Totalizer" />
-                        <RadioButton fx:id="grandTotalizer" layoutX="521.0" layoutY="20.0" mnemonicParsing="false" text="Grand Totalizer" />
-                        <Text fontSmoothingType="LCD" layoutX="381.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Totalizer: " />
-                        <ComboBox fx:id="itemTotalizer" layoutX="462.0" layoutY="59.0" prefHeight="21.0" prefWidth="178.0" />
-                        <Text fontSmoothingType="LCD" layoutX="381.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VatdID:" />
-                        <ComboBox id="cbVatID" fx:id="cbStatusVatID" layoutX="462.0" layoutY="93.0" prefHeight="21.0" prefWidth="178.0" />
-                        <Button layoutX="462.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleGetTotalizer" text="Get Totalizer" />
-                        <TextArea fx:id="output" layoutX="382.0" layoutY="195.0" prefHeight="116.0" prefWidth="258.0" wrapText="true" />
-                        <Text font="$x2" fontSmoothingType="LCD" layoutX="491.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output" />
-                        <Button layoutX="382.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleGetTrainingMode" prefWidth="122.0" text="Get Training Mode" />
-                        <Button layoutX="382.0" layoutY="395.0" mnemonicParsing="false" onAction="#handleGetErrorInfo" prefWidth="122.0" text="Get Error Info" />
-                        <Button layoutX="382.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleGetOutputID" prefWidth="122.0" text="Get Output ID" />
-                        <Button layoutX="518.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleGetPrinterStatus" prefWidth="122.0" text="Get Printer Status" />
-                        <Button layoutX="518.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleGetDayOpened" prefWidth="122.0" text="Get Day Opened" />
-                        <Button layoutX="518.0" layoutY="395.0" mnemonicParsing="false" onAction="#handleGetRemFisMem" text="Get Rem. Fis. Mem." />
+                        <Button layoutX="80.0" layoutY="20.0" prefWidth="120.0" mnemonicParsing="false" onAction="#handleResetPrinter" text="Reset Printer" />
+                        <Separator layoutX="25.0" layoutY="60.0" orientation="HORIZONTAL" prefWidth="325.0" />
+                        <Text fontSmoothingType="LCD" layoutX="15.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Item: " />
+                        <ComboBox fx:id="dataItem" layoutX="80.0" layoutY="70.0" prefHeight="21.0" prefWidth="260.0" onAction="#handleDataItem"/>
+                        <Text fontSmoothingType="LCD" layoutX="15.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opt. Arg.: " />
+                        <ComboBox fx:id="optArgs" layoutX="80.0" layoutY="105.0" prefHeight="21.0" prefWidth="260.0" />
+                        <Button layoutX="80.0" layoutY="140.0" prefWidth="120.0" mnemonicParsing="false" onAction="#handleGetData" text="GetData" />
+                        <Separator layoutX="25.0" layoutY="180.0" orientation="HORIZONTAL" prefWidth="325.0" />
+                        <Text fontSmoothingType="LCD" layoutX="15.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Type: " />
+                        <ComboBox fx:id="DateType" layoutX="80.0" layoutY="190.0" prefHeight="21.0" prefWidth="260.0" />
+                        <Button layoutX="80.0" layoutY="225.0" prefWidth="120.0" mnemonicParsing="false" onAction="#handleGetDate" text="GetDate" />
+                        <Separator layoutX="360.0" layoutY="14.0" orientation="VERTICAL" prefHeight="280.0" />
+                        <Text fontSmoothingType="LCD" layoutX="380.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totalizer Type: " />
+                        <ComboBox fx:id="totalizerType" layoutX="460.0" layoutY="24.0" prefHeight="21.0" prefWidth="245.0" onAction="#handleSetTotalizerType"/>
+                        <Text fontSmoothingType="LCD" layoutX="380.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totalizer: " />
+                        <ComboBox fx:id="itemTotalizer" layoutX="440.0" layoutY="59.0" prefHeight="21.0" prefWidth="265.0" />
+                        <Text fontSmoothingType="LCD" layoutX="380.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vat ID:" />
+                        <ComboBox id="cbVatID" fx:id="cbStatusVatID" layoutX="440.0" layoutY="93.0" prefHeight="21.0" prefWidth="265.0" />
+                        <Button layoutX="440.0" layoutY="132.0" prefWidth="120.0" mnemonicParsing="false" onAction="#handleGetTotalizer" text="Get Totalizer" />
+                        <Separator layoutX="370.0" layoutY="172.0" orientation="HORIZONTAL" prefWidth="325.0" />
+                        <Button layoutX="440.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleGetTrainingMode" prefWidth="122.0" text="Get Training Mode" />
+                        <Button layoutX="440.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleGetErrorInfo" prefWidth="122.0" text="Get Error Info" />
+                        <Button layoutX="440.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleGetOutputID" prefWidth="122.0" text="Get Output ID" />
+                        <Button layoutX="570.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleGetPrinterStatus" prefWidth="122.0" text="Get Printer Status" />
+                        <Button layoutX="570.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleGetDayOpened" prefWidth="122.0" text="Get Day Opened" />
+                        <Button layoutX="570.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleGetRemFisMem" text="Get Rem. Fis. Mem." />
+                        <TextArea fx:id="output" layoutX="100.0" layoutY="315.0" prefHeight="116.0" prefWidth="560.0" wrapText="true" />
+                        <Text font="$x2" fontSmoothingType="LCD" layoutX="340.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -315,7 +324,8 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <CheckBox fx:id="duplicateReceipt" layoutX="391.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleDuplicateReceipt" text="Duplicate Receipt" />
+            <CheckBox fx:id="fixedCurrencyFactor" layoutX="380.0" layoutY="14.0" mnemonicParsing="false" text="Fixed Currency Factor" />
+            <CheckBox fx:id="duplicateReceipt" layoutX="380.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleDuplicateReceipt" text="Duplicate Receipt" />
             <CheckBox fx:id="checkTotal" layoutX="273.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleCheckTotal" text="Check Total" />
             <CheckBox fx:id="flagWhenIdle" layoutX="155.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleFlagWhenIdle" text="Flag when Idle" />
             <Button fx:id="beginTraining" layoutX="516.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleBeginTraining" text="Begin Training" />
@@ -334,6 +344,10 @@
             <Text fx:id="statusLabel" font="$x2" fontSmoothingType="LCD" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_S_CLOSED" />
             <Text fontSmoothingType="LCD" layoutX="470.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power State: " />
             <Text fx:id="powerLabel" font="$x2" fontSmoothingType="LCD" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_PS_UNKNOWN" />
+            <Text fontSmoothingType="LCD" layoutX="700.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cover State: " />
+            <Text fx:id="coverLabel" font="$x2" fontSmoothingType="LCD" layoutX="770.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+            <Text fontSmoothingType="LCD" layoutX="700.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paper State: " />
+            <Text fx:id="paperLabel" font="$x2" fontSmoothingType="LCD" layoutX="770.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
             <Button fx:id="buttonOpen" layoutX="14.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleOpen" prefWidth="61.0" text="Open" />
             <Button fx:id="buttonClaim" layoutX="83.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleClaim" prefWidth="61.0" text="Claim" />
             <Button fx:id="buttonRelease" layoutX="152.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleRelease" prefWidth="61.0" text="Release" />
