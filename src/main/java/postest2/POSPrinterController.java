@@ -210,10 +210,23 @@ public class POSPrinterController extends CommonController implements Initializa
 	private boolean recLetterQuality = false;
 	private boolean slpLetterQuality = false;
 
+	private void handleBusyState() {
+		try {
+			setStatusLabel();
+			if (service.getState() != JposConst.JPOS_S_IDLE) {
+				((POSPrinter)service).setFlagWhenIdle(true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public void statusUpdateOccurred( StatusUpdateEvent sue ){
 		super.statusUpdateOccurred(sue);
-		updateMessages("SUE: " + getSUEMessage(sue.getStatus()));            
+		if (sue.getStatus() == POSPrinterConst.PTR_SUE_IDLE)
+			setStatusLabel();
+		updateMessages("SUE: " + getSUEMessage(sue.getStatus()));
 	}
 		
 	@Override
@@ -228,7 +241,20 @@ public class POSPrinterController extends CommonController implements Initializa
 		
 	@Override
 	public void errorOccurred(ErrorEvent ee){
-		updateMessages("Error: Error Event" + ee);            
+		updateMessages("Error: Error Event" + ee);
+		setStatusLabel();
+		int doit = 0;
+		try {
+			String errortext = ((POSPrinter)service).getErrorString();
+			doit = JOptionPane.showOptionDialog(null, "Error from printer:\n" + errortext + "\nClear error?", "Printer error",JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+		} catch (JposException e) {
+			e.printStackTrace();
+			doit =JOptionPane.YES_OPTION;
+		}
+		if (doit == JOptionPane.YES_OPTION)
+			ee.setErrorResponse(JposConst.JPOS_ER_CLEAR);
+		else
+			statusLabel.setText("JPOS_S_BUSY");
 	}
 	
 	@Override
@@ -411,16 +437,6 @@ public class POSPrinterController extends CommonController implements Initializa
 	}
 
 	@FXML
-	public void handleFlagWhenIdle(ActionEvent e) {
-		try {
-			((POSPrinter) service).setFlagWhenIdle(flagWhenIdle.selectedProperty().getValue());
-		} catch (JposException e1) {
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-			e1.printStackTrace();
-		}
-	}
-
-	@FXML
 	public void handleSetMapMode(ActionEvent e) {
 		if (mapMode.getSelectionModel().getSelectedItem() != null) {
 			try {
@@ -439,7 +455,9 @@ public class POSPrinterController extends CommonController implements Initializa
 			try {
 				((POSPrinter) service).rotatePrint(this.getSelectedStation(), POSPrinterConstantMapper
 						.getConstantNumberFromString(rotationMode.getSelectionModel().getSelectedItem()));
+				handleBusyState();
 			} catch (JposException e1) {
+				handleBusyState();
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
 			}
@@ -492,7 +510,9 @@ public class POSPrinterController extends CommonController implements Initializa
 	public void handlePrintNormal(ActionEvent e) {
 		try {
 			((POSPrinter) service).printNormal(getSelectedStation(), addEscSequencesToPrintNormalData());
+			handleBusyState();
 		} catch (JposException e1) {
+			handleBusyState();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
 		}
@@ -533,7 +553,9 @@ public class POSPrinterController extends CommonController implements Initializa
 		try {
 			((POSPrinter) service).transactionPrint(this.getSelectedStation(), POSPrinterConstantMapper
 					.getConstantNumberFromString(transactionPrint.getSelectionModel().getSelectedItem()));
+			handleBusyState();
 		} catch (JposException e1) {
+			handleBusyState();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
 		}
@@ -610,7 +632,9 @@ public class POSPrinterController extends CommonController implements Initializa
 	public void handleCutPaper(ActionEvent e) {
 		try {
 			((POSPrinter) service).cutPaper((int) cutPaperPercentage.getValue());
+			handleBusyState();
 		} catch (JposException e1) {
+			handleBusyState();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
 		}
@@ -679,7 +703,9 @@ public class POSPrinterController extends CommonController implements Initializa
 			((POSPrinter) service).printTwoNormal(POSPrinterConstantMapper
 					.getConstantNumberFromString(print2NormalStation.getSelectionModel().getSelectedItem()),
 					addEscSequencesToPrint2NormalDataFirst(), addEscSequencesToPrint2NormalDataSecond());
+			handleBusyState();
 		} catch (JposException e1) {
+			handleBusyState();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
 		}
@@ -703,10 +729,9 @@ public class POSPrinterController extends CommonController implements Initializa
 								.getSelectionModel().getSelectedItem()), POSPrinterConstantMapper
 								.getConstantNumberFromString(barcodeTextPosition.getSelectionModel()
 										.getSelectedItem()));
-			} catch (NumberFormatException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage());
-				e1.printStackTrace();
-			} catch (JposException e1) {
+				handleBusyState();
+			} catch (Exception e1) {
+				handleBusyState();
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
 			}
@@ -726,10 +751,9 @@ public class POSPrinterController extends CommonController implements Initializa
 								.getSelectedItem()), POSPrinterConstantMapper
 								.getConstantNumberFromString(bitmapAlignment.getSelectionModel()
 										.getSelectedItem()));
-			} catch (NumberFormatException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage());
-				e1.printStackTrace();
-			} catch (JposException e1) {
+				handleBusyState();
+			} catch (Exception e1) {
+				handleBusyState();
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
 			}
@@ -812,7 +836,9 @@ public class POSPrinterController extends CommonController implements Initializa
 										.getSelectedItem()), POSPrinterConstantMapper
 								.getConstantNumberFromString(drawLineColor.getSelectionModel()
 										.getSelectedItem()));
+				handleBusyState();
 			} catch (JposException e1) {
+				handleBusyState();
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
 			}
@@ -934,7 +960,9 @@ public class POSPrinterController extends CommonController implements Initializa
 		try {
 			((POSPrinter) service).markFeed(POSPrinterConstantMapper.getConstantNumberFromString(markFeed
 					.getSelectionModel().getSelectedItem()));
+			handleBusyState();
 		} catch (JposException e1) {
+			handleBusyState();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
 		}

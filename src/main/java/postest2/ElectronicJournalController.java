@@ -22,6 +22,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import jpos.ElectronicJournal;
+import jpos.ElectronicJournalConst;
+import jpos.JposConst;
 import jpos.JposException;
 
 import jpos.events.*;
@@ -205,16 +207,6 @@ public class ElectronicJournalController extends CommonController implements Ini
 	public void handleAsyncMode(ActionEvent e) {
 		try {
 			((ElectronicJournal) service).setAsyncMode(asyncMode.selectedProperty().getValue());
-		} catch (JposException e1) {
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-			e1.printStackTrace();
-		}
-	}
-
-	@FXML
-	public void handleFlagWhenIdle(ActionEvent e) {
-		try {
-			((ElectronicJournal) service).setFlagWhenIdle(flagWhenIdle.selectedProperty().getValue());
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
@@ -565,21 +557,41 @@ public class ElectronicJournalController extends CommonController implements Ini
 	}
 
 	@Override
+	public void statusUpdateOccurred(StatusUpdateEvent e) {
+		super.statusUpdateOccurred(e);
+		if (e.getStatus() == ElectronicJournalConst.EJ_SUE_IDLE)
+			setStatusLabel();
+	}
+
+	@Override
 	public void dataOccurred(DataEvent errorEvent) {
-		System.out.println("Output complete");
 		super.dataOccurred(errorEvent);
 		setStatusLabel();
 	}
 
 	@Override
 	public void errorOccurred(ErrorEvent e) {
-		JOptionPane.showMessageDialog(null, "Asynchronous operation failed: " + e.getErrorCode() + "/" + e.getErrorCodeExtended());
-		try {
-			((ElectronicJournal)service).clearInput();
-		} catch (JposException ex) {
-			ex.printStackTrace();
-		}
 		setStatusLabel();
+		int doit = JOptionPane.CANCEL_OPTION;
+		if (e.getErrorLocus() != JposConst.JPOS_EL_INPUT_DATA) {
+			String errortext = (e.getErrorLocus() == JposConst.JPOS_EL_INPUT ? "Electronic journal query error "
+					: "Electronic journal output error ") + e.getErrorCode() + "/" + e.getErrorCodeExtended();
+					doit = JOptionPane.showOptionDialog(null, errortext + "\nClear error?", "Electronic Journal Error", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+		}
+		if (doit == JOptionPane.YES_OPTION )
+			e.setErrorResponse(JposConst.JPOS_ER_CLEAR);
+		else if (doit == JOptionPane.NO_OPTION)
+			e.setErrorResponse(JposConst.JPOS_ER_RETRY);
+		if (e.getErrorResponse() == JposConst.JPOS_ER_CLEAR && e.getErrorLocus() == JposConst.JPOS_EL_INPUT) {
+			try {
+				((ElectronicJournal) service).clearInput();
+			} catch (JposException ee) {
+				ee.printStackTrace();
+			}
+			setStatusLabel();
+		}
+		else
+			statusLabel.setText("JPOS_S_BUSY");
 	}
 
 	@Override

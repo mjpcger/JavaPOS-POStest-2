@@ -21,15 +21,17 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import jpos.FiscalPrinter;
 import jpos.FiscalPrinterConst;
+import jpos.JposConst;
 import jpos.JposException;
 
-import jpos.events.StatusUpdateEvent;
+import jpos.events.*;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class FiscalPrinterController extends CommonController implements Initializable {
+public class FiscalPrinterController extends CommonController implements Initializable,
+		ErrorListener {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -206,6 +208,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		setUpTooltips();
 		service = new FiscalPrinter();
 		((FiscalPrinter) service).addStatusUpdateListener(this);
+		((FiscalPrinter) service).addErrorListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("FiscalPrinter");
 
@@ -891,7 +894,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		if (!unitPrice.getText().isEmpty())
 			lUnitPrice = (long) (Double.parseDouble(unitPrice.getText()) * amountFactorDecimal);
 
-		int iQuantity = 1;
+		int iQuantity = 0;
 		if (!(quantity.getText().isEmpty() || quantity.getText().equals("0")))
 			iQuantity = (int) (Double.parseDouble(quantity.getText()) * quantityFactorDecimal);
 
@@ -990,7 +993,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		}
 		long lPrice = (long) (Double.parseDouble(priceAmount.getText()) * amountFactorDecimal);
 
-		int iQuantity = 1;
+		int iQuantity = 0;
 		if (!(quantity.getText().isEmpty() || quantity.getText().equals("0")))
 			iQuantity = (int) (Double.parseDouble(quantity.getText()) * quantityFactorDecimal);
 
@@ -1056,7 +1059,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		if (!priceAmount.getText().isEmpty())
 			lAmount = (long) (Double.parseDouble(priceAmount.getText()) * amountFactorDecimal);
 
-		int iQuantity = 1;
+		int iQuantity = 0;
 		if (!(quantity.getText().isEmpty() || quantity.getText().equals("0")))
 			iQuantity = (int) (Double.parseDouble(quantity.getText()) * quantityFactorDecimal);
 
@@ -1088,7 +1091,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		if (!priceAmount.getText().isEmpty())
 			lAmount = (long) (Double.parseDouble(priceAmount.getText()) * amountFactorDecimal);
 
-		int iQuantity = 1;
+		int iQuantity = 0;
 		if (!(quantity.getText().isEmpty() || quantity.getText().equals("0")))
 			iQuantity = (int) (Double.parseDouble(quantity.getText()) * quantityFactorDecimal);
 
@@ -1742,6 +1745,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		} catch (JposException e) {
 			postLine.clear();
 		}
+		handleBusyState();
 	}
 
 	private void setPrePostLines() {
@@ -2079,6 +2083,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		try {
 			setUpCoverState();
 			setUpPaperState();
+			setStatusLabel();
 		} catch (JposException e) {
 			e.printStackTrace();
 		}
@@ -2158,5 +2163,34 @@ public class FiscalPrinterController extends CommonController implements Initial
 			e.printStackTrace();
 			setUpMessageTypes();
 		}
+	}
+
+	private void handleBusyState() {
+		try {
+			setStatusLabel();
+			if (service.getState() != JposConst.JPOS_S_IDLE) {
+				((FiscalPrinter)service).setFlagWhenIdle(true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void errorOccurred(ErrorEvent errorEvent) {
+		setStatusLabel();
+		int doit = JposConst.JPOS_S_BUSY;
+		try {
+			String errortext = ((FiscalPrinter)service).getErrorString();
+			doit = JOptionPane.showOptionDialog(null, "Error from printer:\n" + errortext + "\nClear error?", "Printer error",JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+		} catch (JposException e) {
+			e.printStackTrace();
+			doit =JOptionPane.YES_OPTION;
+		}
+		if (doit == JOptionPane.YES_OPTION) {
+			errorEvent.setErrorResponse(JposConst.JPOS_ER_CLEAR);
+		}
+		else
+			statusLabel.setText("JPOS_S_BUSY");
 	}
 }

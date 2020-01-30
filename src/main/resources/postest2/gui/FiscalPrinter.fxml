@@ -88,24 +88,24 @@
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="469.0" prefWidth="700.0">
                       <children>
                         <Text text="Receipt Properties:" layoutX="14.0" layoutY="26.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <ComboBox fx:id="receiptType" layoutX="116.0" layoutY="10.0" prefHeight="21.0" prefWidth="173.0" onAction="#handleSetReceiptType"/>
+                        <ComboBox fx:id="receiptType" layoutX="126.0" layoutY="10.0" prefHeight="21.0" prefWidth="173.0" onAction="#handleSetReceiptType"/>
                         <ComboBox fx:id="receiptStation" layoutX="320.0" layoutY="10.0" prefWidth="180.0" onAction="#handleSetFiscalReceiptStation" />
                         <Text text="Set PreLine:" layoutX="14.0" layoutY="56.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="preLine" layoutX="116.0" layoutY="40.0" prefWidth="173.0">
+                        <TextField fx:id="preLine" layoutX="126.0" layoutY="40.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Additional specific line text. (e.g. &quot;Special offer&quot;)" />
                           </tooltip>
                         </TextField>
                         <Text text="Set PostLine:" layoutX="14.0" layoutY="81.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="postLine" layoutX="116.0" layoutY="65.0" prefWidth="173.0">
+                        <TextField fx:id="postLine" layoutX="126.0" layoutY="65.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Additional specific line text. (e.g. &quot;Special offer&quot;)" />
                           </tooltip>
                         </TextField>
                         <Text text="Message Type:" layoutX="14.0" layoutY="111.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <ComboBox fx:id="messageType" layoutX="116.0" layoutY="95.0" prefHeight="21.0" prefWidth="173.0" onAction="#handleSetMessageType" />
+                        <ComboBox fx:id="messageType" layoutX="126.0" layoutY="95.0" prefHeight="21.0" prefWidth="173.0" onAction="#handleSetMessageType" />
                         <Text text="Text:" layoutX="14.0" layoutY="141.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="description" layoutX="116.0" layoutY="125.0" prefWidth="173.0">
+                        <TextField fx:id="description" layoutX="126.0" layoutY="125.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip text="Describing text or message">
                               <font>
@@ -115,53 +115,53 @@
                           </tooltip>
                         </TextField>
                         <Text text="Price or Amount:" layoutX="14.0" layoutY="171.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="priceAmount" layoutX="116.0" layoutY="155.0" prefWidth="173.0">
+                        <TextField fx:id="priceAmount" layoutX="126.0" layoutY="155.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Price or amount of position. (e.g. 23.70)" />
                           </tooltip>
                         </TextField>
                         <Text text="Quantity:" layoutX="14.0" layoutY="201.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="quantity" layoutX="116.0" layoutY="185.0" prefWidth="173.0">
+                        <TextField fx:id="quantity" layoutX="126.0" layoutY="185.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Number of items. If zero a single item is assumed." />
                           </tooltip>
                         </TextField>
                         <Text text="Vat ID:" layoutX="14.0" layoutY="231.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <ComboBox id="vatID" fx:id="cbVatID" layoutX="116.0" layoutY="215.0" prefHeight="21.0" prefWidth="173.0" />
+                        <ComboBox id="vatID" fx:id="cbVatID" layoutX="126.0" layoutY="215.0" prefHeight="21.0" prefWidth="173.0" />
                         <Text text="Vat Info:" layoutX="14.0" layoutY="256.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="vatInfo" layoutX="116.0" layoutY="240.0" prefWidth="173.0">
+                        <TextField fx:id="vatInfo" layoutX="126.0" layoutY="240.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="VAT rate identifier or amount" />
                           </tooltip>
                         </TextField>
                         <Text text="Unit Price:" layoutX="14.0" layoutY="286.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="unitPrice" layoutX="116.0" layoutY="270.0" prefWidth="173.0">
+                        <TextField fx:id="unitPrice" layoutX="126.0" layoutY="270.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Price of each item. If not used a zero is transferred. (i.e. 10.65)" />
                           </tooltip>
                         </TextField>
                         <Text text="Unit Name:" layoutX="14.0" layoutY="311.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="unitName" layoutX="116.0" layoutY="295.0" prefWidth="173.0">
+                        <TextField fx:id="unitName" layoutX="126.0" layoutY="295.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="i.e. &quot;kg&quot; or &quot;lt&quot;" />
                           </tooltip>
                         </TextField>
                         <Text text="Adjustment Type:" layoutX="14.0" layoutY="341.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <ComboBox fx:id="adjustmentType" layoutX="116.0" layoutY="325.0" prefHeight="21.0" prefWidth="173.0" />
+                        <ComboBox fx:id="adjustmentType" layoutX="126.0" layoutY="325.0" prefHeight="21.0" prefWidth="173.0" />
                         <Text text="Adjustment Amount:" layoutX="14.0" layoutY="366.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField id="quantity" fx:id="adjustment" layoutX="116.0" layoutY="350.0" prefWidth="173.0">
+                        <TextField id="quantity" fx:id="adjustment" layoutX="126.0" layoutY="350.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Amount of the adjustment, payment or string containing a list of adjustment(s) for different Vat(s)." />
                           </tooltip>
                         </TextField>
                         <Text text="Special Tax:" layoutX="14.0" layoutY="396.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField fx:id="specialTax" id="unitPrice" layoutX="116.0" layoutY="380.0" prefWidth="173.0">
+                        <TextField fx:id="specialTax" id="unitPrice" layoutX="126.0" layoutY="380.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="e.g. road tax. If not used a zero must be transferred. (e.g. 17.42)" />
                           </tooltip>
                         </TextField>
                         <Text text="Special Tax Name:" layoutX="14.0" layoutY="421.0" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <TextField id="unitName" fx:id="specialTaxName" layoutX="116.0" layoutY="405.0" prefWidth="173.0">
+                        <TextField id="unitName" fx:id="specialTaxName" layoutX="126.0" layoutY="405.0" prefWidth="173.0">
                           <tooltip>
                             <Tooltip font="$x1" text="Name of the special tax." />
                           </tooltip>
@@ -327,7 +327,6 @@
             <CheckBox fx:id="fixedCurrencyFactor" layoutX="380.0" layoutY="14.0" mnemonicParsing="false" text="Fixed Currency Factor" />
             <CheckBox fx:id="duplicateReceipt" layoutX="380.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleDuplicateReceipt" text="Duplicate Receipt" />
             <CheckBox fx:id="checkTotal" layoutX="273.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleCheckTotal" text="Check Total" />
-            <CheckBox fx:id="flagWhenIdle" layoutX="155.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleFlagWhenIdle" text="Flag when Idle" />
             <Button fx:id="beginTraining" layoutX="516.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleBeginTraining" text="Begin Training" />
             <Button fx:id="endTraining" layoutX="622.0" layoutY="4.0" minWidth="97.0" mnemonicParsing="false" onAction="#handleEndTraining" text="End Training" />
             <Button fx:id="clearOutput" layoutX="516.0" layoutY="36.0" minWidth="97.0" mnemonicParsing="false" onAction="#handleClearOutput" text="Clear Output" />
