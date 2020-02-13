@@ -119,155 +119,155 @@ public class CheckScannerConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CL_16.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CL_16.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CL_16.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CL_256.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CL_256.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CL_256.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CL_FULL.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CL_FULL.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CL_FULL.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CL_MONO.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CL_MONO.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CL_MONO.getContantNumber();
 		}
 		
-		if (constant.equals(CheckScannerConstantMapper.CHK_CCL_16.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CCL_16.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CCL_16.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CCL_256.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CCL_256.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CCL_256.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CCL_FULL.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CCL_FULL.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CCL_FULL.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CCL_GRAYSCALE.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CCL_GRAYSCALE.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CCL_GRAYSCALE.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CCL_MONO.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CCL_MONO.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CCL_MONO.getContantNumber();
 		}
 		
-		if (constant.equals(CheckScannerConstantMapper.CHK_CLR_ALL.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CLR_ALL.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CLR_ALL.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CLR_BY_FILEID.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CLR_BY_FILEID.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CLR_BY_FILEID.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CLR_BY_FILEINDEX.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CLR_BY_FILEINDEX.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CLR_BY_FILEINDEX.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CLR_BY_IMAGETAGDATA.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CLR_BY_IMAGETAGDATA.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CLR_BY_IMAGETAGDATA.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CROP_AREA_BOTTOM.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CROP_AREA_BOTTOM.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CROP_AREA_BOTTOM.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CROP_AREA_ENTIRE_IMAGE.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CROP_AREA_ENTIRE_IMAGE.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CROP_AREA_ENTIRE_IMAGE.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CROP_AREA_RESET_ALL.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CROP_AREA_RESET_ALL.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CROP_AREA_RESET_ALL.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CROP_AREA_RIGHT.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CROP_AREA_RIGHT.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CROP_AREA_RIGHT.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_IF_BMP.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_IF_BMP.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_IF_BMP.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_IF_GIF.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_IF_GIF.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_IF_GIF.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_IF_JPEG.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_IF_JPEG.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_IF_JPEG.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_IF_NATIVE.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_IF_NATIVE.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_IF_NATIVE.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_IF_TIFF.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_IF_TIFF.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_IF_TIFF.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_IMS_EMPTY.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_IMS_EMPTY.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_IMS_EMPTY.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_IMS_FULL.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_IMS_FULL.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_IMS_FULL.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_IMS_OK.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_IMS_OK.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_IMS_OK.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_LOCATE_BY_FILEID.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_LOCATE_BY_FILEID.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_LOCATE_BY_FILEID.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_LOCATE_BY_FILEINDEX.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_LOCATE_BY_FILEINDEX.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_LOCATE_BY_FILEINDEX.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_LOCATE_BY_IMAGETAGDATA.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_LOCATE_BY_IMAGETAGDATA.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_LOCATE_BY_IMAGETAGDATA.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_MM_DOTS.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_MM_DOTS.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_MM_DOTS.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_MM_ENGLISH.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_MM_ENGLISH.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_MM_ENGLISH.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_MM_METRIC.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_MM_METRIC.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_MM_METRIC.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_MM_TWIPS.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_MM_TWIPS.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_MM_TWIPS.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CIF_BMP.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CIF_BMP.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CIF_BMP.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CIF_GIF.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CIF_GIF.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CIF_GIF.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CIF_JPEG.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CIF_JPEG.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CIF_JPEG.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CIF_NATIVE.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CIF_NATIVE.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CIF_NATIVE.getContantNumber();
 		}
 
-		if (constant.equals(CheckScannerConstantMapper.CHK_CIF_TIFF.getConstant())) {
+		if (CheckScannerConstantMapper.CHK_CIF_TIFF.getConstant().equals(constant)) {
 			return CheckScannerConstantMapper.CHK_CIF_TIFF.getContantNumber();
 		}
 

@@ -60,83 +60,83 @@ public class RFIDScannerConstantMapper implements IMapWrapper {
 	
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (constant.equals(RFIDScannerConstantMapper.RFID_CWT_NONE.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_CWT_NONE.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_CWT_NONE.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_CWT_ID.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_CWT_ID.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_CWT_ID.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_CWT_USERDATA.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_CWT_USERDATA.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_CWT_USERDATA.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_CWT_ALL.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_CWT_ALL.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_CWT_ALL.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_EPC0.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_EPC0.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_EPC0.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_0PLUS.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_0PLUS.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_0PLUS.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_EPC1.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_EPC1.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_EPC1.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_EPC1G2.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_EPC1G2.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_EPC1G2.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_EPC2.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_EPC2.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_EPC2.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_ISO14443A.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_ISO14443A.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_ISO14443A.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_ISO14443B.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_ISO14443B.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_ISO14443B.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_ISO15693.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_ISO15693.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_ISO15693.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_ISO180006B.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_ISO180006B.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_ISO180006B.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_OTHER.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_OTHER.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_OTHER.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_PR_ALL.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_PR_ALL.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_PR_ALL.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_RT_ID.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_RT_ID.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_RT_ID.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_RT_FULLUSERDATA.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_RT_FULLUSERDATA.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_RT_FULLUSERDATA.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_RT_PARTIALUSERDATA.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_RT_PARTIALUSERDATA.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_RT_PARTIALUSERDATA.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_RT_ID_FULLUSERDATA.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_RT_ID_FULLUSERDATA.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_RT_ID_FULLUSERDATA.getContantNumber();
 		}
 
-		if (constant.equals(RFIDScannerConstantMapper.RFID_RT_ID_PARTIALUSERDATA.getConstant())) {
+		if (RFIDScannerConstantMapper.RFID_RT_ID_PARTIALUSERDATA.getConstant().equals(constant)) {
 			return RFIDScannerConstantMapper.RFID_RT_ID_PARTIALUSERDATA.getContantNumber();
 		}
 

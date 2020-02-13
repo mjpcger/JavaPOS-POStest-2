@@ -25,35 +25,35 @@ public class ElectronicJournalConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(ElectronicJournalConstantMapper.EJ_S_RECEIPT.getConstant())) {
+		if (ElectronicJournalConstantMapper.EJ_S_RECEIPT.getConstant().equals(constant)) {
 			return ElectronicJournalConstantMapper.EJ_S_RECEIPT.getContantNumber();
 		}
 
-		if (constant.equals(ElectronicJournalConstantMapper.EJ_S_SLIP.getConstant())) {
+		if (ElectronicJournalConstantMapper.EJ_S_SLIP.getConstant().equals(constant)) {
 			return ElectronicJournalConstantMapper.EJ_S_SLIP.getContantNumber();
 		}
 
-		if (constant.equals(ElectronicJournalConstantMapper.EJ_S_JOURNAL.getConstant())) {
+		if (ElectronicJournalConstantMapper.EJ_S_JOURNAL.getConstant().equals(constant)) {
 			return ElectronicJournalConstantMapper.EJ_S_JOURNAL.getContantNumber();
 		}
 
-		if (constant.equals(ElectronicJournalConstantMapper.EJ_MT_SESSION_BEG.getConstant())) {
+		if (ElectronicJournalConstantMapper.EJ_MT_SESSION_BEG.getConstant().equals(constant)) {
 			return ElectronicJournalConstantMapper.EJ_MT_SESSION_BEG.getContantNumber();
 		}
 
-		if (constant.equals(ElectronicJournalConstantMapper.EJ_MT_SESSION_END.getConstant())) {
+		if (ElectronicJournalConstantMapper.EJ_MT_SESSION_END.getConstant().equals(constant)) {
 			return ElectronicJournalConstantMapper.EJ_MT_SESSION_END.getContantNumber();
 		}
 
-		if (constant.equals(ElectronicJournalConstantMapper.EJ_MT_DOCUMENT.getConstant())) {
+		if (ElectronicJournalConstantMapper.EJ_MT_DOCUMENT.getConstant().equals(constant)) {
 			return ElectronicJournalConstantMapper.EJ_MT_DOCUMENT.getContantNumber();
 		}
 
-		if (constant.equals(ElectronicJournalConstantMapper.EJ_MT_HEAD.getConstant())) {
+		if (ElectronicJournalConstantMapper.EJ_MT_HEAD.getConstant().equals(constant)) {
 			return ElectronicJournalConstantMapper.EJ_MT_HEAD.getContantNumber();
 		}
 
-		if (constant.equals(ElectronicJournalConstantMapper.EJ_MT_TAIL.getConstant())) {
+		if (ElectronicJournalConstantMapper.EJ_MT_TAIL.getConstant().equals(constant)) {
 			return ElectronicJournalConstantMapper.EJ_MT_TAIL.getContantNumber();
 		}
 

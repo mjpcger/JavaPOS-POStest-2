@@ -44,43 +44,43 @@ public class BillAcceptorConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_STATUS_OK.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_STATUS_OK.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_STATUS_OK.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_STATUS_FULL.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_STATUS_FULL.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_STATUS_FULL.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_STATUS_NEARFULL.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_STATUS_NEARFULL.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_STATUS_NEARFULL.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_DEPOSIT_COMPLETE.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_DEPOSIT_COMPLETE.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_DEPOSIT_COMPLETE.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_DEPOSIT_PAUSE.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_DEPOSIT_PAUSE.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_DEPOSIT_PAUSE.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_DEPOSIT_RESTART.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_DEPOSIT_RESTART.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_DEPOSIT_RESTART.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_START.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_START.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_START.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_END.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_END.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_END.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_COUNT.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_COUNT.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_COUNT.getContantNumber();
 		}
 
-		if (constant.equals(BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_JAM.getConstant())) {
+		if (BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_JAM.getConstant().equals(constant)) {
 			return BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_JAM.getContantNumber();
 		}
 

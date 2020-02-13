@@ -123,103 +123,103 @@ public class MSRConstantMapper implements IMapWrapper {
     
     public static int getConstantNumberFromString(String constant){
 
-		if(constant.equals(MSRConstantMapper.MSR_AP_CHALLENGERESPONSE.getConstant())) {
+		if(MSRConstantMapper.MSR_AP_CHALLENGERESPONSE.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_AP_CHALLENGERESPONSE.getContantNumber();
 		}
 		
-		if(constant.equals(MSRConstantMapper.MSR_AP_NONE.getConstant())) {
+		if(MSRConstantMapper.MSR_AP_NONE.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_AP_NONE.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_DA_NOT_SUPPORTED.getConstant())) {
+		if(MSRConstantMapper.MSR_DA_NOT_SUPPORTED.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_DA_NOT_SUPPORTED.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_DA_OPTIONAL.getConstant())) {
+		if(MSRConstantMapper.MSR_DA_OPTIONAL.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_DA_OPTIONAL.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_DA_REQUIRED.getConstant())) {
+		if(MSRConstantMapper.MSR_DA_REQUIRED.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_DA_REQUIRED.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_DE_3DEA_DUKPT.getConstant())) {
+		if(MSRConstantMapper.MSR_DE_3DEA_DUKPT.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_DE_3DEA_DUKPT.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_DE_NONE.getConstant())) {
+		if(MSRConstantMapper.MSR_DE_NONE.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_DE_NONE.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_ERT_CARD.getConstant())) {
+		if(MSRConstantMapper.MSR_ERT_CARD.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_ERT_CARD.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_ERT_TRACK.getConstant())) {
+		if(MSRConstantMapper.MSR_ERT_TRACK.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_ERT_TRACK.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_1.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_1.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_1.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_1_2.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_1_2.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_1_2.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_1_2_3.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_1_2_3.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_1_2_3.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_1_2_3_4.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_1_2_3_4.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_1_2_3_4.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_1_2_4.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_1_2_4.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_1_2_4.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_1_3.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_1_3.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_1_3.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_1_3_4.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_1_3_4.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_1_3_4.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_1_4.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_1_4.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_1_4.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_2.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_2.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_2.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_2_3.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_2_3.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_2_3.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_2_3_4.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_2_3_4.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_2_3_4.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_2_4.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_2_4.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_2_4.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_3.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_3.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_3.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_3_4.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_3_4.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_3_4.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_4.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_4.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_4.getContantNumber();
 		}
 
-		if(constant.equals(MSRConstantMapper.MSR_TR_NONE.getConstant())) {
+		if(MSRConstantMapper.MSR_TR_NONE.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_NONE.getContantNumber();
 		}
 		

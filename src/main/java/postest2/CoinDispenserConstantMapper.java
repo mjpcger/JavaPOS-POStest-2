@@ -28,23 +28,23 @@ public class CoinDispenserConstantMapper implements IMapWrapper {
 	 * @return
 	 */
 	public static int getConstantNumberFromString(String constant){
-		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_OK.getConstant())) {
+		if(CoinDispenserConstantMapper.COIN_STATUS_OK.getConstant().equals(constant)) {
 			return CoinDispenserConstantMapper.COIN_STATUS_OK.getContantNumber();
 		}
 
-		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_NEAREMPTY.getConstant())) {
+		if(CoinDispenserConstantMapper.COIN_STATUS_NEAREMPTY.getConstant().equals(constant)) {
 			return CoinDispenserConstantMapper.COIN_STATUS_NEAREMPTY.getContantNumber();
 		}
 
-		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_EMPTY.getConstant())) {
+		if(CoinDispenserConstantMapper.COIN_STATUS_EMPTY.getConstant().equals(constant)) {
 			return CoinDispenserConstantMapper.COIN_STATUS_EMPTY.getContantNumber();
 		}
 
-		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_JAM.getConstant())) {
+		if(CoinDispenserConstantMapper.COIN_STATUS_JAM.getConstant().equals(constant)) {
 			return CoinDispenserConstantMapper.COIN_STATUS_JAM.getContantNumber();
 		}
 
-		if(constant.equals(CoinDispenserConstantMapper.COIN_STATUS_OK.getConstant())) {
+		if(CoinDispenserConstantMapper.COIN_STATUS_OK.getConstant().equals(constant)) {
 			return CoinDispenserConstantMapper.COIN_STATUS_OK.getContantNumber();
 		}
 

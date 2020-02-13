@@ -18,19 +18,19 @@ public class POSKeyboardConstantMapper implements IMapWrapper {
 	
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(POSKeyboardConstantMapper.KBD_ET_DOWN.getConstant())) {
+		if (POSKeyboardConstantMapper.KBD_ET_DOWN.getConstant().equals(constant)) {
 			return POSKeyboardConstantMapper.KBD_ET_DOWN.getContantNumber();
 		}
 		
-		if (constant.equals(POSKeyboardConstantMapper.KBD_ET_DOWN_UP.getConstant())) {
+		if (POSKeyboardConstantMapper.KBD_ET_DOWN_UP.getConstant().equals(constant)) {
 			return POSKeyboardConstantMapper.KBD_ET_DOWN_UP.getContantNumber();
 		}
 		
-		if (constant.equals(POSKeyboardConstantMapper.KBD_KET_KEYDOWN.getConstant())) {
+		if (POSKeyboardConstantMapper.KBD_KET_KEYDOWN.getConstant().equals(constant)) {
 			return POSKeyboardConstantMapper.KBD_KET_KEYDOWN.getContantNumber();
 		}
 		
-		if (constant.equals(POSKeyboardConstantMapper.KBD_KET_KEYUP.getConstant())) {
+		if (POSKeyboardConstantMapper.KBD_KET_KEYUP.getConstant().equals(constant)) {
 			return POSKeyboardConstantMapper.KBD_KET_KEYUP.getContantNumber();
 		}
 

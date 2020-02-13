@@ -29,35 +29,35 @@ public class MICRConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (constant.equals(MICRConstantMapper.MICR_CC_USA.getConstant())) {
+		if (MICRConstantMapper.MICR_CC_USA.getConstant().equals(constant)) {
 			return MICRConstantMapper.MICR_CC_USA.getContantNumber();
 		}
 
-		if (constant.equals(MICRConstantMapper.MICR_CC_CANADA.getConstant())) {
+		if (MICRConstantMapper.MICR_CC_CANADA.getConstant().equals(constant)) {
 			return MICRConstantMapper.MICR_CC_CANADA.getContantNumber();
 		}
 
-		if (constant.equals(MICRConstantMapper.MICR_CC_MEXICO.getConstant())) {
+		if (MICRConstantMapper.MICR_CC_MEXICO.getConstant().equals(constant)) {
 			return MICRConstantMapper.MICR_CC_MEXICO.getContantNumber();
 		}
 		
-		if (constant.equals(MICRConstantMapper.MICR_CC_CMC7.getConstant())) {
+		if (MICRConstantMapper.MICR_CC_CMC7.getConstant().equals(constant)) {
 			return MICRConstantMapper.MICR_CC_CMC7.getContantNumber();
 		}
 
-		if (constant.equals(MICRConstantMapper.MICR_CC_UNKNOWN.getConstant())) {
+		if (MICRConstantMapper.MICR_CC_UNKNOWN.getConstant().equals(constant)) {
 			return MICRConstantMapper.MICR_CC_UNKNOWN.getContantNumber();
 		}
 
-		if (constant.equals(MICRConstantMapper.MICR_CT_PERSONAL.getConstant())) {
+		if (MICRConstantMapper.MICR_CT_PERSONAL.getConstant().equals(constant)) {
 			return MICRConstantMapper.MICR_CT_PERSONAL.getContantNumber();
 		}
 
-		if (constant.equals(MICRConstantMapper.MICR_CT_BUSINESS.getConstant())) {
+		if (MICRConstantMapper.MICR_CT_BUSINESS.getConstant().equals(constant)) {
 			return MICRConstantMapper.MICR_CT_BUSINESS.getContantNumber();
 		}
 
-		if (constant.equals(MICRConstantMapper.MICR_CT_UNKNOWN.getConstant())) {
+		if (MICRConstantMapper.MICR_CT_UNKNOWN.getConstant().equals(constant)) {
 			return MICRConstantMapper.MICR_CT_UNKNOWN.getContantNumber();
 		}
 

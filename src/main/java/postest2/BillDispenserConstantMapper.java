@@ -17,19 +17,19 @@ public class BillDispenserConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(BillDispenserConstantMapper.BDSP_STATUS_OK.getConstant())) {
+		if (BillDispenserConstantMapper.BDSP_STATUS_OK.getConstant().equals(constant)) {
 			return BillDispenserConstantMapper.BDSP_STATUS_OK.getContantNumber();
 		}
 
-		if (constant.equals(BillDispenserConstantMapper.BDSP_STATUS_EMPTY.getConstant())) {
+		if (BillDispenserConstantMapper.BDSP_STATUS_EMPTY.getConstant().equals(constant)) {
 			return BillDispenserConstantMapper.BDSP_STATUS_EMPTY.getContantNumber();
 		}
 
-		if (constant.equals(BillDispenserConstantMapper.BDSP_STATUS_NEAREMPTY.getConstant())) {
+		if (BillDispenserConstantMapper.BDSP_STATUS_NEAREMPTY.getConstant().equals(constant)) {
 			return BillDispenserConstantMapper.BDSP_STATUS_NEAREMPTY.getContantNumber();
 		}
 
-		if (constant.equals(BillDispenserConstantMapper.BDSP_STATUS_JAM.getConstant())) {
+		if (BillDispenserConstantMapper.BDSP_STATUS_JAM.getConstant().equals(constant)) {
 			return BillDispenserConstantMapper.BDSP_STATUS_JAM.getContantNumber();
 		}
 

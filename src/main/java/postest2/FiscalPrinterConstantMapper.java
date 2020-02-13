@@ -411,875 +411,875 @@ public class FiscalPrinterConstantMapper implements IMapWrapper {
 	
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_EL_NONE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_EL_NONE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_EL_NONE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_EL_RECOVERABLE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_EL_RECOVERABLE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_EL_RECOVERABLE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_EL_FATAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_EL_FATAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_EL_FATAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_EL_BLOCKED.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_EL_BLOCKED.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_EL_BLOCKED.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_TT_DOCUMENT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_TT_DOCUMENT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_TT_DOCUMENT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_TT_DAY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_TT_DAY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_TT_DAY.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_TT_RECEIPT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_TT_RECEIPT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_TT_RECEIPT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_TT_GRAND.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_TT_GRAND.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_TT_GRAND.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_SS_FULL_LENGTH.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_SS_FULL_LENGTH.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_SS_FULL_LENGTH.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_SS_VALIDATION.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_SS_VALIDATION.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_SS_VALIDATION.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_MONITOR.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_MONITOR.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_MONITOR.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT_TOTAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT_TOTAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT_TOTAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT_ENDING.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT_ENDING.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_FISCAL_RECEIPT_ENDING.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_FISCAL_DOCUMENT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_FISCAL_DOCUMENT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_FISCAL_DOCUMENT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_FIXED_OUTPUT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_FIXED_OUTPUT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_FIXED_OUTPUT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_ITEM_LIST.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_ITEM_LIST.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_ITEM_LIST.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_LOCKED.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_LOCKED.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_LOCKED.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_NONFISCAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_NONFISCAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_NONFISCAL.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PS_REPORT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PS_REPORT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PS_REPORT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_ADVANCE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_ADVANCE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_ADVANCE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_ADVANCE_PAID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_ADVANCE_PAID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_ADVANCE_PAID.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_AMOUNT_TO_BE_PAID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_AMOUNT_TO_BE_PAID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_AMOUNT_TO_BE_PAID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_AMOUNT_TO_BE_PAID_BACK.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_AMOUNT_TO_BE_PAID_BACK.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_AMOUNT_TO_BE_PAID_BACK.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CARD.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CARD.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CARD.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CARD_NUMBER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CARD_NUMBER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CARD_NUMBER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CARD_TYPE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CARD_TYPE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CARD_TYPE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CASH.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CASH.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CASH.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CASHIER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CASHIER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CASHIER.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CASH_REGISTER_NUMBER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CASH_REGISTER_NUMBER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CASH_REGISTER_NUMBER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CHANGE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CHANGE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CHANGE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CHEQUE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CHEQUE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CHEQUE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CLIENT_NUMBER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CLIENT_NUMBER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CLIENT_NUMBER.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CLIENT_SIGNATURE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CLIENT_SIGNATURE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CLIENT_SIGNATURE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_COUNTER_STATE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_COUNTER_STATE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_COUNTER_STATE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CREDIT_CARD.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CREDIT_CARD.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CREDIT_CARD.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CURRENCY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CURRENCY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CURRENCY.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_CURRENCY_VALUE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_CURRENCY_VALUE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_CURRENCY_VALUE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_DEPOSIT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_DEPOSIT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_DEPOSIT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_DEPOSIT_RETURNED.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_DEPOSIT_RETURNED.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_DEPOSIT_RETURNED.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_DOT_LINE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_DOT_LINE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_DOT_LINE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_DRIVER_NUMB.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_DRIVER_NUMB.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_DRIVER_NUMB.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_EMPTY_LINE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_EMPTY_LINE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_EMPTY_LINE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_FREE_TEXT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_FREE_TEXT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_FREE_TEXT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_FREE_TEXT_WITH_DAY_LIMIT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_FREE_TEXT_WITH_DAY_LIMIT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_FREE_TEXT_WITH_DAY_LIMIT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_GIVEN_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_GIVEN_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_GIVEN_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_LOCAL_CREDIT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_LOCAL_CREDIT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_LOCAL_CREDIT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_MILEAGE_KM.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_MILEAGE_KM.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_MILEAGE_KM.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_NOTE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_NOTE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_NOTE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_PAID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_PAID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_PAID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_PAY_IN.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_PAY_IN.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_PAY_IN.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_POINT_GRANTED.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_POINT_GRANTED.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_POINT_GRANTED.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_POINTS_BONUS.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_POINTS_BONUS.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_POINTS_BONUS.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_POINTS_RECEIPT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_POINTS_RECEIPT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_POINTS_RECEIPT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_POINTS_TOTAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_POINTS_TOTAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_POINTS_TOTAL.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_PROFITED.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_PROFITED.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_PROFITED.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_RATE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_RATE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_RATE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_REGISTER_NUMB.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_REGISTER_NUMB.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_REGISTER_NUMB.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_SHIFT_NUMBER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_SHIFT_NUMBER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_SHIFT_NUMBER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_STATE_OF_AN_ACCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_STATE_OF_AN_ACCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_STATE_OF_AN_ACCOUNT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_SUBSCRIPTION.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_SUBSCRIPTION.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_SUBSCRIPTION.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_TABLE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_TABLE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_TABLE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_THANK_YOU_FOR_LOYALTY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_THANK_YOU_FOR_LOYALTY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_THANK_YOU_FOR_LOYALTY.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_TRANSACTION_NUMB.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_TRANSACTION_NUMB.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_TRANSACTION_NUMB.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_VALID_TO.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_VALID_TO.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_VALID_TO.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_VOUCHER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_VOUCHER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_VOUCHER.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_VOUCHER_PAID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_VOUCHER_PAID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_VOUCHER_PAID.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_VOUCHER_VALUE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_VOUCHER_VALUE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_VOUCHER_VALUE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_WITH_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_WITH_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_WITH_DISCOUNT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_MT_WITHOUT_UPLIFT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_MT_WITHOUT_UPLIFT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_MT_WITHOUT_UPLIFT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_CASH_IN.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_CASH_IN.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_CASH_IN.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_CASH_OUT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_CASH_OUT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_CASH_OUT.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_GENERIC.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_GENERIC.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_GENERIC.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_SALES.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_SALES.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_SALES.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_SERVICE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_SERVICE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_SERVICE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_SIMPLE_INVOICE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_SIMPLE_INVOICE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_SIMPLE_INVOICE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_REFUND.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_REFUND.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_REFUND.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RS_RECEIPT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RS_RECEIPT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RS_RECEIPT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RS_SLIP.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RS_SLIP.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RS_SLIP.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DT_CONF.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DT_CONF.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DT_CONF.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DT_EOD.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DT_EOD.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DT_EOD.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DT_RESET.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DT_RESET.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DT_RESET.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DT_RTC.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DT_RTC.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DT_RTC.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DT_VAT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DT_VAT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DT_VAT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DT_START.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DT_START.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DT_START.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_BRAZIL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_BRAZIL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_BRAZIL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_GREECE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_GREECE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_GREECE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_HUNGARY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_HUNGARY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_HUNGARY.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_ITALY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_ITALY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_ITALY.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_POLAND.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_POLAND.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_POLAND.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_TURKEY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_TURKEY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_TURKEY.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_RUSSIA.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_RUSSIA.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_RUSSIA.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_BULGARIA.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_BULGARIA.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_BULGARIA.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_ROMANIA.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_ROMANIA.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_ROMANIA.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_CZECH_REPUBLIC.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_CZECH_REPUBLIC.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_CZECH_REPUBLIC.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_UKRAINE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_UKRAINE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_UKRAINE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CC_OTHER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CC_OTHER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CC_OTHER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CID_FIRST.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CID_FIRST.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CID_FIRST.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CID_SECOND.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CID_SECOND.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CID_SECOND.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_CID_SINGLE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_CID_SINGLE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_CID_SINGLE.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AT_AMOUNT_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AT_AMOUNT_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AT_AMOUNT_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AT_AMOUNT_SURCHARGE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AT_AMOUNT_SURCHARGE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AT_AMOUNT_SURCHARGE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AT_PERCENTAGE_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AT_PERCENTAGE_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AT_PERCENTAGE_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AT_PERCENTAGE_SURCHARGE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AT_PERCENTAGE_SURCHARGE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AT_PERCENTAGE_SURCHARGE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AT_COUPON_AMOUNT_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AT_COUPON_AMOUNT_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AT_COUPON_AMOUNT_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AT_COUPON_PERCENTAGE_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AT_COUPON_PERCENTAGE_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AT_COUPON_PERCENTAGE_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_BRC.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_BRC.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_BRC.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_BGL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_BGL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_BGL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_EUR.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_EUR.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_EUR.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_GRD.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_GRD.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_GRD.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_HUF.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_HUF.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_HUF.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_ITL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_ITL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_ITL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_PLZ.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_PLZ.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_PLZ.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_ROL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_ROL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_ROL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_RUR.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_RUR.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_RUR.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_TRL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_TRL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_TRL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_CZK.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_CZK.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_CZK.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_AC_UAH.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_AC_UAH.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_AC_UAH.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_ORDINAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_ORDINAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_ORDINAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_DATE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_DATE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_DATE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_RT_EOD_ORDINAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_RT_EOD_ORDINAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_RT_EOD_ORDINAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_S_JOURNAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_S_JOURNAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_S_JOURNAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_S_RECEIPT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_S_RECEIPT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_S_RECEIPT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_S_SLIP.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_S_SLIP.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_S_SLIP.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_GROSS.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_GROSS.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_GROSS.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_NET.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_NET.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_NET.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_DISCOUNT_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_DISCOUNT_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_DISCOUNT_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_ITEM.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_ITEM.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_ITEM.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_ITEM_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_ITEM_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_ITEM_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_NOT_PAID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_NOT_PAID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_NOT_PAID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_REFUND.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_REFUND.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_REFUND.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_REFUND_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_REFUND_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_REFUND_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_DISCOUNT_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_DISCOUNT_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_DISCOUNT_VOID.getContantNumber();
 		}
 		
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_SURCHARGES.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_SURCHARGES.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_SURCHARGES.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_SURCHARGES_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_SURCHARGES_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_SUBTOTAL_SURCHARGES_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_SURCHARGE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_SURCHARGE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_SURCHARGE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_SURCHARGE_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_SURCHARGE_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_SURCHARGE_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_VAT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_VAT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_VAT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GT_VAT_CATEGORY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GT_VAT_CATEGORY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GT_VAT_CATEGORY.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_CURRENT_TOTAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_CURRENT_TOTAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_CURRENT_TOTAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_DAILY_TOTAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_DAILY_TOTAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_DAILY_TOTAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_RECEIPT_NUMBER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_RECEIPT_NUMBER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_RECEIPT_NUMBER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_REFUND.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_REFUND.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_REFUND.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NOT_PAID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NOT_PAID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NOT_PAID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_MID_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_MID_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_MID_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_Z_REPORT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_Z_REPORT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_Z_REPORT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_GRAND_TOTAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_GRAND_TOTAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_GRAND_TOTAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_PRINTER_ID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_PRINTER_ID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_PRINTER_ID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_FIRMWARE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_FIRMWARE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_FIRMWARE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_RESTART.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_RESTART.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_RESTART.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_REFUND_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_REFUND_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_REFUND_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NUMB_CONFIG_BLOCK.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NUMB_CONFIG_BLOCK.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NUMB_CONFIG_BLOCK.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NUMB_CURRENCY_BLOCK.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NUMB_CURRENCY_BLOCK.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NUMB_CURRENCY_BLOCK.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NUMB_HDR_BLOCK.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NUMB_HDR_BLOCK.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NUMB_HDR_BLOCK.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NUMB_RESET_BLOCK.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NUMB_RESET_BLOCK.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NUMB_RESET_BLOCK.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NUMB_VAT_BLOCK.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NUMB_VAT_BLOCK.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NUMB_VAT_BLOCK.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_FISCAL_DOC.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_FISCAL_DOC.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_FISCAL_DOC.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_FISCAL_DOC_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_FISCAL_DOC_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_FISCAL_DOC_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_FISCAL_REC.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_FISCAL_REC.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_FISCAL_REC.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_FISCAL_REC_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_FISCAL_REC_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_FISCAL_REC_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_DOC.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_DOC.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_DOC.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_DOC_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_DOC_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_DOC_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_REC.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_REC.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_NONFISCAL_REC.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_SIMP_INVOICE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_SIMP_INVOICE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_SIMP_INVOICE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_TENDER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_TENDER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_TENDER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_LINECOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_LINECOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_LINECOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_GD_DESCRIPTION_LENGTH.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_GD_DESCRIPTION_LENGTH.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_GD_DESCRIPTION_LENGTH.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_CASH.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_CASH.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_CASH.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_CHEQUE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_CHEQUE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_CHEQUE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_CHITTY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_CHITTY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_CHITTY.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_COUPON.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_COUPON.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_COUPON.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_CURRENCY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_CURRENCY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_CURRENCY.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_DRIVEN_OFF.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_DRIVEN_OFF.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_DRIVEN_OFF.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_EFT_IMPRINTER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_EFT_IMPRINTER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_EFT_IMPRINTER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_EFT_TERMINAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_EFT_TERMINAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_EFT_TERMINAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_TERMINAL_IMPRINTER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_TERMINAL_IMPRINTER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_TERMINAL_IMPRINTER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_FREE_GIFT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_FREE_GIFT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_FREE_GIFT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_GIRO.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_GIRO.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_GIRO.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_HOME.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_HOME.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_HOME.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_IMPRINTER_WITH_ISSUER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_IMPRINTER_WITH_ISSUER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_IMPRINTER_WITH_ISSUER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_LOCAL_ACCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_LOCAL_ACCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_LOCAL_ACCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_LOCAL_ACCOUNT_CARD.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_LOCAL_ACCOUNT_CARD.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_LOCAL_ACCOUNT_CARD.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_PAY_CARD.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_PAY_CARD.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_PAY_CARD.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_PAY_CARD_MANUAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_PAY_CARD_MANUAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_PAY_CARD_MANUAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_PREPAY.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_PREPAY.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_PREPAY.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_PUMP_TEST.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_PUMP_TEST.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_PUMP_TEST.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_SHORT_CREDIT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_SHORT_CREDIT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_SHORT_CREDIT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_STAFF.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_STAFF.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_STAFF.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_PDL_VOUCHER.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_PDL_VOUCHER.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_PDL_VOUCHER.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_ITEM.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_ITEM.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_ITEM.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_ITEM_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_ITEM_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_ITEM_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_DISCOUNT_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_DISCOUNT_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_DISCOUNT_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_SURCHARGE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_SURCHARGE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_SURCHARGE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_SURCHARGE_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_SURCHARGE_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_SURCHARGE_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_REFUND.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_REFUND.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_REFUND.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_REFUND_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_REFUND_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_REFUND_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_DISCOUNT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_DISCOUNT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_DISCOUNT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_DISCOUNT_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_DISCOUNT_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_DISCOUNT_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_SURCHARGE.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_SURCHARGE.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_SURCHARGE.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_SURCHARGE_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_SURCHARGE_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL_SURCHARGE_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_COMMENT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_COMMENT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_COMMENT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_SUBTOTAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_LC_TOTAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_LC_TOTAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_LC_TOTAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_ITEM.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_ITEM.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_ITEM.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_ITEM_ADJUSTMENT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_ITEM_ADJUSTMENT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_ITEM_ADJUSTMENT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_ITEM_FUEL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_ITEM_FUEL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_ITEM_FUEL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_ITEM_FUEL_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_ITEM_FUEL_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_ITEM_FUEL_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_NOT_PAID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_NOT_PAID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_NOT_PAID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_PACKAGE_ADJUSTMENT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_PACKAGE_ADJUSTMENT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_PACKAGE_ADJUSTMENT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_REFUND.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_REFUND.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_REFUND.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_REFUND_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_REFUND_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_REFUND_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_SUBTOTAL_ADJUSTMENT.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_SUBTOTAL_ADJUSTMENT.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_SUBTOTAL_ADJUSTMENT.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_TOTAL.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_TOTAL.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_TOTAL.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_VOID.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_VOID.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_VOID.getContantNumber();
 		}
 
-		if (constant.equals(FiscalPrinterConstantMapper.FPTR_DL_VOID_ITEM.getConstant())) {
+		if (FiscalPrinterConstantMapper.FPTR_DL_VOID_ITEM.getConstant().equals(constant)) {
 			return FiscalPrinterConstantMapper.FPTR_DL_VOID_ITEM.getContantNumber();
 		}
 

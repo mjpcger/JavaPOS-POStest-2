@@ -39,47 +39,47 @@ public class POSPowerConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (constant.equals(POSPowerConstantMapper.PWR_SOURCE_NA.getConstant())) {
+		if (POSPowerConstantMapper.PWR_SOURCE_NA.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_SOURCE_NA.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_SOURCE_AC.getConstant())) {
+		if (POSPowerConstantMapper.PWR_SOURCE_AC.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_SOURCE_AC.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_SOURCE_BATTERY.getConstant())) {
+		if (POSPowerConstantMapper.PWR_SOURCE_BATTERY.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_SOURCE_BATTERY.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_SOURCE_BACKUP.getConstant())) {
+		if (POSPowerConstantMapper.PWR_SOURCE_BACKUP.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_SOURCE_BACKUP.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_UPS_FULL.getConstant())) {
+		if (POSPowerConstantMapper.PWR_UPS_FULL.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_UPS_FULL.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_UPS_WARNING.getConstant())) {
+		if (POSPowerConstantMapper.PWR_UPS_WARNING.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_UPS_WARNING.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_UPS_LOW.getConstant())) {
+		if (POSPowerConstantMapper.PWR_UPS_LOW.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_UPS_LOW.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_UPS_CRITICAL.getConstant())) {
+		if (POSPowerConstantMapper.PWR_UPS_CRITICAL.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_UPS_CRITICAL.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_REASON_REQUEST.getConstant())) {
+		if (POSPowerConstantMapper.PWR_REASON_REQUEST.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_REASON_REQUEST.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_REASON_ALLOW.getConstant())) {
+		if (POSPowerConstantMapper.PWR_REASON_ALLOW.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_REASON_ALLOW.getContantNumber();
 		}
 
-		if (constant.equals(POSPowerConstantMapper.PWR_REASON_DENY.getConstant())) {
+		if (POSPowerConstantMapper.PWR_REASON_DENY.getConstant().equals(constant)) {
 			return POSPowerConstantMapper.PWR_REASON_DENY.getContantNumber();
 		}
 

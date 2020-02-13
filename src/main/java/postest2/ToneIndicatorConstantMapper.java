@@ -13,7 +13,7 @@ public class ToneIndicatorConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(ToneIndicatorConstantMapper.TONE_MT_NONE.getConstant())) {
+		if (ToneIndicatorConstantMapper.TONE_MT_NONE.getConstant().equals(constant)) {
 			return ToneIndicatorConstantMapper.TONE_MT_NONE.getContantNumber();
 		}
 		return Integer.parseInt(constant);

@@ -16,19 +16,19 @@ public class GateConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(GateConstantMapper.GATE_GS_CLOSED.getConstant())) {
+		if (GateConstantMapper.GATE_GS_CLOSED.getConstant().equals(constant)) {
 			return GateConstantMapper.GATE_GS_CLOSED.getContantNumber();
 		}
 
-		if (constant.equals(GateConstantMapper.GATE_GS_OPEN.getConstant())) {
+		if (GateConstantMapper.GATE_GS_OPEN.getConstant().equals(constant)) {
 			return GateConstantMapper.GATE_GS_OPEN.getContantNumber();
 		}
 
-		if (constant.equals(GateConstantMapper.GATE_GS_BLOCKED.getConstant())) {
+		if (GateConstantMapper.GATE_GS_BLOCKED.getConstant().equals(constant)) {
 			return GateConstantMapper.GATE_GS_BLOCKED.getContantNumber();
 		}
 
-		if (constant.equals(GateConstantMapper.GATE_GS_MALFUNCTION.getConstant())) {
+		if (GateConstantMapper.GATE_GS_MALFUNCTION.getConstant().equals(constant)) {
 			return GateConstantMapper.GATE_GS_MALFUNCTION.getContantNumber();
 		}
 

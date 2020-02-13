@@ -26,31 +26,31 @@ public class KeylockConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant){
 		
-		if(constant.equals(KeylockConstantMapper.LOCK_KT_STANDARD.getConstant())) {
+		if(KeylockConstantMapper.LOCK_KT_STANDARD.getConstant().equals(constant)) {
 			return KeylockConstantMapper.LOCK_KT_STANDARD.getContantNumber();
 		}
 
-		if(constant.equals(KeylockConstantMapper.LOCK_KT_ELECTRONIC.getConstant())) {
+		if(KeylockConstantMapper.LOCK_KT_ELECTRONIC.getConstant().equals(constant)) {
 			return KeylockConstantMapper.LOCK_KT_ELECTRONIC.getContantNumber();
 		}
 
-		if(constant.equals(KeylockConstantMapper.LOCK_KP_ANY.getConstant())) {
+		if(KeylockConstantMapper.LOCK_KP_ANY.getConstant().equals(constant)) {
 			return KeylockConstantMapper.LOCK_KP_ANY.getContantNumber();
 		}
 
-		if(constant.equals(KeylockConstantMapper.LOCK_KP_ELECTRONIC.getConstant())) {
+		if(KeylockConstantMapper.LOCK_KP_ELECTRONIC.getConstant().equals(constant)) {
 			return KeylockConstantMapper.LOCK_KP_ELECTRONIC.getContantNumber();
 		}
 
-		if(constant.equals(KeylockConstantMapper.LOCK_KP_LOCK.getConstant())) {
+		if(KeylockConstantMapper.LOCK_KP_LOCK.getConstant().equals(constant)) {
 			return KeylockConstantMapper.LOCK_KP_LOCK.getContantNumber();
 		}
 
-		if(constant.equals(KeylockConstantMapper.LOCK_KP_NORM.getConstant())) {
+		if(KeylockConstantMapper.LOCK_KP_NORM.getConstant().equals(constant)) {
 			return KeylockConstantMapper.LOCK_KP_NORM.getContantNumber();
 		}
 
-		if(constant.equals(KeylockConstantMapper.LOCK_KP_SUPR.getConstant())) {
+		if(KeylockConstantMapper.LOCK_KP_SUPR.getConstant().equals(constant)) {
 			return KeylockConstantMapper.LOCK_KP_SUPR.getContantNumber();
 		}
 		

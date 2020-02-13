@@ -123,147 +123,147 @@ public class CATConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(CATConstantMapper.CAT_TRANSACTION_SALES.getConstant())) {
+		if (CATConstantMapper.CAT_TRANSACTION_SALES.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_TRANSACTION_SALES.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_TRANSACTION_VOID.getConstant())) {
+		if (CATConstantMapper.CAT_TRANSACTION_VOID.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_TRANSACTION_VOID.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_TRANSACTION_REFUND.getConstant())) {
+		if (CATConstantMapper.CAT_TRANSACTION_REFUND.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_TRANSACTION_REFUND.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_TRANSACTION_VOIDPRESALES.getConstant())) {
+		if (CATConstantMapper.CAT_TRANSACTION_VOIDPRESALES.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_TRANSACTION_VOIDPRESALES.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_TRANSACTION_COMPLETION.getConstant())) {
+		if (CATConstantMapper.CAT_TRANSACTION_COMPLETION.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_TRANSACTION_COMPLETION.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_TRANSACTION_PRESALES.getConstant())) {
+		if (CATConstantMapper.CAT_TRANSACTION_PRESALES.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_TRANSACTION_PRESALES.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_TRANSACTION_CHECKCARD.getConstant())) {
+		if (CATConstantMapper.CAT_TRANSACTION_CHECKCARD.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_TRANSACTION_CHECKCARD.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_TRANSACTION_CASHDEPOSIT.getConstant())) {
+		if (CATConstantMapper.CAT_TRANSACTION_CASHDEPOSIT.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_TRANSACTION_CASHDEPOSIT.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_LUMP.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_LUMP.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_LUMP.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_1.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_1.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_1.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_2.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_2.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_2.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_3.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_3.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_3.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_4.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_4.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_4.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_5.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_5.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_5.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_INSTALLMENT_1.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_INSTALLMENT_1.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_INSTALLMENT_1.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_INSTALLMENT_2.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_INSTALLMENT_2.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_INSTALLMENT_2.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_INSTALLMENT_3.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_INSTALLMENT_3.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_INSTALLMENT_3.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_1.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_1.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_1.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_2.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_2.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_2.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_3.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_3.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_3.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_4.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_4.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_BONUS_COMBINATION_4.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_REVOLVING.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_REVOLVING.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_REVOLVING.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_DEBIT.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_DEBIT.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_DEBIT.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_PAYMENT_ELECTRONIC_MONEY.getConstant())) {
+		if (CATConstantMapper.CAT_PAYMENT_ELECTRONIC_MONEY.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_PAYMENT_ELECTRONIC_MONEY.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_LOGSTATUS_OK.getConstant())) {
+		if (CATConstantMapper.CAT_LOGSTATUS_OK.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_LOGSTATUS_OK.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_LOGSTATUS_NEARFULL.getConstant())) {
+		if (CATConstantMapper.CAT_LOGSTATUS_NEARFULL.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_LOGSTATUS_NEARFULL.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_LOGSTATUS_FULL.getConstant())) {
+		if (CATConstantMapper.CAT_LOGSTATUS_FULL.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_LOGSTATUS_FULL.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getConstant())) {
+		if (CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_MEDIA_NONDEFINE.getConstant())) {
+		if (CATConstantMapper.CAT_MEDIA_NONDEFINE.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_MEDIA_NONDEFINE.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_MEDIA_CREDIT.getConstant())) {
+		if (CATConstantMapper.CAT_MEDIA_CREDIT.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_MEDIA_CREDIT.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_MEDIA_DEBIT.getConstant())) {
+		if (CATConstantMapper.CAT_MEDIA_DEBIT.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_MEDIA_DEBIT.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getConstant())) {
+		if (CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_DL_NONE.getConstant())) {
+		if (CATConstantMapper.CAT_DL_NONE.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_DL_NONE.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_DL_REPORTING.getConstant())) {
+		if (CATConstantMapper.CAT_DL_REPORTING.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_DL_REPORTING.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_DL_SETTLEMENT.getConstant())) {
+		if (CATConstantMapper.CAT_DL_SETTLEMENT.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_DL_SETTLEMENT.getContantNumber();
 		}
 
-		if (constant.equals(CATConstantMapper.CAT_DL_REPORTING_SETTLEMENT.getConstant())) {
+		if (CATConstantMapper.CAT_DL_REPORTING_SETTLEMENT.getConstant().equals(constant)) {
 			return CATConstantMapper.CAT_DL_REPORTING_SETTLEMENT.getContantNumber();
 		}
 

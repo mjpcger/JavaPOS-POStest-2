@@ -79,104 +79,104 @@ public class PointCardRWConstantMapper implements IMapWrapper {
 	
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (constant.equals(PointCardRWConstantMapper.PCRW_CS_ASCII.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_CS_ASCII.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_CS_ASCII.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_CS_ANSI.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_CS_ANSI.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_CS_ANSI.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_CS_UNICODE.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_CS_UNICODE.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_CS_UNICODE.getContantNumber();
 		}
 		
-		if (constant.equals(PointCardRWConstantMapper.PCRW_CCS_ALPHA.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_CCS_ALPHA.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_CCS_ALPHA.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_CCS_ASCII.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_CCS_ASCII.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_CCS_ASCII.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_CCS_KANA.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_CCS_KANA.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_CCS_KANA.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_CCS_KANJI.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_CCS_KANJI.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_CCS_KANJI.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_CCS_UNICODE.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_CCS_UNICODE.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_CCS_UNICODE.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_STATE_NOCARD.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_STATE_NOCARD.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_STATE_NOCARD.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_STATE_REMAINING.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_STATE_REMAINING.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_STATE_REMAINING.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_STATE_INRW.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_STATE_INRW.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_STATE_INRW.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_TRACK1.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_TRACK1.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_TRACK1.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_TRACK2.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_TRACK2.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_TRACK2.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_TRACK3.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_TRACK3.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_TRACK3.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_TRACK4.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_TRACK4.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_TRACK4.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_TRACK5.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_TRACK5.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_TRACK5.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_TRACK6.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_TRACK6.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_TRACK6.getContantNumber();
 		}
 		// //////////////
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_MM_DOTS.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_MM_DOTS.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_MM_DOTS.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_MM_TWIPS.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_MM_TWIPS.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_MM_TWIPS.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_MM_ENGLISH.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_MM_ENGLISH.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_MM_ENGLISH.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_MM_METRIC.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_MM_METRIC.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_MM_METRIC.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_RP_NORMAL.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_RP_NORMAL.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_RP_NORMAL.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_RP_RIGHT90.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_RP_RIGHT90.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_RP_RIGHT90.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_RP_LEFT90.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_RP_LEFT90.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_RP_LEFT90.getContantNumber();
 		}
 
-		if (constant.equals(PointCardRWConstantMapper.PCRW_RP_ROTATE180.getConstant())) {
+		if (PointCardRWConstantMapper.PCRW_RP_ROTATE180.getConstant().equals(constant)) {
 			return PointCardRWConstantMapper.PCRW_RP_ROTATE180.getContantNumber();
 		}
 

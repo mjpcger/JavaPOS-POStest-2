@@ -47,55 +47,55 @@ public class CoinAcceptorConstantMapper implements IMapWrapper {
 	
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_START.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_START.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_START.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_END.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_END.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_END.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_COUNT.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_COUNT.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_COUNT.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_JAM.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_JAM.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_DEPOSIT_JAM.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_OK.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_OK.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_OK.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_FULL.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_FULL.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_FULL.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_NEARFULL.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_NEARFULL.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_NEARFULL.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_FULLOK.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_FULLOK.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_FULLOK.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_JAM.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_JAM.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_JAM.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_STATUS_JAMOK.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_STATUS_JAMOK.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_STATUS_JAMOK.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_DEPOSIT_COMPLETE.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_DEPOSIT_COMPLETE.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_DEPOSIT_COMPLETE.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_DEPOSIT_PAUSE.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_DEPOSIT_PAUSE.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_DEPOSIT_PAUSE.getContantNumber();
 		}
 
-		if (constant.equals(CoinAcceptorConstantMapper.CACC_DEPOSIT_RESTART.getConstant())) {
+		if (CoinAcceptorConstantMapper.CACC_DEPOSIT_RESTART.getConstant().equals(constant)) {
 			return CoinAcceptorConstantMapper.CACC_DEPOSIT_RESTART.getContantNumber();
 		}
 

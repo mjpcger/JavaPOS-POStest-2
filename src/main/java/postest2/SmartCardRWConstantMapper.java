@@ -85,107 +85,107 @@ public class SmartCardRWConstantMapper implements IMapWrapper {
 	
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_CMODE_TRANS.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_CMODE_TRANS.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_CMODE_TRANS.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_CMODE_BLOCK.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_CMODE_BLOCK.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_CMODE_BLOCK.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_CMODE_APDU.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_CMODE_APDU.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_CMODE_APDU.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_CMODE_XML.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_CMODE_XML.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_CMODE_XML.getContantNumber();
 		}
 		
-		if (constant.equals(SmartCardRWConstantMapper.SC_MODE_TRANS.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_MODE_TRANS.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_MODE_TRANS.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_MODE_BLOCK.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_MODE_BLOCK.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_MODE_BLOCK.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_MODE_APDU.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_MODE_APDU.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_MODE_APDU.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_MODE_XML.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_MODE_XML.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_MODE_XML.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_READ_DATA.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_READ_DATA.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_READ_DATA.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_READ_PROGRAM.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_READ_PROGRAM.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_READ_PROGRAM.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_EXECUTE_AND_READ_DATA.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_EXECUTE_AND_READ_DATA.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_EXECUTE_AND_READ_DATA.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_XML_READ_BLOCK_DATA.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_XML_READ_BLOCK_DATA.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_XML_READ_BLOCK_DATA.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_STORE_DATA.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_STORE_DATA.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_STORE_DATA.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_STORE_PROGRAM.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_STORE_PROGRAM.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_STORE_PROGRAM.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_EXECUTE_DATA.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_EXECUTE_DATA.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_EXECUTE_DATA.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_XML_BLOCK_DATA.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_XML_BLOCK_DATA.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_XML_BLOCK_DATA.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_SECURITY_FUSE.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_SECURITY_FUSE.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_SECURITY_FUSE.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_RESET.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_RESET.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_RESET.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_MODE_ISO.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_MODE_ISO.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_MODE_ISO.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_MODE_EMV.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_MODE_EMV.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_MODE_EMV.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_CMODE_ISO.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_CMODE_ISO.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_CMODE_ISO.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_CMODE_EMV.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_CMODE_EMV.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_CMODE_EMV.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_CTRANS_PROTOCOL_T0.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_CTRANS_PROTOCOL_T0.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_CTRANS_PROTOCOL_T0.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_CTRANS_PROTOCOL_T1.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_CTRANS_PROTOCOL_T1.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_CTRANS_PROTOCOL_T1.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_TRANS_PROTOCOL_T0.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_TRANS_PROTOCOL_T0.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_TRANS_PROTOCOL_T0.getContantNumber();
 		}
 
-		if (constant.equals(SmartCardRWConstantMapper.SC_TRANS_PROTOCOL_T1.getConstant())) {
+		if (SmartCardRWConstantMapper.SC_TRANS_PROTOCOL_T1.getConstant().equals(constant)) {
 			return SmartCardRWConstantMapper.SC_TRANS_PROTOCOL_T1.getContantNumber();
 		}
 

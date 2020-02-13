@@ -153,331 +153,331 @@ public class RemoteOrderDisplayConstantMapper implements IMapWrapper {
 
 	public static int getConstantNumberFromString(String constant){
 
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_1.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_1.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_1.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_2.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_2.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_2.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_3.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_3.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_3.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_4.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_4.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_4.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_5.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_5.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_5.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_6.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_6.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_6.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_7.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_7.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_7.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_8.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_8.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_8.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_9.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_9.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_9.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_10.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_10.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_10.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_11.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_11.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_11.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_12.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_12.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_12.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_13.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_13.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_13.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_14.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_14.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_14.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_15.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_15.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_15.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_16.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_16.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_16.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_17.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_17.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_17.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_18.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_18.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_18.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_19.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_19.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_19.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_20.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_20.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_20.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_21.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_21.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_21.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_22.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_22.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_22.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_23.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_23.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_23.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_24.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_24.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_24.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_25.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_25.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_25.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_26.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_26.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_26.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_27.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_27.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_27.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_28.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_28.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_28.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_29.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_29.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_29.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_30.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_30.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_30.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_31.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_31.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_31.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UID_32.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UID_32.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UID_32.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BLINK.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BLINK.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BLINK.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BLACK.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BLACK.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BLACK.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BLUE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BLUE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BLUE.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_GREEN.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_GREEN.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_GREEN.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_CYAN.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_CYAN.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_CYAN.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_RED.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_RED.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_RED.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_MAGENTA.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_MAGENTA.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_MAGENTA.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BROWN.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BROWN.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_BROWN.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_GRAY.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_GRAY.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_BG_GRAY.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_INTENSITY.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_INTENSITY.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_INTENSITY.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BLACK.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BLACK.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BLACK.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BLUE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BLUE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BLUE.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_GREEN.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_GREEN.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_GREEN.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_CYAN.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_CYAN.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_CYAN.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_RED.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_RED.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_RED.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_MAGENTA.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_MAGENTA.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_MAGENTA.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BROWN.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BROWN.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_BROWN.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_GRAY.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_GRAY.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_ATTR_FG_GRAY.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_BDR_SINGLE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_BDR_SINGLE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_BDR_SINGLE.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_BDR_DOUBLE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_BDR_DOUBLE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_BDR_DOUBLE.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_BDR_SOLID.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_BDR_SOLID.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_BDR_SOLID.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_START.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_START.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_START.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_PAUSE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_PAUSE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_PAUSE.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_RESUME.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_RESUME.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_RESUME.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_MOVE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_MOVE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_MOVE.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_STOP.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_STOP.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_STOP.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_SHORT.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_SHORT.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_SHORT.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_NORMAL.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_NORMAL.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_NORMAL.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_12_LONG.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_12_LONG.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_12_LONG.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CLK_24_LONG.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CLK_24_LONG.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CLK_24_LONG.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CRS_LINE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CRS_LINE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CRS_LINE.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CRS_LINE_BLINK.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CRS_LINE_BLINK.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CRS_LINE_BLINK.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CRS_BLOCK.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CRS_BLOCK.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CRS_BLOCK.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CRS_BLOCK_BLINK.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CRS_BLOCK_BLINK.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CRS_BLOCK_BLINK.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CRS_OFF.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CRS_OFF.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CRS_OFF.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CS_UNICODE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CS_UNICODE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CS_UNICODE.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CS_ASCII.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CS_ASCII.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CS_ASCII.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_CS_ANSI.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_CS_ANSI.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_CS_ANSI.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_TD_TRANSACTION.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_TD_TRANSACTION.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_TD_TRANSACTION.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_TD_NORMAL.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_TD_NORMAL.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_TD_NORMAL.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UA_SET.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UA_SET.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UA_SET.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UA_INTENSITY_ON.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UA_INTENSITY_ON.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UA_INTENSITY_ON.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UA_INTENSITY_OFF.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UA_INTENSITY_OFF.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UA_INTENSITY_OFF.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UA_REVERSE_ON.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UA_REVERSE_ON.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UA_REVERSE_ON.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UA_REVERSE_OFF.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UA_REVERSE_OFF.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UA_REVERSE_OFF.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UA_BLINK_ON.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UA_BLINK_ON.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UA_BLINK_ON.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_UA_BLINK_OFF.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_UA_BLINK_OFF.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_UA_BLINK_OFF.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_UP.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_UP.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_UP.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_DOWN.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_DOWN.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_DOWN.getContantNumber();
 		}
 		
-		if(constant.equals(RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_MOVE.getConstant())) {
+		if(RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_MOVE.getConstant().equals(constant)) {
 			return RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_MOVE.getContantNumber();
 		}
 
