@@ -77,7 +77,6 @@ public class CashDrawerController extends SharableController implements Initiali
 		try {
 			if (deviceEnabled.isSelected()) {
 				((CashDrawer) service).setDeviceEnabled(true);
-				if (waitForDrawerClose_beepTimeout.getText().equals("")) {
 			} else {
 				((CashDrawer) service).setDeviceEnabled(false);
 			}

@@ -66,7 +66,6 @@ public class ScannerController extends CommonController implements Initializable
 		}
 	}
 
-			}
 	/**
 	 * Shows statistics of device if they are supported by the device
 	 */
