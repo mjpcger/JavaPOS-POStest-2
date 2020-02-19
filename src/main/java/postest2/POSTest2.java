@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import jpos.BaseJposControl;
+import jpos.JposConst;
+import jpos.JposException;
 
 public class POSTest2 extends Application {
 
@@ -30,6 +33,16 @@ public class POSTest2 extends Application {
 			launch(args);
 		} catch (Throwable e) {
 			e.printStackTrace();
+		} finally {
+			for (BaseJposControl service : BaseController.Services.values()) {
+				try {
+					if (service.getState() != JposConst.JPOS_S_CLOSED) {
+						service.close();
+					}
+				} catch (JposException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	

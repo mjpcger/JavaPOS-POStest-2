@@ -19,9 +19,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import javafx.scene.text.Text;
 import jpos.Gate;
+import jpos.GateConst;
 import jpos.JposException;
 
+import jpos.events.StatusUpdateEvent;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -34,8 +37,11 @@ public class GateController extends SharableController implements Initializable 
 
 	@FXML 
 	public TextField waitForGateClose_timeout;
-	
-	
+
+	@FXML
+	@RequiredState(JposState.ENABLED)
+	public Text gateStatus;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
@@ -58,25 +64,12 @@ public class GateController extends SharableController implements Initializable 
 			} else {
 				((Gate) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.OPENED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -159,13 +152,39 @@ public class GateController extends SharableController implements Initializable 
 		} else {
 			try {
 				((Gate)service).waitForGateClose(Integer.parseInt(waitForGateClose_timeout.getText()));
-			} catch (JposException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage());
-				e1.printStackTrace();
-			} catch (NumberFormatException e1){
+			} catch (Exception e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
 			}
 		}
+	}
+
+	class GateStatusCodeMapper extends ErrorCodeMapper {
+		GateStatusCodeMapper() {
+			Mappings = new Object[]{
+					GateConst.GATE_GS_CLOSED, "GATE_GS_CLOSED",
+					GateConst.GATE_GS_OPEN, "GATE_GS_OPEN",
+					GateConst.GATE_GS_BLOCKED, "GATE_GS_BLOCKED",
+					GateConst.GATE_GS_MALFUNCTION, "GATE_GS_MALFUNCTION"
+			};
+		}
+	}
+
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		try {
+			gateStatus.setText(((Gate) service).getCapGateStatus()
+					? new GateStatusCodeMapper().getName(((Gate) service).getGetStatus())
+					: "");
+		} catch (JposException e) {
+			gateStatus.setText("");
+		}
+	}
+
+	@Override
+	public void statusUpdateOccurred(StatusUpdateEvent event) {
+		super.statusUpdateOccurred(event);
+		setupGuiObjects();
 	}
 }

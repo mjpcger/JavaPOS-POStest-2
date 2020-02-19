@@ -23,6 +23,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import jpos.CheckScanner;
+import jpos.CheckScannerConst;
 import jpos.JposException;
 
 import org.apache.xerces.parsers.DOMParser;
@@ -45,7 +46,7 @@ public class CheckScannerController extends CommonController implements Initiali
 	@FXML
 	public ComboBox<String> mapMode;
 	@FXML
-	public ComboBox<String> quality;
+	public ComboBox<Integer> quality;
 	@FXML
 	public ComboBox<String> clearImage_by;
 	@FXML
@@ -99,28 +100,14 @@ public class CheckScannerController extends CommonController implements Initiali
 		try {
 			if (deviceEnabled.isSelected()) {
 				((CheckScanner) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((CheckScanner) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			System.err.println("CheckScannerPanel: CheckBoxListener: Jpos Exception" + je);
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -321,8 +308,7 @@ public class CheckScannerController extends CommonController implements Initiali
 	@FXML
 	public void handleSetQuality(ActionEvent e) {
 		try {
-			((CheckScanner) service).setQuality(CheckScannerConstantMapper
-					.getConstantNumberFromString(quality.getSelectionModel().getSelectedItem()));
+			((CheckScanner) service).setQuality(quality.getSelectionModel().getSelectedItem());
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
@@ -445,6 +431,18 @@ public class CheckScannerController extends CommonController implements Initiali
 	 * Set Up Combo Boxes
 	 */
 
+	class ColorCodeMapper extends ErrorCodeMapper {
+		ColorCodeMapper() {
+			Mappings = new Object[]{
+					CheckScannerConstantMapper.CHK_CL_MONO.getContantNumber(), CheckScannerConstantMapper.CHK_CL_MONO.getConstant(),
+					CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getContantNumber(), CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getConstant(),
+					CheckScannerConstantMapper.CHK_CL_16.getContantNumber(), CheckScannerConstantMapper.CHK_CL_16.getConstant(),
+					CheckScannerConstantMapper.CHK_CL_256.getContantNumber(), CheckScannerConstantMapper.CHK_CL_256.getConstant(),
+					CheckScannerConstantMapper.CHK_CL_FULL.getContantNumber(), CheckScannerConstantMapper.CHK_CL_FULL.getConstant()
+			};
+		}
+	}
+
 	private void setUpColor() {
 		color.getItems().clear();
 		color.getItems().add(CheckScannerConstantMapper.CHK_CL_16.getConstant());
@@ -452,15 +450,34 @@ public class CheckScannerController extends CommonController implements Initiali
 		color.getItems().add(CheckScannerConstantMapper.CHK_CL_FULL.getConstant());
 		color.getItems().add(CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getConstant());
 		color.getItems().add(CheckScannerConstantMapper.CHK_CL_MONO.getConstant());
-		color.setValue(CheckScannerConstantMapper.CHK_CL_MONO.getConstant());
+		try {
+			color.setValue(new ColorCodeMapper().getName(((CheckScanner)service).getColor()));
+		} catch (JposException e) {
+			color.setValue(new ColorCodeMapper().getName(CheckScannerConst.CHK_CL_MONO));
+		}
 	}
 
 	private void setUpConcurrentMICR() {
 		concurrentMICR.getItems().clear();
 		concurrentMICR.getItems().add(true);
 		concurrentMICR.getItems().add(false);
-		concurrentMICR.setValue(true);
+		try {
+			concurrentMICR.setValue(((CheckScanner)service).getConcurrentMICR());
+		} catch (JposException e) {
+			concurrentMICR.setValue(true);
+		}
+	}
 
+	class ImageFormatCodeMapper extends ErrorCodeMapper {
+		ImageFormatCodeMapper() {
+			Mappings = new Object[]{
+					CheckScannerConstantMapper.CHK_IF_BMP.getContantNumber(),CheckScannerConstantMapper.CHK_IF_BMP.getConstant(),
+					CheckScannerConstantMapper.CHK_IF_GIF.getContantNumber(),CheckScannerConstantMapper.CHK_IF_GIF.getConstant(),
+					CheckScannerConstantMapper.CHK_IF_JPEG.getContantNumber(),CheckScannerConstantMapper.CHK_IF_JPEG.getConstant(),
+					CheckScannerConstantMapper.CHK_IF_NATIVE.getContantNumber(),CheckScannerConstantMapper.CHK_IF_NATIVE.getConstant(),
+					CheckScannerConstantMapper.CHK_IF_TIFF.getContantNumber(),CheckScannerConstantMapper.CHK_IF_TIFF.getConstant()
+			};
+		}
 	}
 
 	private void setUpImageFormat() {
@@ -470,7 +487,22 @@ public class CheckScannerController extends CommonController implements Initiali
 		imageFormat.getItems().add(CheckScannerConstantMapper.CHK_IF_JPEG.getConstant());
 		imageFormat.getItems().add(CheckScannerConstantMapper.CHK_IF_NATIVE.getConstant());
 		imageFormat.getItems().add(CheckScannerConstantMapper.CHK_IF_TIFF.getConstant());
-		imageFormat.setValue(CheckScannerConstantMapper.CHK_IF_BMP.getConstant());
+		try {
+			imageFormat.setValue(new ImageFormatCodeMapper().getName(((CheckScanner)service).getImageFormat()));
+		} catch (JposException e) {
+			imageFormat.setValue(new ImageFormatCodeMapper().getName(CheckScannerConst.CHK_IF_TIFF));
+		}
+	}
+
+	class MapModeCodeMapper extends ErrorCodeMapper {
+		MapModeCodeMapper(){
+			Mappings = new Object[]{
+					CheckScannerConstantMapper.CHK_MM_DOTS.getContantNumber(), CheckScannerConstantMapper.CHK_MM_DOTS.getConstant(),
+					CheckScannerConstantMapper.CHK_MM_ENGLISH.getContantNumber(), CheckScannerConstantMapper.CHK_MM_ENGLISH.getConstant(),
+					CheckScannerConstantMapper.CHK_MM_METRIC.getContantNumber(), CheckScannerConstantMapper.CHK_MM_METRIC.getConstant(),
+					CheckScannerConstantMapper.CHK_MM_TWIPS.getContantNumber(), CheckScannerConstantMapper.CHK_MM_TWIPS.getConstant()
+			};
+		}
 	}
 
 	private void setUpMapMode() {
@@ -479,24 +511,22 @@ public class CheckScannerController extends CommonController implements Initiali
 		mapMode.getItems().add(CheckScannerConstantMapper.CHK_MM_ENGLISH.getConstant());
 		mapMode.getItems().add(CheckScannerConstantMapper.CHK_MM_METRIC.getConstant());
 		mapMode.getItems().add(CheckScannerConstantMapper.CHK_MM_TWIPS.getConstant());
-		mapMode.setValue(CheckScannerConstantMapper.CHK_MM_DOTS.getConstant());
+		try {
+			mapMode.setValue(new MapModeCodeMapper().getName(((CheckScanner)service).getMapMode()));
+		} catch (JposException e) {
+			mapMode.setValue(new MapModeCodeMapper().getName(CheckScannerConst.CHK_MM_ENGLISH));
+		}
 	}
 
 	private void setUpQuality() {
 		quality.getItems().clear();
-		String[] qualities = null;
 		try {
-			qualities = ((CheckScanner) service).getQualityList().split(",");
-		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-		}
-		for (int i = 0; i < qualities.length; i++) {
-			quality.getItems().add(qualities[i]);
-		}
-		if (qualities != null) {
-			quality.setValue(qualities[0]);
-		}
+			String[] qualities = ((CheckScanner) service).getQualityList().split(",");
+			for (int i = 0; i < qualities.length; i++) {
+				quality.getItems().add(Integer.parseInt(qualities[i]));
+			}
+			quality.setValue(((CheckScanner)service).getQuality());
+		} catch (JposException e) {}
 	}
 
 	private void setUpClearImageBy() {
@@ -559,7 +589,9 @@ public class CheckScannerController extends CommonController implements Initiali
 		defineCropArea_cy.setValue(CheckScannerConstantMapper.CHK_CROP_AREA_BOTTOM.getConstant());
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpColor();
 		setUpConcurrentMICR();
 		setUpImageFormat();
@@ -572,6 +604,51 @@ public class CheckScannerController extends CommonController implements Initiali
 		setUpStoreImageCropAreaID();
 		setUpDefineCropAreaCX();
 		setUpDefineCropAreaCY();
+		setDocumentHeight();
+		setDocumentWidth();
+		setFileID();
+		setFileIndex();
+		setContrast();
 	}
 
+
+	private void setDocumentHeight() {
+		try {
+			documentHeight.setText(Integer.toString(((CheckScanner)service).getDocumentHeight()));
+		} catch (JposException e) {
+			documentHeight.setText("");
+		}
+	}
+
+	private void setDocumentWidth() {
+		try {
+			documentWidth.setText(Integer.toString(((CheckScanner)service).getDocumentWidth()));
+		} catch (JposException e) {
+			documentWidth.setText("");
+		}
+	}
+
+	private void setFileID() {
+		try {
+			fileIndex.setText(((CheckScanner)service).getFileID());
+		} catch (JposException e) {
+			fileIndex.setText("");
+		}
+	}
+
+	private void setFileIndex() {
+		try {
+			fileIndex.setText(Integer.toString(((CheckScanner)service).getFileIndex()));
+		} catch (JposException e) {
+			fileIndex.setText("0");
+		}
+	}
+
+	private void setContrast() {
+		try {
+			contrast.setValue(((CheckScanner)service).getContrast());
+		} catch (JposException e) {
+			contrast.setValue(50);
+		}
+	}
 }

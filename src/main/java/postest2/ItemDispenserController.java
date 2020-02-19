@@ -68,29 +68,15 @@ public class ItemDispenserController extends CommonController implements Initial
 		try {
 			if (deviceEnabled.isSelected()) {
 				((ItemDispenser) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((ItemDispenser) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
+		RequiredStateChecker.invokeThis(this, service);
 	}
 
 	/**
@@ -210,48 +196,70 @@ public class ItemDispenserController extends CommonController implements Initial
 	}
 
 	private void setUpAdjustItemCountSlotNumber() {
+		int current = adjustItemCount_slotNumber.getItems().size() > 0
+				? adjustItemCount_slotNumber.getValue() : 0;
 		adjustItemCount_slotNumber.getItems().clear();
 		try {
-			for (int i = 1; i < ((ItemDispenser) service).getMaxSlots(); i++) {
+			for (int i = 1; i <= ((ItemDispenser) service).getMaxSlots(); i++) {
 				adjustItemCount_slotNumber.getItems().add(i);
 			}
 		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
+			if (getDeviceState(service) != JposState.CLOSED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
-		adjustItemCount_slotNumber.setValue(1);
+		if (current > 0 && current <= adjustItemCount_slotNumber.getItems().size())
+			adjustItemCount_slotNumber.getSelectionModel().select(current);
+		else
+			adjustItemCount_slotNumber.getSelectionModel().select(1);
 	}
 
 	private void setUpDispenseItemSlotNumber() {
+		int current = dispenseItem_slotNumber.getItems().size() > 0
+				? dispenseItem_slotNumber.getValue() : 0;
 		dispenseItem_slotNumber.getItems().clear();
 		try {
-			for (int i = 1; i < ((ItemDispenser) service).getMaxSlots(); i++) {
+			for (int i = 1; i <= ((ItemDispenser) service).getMaxSlots(); i++) {
 				dispenseItem_slotNumber.getItems().add(i);
 			}
 		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
+			if (getDeviceState(service) != JposState.CLOSED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
-		dispenseItem_slotNumber.setValue(1);
+		if (current > 0 && current <= dispenseItem_slotNumber.getItems().size())
+			dispenseItem_slotNumber.getSelectionModel().select(current);
+		else
+			dispenseItem_slotNumber.getSelectionModel().select(1);
 	}
 
 	private void setUpReadItemCountSlotNumber() {
+		int current = readItemCount_slotNumber.getItems().size() > 0
+				? readItemCount_slotNumber.getValue() : 0;
 		readItemCount_slotNumber.getItems().clear();
 		try {
-			for (int i = 1; i < ((ItemDispenser) service).getMaxSlots(); i++) {
+			for (int i = 1; i <= ((ItemDispenser) service).getMaxSlots(); i++) {
 				readItemCount_slotNumber.getItems().add(i);
 			}
 		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
+			if (getDeviceState(service) != JposState.CLOSED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
-		readItemCount_slotNumber.setValue(1);
+		if (current > 0 && current <= readItemCount_slotNumber.getItems().size())
+			readItemCount_slotNumber.getSelectionModel().select(current);
+		else
+			readItemCount_slotNumber.getSelectionModel().select(1);
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpAdjustItemCountSlotNumber();
 		setUpDispenseItemSlotNumber();
 		setUpReadItemCountSlotNumber();
 	}
-
 }

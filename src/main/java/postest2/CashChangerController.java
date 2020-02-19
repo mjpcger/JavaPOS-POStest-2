@@ -23,6 +23,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import jpos.CashChanger;
+import jpos.JposConst;
 import jpos.JposException;
 
 import org.apache.xerces.parsers.DOMParser;
@@ -85,19 +86,6 @@ public class CashChangerController extends CommonController implements Initializ
 	 * ************************ Action Handler *********************************
 	 * ***********************************************************************
 	 */
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
-	}
 
 	/**
 	 * Shows statistics of device if they are supported by the device
@@ -167,8 +155,6 @@ public class CashChangerController extends CommonController implements Initializ
 		try {
 			if (deviceEnabled.isSelected()) {
 				((CashChanger) service).setDeviceEnabled(true);
-				setUpComboBoxes();
-
 			} else {
 				((CashChanger) service).setDeviceEnabled(false);
 			}
@@ -176,8 +162,8 @@ public class CashChangerController extends CommonController implements Initializ
 			je.printStackTrace();
 			JOptionPane.showMessageDialog(null, je.getMessage());
 		}
-
 		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	@FXML
@@ -317,20 +303,14 @@ public class CashChangerController extends CommonController implements Initializ
 	 */
 
 	private void setUpCurrencyCode() {
-		String[] currencies = null;
-		try {
-			currencies = ((CashChanger) service).getDepositCodeList().split(",");
-		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-		}
-
 		currencyCode.getItems().clear();
-		for (int i = 0; i < currencies.length; i++) {
-			currencyCode.getItems().add(currencies[i]);
-		}
-		currencyCode.setValue(currencies[0]);
-
+		try {
+			String[] currencies = ((CashChanger) service).getDepositCodeList().split(",");
+			for (int i = 0; i < currencies.length; i++) {
+				currencyCode.getItems().add(currencies[i]);
+			}
+			currencyCode.setValue(((CashChanger) service).getCurrencyCode());
+		} catch (JposException e) {}
 	}
 
 	private void setUpRealTimeDataEnabled() {
@@ -338,8 +318,11 @@ public class CashChangerController extends CommonController implements Initializ
 		realTimeDataEnabled.getItems().clear();
 		realTimeDataEnabled.getItems().add(true);
 		realTimeDataEnabled.getItems().add(false);
-		realTimeDataEnabled.setValue(true);
-
+		try {
+			realTimeDataEnabled.setValue(((CashChanger)service).getRealTimeDataEnabled());
+		} catch (JposException e) {
+			realTimeDataEnabled.setValue(false);
+		}
 	}
 
 	private void setUpEndDepositSuccess() {
@@ -359,30 +342,28 @@ public class CashChangerController extends CommonController implements Initializ
 	private void setUpCurrentExit() {
 		currentExit.getItems().clear();
 		try {
-			for (int i = 1; i <= ((CashChanger) service).getDeviceExits(); i++) {
+			int count = ((CashChanger) service).getDeviceExits();
+			for (int i = 1; i <= count; i++) {
 				currentExit.getItems().add(i);
 			}
-		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-		}
-		currentExit.setValue(1);
+			currentExit.setValue(((CashChanger) service).getCurrentExit());
+		} catch (JposException e) {}
 	}
 
 	private void setUpCurrentService() {
 		currentService.getItems().clear();
 		try {
-			for (int i = 0; i <= ((CashChanger) service).getServiceCount(); i++) {
+			int count = ((CashChanger) service).getServiceCount();
+			for (int i = 0; i <= count; i++) {
 				currentService.getItems().add(i);
 			}
-		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-		}
-		currentService.setValue(1);
+			currentService.setValue(((CashChanger) service).getCurrentService());
+		} catch (JposException e) {}
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpCurrencyCode();
 		setUpRealTimeDataEnabled();
 		setUpEndDepositSuccess();
@@ -391,4 +372,11 @@ public class CashChangerController extends CommonController implements Initializ
 		setUpCurrentService();
 	}
 
+	private void setAsyncMode() {
+		try {
+			asyncMode.setSelected(service.getState() != JposConst.JPOS_S_CLOSED && ((CashChanger)service).getAsyncMode());
+		} catch (JposException e) {
+			asyncMode.setSelected(false);
+		}
+	}
 }

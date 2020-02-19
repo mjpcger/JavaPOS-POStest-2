@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,20 +68,6 @@ public class MICRController extends CommonController implements Initializable {
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
-		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
 		}
 	}
 
@@ -192,7 +179,7 @@ public class MICRController extends CommonController implements Initializable {
 	public void dataOccurred(DataEvent dataEvent) {
 		super.dataOccurred(dataEvent);
 		try {
-			deviceMessages.appendText(((MICR) service).getRawData() + "\n");
+			Platform.runLater(new TextFieldAdder(((MICR) service).getRawData() + "\n", deviceMessages));
 		} catch (JposException e) {
 
 		}

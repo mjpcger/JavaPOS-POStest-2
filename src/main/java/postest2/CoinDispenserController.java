@@ -90,25 +90,11 @@ public class CoinDispenserController extends CommonController implements Initial
 				((CoinDispenser) service).setDeviceEnabled(false);
 				dispenserStatus.setText("");
 			}
-			RequiredStateChecker.invokeThis(this, service);
-			setDispenserStatus();
 		} catch (JposException je) {
 			System.err.println("CoinDispenserPanel: CheckBoxListener: Jpos Exception" + je);
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -214,30 +200,27 @@ public class CoinDispenserController extends CommonController implements Initial
 	@Override
 	public void statusUpdateOccurred(StatusUpdateEvent ev) {
 		super.statusUpdateOccurred(ev);
-		setDispenserStatus();
+		setupGuiObjects();
 	}
 
-	private void setDispenserStatus() {
+	class DispenserStatusCodeMapper extends ErrorCodeMapper {
+		DispenserStatusCodeMapper() {
+			Mappings = new Object[]{
+					CoinDispenserConst.COIN_STATUS_OK, "COIN_STATUS_OK",
+					CoinDispenserConst.COIN_STATUS_EMPTY, "COIN_STATUS_EMPTY",
+					CoinDispenserConst.COIN_STATUS_NEAREMPTY, "COIN_STATUS_NEAREMPTY",
+					CoinDispenserConst.COIN_STATUS_JAM, "COIN_STATUS_JAM"
+			};
+		}
+	}
+
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		try {
-			switch (((CoinDispenser)service).getDispenserStatus()) {
-				case CoinDispenserConst.COIN_STATUS_OK: {
-					dispenserStatus.setText("COIN_STATUS_OK");
-					break;
-				}
-				case CoinDispenserConst.COIN_STATUS_EMPTY: {
-					dispenserStatus.setText("COIN_STATUS_EMPTY");
-					break;
-				}
-				case CoinDispenserConst.COIN_STATUS_NEAREMPTY: {
-					dispenserStatus.setText("COIN_STATUS_NEAREMPTY");
-					break;
-				}
-				case CoinDispenserConst.COIN_STATUS_JAM: {
-					dispenserStatus.setText("COIN_STATUS_JAM");
-				}
-			}
+			dispenserStatus.setText(new DispenserStatusCodeMapper().getName(((CoinDispenser)service).getDispenserStatus()));
 		} catch (Exception e) {
-			e.printStackTrace();
+			dispenserStatus.setText("");
 		}
 	}
 

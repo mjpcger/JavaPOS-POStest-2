@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
@@ -43,14 +44,16 @@ public class ElectronicJournalController extends CommonController implements Ini
 	public CheckBox asyncMode;
 	@FXML
 	@RequiredState(JposState.OPENED)
-	public CheckBox flagWhenIdle;
-
+	public CheckBox autoDisable;
 	@FXML
-	public ComboBox<Boolean> storageEnabled;
+	@RequiredState(JposState.ENABLED)
+	public CheckBox storageEnabled;
 	@FXML
+	@RequiredState(JposState.OPENED)
 	public ComboBox<String> station;
 	@FXML
-	public ComboBox<Boolean> waterMark;
+	@RequiredState(JposState.OPENED)
+	public CheckBox waterMark;
 	@FXML
 	public ComboBox<String> retrieveCurrentMarker_markerType;
 	@FXML
@@ -115,29 +118,15 @@ public class ElectronicJournalController extends CommonController implements Ini
 		try {
 			if (deviceEnabled.isSelected()) {
 				((ElectronicJournal) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((ElectronicJournal) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -206,10 +195,22 @@ public class ElectronicJournalController extends CommonController implements Ini
 	@FXML
 	public void handleAsyncMode(ActionEvent e) {
 		try {
-			((ElectronicJournal) service).setAsyncMode(asyncMode.selectedProperty().getValue());
+			((ElectronicJournal) service).setAsyncMode(asyncMode.isSelected());
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
+			asyncMode.setSelected(!asyncMode.isSelected());
+		}
+	}
+
+	@FXML
+	public void handleAutoDisable(ActionEvent e) {
+		try {
+			((ElectronicJournal) service).setAutoDisable(autoDisable.isSelected());
+		} catch (JposException e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+			e1.printStackTrace();
+			autoDisable.setSelected(!autoDisable.isSelected());
 		}
 	}
 
@@ -221,27 +222,29 @@ public class ElectronicJournalController extends CommonController implements Ini
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
+			station.setValue(ElectronicJournalConstantMapper.EJ_S_RECEIPT.getConstant());
 		}
 	}
 
 	@FXML
 	public void handleSetWaterMark(ActionEvent e) {
 		try {
-			((ElectronicJournal) service).setWaterMark(waterMark.getSelectionModel().getSelectedItem());
+			((ElectronicJournal) service).setWaterMark(waterMark.isSelected());
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
+			waterMark.setSelected(!waterMark.isSelected());
 		}
 	}
 
 	@FXML
 	public void handleSetStorageEnabled(ActionEvent e) {
 		try {
-			((ElectronicJournal) service).setStorageEnabled(storageEnabled.getSelectionModel()
-					.getSelectedItem());
+			((ElectronicJournal) service).setStorageEnabled(storageEnabled.isSelected());
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
+			storageEnabled.setSelected(!storageEnabled.isSelected());
 		}
 	}
 
@@ -348,6 +351,7 @@ public class ElectronicJournalController extends CommonController implements Ini
 				((ElectronicJournal) service).queryContent(queryContent_fileName.getText(),
 						queryContent_fromMarker.getText(), queryContent_toMarker.getText());
 				if (asyncMode.selectedProperty().getValue()){
+                    ((ElectronicJournal)service).setDataEventEnabled(true);
 					setStatusLabel();
 				}
 			} catch (JposException e1) {
@@ -483,11 +487,22 @@ public class ElectronicJournalController extends CommonController implements Ini
 	 * Set Up ComboBoxes
 	 */
 
-	private void setUpStorageEnabled() {
-		storageEnabled.getItems().clear();
-		storageEnabled.getItems().add(true);
-		storageEnabled.getItems().add(false);
-		storageEnabled.setValue(true);
+	private void setStorageEnabled() {
+		try {
+			storageEnabled.setSelected(((ElectronicJournal)service).getStorageEnabled());
+		} catch (JposException e) {
+			storageEnabled.setSelected(false);
+		}
+	}
+
+	class StationCodeMapper extends ErrorCodeMapper {
+		StationCodeMapper() {
+			Mappings = new Object[]{
+					ElectronicJournalConstantMapper.EJ_S_JOURNAL.getContantNumber(), ElectronicJournalConstantMapper.EJ_S_JOURNAL.getConstant(),
+					ElectronicJournalConstantMapper.EJ_S_RECEIPT.getContantNumber(), ElectronicJournalConstantMapper.EJ_S_RECEIPT.getConstant(),
+					ElectronicJournalConstantMapper.EJ_S_SLIP.getContantNumber(), ElectronicJournalConstantMapper.EJ_S_SLIP.getConstant(),
+			};
+		}
 	}
 
 	private void setUpStation() {
@@ -495,15 +510,39 @@ public class ElectronicJournalController extends CommonController implements Ini
 		station.getItems().add(ElectronicJournalConstantMapper.EJ_S_JOURNAL.getConstant());
 		station.getItems().add(ElectronicJournalConstantMapper.EJ_S_RECEIPT.getConstant());
 		station.getItems().add(ElectronicJournalConstantMapper.EJ_S_SLIP.getConstant());
-		station.setValue(ElectronicJournalConstantMapper.EJ_S_JOURNAL.getConstant());
+		EventHandler<ActionEvent> eh = station.getOnAction();
+		station.setOnAction(null);
+		try {
+			station.getSelectionModel().select(new StationCodeMapper().getName(((ElectronicJournal)service).getStation()));
+		} catch (JposException e) {
+			station.getSelectionModel().select(ElectronicJournalConstantMapper.EJ_S_RECEIPT.getConstant());
+		}
+		station.setOnAction(eh);
+
 	}
 
-	private void setUpWaterMark() {
+	private void setWaterMark() {
+		try {
+			waterMark.setSelected(((ElectronicJournal)service).getWaterMark());
+		} catch (JposException e) {
+			waterMark.setSelected(false);
+		}
+	}
 
-		waterMark.getItems().clear();
-		waterMark.getItems().add(true);
-		waterMark.getItems().add(false);
-		waterMark.setValue(true);
+	private void setAsyncMode() {
+		try {
+			asyncMode.setSelected(((ElectronicJournal)service).getAsyncMode());
+		} catch (JposException e) {
+			asyncMode.setSelected(false);
+		}
+	}
+
+	private void setAutoDisable() {
+		try {
+			autoDisable.setSelected(((ElectronicJournal)service).getAutoDisable());
+		} catch (JposException e) {
+			autoDisable.setSelected(false);
+		}
 	}
 
 	private void setUpRetrieveCurrentMarkerMarkerType() {
@@ -547,26 +586,24 @@ public class ElectronicJournalController extends CommonController implements Ini
 				.getConstant());
 	}
 
-	private void setUpComboBoxes() {
-		setUpStorageEnabled();
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		setStorageEnabled();
 		setUpStation();
-		setUpWaterMark();
+		setWaterMark();
 		setUpRetrieveCurrentMarkerMarkerType();
 		setUpRetrieveMarkerByDateTimeMarkerType();
 		setUpRetrieveMarkerMarkerType();
-	}
-
-	@Override
-	public void statusUpdateOccurred(StatusUpdateEvent e) {
-		super.statusUpdateOccurred(e);
-		if (e.getStatus() == ElectronicJournalConst.EJ_SUE_IDLE)
-			setStatusLabel();
+		setAsyncMode();
+		setAutoDisable();
 	}
 
 	@Override
 	public void dataOccurred(DataEvent errorEvent) {
 		super.dataOccurred(errorEvent);
-		setStatusLabel();
+        RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	@Override
@@ -588,7 +625,7 @@ public class ElectronicJournalController extends CommonController implements Ini
 			} catch (JposException ee) {
 				ee.printStackTrace();
 			}
-			setStatusLabel();
+			setupGuiObjects();
 		}
 		else
 			statusLabel.setText("JPOS_S_BUSY");
@@ -596,6 +633,6 @@ public class ElectronicJournalController extends CommonController implements Ini
 
 	@Override
 	public void outputCompleteOccurred(OutputCompleteEvent outputCompleteEvent) {
-		setStatusLabel();
+		setupGuiObjects();
 	}
 }

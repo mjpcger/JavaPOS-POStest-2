@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
@@ -20,19 +21,20 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import javafx.scene.text.Text;
 import jpos.CAT;
+import jpos.CATConst;
+import jpos.JposConst;
 import jpos.JposException;
 
-import jpos.events.ErrorEvent;
-import jpos.events.ErrorListener;
-import jpos.events.OutputCompleteEvent;
-import jpos.events.OutputCompleteListener;
+import jpos.events.*;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class CATController extends CommonController implements Initializable, ErrorListener, OutputCompleteListener {
+public class CATController extends CommonController implements Initializable, ErrorListener, OutputCompleteListener,
+		DirectIOListener {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -43,9 +45,18 @@ public class CATController extends CommonController implements Initializable, Er
 	public CheckBox asyncMode;
 
 	@FXML
+	@RequiredState(JposState.ENABLED)
+	public TextArea events;
+
+	@FXML
+	@RequiredState(JposState.ENABLED)
+	public Text directIOEventsTitle;
+
+	@FXML
 	public ComboBox<String> paymentMedia;
 	@FXML
-	public ComboBox<Boolean> trainingMode;
+	@RequiredState(JposState.OPENED)
+	public CheckBox trainingMode;
 	@FXML
 	public ComboBox<String> accessDailyLog_type;
 
@@ -79,9 +90,10 @@ public class CATController extends CommonController implements Initializable, Er
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new CAT();
-		((CAT)service).addStatusUpdateListener(this);
-		((CAT)service).addErrorListener(this);
-		((CAT)service).addOutputCompleteListener(this);
+		((CAT) service).addStatusUpdateListener(this);
+		((CAT) service).addErrorListener(this);
+		((CAT) service).addOutputCompleteListener(this);
+		((CAT) service).addDirectIOListener(this);
 		setUpLogicalNameComboBox("CAT");
 		RequiredStateChecker.invokeThis(this, service);
 	}
@@ -90,28 +102,6 @@ public class CATController extends CommonController implements Initializable, Er
 	 * ************************ Action Handler *********************************
 	 * ***********************************************************************
 	 */
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
-	}
-
-	@Override
-	public void handleClose(ActionEvent e) {
-		super.handleClose(e);
-		if (asyncMode.isSelected()) {
-			asyncMode.setSelected(false);
-		}
-	}
 
 	/**
 	 * Shows statistics of device if they are supported by the device
@@ -132,7 +122,7 @@ public class CATController extends CommonController implements Initializable, Er
 			};
 			JOptionPane.showMessageDialog(null, jsp, "Information", JOptionPane.INFORMATION_MESSAGE);
 
-		} catch (Exception jpe) { 
+		} catch (Exception jpe) {
 			JOptionPane.showMessageDialog(null, "Exception in Info\nException: " + jpe.getMessage(),
 					"Exception", JOptionPane.ERROR_MESSAGE);
 			System.err.println("Jpos exception " + jpe);
@@ -145,7 +135,7 @@ public class CATController extends CommonController implements Initializable, Er
 	@Override
 	@FXML
 	public void handleStatistics(ActionEvent e) {
-		String[] stats = new String[] { "", "U_", "M_" };
+		String[] stats = new String[]{"", "U_", "M_"};
 		try {
 			((CAT) service).retrieveStatistics(stats);
 			DOMParser parser = new DOMParser();
@@ -175,14 +165,12 @@ public class CATController extends CommonController implements Initializable, Er
 
 		statistics = "";
 	}
-	
+
 	@FXML
 	public void handleDeviceEnable(ActionEvent e) {
 		try {
 			if (deviceEnabled.isSelected()) {
 				((CAT) service).setDeviceEnabled(true);
-				setUpComboBoxes();
-
 			} else {
 				((CAT) service).setDeviceEnabled(false);
 			}
@@ -190,8 +178,8 @@ public class CATController extends CommonController implements Initializable, Er
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-
 		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	@FXML
@@ -204,38 +192,28 @@ public class CATController extends CommonController implements Initializable, Er
 		}
 	}
 
-	@FXML
-	public void handleSetAdditionalSecurityInformation(ActionEvent e) {
-		if (additionalSecurityInformation.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Field should have a value");
-		} else {
-			try {
-				((CAT) service).setAdditionalSecurityInformation(additionalSecurityInformation.getText());
-			} catch (JposException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage());
-				e1.printStackTrace();
-			}
-		}
+	private void preparePaymentMediaAndAdditionalSecurityInformation() throws JposException {
+		((CAT) service).setAdditionalSecurityInformation(additionalSecurityInformation.getText());
+		((CAT) service).setPaymentMedia(CATConstantMapper.getConstantNumberFromString(paymentMedia
+				.getSelectionModel().getSelectedItem()));
 	}
 
-	@FXML
-	public void handleSetPaymentMedia(ActionEvent e) {
+	private void setAdditionalSecurityInformation() {
 		try {
-			((CAT) service).setPaymentMedia(CATConstantMapper.getConstantNumberFromString(paymentMedia
-					.getSelectionModel().getSelectedItem()));
-		} catch (JposException e1) {
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-			e1.printStackTrace();
+			additionalSecurityInformation.setText(((CAT) service).getAdditionalSecurityInformation());
+		} catch (JposException e) {
+			additionalSecurityInformation.setText("");
 		}
 	}
 
 	@FXML
 	public void handleSetTrainingMode(ActionEvent e) {
 		try {
-			((CAT) service).setTrainingMode(trainingMode.getSelectionModel().getSelectedItem());
+			((CAT) service).setTrainingMode(trainingMode.isSelected());
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
+			trainingMode.setSelected(!trainingMode.isSelected());
 		}
 	}
 
@@ -250,8 +228,7 @@ public class CATController extends CommonController implements Initializable, Er
 								.getSelectedItem()), Integer.parseInt(accessDailyLog_timeout.getText()));
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 
@@ -269,17 +246,22 @@ public class CATController extends CommonController implements Initializable, Er
 	public void handleAuthorizeCompletion(ActionEvent e) {
 		if (authorize_amount.getText().isEmpty() || authorize_sequenceNumber.getText().isEmpty()
 				|| authorize_taxOthers.getText().isEmpty() || authorize_timeout.getText().isEmpty()) {
-
 			JOptionPane.showMessageDialog(null, "Every Field should have a value");
 		} else {
 			try {
-				((CAT) service).authorizeCompletion(Integer.parseInt(authorize_sequenceNumber.getText()),
-						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
-						Integer.parseInt(authorize_timeout.getText()));
+				int sequencno = Integer.parseInt(authorize_sequenceNumber.getText());
+				int timeout = Integer.parseInt(authorize_timeout.getText());
+				long amount = authorize_amount.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_amount.getText()) * 10000 :
+						Long.parseLong(authorize_amount.getText());
+				long add = authorize_taxOthers.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_taxOthers.getText()) * 10000 :
+						Long.parseLong(authorize_taxOthers.getText());
+				preparePaymentMediaAndAdditionalSecurityInformation();
+				((CAT) service).authorizeCompletion(sequencno, amount, add, timeout);
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 			} catch (NumberFormatException e1) {
@@ -300,13 +282,19 @@ public class CATController extends CommonController implements Initializable, Er
 			JOptionPane.showMessageDialog(null, "Every Field should have a value");
 		} else {
 			try {
-				((CAT) service).authorizePreSales(Integer.parseInt(authorize_sequenceNumber.getText()),
-						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
-						Integer.parseInt(authorize_timeout.getText()));
+				int sequencno = Integer.parseInt(authorize_sequenceNumber.getText());
+				int timeout = Integer.parseInt(authorize_timeout.getText());
+				long amount = authorize_amount.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_amount.getText()) * 10000 :
+						Long.parseLong(authorize_amount.getText());
+				long add = authorize_taxOthers.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_taxOthers.getText()) * 10000 :
+						Long.parseLong(authorize_taxOthers.getText());
+				preparePaymentMediaAndAdditionalSecurityInformation();
+				((CAT) service).authorizePreSales(sequencno, amount, add, timeout);
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 			} catch (NumberFormatException e1) {
@@ -327,15 +315,19 @@ public class CATController extends CommonController implements Initializable, Er
 			JOptionPane.showMessageDialog(null, "Every Field should have a value");
 		} else {
 			try {
-				((CAT) service).authorizeVoid(Integer.parseInt(authorize_sequenceNumber.getText()),
-
-						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
-
-						Integer.parseInt(authorize_timeout.getText()));
+				int sequencno = Integer.parseInt(authorize_sequenceNumber.getText());
+				int timeout = Integer.parseInt(authorize_timeout.getText());
+				long amount = authorize_amount.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_amount.getText()) * 10000 :
+						Long.parseLong(authorize_amount.getText());
+				long add = authorize_taxOthers.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_taxOthers.getText()) * 10000 :
+						Long.parseLong(authorize_taxOthers.getText());
+				preparePaymentMediaAndAdditionalSecurityInformation();
+				((CAT) service).authorizeVoid(sequencno, amount, add, timeout);
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 			} catch (NumberFormatException e1) {
@@ -350,22 +342,25 @@ public class CATController extends CommonController implements Initializable, Er
 
 	@FXML
 	public void handleAuthorizeSales(ActionEvent e) {
-
 		if (authorize_amount.getText().isEmpty() || authorize_sequenceNumber.getText().isEmpty()
 				|| authorize_taxOthers.getText().isEmpty() || authorize_timeout.getText().isEmpty()) {
 
 			JOptionPane.showMessageDialog(null, "Every Field should have a value");
 		} else {
 			try {
-				((CAT) service).authorizeSales(Integer.parseInt(authorize_sequenceNumber.getText()),
-
-						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
-
-						Integer.parseInt(authorize_timeout.getText()));
+				int sequencno = Integer.parseInt(authorize_sequenceNumber.getText());
+				int timeout = Integer.parseInt(authorize_timeout.getText());
+				long amount = authorize_amount.getText().indexOf('.') >= 0 ?
+						(long) (Double.parseDouble(authorize_amount.getText()) * 10000 + 0.5) :
+						Long.parseLong(authorize_amount.getText());
+				long add = authorize_taxOthers.getText().indexOf('.') >= 0 ?
+						(long) (Double.parseDouble(authorize_taxOthers.getText()) * 10000 + 0.5) :
+						Long.parseLong(authorize_taxOthers.getText());
+				preparePaymentMediaAndAdditionalSecurityInformation();
+				((CAT) service).authorizeSales(sequencno, amount, add, timeout);
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 			} catch (NumberFormatException e1) {
@@ -380,22 +375,25 @@ public class CATController extends CommonController implements Initializable, Er
 
 	@FXML
 	public void handleAuthorizeRefund(ActionEvent e) {
-
 		if (authorize_amount.getText().isEmpty() || authorize_sequenceNumber.getText().isEmpty()
 				|| authorize_taxOthers.getText().isEmpty() || authorize_timeout.getText().isEmpty()) {
 
 			JOptionPane.showMessageDialog(null, "Every Field should have a value");
 		} else {
 			try {
-				((CAT) service).authorizeRefund(Integer.parseInt(authorize_sequenceNumber.getText()),
-
-						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
-
-						Integer.parseInt(authorize_timeout.getText()));
+				int sequencno = Integer.parseInt(authorize_sequenceNumber.getText());
+				int timeout = Integer.parseInt(authorize_timeout.getText());
+				long amount = authorize_amount.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_amount.getText()) * 10000 :
+						Long.parseLong(authorize_amount.getText());
+				long add = authorize_taxOthers.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_taxOthers.getText()) * 10000 :
+						Long.parseLong(authorize_taxOthers.getText());
+				preparePaymentMediaAndAdditionalSecurityInformation();
+				((CAT) service).authorizeRefund(sequencno, amount, add, timeout);
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 			} catch (NumberFormatException e1) {
@@ -410,20 +408,25 @@ public class CATController extends CommonController implements Initializable, Er
 
 	@FXML
 	public void handleAuthorizeVoidPreSales(ActionEvent e) {
-
 		if (authorize_amount.getText().isEmpty() || authorize_sequenceNumber.getText().isEmpty()
 				|| authorize_taxOthers.getText().isEmpty() || authorize_timeout.getText().isEmpty()) {
 
 			JOptionPane.showMessageDialog(null, "Every Field should have a value");
 		} else {
 			try {
-				((CAT) service).authorizeVoidPreSales(Integer.parseInt(authorize_sequenceNumber.getText()),
-						Long.parseLong(authorize_amount.getText()), Long.parseLong(authorize_taxOthers.getText()),
-						Integer.parseInt(authorize_timeout.getText()));
+				int sequencno = Integer.parseInt(authorize_sequenceNumber.getText());
+				int timeout = Integer.parseInt(authorize_timeout.getText());
+				long amount = authorize_amount.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_amount.getText()) * 10000 :
+						Long.parseLong(authorize_amount.getText());
+				long add = authorize_taxOthers.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(authorize_taxOthers.getText()) * 10000 :
+						Long.parseLong(authorize_taxOthers.getText());
+				preparePaymentMediaAndAdditionalSecurityInformation();
+				((CAT) service).authorizeVoidPreSales(sequencno, amount, add, timeout);
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 			} catch (NumberFormatException e1) {
@@ -443,12 +446,14 @@ public class CATController extends CommonController implements Initializable, Er
 			JOptionPane.showMessageDialog(null, "Every Field should have a value");
 		} else {
 			try {
+				long amount = cashDeposit_amount.getText().indexOf('.') >= 0 ?
+						(long) Double.parseDouble(cashDeposit_amount.getText()) * 10000 :
+						Long.parseLong(cashDeposit_amount.getText());
 				((CAT) service).cashDeposit(Integer.parseInt(cashDeposit_sequenceNumber.getText()),
-						Long.parseLong(cashDeposit_amount.getText()), Integer.parseInt(cashDeposit_timeout.getText()));
+						amount, Integer.parseInt(cashDeposit_timeout.getText()));
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 			} catch (NumberFormatException e1) {
@@ -472,8 +477,7 @@ public class CATController extends CommonController implements Initializable, Er
 
 				if (asyncMode.isSelected()) {
 					setStatusLabel();
-				}
-				else {
+				} else {
 					updateWritableProperties();
 				}
 			} catch (NumberFormatException e1) {
@@ -493,8 +497,7 @@ public class CATController extends CommonController implements Initializable, Er
 
 			if (asyncMode.isSelected()) {
 				setStatusLabel();
-			}
-			else {
+			} else {
 				updateWritableProperties();
 			}
 		} catch (JposException e1) {
@@ -509,13 +512,23 @@ public class CATController extends CommonController implements Initializable, Er
 			((CAT) service).unlockTerminal();
 			if (asyncMode.isSelected()) {
 				setStatusLabel();
-			}
-			else {
+			} else {
 				updateWritableProperties();
 			}
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
+		}
+	}
+
+	class PaymentMediaCodeMapper extends ErrorCodeMapper {
+		PaymentMediaCodeMapper() {
+			Mappings = new Object[]{
+					CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getContantNumber(), CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getConstant(),
+					CATConstantMapper.CAT_MEDIA_CREDIT.getContantNumber(), CATConstantMapper.CAT_MEDIA_CREDIT.getConstant(),
+					CATConstantMapper.CAT_MEDIA_DEBIT.getContantNumber(), CATConstantMapper.CAT_MEDIA_DEBIT.getConstant(),
+					CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getContantNumber(), CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getConstant()
+			};
 		}
 	}
 
@@ -529,16 +542,7 @@ public class CATController extends CommonController implements Initializable, Er
 		paymentMedia.getItems().add(CATConstantMapper.CAT_MEDIA_CREDIT.getConstant());
 		paymentMedia.getItems().add(CATConstantMapper.CAT_MEDIA_DEBIT.getConstant());
 		paymentMedia.getItems().add(CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getConstant());
-		paymentMedia.setValue(CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getConstant());
-
-	}
-
-	private void setUpTrainingMode() {
-		trainingMode.getItems().clear();
-		trainingMode.getItems().add(true);
-		trainingMode.getItems().add(false);
-		trainingMode.setValue(false);
-
+		setPaymentMedia();
 	}
 
 	private void setUpAccessDailyLogType() {
@@ -548,54 +552,89 @@ public class CATController extends CommonController implements Initializable, Er
 		accessDailyLog_type.setValue(CATConstantMapper.CAT_DL_REPORTING.getConstant());
 	}
 
-	private void setUpComboBoxes() {
-		setUpPaymentMedia();
-		setUpTrainingMode();
-		setUpAccessDailyLogType();
+	private void setPaymentMedia() {
+		try {
+			paymentMedia.setValue(new PaymentMediaCodeMapper().getName(((CAT) service).getPaymentMedia()));
+		} catch (JposException e) {
+			paymentMedia.setValue(new PaymentMediaCodeMapper().getName(CATConst.CAT_MEDIA_UNSPECIFIED));
+		}
 	}
 
+	private void setAsyncMode() {
+		try {
+			asyncMode.setSelected(((CAT) service).getAsyncMode());
+		} catch (JposException e) {
+			asyncMode.setSelected(false);
+		}
+	}
+
+	private void setTrainingMode() {
+		try {
+			trainingMode.setSelected(((CAT) service).getTrainingMode());
+		} catch (JposException e) {
+			trainingMode.setSelected(false);
+		}
+	}
+
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		setUpPaymentMedia();
+		setUpAccessDailyLogType();
+		setPaymentMedia();
+		setAdditionalSecurityInformation();
+		setTrainingMode();
+		setAsyncMode();
+	}
 
 	@Override
 	public void errorOccurred(ErrorEvent e) {
-		JOptionPane.showMessageDialog(null, "Asynchronous operation failed: " + e.getErrorCode() + "/" + e.getErrorCodeExtended());
-		try {
-			((CAT)service).clearOutput();
-		} catch (JposException ex) {
-			ex.printStackTrace();
-		}
+		String text = "CAT Error " + CommonErrorCodeMapper.Mapper.getName(e.getErrorCode());
+		if (e.getErrorCode() == JposConst.JPOS_E_EXTENDED)
+			text = text + " / " + CATErrorCodeMapper.Mapper.getName(e.getErrorCodeExtended());
 		setStatusLabel();
+		int doit = JOptionPane.showOptionDialog(null, "Error from CAT:\n" + text + "\nClear error?", "CAT error", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+		if (doit == JOptionPane.YES_OPTION) {
+			appendText("\n" + text + ": Operation failed.");
+			e.setErrorResponse(JposConst.JPOS_ER_CLEAR);
+			statusLabel.setText("JPOS_S_OK");
+			updateWritableProperties();
+		}
+		else {
+			appendText("\n" + text + ": Retry operation.");
+			statusLabel.setText("JPOS_S_BUSY");
+		}
 	}
 
 	@Override
-	public void outputCompleteOccurred(OutputCompleteEvent outputCompleteEvent) {
+	public void outputCompleteOccurred(OutputCompleteEvent ev) {
 		Platform.runLater(new Runnable() {
 			public void run() {
 				updateWritableProperties();
 			}
 		});
 		setStatusLabel();
+		appendText("\nOperation " + ev.getOutputID() + " Completed");
 	}
 
 	private void updateWritableProperties() {
-		try {
-			additionalSecurityInformation.setText(((CAT)service).getAdditionalSecurityInformation());
-			int medium = ((CAT)service).getPaymentMedia();
-			String mediumText = paymentMedia.getValue();
-			if (medium == CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getContantNumber())
-				mediumText = CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getConstant();
-			else if (medium == CATConstantMapper.CAT_MEDIA_NONDEFINE.getContantNumber())
-				mediumText = CATConstantMapper.CAT_MEDIA_NONDEFINE.getConstant();
-			else if (medium == CATConstantMapper.CAT_MEDIA_CREDIT.getContantNumber())
-				mediumText = CATConstantMapper.CAT_MEDIA_CREDIT.getConstant();
-			else if (medium == CATConstantMapper.CAT_MEDIA_DEBIT.getContantNumber())
-				mediumText = CATConstantMapper.CAT_MEDIA_DEBIT.getConstant();
-			else if (medium == CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getContantNumber())
-				mediumText = CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getConstant();
+		setAdditionalSecurityInformation();
+		setPaymentMedia();
+	}
 
-			if (medium != CATConstantMapper.getConstantNumberFromString(paymentMedia.getValue()))
-				paymentMedia.setValue(mediumText);
-		} catch (JposException e) {
-			e.printStackTrace();
+	@Override
+	public void directIOOccurred(DirectIOEvent ev) {
+		String text = null;
+		String[] lines = ev.getObject().toString().split("\n");
+		for (String line : lines) {
+			text = text == null ?
+					String.format("\n%d - %d - [%s", ev.getEventNumber(), ev.getData(), line) :
+					text + "\n        " + line;
 		}
+		appendText(text + "]");
+	}
+
+	private void appendText(String s) {
+		Platform.runLater(new TextFieldAdder(s, events));
 	}
 }

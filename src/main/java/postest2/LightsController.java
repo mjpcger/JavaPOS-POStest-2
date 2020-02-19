@@ -20,6 +20,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import jpos.JposConst;
 import jpos.JposException;
 import jpos.Lights;
 
@@ -67,29 +68,15 @@ public class LightsController extends CommonController implements Initializable 
 		try {
 			if (deviceEnabled.isSelected()) {
 				((Lights) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((Lights) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
+		RequiredStateChecker.invokeThis(this, service);
 	}
 
 	/**
@@ -191,19 +178,26 @@ public class LightsController extends CommonController implements Initializable 
 	 */
 
 	private void setUpSwitchOnLightNumber() {
+		int count = 0;
+		int previous = switchOn_lightNumber.getValue();
 		try {
-			switchOn_lightNumber.getItems().clear();
-			for (int i = 1; i <= ((Lights) service).getMaxLights(); i++) {
-				switchOn_lightNumber.getItems().add(i);
-			}
-			switchOn_lightNumber.setValue(1);
+			count = ((Lights) service).getMaxLights();
 		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
+			if (service.getState() != JposConst.JPOS_S_CLOSED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
+		switchOn_lightNumber.getItems().clear();
+		for (int i = 1; i <= count; i++) {
+			switchOn_lightNumber.getItems().add(i);
+		}
+		if (count > 0)
+			switchOn_lightNumber.setValue(previous > 0 && previous <= count ? previous : 1);
 	}
 
 	private void setUpSwitchOnColor() {
+		String previous = switchOn_color.getValue();
 		switchOn_color.getItems().clear();
 		switchOn_color.getItems().add(LightsConstantMapper.LGT_COLOR_PRIMARY.getConstant());
 		switchOn_color.getItems().add(LightsConstantMapper.LGT_COLOR_CUSTOM1.getConstant());
@@ -211,10 +205,13 @@ public class LightsController extends CommonController implements Initializable 
 		switchOn_color.getItems().add(LightsConstantMapper.LGT_COLOR_CUSTOM3.getConstant());
 		switchOn_color.getItems().add(LightsConstantMapper.LGT_COLOR_CUSTOM4.getConstant());
 		switchOn_color.getItems().add(LightsConstantMapper.LGT_COLOR_CUSTOM5.getConstant());
-		switchOn_color.setValue(LightsConstantMapper.LGT_COLOR_PRIMARY.getConstant());
+		switchOn_color.setValue(previous == null || previous.equals("")
+				? LightsConstantMapper.LGT_COLOR_PRIMARY.getConstant()
+				: previous);
 	}
 
 	private void setUpSwitchOnAlarm() {
+		String previous = switchOn_alarm.getValue();
 		switchOn_alarm.getItems().clear();
 		switchOn_alarm.getItems().add(LightsConstantMapper.LGT_ALARM_NOALARM.getConstant());
 		switchOn_alarm.getItems().add(LightsConstantMapper.LGT_ALARM_SLOW.getConstant());
@@ -222,23 +219,33 @@ public class LightsController extends CommonController implements Initializable 
 		switchOn_alarm.getItems().add(LightsConstantMapper.LGT_ALARM_FAST.getConstant());
 		switchOn_alarm.getItems().add(LightsConstantMapper.LGT_ALARM_CUSTOM1.getConstant());
 		switchOn_alarm.getItems().add(LightsConstantMapper.LGT_ALARM_CUSTOM2.getConstant());
-		switchOn_alarm.setValue(LightsConstantMapper.LGT_ALARM_NOALARM.getConstant());
+		switchOn_alarm.setValue(previous == null || previous.equals("")
+				? LightsConstantMapper.LGT_ALARM_NOALARM.getConstant()
+				: previous);
 	}
 
 	private void setUpSwitchOffLightNumber() {
+		int count = 0;
+		int previous = switchOff_lightNumber.getValue();
 		try {
-			switchOff_lightNumber.getItems().clear();
-			for (int i = 1; i <= ((Lights) service).getMaxLights(); i++) {
-				switchOff_lightNumber.getItems().add(i);
-			}
-			switchOff_lightNumber.setValue(1);
+			count = ((Lights) service).getMaxLights();
 		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
+			if (service.getState() != JposConst.JPOS_S_CLOSED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
+		switchOff_lightNumber.getItems().clear();
+		for (int i = 1; i <= count; i++) {
+			switchOff_lightNumber.getItems().add(i);
+		}
+		if (count > 0)
+			switchOff_lightNumber.setValue(previous > 0 && previous <= count ? previous : 1);
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpSwitchOffLightNumber();
 		setUpSwitchOnAlarm();
 		setUpSwitchOnColor();

@@ -65,6 +65,7 @@
                         <TextField fx:id="windowHeight" layoutX="284.0" layoutY="222.0" prefHeight="16.0" prefWidth="61.0" />
                         <TextField fx:id="windowWidth" layoutX="284.0" layoutY="241.0" prefHeight="16.0" prefWidth="61.0" />
                         <ListView fx:id="openWindowsListView" layoutX="362.0" layoutY="143.0" prefHeight="112.0" prefWidth="100.0" />
+                        <Button onAction="#handleSetCurrentWindow" layoutX="470.0" layoutY="141.0" mnemonicParsing="false" text="Set Current Window" />
                         <Label alignment="CENTER" layoutX="361.0" layoutY="126.0" prefWidth="100.0" text="Open Windows:" />
                       </children>
                     </AnchorPane>
@@ -220,7 +221,7 @@
         <Pane prefHeight="92.0" prefWidth="622.0" styleClass="topPane">
           <children>
             <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logical name: " />
-            <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" prefHeight="21.0" prefWidth="113.0" />
+            <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" onAction="#handleSetLogicalName" prefHeight="21.0" prefWidth="113.0" />
             <Text fontSmoothingType="LCD" layoutX="277.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " />
             <Text fx:id="statusLabel" fontSmoothingType="LCD" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_S_CLOSED">
               <font>

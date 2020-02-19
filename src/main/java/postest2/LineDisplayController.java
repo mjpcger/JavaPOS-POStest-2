@@ -8,9 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ListIterator;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -35,6 +33,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import jpos.BaseJposControl;
 import jpos.JposException;
 import jpos.LineDisplay;
 
@@ -141,11 +140,8 @@ public class LineDisplayController extends CommonController implements Initializ
 	@FXML
 	public ComboBox<String> screenMode;
 
-	// OpenWindow-Counter
-	private int currentWindow = 0;
-
 	// List for ListView openWindowsListView
-	private ObservableList<String> windowList = FXCollections.observableArrayList();
+	private ObservableList<String> windowList;
 
 	// Holds position of ESC-Characters.
 	// Need because Textarea delete ESC everytime it changes
@@ -153,6 +149,35 @@ public class LineDisplayController extends CommonController implements Initializ
 
 	// Escape-Character
 	final char ESC = (char) 0x1B;
+
+	private class LineDisplayData {
+		ObservableList<String> WindowList;
+		LineDisplayData() {
+			save();
+		}
+		void save() {
+			WindowList = openWindowsListView.getItems();
+		}
+		void restore() {
+			openWindowsListView.setItems(windowList = WindowList);
+		}
+	}
+
+	static Map<BaseJposControl, LineDisplayData> displayData = new HashMap<>();
+
+	@Override
+	public void handleSetLogicalName(ActionEvent e) {
+		if (displayData.containsKey(service)) {
+			displayData.get(service).save();
+		}
+		super.handleSetLogicalName(e);
+		if (displayData.containsKey(service)) {
+			displayData.get(service).restore();
+		} else {
+			displayData.put(service, new LineDisplayData());
+		}
+		setUpOpenWindowsListView();
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -162,7 +187,7 @@ public class LineDisplayController extends CommonController implements Initializ
 		((LineDisplay) service).addStatusUpdateListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		displayTextEscapeSequenceList = new ArrayList<Integer>();
-
+		openWindowsListView.setItems(windowList = FXCollections.observableArrayList());
 		/*
 		 * Add ChangeListener to update EscCharacterPosititon List
 		 */
@@ -172,13 +197,11 @@ public class LineDisplayController extends CommonController implements Initializ
 
 				if (arg2.length() > arg1.length()) {
 					updateInsertsEscSequencesToDisplayTextData((arg2.length() - arg1.length()));
-
 				} else {
 					updateDeletesEscSequencesToDisplayTextData(arg1.length() - arg2.length());
 				}
 			}
 		});
-
 	}
 
 	/* ************************************************************************
@@ -193,7 +216,8 @@ public class LineDisplayController extends CommonController implements Initializ
 	@FXML
 	public void handleInfo(ActionEvent e) {
 		try {
-			String msg = DeviceProperties.getProperties(service, null);
+			IMapWrapper ldcm = new LineDisplayConstantMapper();
+			String msg = DeviceProperties.getProperties(service, ldcm);
 			JTextArea jta = new JTextArea(msg);
 			@SuppressWarnings("serial")
 			JScrollPane jsp = new JScrollPane(jta) {
@@ -263,13 +287,9 @@ public class LineDisplayController extends CommonController implements Initializ
 		try {
 			if (deviceEnabled.isSelected()) {
 				((LineDisplay) service).setDeviceEnabled(true);
-				setUpComboBoxes();
-
 				windowList.clear();
-
 				windowList.add("0");
-				openWindowsListView.setItems(windowList);
-
+				setupGuiObjects();
 			} else {
 				((LineDisplay) service).setDeviceEnabled(false);
 				setUpScreenMode();
@@ -278,21 +298,6 @@ public class LineDisplayController extends CommonController implements Initializ
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
-		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				setUpScreenMode();
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
 		}
 	}
 
@@ -352,7 +357,6 @@ public class LineDisplayController extends CommonController implements Initializ
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		}
-
 	}
 
 	@FXML
@@ -431,14 +435,15 @@ public class LineDisplayController extends CommonController implements Initializ
 					}
 				}
 
-				windowList.add("" + num);
-
-				FXCollections.sort(windowList);
 				((LineDisplay) service).createWindow(Integer.parseInt(viewportRow.getText()), Integer
 						.parseInt(viewportColumn.getText()), Integer.parseInt(viewportHeight.getText()), Integer
 						.parseInt(viewportWidth.getText()), Integer.parseInt(windowHeight.getText()), Integer
 						.parseInt(windowWidth.getText()));
 
+				windowList.add("" + num);
+				FXCollections.sort(windowList);
+				setUpColumns();
+				setUpRow();
 			} catch (NumberFormatException e1) {
 				e1.printStackTrace();
 				JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -453,9 +458,12 @@ public class LineDisplayController extends CommonController implements Initializ
 	@FXML
 	public void handleDeleteWindow(ActionEvent e) {
 		try {
+			int currentWindow = ((LineDisplay)service).getCurrentWindow();
 			((LineDisplay) service).destroyWindow();
 			windowList.remove("" + currentWindow);
 			FXCollections.sort(windowList);
+			setUpColumns();
+			setUpRow();
 		} catch (JposException e1) {
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -471,7 +479,6 @@ public class LineDisplayController extends CommonController implements Initializ
 			try {
 				((LineDisplay) service).refreshWindow(Integer.parseInt(openWindowsListView.getSelectionModel()
 						.getSelectedItem()));
-				currentWindow = Integer.parseInt(openWindowsListView.getSelectionModel().getSelectedItem());
 			} catch (NumberFormatException e1) {
 				e1.printStackTrace();
 				JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -479,6 +486,25 @@ public class LineDisplayController extends CommonController implements Initializ
 				e1.printStackTrace();
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 			}
+		}
+	}
+
+	@FXML
+	public void handleSetCurrentWindow(ActionEvent actionEvent) {
+		int selectedwindow = 0;
+		try {
+			selectedwindow = Integer.parseInt(openWindowsListView.getSelectionModel().getSelectedItem());
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "No Window Selected");
+			return;
+		}
+		try {
+			((LineDisplay)service).setCurrentWindow(selectedwindow);
+			setUpColumns();
+			setUpRow();
+		} catch (JposException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 
@@ -608,7 +634,7 @@ public class LineDisplayController extends CommonController implements Initializ
 		try {
 			// Add 1 to the Index, because the index starts with 0 but the first
 			// Item in the List should be number 1
-			((LineDisplay) service).setScreenMode(screenMode.getSelectionModel().getSelectedIndex() + 1);
+			((LineDisplay) service).setScreenMode(screenMode.getSelectionModel().getSelectedIndex());
 		} catch (JposException e1) {
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -627,7 +653,6 @@ public class LineDisplayController extends CommonController implements Initializ
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		}
-
 	}
 
 	@FXML
@@ -774,7 +799,9 @@ public class LineDisplayController extends CommonController implements Initializ
 	 * ************************************************************************
 	 */
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpAttribute();
 		setUpRow();
 		setUpColumns();
@@ -789,6 +816,67 @@ public class LineDisplayController extends CommonController implements Initializ
 		setUpAlignmentY();
 		setUpCursorType();
 		setUpCursorUpdate();
+		setUpScreenMode();
+		setUpBlinkRate();
+		setUpInterCharacterWait();
+		setUpDeviceBrightness();
+		setUpMapCharacterSet();
+		setUpOpenWindowsListView();
+	}
+
+	private void setUpOpenWindowsListView() {
+		if (openWindowsListView.getItems().size() == 0)
+			return;
+		try {
+			openWindowsListView.getSelectionModel().select(Integer.toString(((LineDisplay)service).getCurrentWindow()));
+		} catch (JposException e) {
+			if (getDeviceState(service) == JposState.ENABLED) {
+				JOptionPane.showMessageDialog(null, "Error occured when getting CurrentWindow:\n" + e.getMessage(),
+						"Error occured!", JOptionPane.WARNING_MESSAGE);
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private void setUpBlinkRate() {
+		try {
+			blinkRate.setText(Integer.toString(((LineDisplay)service).getBlinkRate()));
+		} catch (JposException e) {
+			blinkRate.setText("");
+		}
+	}
+
+	private void setUpInterCharacterWait() {
+		try {
+			intercharacterWait.setText(Integer.toString(((LineDisplay)service).getInterCharacterWait()));
+		} catch (JposException e) {
+			intercharacterWait.setText("");
+		}
+	}
+
+	private void setUpDeviceBrightness() {
+		deviceBrightness.setMax(100.0);
+		deviceBrightness.setMin(0.0);
+		try {
+			deviceBrightness.setValue(((LineDisplay)service).getDeviceBrightness());
+		} catch (JposException e) {
+			deviceBrightness.setValue(100);
+		}
+	}
+
+	private void setUpMapCharacterSet() {
+		mapCharacterSet.getItems().clear();
+		mapCharacterSet.getItems().add(true);
+		mapCharacterSet.getItems().add(false);
+		try {
+			mapCharacterSet.setValue(((LineDisplay)service).getMapCharacterSet());
+		} catch (JposException e) {
+			try {
+				mapCharacterSet.setValue(((LineDisplay)service).getCapMapCharacterSet());
+			} catch (JposException ex) {
+				mapCharacterSet.setValue(false);
+			}
+		}
 	}
 
 	private void setUpAttribute() {
@@ -807,42 +895,59 @@ public class LineDisplayController extends CommonController implements Initializ
 
 	private void setUpRow() {
 		row.getItems().clear();
+		int count = 0;
 		try {
-			for (int i = 0; i < ((LineDisplay) service).getRows(); i++) {
-				row.getItems().add(i);
-			}
+			count = ((LineDisplay) service).getRows();
 		} catch (JposException e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error occured when getting Rows", "Error occured!",
-					JOptionPane.WARNING_MESSAGE);
+			if (getDeviceState(service) == JposState.ENABLED) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Error occured when getting Rows:\n" + e.getMessage(),
+						"Error occured!", JOptionPane.WARNING_MESSAGE);
+			}
 		}
-		row.setValue(0);
+		for (int i = 0; i < count; i++) {
+			row.getItems().add(i);
+		}
+		if (row.getItems().size() > 0)
+			row.setValue(0);
 	}
 
 	private void setUpColumns() {
 		column.getItems().clear();
+		int count = -1;
 		try {
-			for (int i = 0; i < ((LineDisplay) service).getColumns(); i++) {
-				column.getItems().add(i);
-			}
+			count = ((LineDisplay) service).getColumns();
 		} catch (JposException e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error occured when getting Columns", "Error occured!",
-					JOptionPane.WARNING_MESSAGE);
+			if (getDeviceState(service) == JposState.ENABLED) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Error occured when getting Columns:\n" + e.getMessage(),
+						"Error occured!", JOptionPane.WARNING_MESSAGE);
+			}
 		}
-		column.setValue(0);
+		for (int i = 0; i <= count; i++) {
+			column.getItems().add(i);
+		}
+		if (column.getItems().size() > 0)
+			column.setValue(0);
 	}
 
 	private void setUpDescriptors() {
 		descriptors.getItems().clear();
+		int count = 0;
 		try {
-			descriptors.getItems().add(((LineDisplay) service).getDeviceDescriptors());
-			descriptors.setValue(((LineDisplay) service).getDeviceDescriptors());
-		} catch (JposException e1) {
-			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error occured when getting Descriptors", "Error occured!",
-					JOptionPane.WARNING_MESSAGE);
+			count = ((LineDisplay) service).getDeviceDescriptors();
+		} catch (JposException e) {
+			if (getDeviceState(service) == JposState.ENABLED) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Error occured when getting DeviceDescriptors:\n" + e.getMessage(),
+						"Error occured!", JOptionPane.WARNING_MESSAGE);
+			}
 		}
+		for (int i = 0; i < count; i++) {
+			descriptors.getItems().add(i);
+		}
+		if (descriptors.getItems().size() > 0)
+			descriptors.setValue(0);
 	}
 
 	private void setUpDescriptorAttribute() {
@@ -865,37 +970,51 @@ public class LineDisplayController extends CommonController implements Initializ
 
 	private void setUpCharacterSet() {
 		characterSet.getItems().clear();
+		String[] charactersets = new String[0];
 		try {
-			for (int i = 0; i < ((LineDisplay) service).getCharacterSetList().split(",").length; i++) {
-				characterSet.getItems().add(
-						Integer.parseInt((((LineDisplay) service).getCharacterSetList().split(","))[i]));
-				if (i == 0) {
-					characterSet.setValue(Integer
-							.parseInt((((LineDisplay) service).getCharacterSetList().split(","))[i]));
+			charactersets = ((LineDisplay) service).getCharacterSetList().split(",");
+		} catch (JposException e) {
+			if (getDeviceState(service) != JposState.CLOSED) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Error occured when getting the CharacterSetList: " + e.getMessage(),
+						"Error occured!", JOptionPane.WARNING_MESSAGE);
+			}
+		}
+		if (charactersets.length > 0) {
+			for (String charset : charactersets) {
+				characterSet.getItems().add(Integer.parseInt(charset));
+			}
+			int current = characterSet.getItems().get(0);
+			try {
+				current = ((LineDisplay)service).getCharacterSet();
+			} catch (JposException e) {
+				if (getDeviceState(service) == JposState.ENABLED) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Error occured when getting the CharacterSet:" + e.getMessage(),
+							"Error occured!", JOptionPane.WARNING_MESSAGE);
 				}
 			}
-
-		} catch (JposException e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error occured when getting the CharacterSetList", "Error occured!",
-					JOptionPane.WARNING_MESSAGE);
+			characterSet.setValue(current);
 		}
 	}
 
 	private void setUpScreenMode() {
 		screenMode.getItems().clear();
+		String[] modes = new String[0];
 		try {
-			for (int i = 0; i < ((LineDisplay) service).getScreenModeList().split(",").length; i++) {
-				screenMode.getItems().add((((LineDisplay) service).getScreenModeList().split(","))[i]);
-				if (i == 0) {
-					screenMode.setValue((((LineDisplay) service).getScreenModeList().split(","))[i]);
-				}
-			}
+			modes = ((LineDisplay) service).getScreenModeList().split(",");
 		} catch (JposException e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error occured when getting the ScreenModeList", "Error occured!",
-					JOptionPane.WARNING_MESSAGE);
+			if (getDeviceState(service) != JposState.CLOSED) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Error occured when getting the ScreenModeList:\n" + e.getMessage(),
+						"Error occured!", JOptionPane.WARNING_MESSAGE);
+			}
 		}
+		screenMode.getItems().add("Default");
+		for (String mode : modes) {
+			screenMode.getItems().add(mode);
+		}
+		screenMode.setValue(screenMode.getItems().get(0));
 	}
 
 	private void setUpMarqueeType() {
@@ -1083,5 +1202,4 @@ public class LineDisplayController extends CommonController implements Initializ
 			}
 		}
 	}
-
 }

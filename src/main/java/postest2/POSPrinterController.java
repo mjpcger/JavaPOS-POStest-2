@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -241,11 +242,11 @@ public class POSPrinterController extends CommonController implements Initializa
 		
 	@Override
 	public void errorOccurred(ErrorEvent ee){
-		updateMessages("Error: Error Event" + ee);
 		setStatusLabel();
 		int doit = 0;
 		try {
 			String errortext = ((POSPrinter)service).getErrorString();
+			updateMessages("Error: " + errortext);
 			doit = JOptionPane.showOptionDialog(null, "Error from printer:\n" + errortext + "\nClear error?", "Printer error",JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 		} catch (JposException e) {
 			e.printStackTrace();
@@ -256,7 +257,11 @@ public class POSPrinterController extends CommonController implements Initializa
 		else
 			statusLabel.setText("JPOS_S_BUSY");
 	}
-	
+
+	private void updateMessages(String msg){
+		Platform.runLater(new TextFieldAdder(msg + "\n", deviceMessages));
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
@@ -410,20 +415,6 @@ public class POSPrinterController extends CommonController implements Initializa
 			je.printStackTrace();
 		}
 
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
 	}
 
 	@FXML
@@ -1793,91 +1784,36 @@ public class POSPrinterController extends CommonController implements Initializa
 		}
 		return ret;
 	}
+
+	private class StatusCodeMapper extends ErrorCodeMapper {
+		StatusCodeMapper() {
+			super();
+			Mappings = new Object[]{
+					POSPrinterConst.PTR_SUE_COVER_OPEN, "PTR_SUE_COVER_OPEN",
+					POSPrinterConst.PTR_SUE_JRN_EMPTY, "PTR_SUE_JRN_EMPTY",
+					POSPrinterConst.PTR_SUE_JRN_NEAREMPTY, "PTR_SUE_JRN_NEAREMPTY",
+					POSPrinterConst.PTR_SUE_JRN_PAPEROK, "PTR_SUE_JRN_PAPEROK",
+					POSPrinterConst.PTR_SUE_REC_EMPTY, "PTR_SUE_REC_EMPTY",
+					POSPrinterConst.PTR_SUE_REC_NEAREMPTY, "PTR_SUE_REC_NEAREMPTY",
+					POSPrinterConst.PTR_SUE_REC_PAPEROK, "PTR_SUE_REC_PAPEROK",
+					POSPrinterConst.PTR_SUE_IDLE, "PTR_SUE_IDLE",
+					POSPrinterConst.PTR_SUE_JRN_CARTRIDGE_EMPTY, "PTR_SUE_JRN_CARTRIDGE_EMPTY",
+					POSPrinterConst.PTR_SUE_JRN_HEAD_CLEANING, "PTR_SUE_JRN_HEAD_CLEANING",
+					POSPrinterConst.PTR_SUE_JRN_CARTRIDGE_NEAREMPTY, "PTR_SUE_JRN_CARTRIDGE_NEAREMPTY",
+					POSPrinterConst.PTR_SUE_JRN_CARTDRIGE_OK, "PTR_SUE_JRN_CARTDRIGE_OK",
+					POSPrinterConst.PTR_SUE_REC_CARTRIDGE_EMPTY, "PTR_SUE_REC_CARTRIDGE_EMPTY",
+					POSPrinterConst.PTR_SUE_REC_HEAD_CLEANING, "PTR_SUE_REC_HEAD_CLEANING",
+					POSPrinterConst.PTR_SUE_REC_CARTRIDGE_NEAREMPTY, "PTR_SUE_REC_CARTRIDGE_NEAREMPTY",
+					POSPrinterConst.PTR_SUE_REC_CARTDRIGE_OK, "PTR_SUE_REC_CARTDRIGE_OK",
+					POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_EMPTY, "PTR_SUE_SLP_CARTRIDGE_EMPTY",
+					POSPrinterConst.PTR_SUE_SLP_HEAD_CLEANING, "PTR_SUE_SLP_HEAD_CLEANING",
+					POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_NEAREMPTY, "PTR_SUE_SLP_CARTRIDGE_NEAREMPTY",
+					POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_OK, "PTR_SUE_SLP_CARTRIDGE_OK",
+			};
+		}
+	}
 	
 	public String getSUEMessage(int code){
-		String value = super.getSUEMessage(code);
-		if (value == null) {
-			value = "Unknown";
-			switch (code) {
-				case POSPrinterConst.PTR_SUE_COVER_OPEN:
-					value = "Cover Open";
-					break;
-				case POSPrinterConst.PTR_SUE_COVER_OK:
-					value = "Cover OK";
-					break;
-				case POSPrinterConst.PTR_SUE_JRN_EMPTY:
-					value = "Journal Paper Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_JRN_NEAREMPTY:
-					value = "Journal Paper Near Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_JRN_PAPEROK:
-					value = "Journal Papey OK";
-					break;
-				case POSPrinterConst.PTR_SUE_REC_EMPTY:
-					value = "Receipt Paper Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_REC_NEAREMPTY:
-					value = "Receipt Paper Near Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_REC_PAPEROK:
-					value = "Receipt Paper OK";
-					break;
-				case POSPrinterConst.PTR_SUE_SLP_EMPTY:
-					value = "Slip Paper Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_SLP_NEAREMPTY:
-					value = "Slip Paper Near Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_SLP_PAPEROK:
-					value = "Slip Paper OK";
-					break;
-				case POSPrinterConst.PTR_SUE_IDLE:
-					value = "Printer Idle";
-					break;
-				case POSPrinterConst.PTR_SUE_JRN_CARTRIDGE_EMPTY:
-					value = "Journal Cartridge Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_JRN_HEAD_CLEANING:
-					value = "Journal Head Cleaning Started";
-					break;
-				case POSPrinterConst.PTR_SUE_JRN_CARTRIDGE_NEAREMPTY:
-					value = "Journal Cartridge Near Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_JRN_CARTDRIGE_OK:
-					value = "Journal Cartridge OK";
-					break;
-				case POSPrinterConst.PTR_SUE_REC_CARTRIDGE_EMPTY:
-					value = "Receipt Cartridge Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_REC_HEAD_CLEANING:
-					value = "Receipt Head Cleaning Started";
-					break;
-				case POSPrinterConst.PTR_SUE_REC_CARTRIDGE_NEAREMPTY:
-					value = "Receipt Cartridge Near Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_REC_CARTDRIGE_OK:
-					value = "Receipt Cartridge OK";
-					break;
-				case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_EMPTY:
-					value = "Slip Cartridge Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_SLP_HEAD_CLEANING:
-					value = "Slip Head Cleaning Started";
-					break;
-				case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_NEAREMPTY:
-					value = "Slip Cartridge Near Empty";
-					break;
-				case POSPrinterConst.PTR_SUE_SLP_CARTRIDGE_OK:
-					value = "Slip Cartridge OK";
-					break;
-			}
-		}
-        return value;
+		return new StatusCodeMapper().getName(code);
     }
-	
-	private void updateMessages(String msg){
-		deviceMessages.appendText(msg + "\n");
-    }
-
 }

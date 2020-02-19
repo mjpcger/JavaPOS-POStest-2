@@ -102,7 +102,6 @@ public class ElectronicValueRWController extends CommonController implements Ini
 		try {
 			if (deviceEnabled.isSelected()) {
 				((ElectronicValueRW) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((ElectronicValueRW) service).setDeviceEnabled(false);
 			}
@@ -110,20 +109,8 @@ public class ElectronicValueRWController extends CommonController implements Ini
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -597,7 +584,11 @@ public class ElectronicValueRWController extends CommonController implements Ini
 		detectionControl.getItems().clear();
 		detectionControl.getItems().add(true);
 		detectionControl.getItems().add(false);
-		detectionControl.setValue(true);
+		try {
+			detectionControl.setValue(((ElectronicValueRW)service).getDetectionControl());
+		} catch (JposException e) {
+			detectionControl.setValue(false);
+		}
 	}
 
 	private void setUpAccessLogType() {
@@ -623,11 +614,92 @@ public class ElectronicValueRWController extends CommonController implements Ini
 		transactionAccess_control.setValue(ElectronicValueRWConstantMapper.EVRW_TA_NORMAL.getConstant());
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
 		setUpDetectionControl();
 		setUpAccessLogType();
 		setUpBeginDetectionType();
 		setUpTransactionAccessControl();
+		setAsyncMode();
+		setAdditionalSecurityInformation();
+		setAmount();
+		setApprovalCode();
+		setCurrentService();
+		setMediumID();
+		setPoint();
+		setVoucherID();
+		setVoucherIDList();
 	}
 
+	private void setAsyncMode() {
+		try {
+			asyncMode.setSelected(((ElectronicValueRW)service).getAsyncMode());
+		} catch (JposException e) {
+			asyncMode.setSelected(false);
+		}
+	}
+
+	private void setAdditionalSecurityInformation() {
+		try {
+			additionalSecurityInformation.setText(((ElectronicValueRW)service).getAdditionalSecurityInformation());
+		} catch (JposException e) {
+			additionalSecurityInformation.setText("");
+		}
+	}
+
+	private void setAmount() {
+		try {
+			amount.setText(Long.toString(((ElectronicValueRW)service).getAmount()));
+		} catch (JposException e) {
+			amount.setText("");
+		}
+	}
+
+	private void setApprovalCode() {
+		try {
+			approvalCode.setText(((ElectronicValueRW)service).getApprovalCode());
+		} catch (JposException e) {
+			approvalCode.setText("");
+		}
+	}
+
+	private void setCurrentService() {
+		try {
+			currentService.setText(((ElectronicValueRW)service).getCurrentService());
+		} catch (JposException e) {
+			currentService.setText("");
+		}
+	}
+
+	private void setMediumID() {
+		try {
+			mediumID.setText(((ElectronicValueRW)service).getMediumID());
+		} catch (JposException e) {
+			mediumID.setText("");
+		}
+	}
+
+	private void setPoint() {
+		try {
+			point.setText(Long.toString(((ElectronicValueRW)service).getPoint()));
+		} catch (JposException e) {
+			point.setText("");
+		}
+	}
+
+	private void setVoucherID() {
+		try {
+			voucherID.setText(((ElectronicValueRW)service).getVoucherID());
+		} catch (JposException e) {
+			voucherID.setText("");
+		}
+	}
+
+	private void setVoucherIDList() {
+		try {
+			voucherIDList.setText(((ElectronicValueRW)service).getVoucherIDList());
+		} catch (JposException e) {
+			voucherIDList.setText("");
+		}
+	}
 }

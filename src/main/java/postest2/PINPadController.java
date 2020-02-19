@@ -120,20 +120,6 @@ public class PINPadController extends CommonController implements Initializable 
 		RequiredStateChecker.invokeThis(this, service);
 	}
 
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
-	}
-	
 	/**
 	 * Initialize the beginning of an EFT Transaction.
 	 * @param e

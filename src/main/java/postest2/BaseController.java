@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -20,7 +21,10 @@ import org.w3c.dom.NodeList;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class BaseController implements Initializable, DataListener, StatusUpdateListener {
 
@@ -87,7 +91,77 @@ public abstract class BaseController implements Initializable, DataListener, Sta
 
     BaseJposControl service;
 
+    static Map<String, BaseJposControl> Services = new HashMap<>();
+
     static String statistics = "";
+
+    @FXML
+    public void handleSetLogicalName(ActionEvent e) {
+        if (logicalName.getValue() != null) {
+            if (Services.containsValue(service)) {
+                BaseJposControl newservice = Services.get(logicalName.getValue());
+                if (newservice != service) {
+                    try {
+                        if (getDeviceState(service) == JposState.ENABLED)
+                            service.setFreezeEvents(true);
+                    } catch (JposException ex) {
+                        ex.printStackTrace();
+                    }
+                    if (newservice == null)
+                        initialize(null, null);
+                    else
+                        service = newservice;
+                }
+            } else {
+                BaseJposControl newservice = Services.get(logicalName.getValue());
+                if (newservice != null) {
+                    service = newservice;
+                }
+            }
+            RequiredStateChecker.invokeThis(this, service);
+            setupGuiObjects();
+        }
+    }
+
+    public void setupGuiObjects() {
+        setStatusLabel();
+        setFreezeEvents();
+        setPowerNotify();
+        setPowerLabel();
+        setDataEventEnabled();
+    }
+
+    private void setDataEventEnabled() {
+        if (dataEventEnabled != null) {
+            Method getDataEventEnabled = getMethod(service, "getDataEventEnabled");
+            try {
+                dataEventEnabled.setSelected(service.getState() != JposConst.JPOS_S_CLOSED && getDataEventEnabled != null &&
+                        (boolean) getDataEventEnabled.invoke(service));
+            } catch (Exception e) {
+                dataEventEnabled.setSelected(false);
+            }
+        }
+    }
+
+    private void setPowerNotify() {
+        Method getCapPowerReporting = getMethod(service, "getCapPowerReporting");
+        Method getPowerNotify = getMethod(service, "getPowerNotify");
+        try {
+            powerNotify.setSelected(service.getState() != JposConst.JPOS_S_CLOSED && getCapPowerReporting != null &&
+                    getPowerNotify != null && (int) getCapPowerReporting.invoke(service) != JposConst.JPOS_PR_NONE &&
+                    (int) getPowerNotify.invoke(service) == JposConst.JPOS_PN_ENABLED);
+        } catch (Exception e) {
+            powerNotify.setSelected(false);
+        }
+    }
+
+    private void setFreezeEvents() {
+        try {
+            freezeEvents.setSelected(service.getState() != JposConst.JPOS_S_CLOSED && service.getFreezeEvents());
+        } catch (JposException e) {
+            freezeEvents.setSelected(false);
+        }
+    }
 
     @FXML
     public void handleOpen(ActionEvent e) {
@@ -95,32 +169,12 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         directIO_datatypeString.setToggleGroup(directIO_datatypeGroup);
         directIO_datatypeByteArray.setSelected(true);
 
-
-        POSTest2.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent arg0) {
-                try {
-                    if (getDeviceState(service) != JposState.CLOSED) {
-                        try {
-                            service.close();
-                        } catch (JposException e) {
-                            JOptionPane.showMessageDialog(null, e.getMessage());
-                            e.printStackTrace();
-                        }
-                    }
-                } catch (HeadlessException e) {
-                    e.printStackTrace();
-                } catch (JposException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
         try {
             if (logicalName.getValue() != null && !logicalName.getValue().isEmpty()) {
                 service.open(logicalName.getValue());
+                Services.put(logicalName.getValue(), service);
                 RequiredStateChecker.invokeThis(this, service);
-                setStatusLabel();
+                setupGuiObjects();
             } else {
                 JOptionPane.showMessageDialog(null, "Choose a device!", "Logical name is empty",
                         JOptionPane.WARNING_MESSAGE);
@@ -137,15 +191,19 @@ public abstract class BaseController implements Initializable, DataListener, Sta
     public void handleClose(ActionEvent e) {
         try {
             service.close();
-            powerNotify.setSelected(false);
-            powerLabel.setText("JPOS_PS_UNKNOWN");
+            Services.remove(service);
         } catch (JposException je) {
             je.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed to close \""
                             + logicalName.getSelectionModel().getSelectedItem() + "\"\nException: " + je.getMessage(),
                     "Failed", JOptionPane.ERROR_MESSAGE);
         }
+        RequiredStateChecker.invokeThis(this, service);
+        setupGuiObjects();
     }
+
+    @FXML
+    abstract public void handleDeviceEnable(ActionEvent e);
 
     @FXML
     public void handleClaim(ActionEvent e) {
@@ -162,6 +220,16 @@ public abstract class BaseController implements Initializable, DataListener, Sta
 
     @FXML
     public void handleRelease(ActionEvent e) {
+        try {
+            service.release();
+        } catch (JposException je) {
+            je.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to release \""
+                            + logicalName.getSelectionModel().getSelectedItem() + "\"\nException: " + je.getMessage(),
+                    "Failed", JOptionPane.ERROR_MESSAGE);
+        }
+        RequiredStateChecker.invokeThis(this, service);
+        setupGuiObjects();
     }
 
     public void handleInfo(ActionEvent e) {
@@ -335,26 +403,36 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         }
     }
 
+    class StateCodeMapper extends ErrorCodeMapper {
+        StateCodeMapper() {
+            super();
+            Mappings = new Object[]{
+                    JposConst.JPOS_S_CLOSED, "JPOS_S_CLOSED",
+                    JposConst.JPOS_S_IDLE, "JPOS_S_IDLE",
+                    JposConst.JPOS_S_BUSY, "JPOS_S_BUSY",
+                    JposConst.JPOS_S_ERROR, "JPOS_S_ERROR"
+            };
+        }
+    }
+
     /**
      * Set StatusLabel corresponding to the Device Status
      */
     void setStatusLabel() {
-        if (service.getState() == JposConst.JPOS_S_IDLE) {
-            statusLabel.setText("JPOS_S_IDLE");
-        }
+        statusLabel.setText(new StateCodeMapper().getName(service.getState()));
+    }
 
-        if (service.getState() == JposConst.JPOS_S_CLOSED) {
-            statusLabel.setText("JPOS_S_CLOSED");
+    class PowerStateCodeMapper extends ErrorCodeMapper {
+        PowerStateCodeMapper() {
+            super();
+            Mappings = new Object[]{
+                    JposConst.JPOS_PS_UNKNOWN, "JPOS_PS_UNKNOWN",
+                    JposConst.JPOS_PS_ONLINE, "JPOS_PS_ONLINE",
+                    JposConst.JPOS_PS_OFF, "JPOS_PS_OFF",
+                    JposConst.JPOS_PS_OFFLINE, "JPOS_PS_OFFLINE",
+                    JposConst.JPOS_PS_OFF_OFFLINE, "JPOS_PS_OFF_OFFLINE"
+            };
         }
-
-        if (service.getState() == JposConst.JPOS_S_BUSY) {
-            statusLabel.setText("JPOS_S_BUSY");
-        }
-
-        if (service.getState() == JposConst.JPOS_S_ERROR) {
-            statusLabel.setText("JPOS_S_ERROR");
-        }
-
     }
 
     /**
@@ -368,27 +446,7 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         } catch (Exception e) {
             powerState = JposConst.JPOS_PS_UNKNOWN;
         }
-
-        if (powerState == JposConst.JPOS_PS_UNKNOWN) {
-            powerLabel.setText("JPOS_PS_UNKNOWN");
-        }
-
-        if (powerState == JposConst.JPOS_PS_ONLINE) {
-            powerLabel.setText("JPOS_PS_ONLINE");
-        }
-
-        if (powerState == JposConst.JPOS_PS_OFF) {
-            powerLabel.setText("JPOS_PS_OFF");
-        }
-
-        if (powerState == JposConst.JPOS_PS_OFFLINE) {
-            powerLabel.setText("JPOS_PS_OFFLINE");
-        }
-
-        if (powerState == JposConst.JPOS_PS_OFF_OFFLINE) {
-            powerLabel.setText("JPOS_PS_OFF_OFFLINE");
-        }
-
+        powerLabel.setText(new PowerStateCodeMapper().getName(powerState));
     }
 
     protected void setUpLogicalNameComboBox(String devCategory) {
@@ -523,7 +581,7 @@ public abstract class BaseController implements Initializable, DataListener, Sta
      * @return
      * @throws JposException
      */
-    protected static JposState getDeviceState(BaseJposControl service) throws JposException {
+    protected static JposState getDeviceState(BaseJposControl service) {
         JposState deviceState = null;
         try {
             if (!service.getClaimed()) {
@@ -547,7 +605,8 @@ public abstract class BaseController implements Initializable, DataListener, Sta
 
     @Override
     public void dataOccurred(DataEvent dataEvent) {
-        dataEventEnabled.setSelected(false);
+        if (dataEventEnabled instanceof CheckBox)
+            dataEventEnabled.setSelected(false);
     }
 
     @Override
@@ -583,5 +642,18 @@ public abstract class BaseController implements Initializable, DataListener, Sta
                 }
         }
         return null;
+    }
+
+    public class TextFieldAdder implements Runnable {
+        public TextFieldAdder(String message, TextArea area) {
+            Message = message;
+            TextField = area;
+        }
+        private TextArea TextField;
+        private String Message;
+        @Override
+        public void run() {
+            TextField.appendText(Message);
+        }
     }
 }

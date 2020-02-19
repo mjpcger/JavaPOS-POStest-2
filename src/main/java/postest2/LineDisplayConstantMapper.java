@@ -1,6 +1,6 @@
 package postest2;
 
-public class LineDisplayConstantMapper {
+public class LineDisplayConstantMapper implements IMapWrapper {
 	
 	
 	//###################################################################
@@ -402,5 +402,9 @@ public class LineDisplayConstantMapper {
 		return Integer.parseInt(constant);
 
 	}
-	
+
+	@Override
+	public IMapWrapper getTheClass() {
+		return this;
+	}
 }

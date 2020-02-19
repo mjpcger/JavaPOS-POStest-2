@@ -68,29 +68,15 @@ public class CoinAcceptorController extends CommonController implements Initiali
 		try {
 			if (deviceEnabled.isSelected()) {
 				((CoinAcceptor) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((CoinAcceptor) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
+		RequiredStateChecker.invokeThis(this, service);
 	}
 
 	/**
@@ -239,20 +225,14 @@ public class CoinAcceptorController extends CommonController implements Initiali
 	 */
 
 	private void setUpCurrencyCode() {
-		String[] currencies = null;
-		try {
-			currencies = ((CoinAcceptor) service).getDepositCodeList().split(",");
-		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-		}
-
 		currencyCode.getItems().clear();
-		for (int i = 0; i < currencies.length; i++) {
-			currencyCode.getItems().add(currencies[i]);
-		}
-		currencyCode.setValue(currencies[0]);
-
+		try {
+			String[] currencies = ((CoinAcceptor) service).getDepositCodeList().split(",");
+			for (int i = 0; i < currencies.length; i++) {
+				currencyCode.getItems().add(currencies[i]);
+			}
+			currencyCode.setValue(((CoinAcceptor) service).getCurrencyCode());
+		} catch (JposException e) {}
 	}
 
 	private void setUpEndDepositSuccess() {
@@ -268,7 +248,9 @@ public class CoinAcceptorController extends CommonController implements Initiali
 		pauseDeposit_control.setValue(CoinAcceptorConstantMapper.CACC_DEPOSIT_PAUSE.getConstant());
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpCurrencyCode();
 		setUpEndDepositSuccess();
 		setUpPauseDepositControl();

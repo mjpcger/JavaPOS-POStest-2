@@ -76,7 +76,6 @@ public class BillDispenserController extends CommonController implements Initial
 		try {
 			if (deviceEnabled.isSelected()) {
 				((BillDispenser) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 
 			} else {
 				((BillDispenser) service).setDeviceEnabled(false);
@@ -86,20 +85,7 @@ public class BillDispenserController extends CommonController implements Initial
 			JOptionPane.showMessageDialog(null, je.getMessage());
 		}
 		RequiredStateChecker.invokeThis(this, service);
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
 	}
 
 	@FXML
@@ -238,20 +224,14 @@ public class BillDispenserController extends CommonController implements Initial
 	 */
 
 	private void setUpCurrencyCode() {
-		String[] currencies = null;
-		try {
-			currencies = ((BillDispenser) service).getCurrencyCodeList().split(",");
-		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-		}
-
 		currencyCode.getItems().clear();
-		for (int i = 0; i < currencies.length; i++) {
-			currencyCode.getItems().add(currencies[i]);
-		}
-		currencyCode.setValue(currencies[0]);
-
+		try {
+			String[] currencies = ((BillDispenser) service).getCurrencyCodeList().split(",");
+			for (int i = 0; i < currencies.length; i++) {
+				currencyCode.getItems().add(currencies[i]);
+			}
+			currencyCode.setValue(((BillDispenser) service).getCurrencyCode());
+		} catch (JposException e) {}
 	}
 
 	private void setUpCurrentExit() {
@@ -260,15 +240,13 @@ public class BillDispenserController extends CommonController implements Initial
 			for (int i = 1; i <= ((BillDispenser) service).getDeviceExits(); i++) {
 				currentExit.getItems().add(i);
 			}
-		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-		}
-		currentExit.setValue(1);
-
+			currentExit.setValue(((BillDispenser) service).getCurrentExit());
+		} catch (JposException e) {}
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpCurrencyCode();
 		setUpCurrentExit();
 	}

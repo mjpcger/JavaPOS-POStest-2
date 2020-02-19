@@ -73,8 +73,6 @@ public class BeltController extends CommonController implements Initializable {
 		try {
 			if (deviceEnabled.isSelected()) {
 				((Belt) service).setDeviceEnabled(true);
-				setUpComboBoxes();
-
 			} else {
 				((Belt) service).setDeviceEnabled(false);
 			}
@@ -82,20 +80,7 @@ public class BeltController extends CommonController implements Initializable {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 		}
 		RequiredStateChecker.invokeThis(this, service);
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
 	}
 
 	@FXML
@@ -299,14 +284,22 @@ public class BeltController extends CommonController implements Initializable {
 		autoStopBackward.getItems().clear();
 		autoStopBackward.getItems().add(true);
 		autoStopBackward.getItems().add(false);
-		autoStopBackward.setValue(true);
+		try {
+			autoStopBackward.setValue(((Belt)service).getCapAutoStopBackward());
+		} catch (JposException e) {
+			autoStopBackward.setValue(false);
+		}
 	}
 
 	private void setUpAutoStopForward() {
 		autoStopForward.getItems().clear();
 		autoStopForward.getItems().add(true);
 		autoStopForward.getItems().add(false);
-		autoStopForward.setValue(true);
+		try {
+			autoStopForward.setValue(((Belt)service).getCapAutoStopForward());
+		} catch (JposException e) {
+			autoStopForward.setValue(false);
+		}
 	}
 
 	private void setUpAdjustItemCountDirection() {
@@ -350,14 +343,15 @@ public class BeltController extends CommonController implements Initializable {
 		resetitemCount_direction.setValue(BeltConstantMapper.BELT_RIC_FORWARD.getConstant());
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpAutoStopBackward();
 		setUpAutoStopForward();
 		setUpAdjustItemCountDirection();
 		setUpMoveBackwardSpeed();
 		setUpMoveForwardSpeed();
 		setUpResetItemCount();
-
 	}
 
 }

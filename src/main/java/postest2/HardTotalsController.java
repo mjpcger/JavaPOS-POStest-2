@@ -101,29 +101,15 @@ public class HardTotalsController extends SharableController implements Initiali
 		try {
 			if (deviceEnabled.isSelected()) {
 				((HardTotals) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((HardTotals) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.OPENED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -422,13 +408,16 @@ public class HardTotalsController extends SharableController implements Initiali
 	 */
 	
 	private void setUpCreateErrorDetection(){
+		boolean currentvalue = create_errorDetection.getItems().size() > 0 ? create_errorDetection.getValue() : true;
 		create_errorDetection.getItems().clear();
 		create_errorDetection.getItems().add(true);
 		create_errorDetection.getItems().add(false);
-		create_errorDetection.setValue(true);
+		create_errorDetection.getSelectionModel().select(currentvalue);
 	}
-	
-	private void setUpComboBoxes(){
+
+	@Override
+	public void setupGuiObjects(){
+		super.setupGuiObjects();
 		setUpCreateErrorDetection();
 	}
 	

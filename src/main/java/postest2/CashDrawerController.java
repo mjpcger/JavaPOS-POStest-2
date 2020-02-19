@@ -78,39 +78,15 @@ public class CashDrawerController extends SharableController implements Initiali
 			if (deviceEnabled.isSelected()) {
 				((CashDrawer) service).setDeviceEnabled(true);
 				if (waitForDrawerClose_beepTimeout.getText().equals("")) {
-					waitForDrawerClose_beepTimeout.setText("100");
-				}
-				if (waitForDrawerClose_beepFrequency.getText().equals("")) {
-					waitForDrawerClose_beepFrequency.setText("500");
-				}
-				if (waitForDrawerClose_beepDuration.getText().equals("")) {
-					waitForDrawerClose_beepDuration.setText("100");
-				}
-				if (waitForDrawerClose_beepDelay.getText().equals("")) {
-					waitForDrawerClose_beepDelay.setText("200");
-				}
 			} else {
 				((CashDrawer) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.OPENED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	@FXML
@@ -217,14 +193,9 @@ public class CashDrawerController extends SharableController implements Initiali
 		statistics = "";
 	}
 
-	private class ActionLogAdder implements Runnable {
+	private class ActionLogAdder extends TextFieldAdder {
 		ActionLogAdder(String message) {
-			Message = message;
-		}
-		private String Message;
-		@Override
-		public void run() {
-			textAreaActionLog.appendText(Message);
+			super(message, textAreaActionLog);
 		}
 	}
 
@@ -250,6 +221,23 @@ public class CashDrawerController extends SharableController implements Initiali
 		String msg = getSUEMessage(sue.getStatus());
 		if (msg != null) {
 			Platform.runLater(new ActionLogAdder("Status Update Event: " + msg + "\n"));
+		}
+	}
+
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		if (waitForDrawerClose_beepTimeout.getText().equals("")) {
+			waitForDrawerClose_beepTimeout.setText("100");
+		}
+		if (waitForDrawerClose_beepFrequency.getText().equals("")) {
+			waitForDrawerClose_beepFrequency.setText("500");
+		}
+		if (waitForDrawerClose_beepDuration.getText().equals("")) {
+			waitForDrawerClose_beepDuration.setText("100");
+		}
+		if (waitForDrawerClose_beepDelay.getText().equals("")) {
+			waitForDrawerClose_beepDelay.setText("200");
 		}
 	}
 }

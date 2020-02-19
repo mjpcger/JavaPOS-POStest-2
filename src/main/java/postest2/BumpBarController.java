@@ -22,6 +22,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import jpos.BumpBar;
+import jpos.JposConst;
 import jpos.JposException;
 
 import org.apache.xerces.parsers.DOMParser;
@@ -150,22 +151,8 @@ public class BumpBarController extends CommonController implements Initializable
 			je.printStackTrace();
 			JOptionPane.showMessageDialog(null, je.getMessage());
 		}
-		setUpCheckHealthLevel();
 		RequiredStateChecker.invokeThis(this, service);
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
 	}
 
 	@FXML
@@ -313,6 +300,55 @@ public class BumpBarController extends CommonController implements Initializable
 		checkHealth_level.getItems().add(CommonConstantMapper.JPOS_CH_INTERACTIVE.getConstant());
 		checkHealth_level.setValue(CommonConstantMapper.JPOS_CH_INTERNAL.getConstant());
 	}
-	
-	
+
+	private void setAsyncMode() {
+		try {
+			asyncMode.setSelected(service.getState() != JposConst.JPOS_S_CLOSED && ((BumpBar)service).getAsyncMode());
+		} catch (JposException e) {
+			asyncMode.setSelected(false);
+		}
+	}
+
+	private void setAutoToneDuration() {
+		try {
+			autoToneDuration.setText(Integer.toString(((BumpBar)service).getAutoToneDuration()));
+		} catch (JposException e) {
+			autoToneDuration.setText("");
+		}
+	}
+
+	private void setAutoToneFrequency() {
+		try {
+			autoToneFrequency.setText(Integer.toString(((BumpBar)service).getAutoToneFrequency()));
+		} catch (JposException e) {
+			autoToneFrequency.setText("");
+		}
+	}
+
+	private void setCurrentUnitID() {
+		try {
+			currentUnitID.setText(Integer.toString(((BumpBar)service).getCurrentUnitID()));
+		} catch (JposException e) {
+			currentUnitID.setText("");
+		}
+	}
+
+	private void setTimeout() {
+		try {
+			timeout.setText(Integer.toString(((BumpBar)service).getTimeout()));
+		} catch (JposException e) {
+			timeout.setText("");
+		}
+	}
+
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		setUpCheckHealthLevel();
+		setAsyncMode();
+		setAutoToneDuration();
+		setAutoToneFrequency();
+		setCurrentUnitID();
+		setTimeout();
+	}
 }

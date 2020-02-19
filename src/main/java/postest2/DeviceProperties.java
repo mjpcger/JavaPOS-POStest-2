@@ -19,31 +19,39 @@ public class DeviceProperties {
 			for (Method method : methods) {
 				if (isGetter(method)) {
 					String methodName = method.getName();
-					if (method.getReturnType().equals(Integer.TYPE)) {
-						if (objectMap != null) {
-							ArrayList<String> al = BelongingPropertyChecker.invokeThis(objectMap, methodName);
-							if (!al.isEmpty()) {
-								properties += method.getName().substring(3) + ": ";
-								Iterator<String> iterator = al.iterator();
-								int rightValue = (Integer) method.invoke(object, null);
-								while (iterator.hasNext()) {
-									String value = iterator.next().toString();
-									int temp = (Integer) Class.forName(objectMap.getClass().getName())
-											.getMethod("getConstantNumberFromString", String.class)
-											.invoke(objectMap, value);
-									if (rightValue == temp)
-										properties += value;
+					try {
+						if (method.getReturnType().equals(Integer.TYPE)) {
+							if (objectMap != null) {
+								ArrayList<String> al = BelongingPropertyChecker.invokeThis(objectMap, methodName);
+								if (!al.isEmpty()) {
+									properties += method.getName().substring(3) + ": ";
+									Iterator<String> iterator = al.iterator();
+									int rightValue = (Integer) method.invoke(object, null);
+									while (iterator.hasNext()) {
+										String value = iterator.next().toString();
+										int temp = (Integer) Class.forName(objectMap.getClass().getName())
+												.getMethod("getConstantNumberFromString", String.class)
+												.invoke(objectMap, value);
+										if (rightValue == temp)
+											properties += value;
+									}
+									properties += "\n";
+								} else {
+									properties += method.getName().substring(3) + ": " + (Integer) method.invoke(object, null);
+									properties += "\n";
 								}
-								properties += "\n";
-							} else {
-								properties += method.getName().substring(3) + ": " + (Integer) method.invoke(object, null);
-								properties += "\n";
 							}
+						} else {
+							properties += method.getName().substring(3) + ": " + method.invoke(object);
+							properties += "\n";
+						} // end if return type
+					} catch (InvocationTargetException e) {
+						if (e.getTargetException() instanceof JposException) {
+							properties += method.getName().substring(3) + ": [No access]\n";
+						} else {
+							throw e;
 						}
-					} else {
-						properties += method.getName().substring(3) + ": " + method.invoke(object);
-						properties += "\n";
-					} // end if return type
+					}
 				} // end if is getter
 			} // end for
 

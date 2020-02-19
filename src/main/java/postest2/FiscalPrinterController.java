@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,7 +32,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class FiscalPrinterController extends CommonController implements Initializable,
-		ErrorListener {
+		ErrorListener, DirectIOListener {
 
 	@FXML
 	@RequiredState(JposState.ENABLED)
@@ -48,6 +49,8 @@ public class FiscalPrinterController extends CommonController implements Initial
 	public Text coverLabel;
 	@FXML
 	public Text paperLabel;
+	@FXML
+	public Text receiptLabel;
 	@FXML
 	@RequiredState(JposState.OPENED)
 	public CheckBox flagWhenIdle;
@@ -197,6 +200,11 @@ public class FiscalPrinterController extends CommonController implements Initial
 	@FXML
 	public TextField cashierID;
 
+	// DirectIO Tab
+	@FXML
+	@RequiredState(JposState.ENABLED)
+	public TextArea directIOMessages;
+
 	// Variables used for fiscal receipt printing
 	private long amountFactorDecimal = 1;
 	private int quantityFactorDecimal = 1;
@@ -233,10 +241,6 @@ public class FiscalPrinterController extends CommonController implements Initial
 		try {
 			if (deviceEnabled.isSelected()) {
 				((FiscalPrinter) service).setDeviceEnabled(true);
-				if (((FiscalPrinter)service).getPrinterState() != FiscalPrinterConst.FPTR_PS_MONITOR) {
-					((FiscalPrinter)service).resetPrinter();
-				}
-
 				if (fixedCurrencyFactor.isSelected()) {
 					currencySignificanceFactor = amountFactorDecimal = 10000;
 
@@ -264,37 +268,94 @@ public class FiscalPrinterController extends CommonController implements Initial
 						quantityFactorDecimal = quantityFactorDecimal * 10;
 				}
 
-				setUpReceiptTypes();
-				setUpReceiptStations();
-				setUpMessageTypes();
-				setUpLineNumbers();
-				setUpVatIDs();
-				setUpCoverState();
-				setUpPaperState();
-				setUpCurrency();
-				setUpAdjustmentType();
-				setUpReportType();
-				setUpStation();
-				setUpDateType();
-				setUpDataItem();
-				groupTotalizers();
-				setUpItemTotalizer();
+				if (((FiscalPrinter)service).getPrinterState() != FiscalPrinterConst.FPTR_PS_MONITOR
+						&& ((FiscalPrinter)service).getPrinterState() != FiscalPrinterConst.FPTR_PS_LOCKED) {
+					((FiscalPrinter)service).resetPrinter();
+				}
 			} else {
 				((FiscalPrinter) service).setDeviceEnabled(false);
-				paperLabel.setText("");
-				coverLabel.setText("");
-				vatRate.setText("");
 			}
 		} catch (JposException jpe) {
 			JOptionPane.showMessageDialog(null, jpe.getMessage());
 			jpe.printStackTrace();
 		}
 		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
-	private void setUpLineNumbers() throws JposException {
-		setUpLineNumbers(numHeaderLine, ((FiscalPrinter)service).getNumHeaderLines());
-		setUpLineNumbers(numTrailerLine, ((FiscalPrinter)service).getNumTrailerLines());
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		setUpReceiptTypes();
+		setUpReceiptStations();
+		setUpMessageTypes();
+		setUpLineNumbers();
+		setUpVatIDs();
+		setUpCoverState();
+		setUpPaperState();
+		setUpCurrency();
+		setUpAdjustmentType();
+		setUpReportType();
+		setUpStation();
+		setUpDateType();
+		setUpDataItem();
+		groupTotalizers();
+		setUpItemTotalizer();
+		setUpReceiptState();
+		try {
+			asyncMode.setSelected(((FiscalPrinter)service).getAsyncMode());
+		} catch (JposException e) {
+			asyncMode.setSelected(false);
+		}
+		try {
+			checkTotal.setSelected(((FiscalPrinter)service).getCheckTotal());
+		} catch (JposException e) {
+			checkTotal.setSelected(true);
+		}
+		try {
+			duplicateReceipt.setSelected(((FiscalPrinter) service).getDuplicateReceipt());
+		} catch (JposException e) {
+			duplicateReceipt.setSelected(false);
+		}
+		vatRate.setText("");
+	}
+
+	class PrinterStateCodeMapper extends ErrorCodeMapper {
+		PrinterStateCodeMapper() {
+			Mappings = new Object[]{
+					FiscalPrinterConst.FPTR_PS_MONITOR, "MONITOR",
+					FiscalPrinterConst.FPTR_PS_FISCAL_RECEIPT, "FISCAL RECEIPT",
+					FiscalPrinterConst.FPTR_PS_FISCAL_RECEIPT_TOTAL, "FISCAL RECEIPT TOTAL",
+					FiscalPrinterConst.FPTR_PS_FISCAL_RECEIPT_ENDING, "FISCAL RECEIPT ENDING",
+					FiscalPrinterConst.FPTR_PS_FISCAL_DOCUMENT, "FISCAL DOCUMENT",
+					FiscalPrinterConst.FPTR_PS_FIXED_OUTPUT, "FIXED OUTPUT",
+					FiscalPrinterConst.FPTR_PS_ITEM_LIST, "ITEM LIST",
+					FiscalPrinterConst.FPTR_PS_LOCKED, "LOCKED",
+					FiscalPrinterConst.FPTR_PS_NONFISCAL, "NONFISCAL",
+					FiscalPrinterConst.FPTR_PS_REPORT, "REPORT"
+			};
+		}
+	}
+
+	private void setUpReceiptState() {
+		int recstate = FiscalPrinterConst.FPTR_PS_LOCKED;
+		try {
+			recstate = ((FiscalPrinter)service).getPrinterState();
+		} catch (JposException e) {}
+		receiptLabel.setText(new PrinterStateCodeMapper().getName(recstate));
+	}
+
+	private void setUpLineNumbers() {
+		try {
+			setUpLineNumbers(numHeaderLine, ((FiscalPrinter)service).getNumHeaderLines());
+		} catch (JposException e) {
+			setUpLineNumbers(numHeaderLine, 0);
+		}
+		try {
+			setUpLineNumbers(numTrailerLine, ((FiscalPrinter)service).getNumTrailerLines());
+		} catch (JposException e) {
+			setUpLineNumbers(numTrailerLine, 0);
+		}
 	}
 
 	private void setUpLineNumbers(ComboBox<String> box, int maxline) {
@@ -304,58 +365,96 @@ public class FiscalPrinterController extends CommonController implements Initial
 		}
 	}
 
-	private void setUpVatIDs() throws JposException {
+	private void setUpVatIDs() {
 		cbStatusVatID.getItems().clear();
 		cbVatID.getItems().clear();
 		cbVatID.getItems().add("");
 		cbStatusVatID.getItems().add("");
-		if (HasVatTable = ((FiscalPrinter) service).getCapHasVatTable()) {
-			int numVatRates = ((FiscalPrinter) service).getNumVatRates();
-			int optargs;
-			int remainingVatRates = numVatRates;
+
+		try {
+			HasVatTable = ((FiscalPrinter) service).getCapHasVatTable();
+		} catch (JposException e) {
+			HasVatTable = false;
+		}
+
+		if (HasVatTable && getDeviceState(service) == JposState.ENABLED) {
+			int tryit = JposConst.JPOS_PS_UNKNOWN;
 			try {
-				optargs = Integer.parseInt(cbOptArgs.getText());
-			}
-			catch (Exception oae) {
-				optargs = 0;
-			}
-			for (int i = 0; remainingVatRates > 0 && i < 0xffff; i++) {
+				tryit = ((FiscalPrinter)service).getPowerState();
+			} catch (JposException e) {}
+			if (tryit == JposConst.JPOS_PS_UNKNOWN) {
 				try {
-					((FiscalPrinter) service).getVatEntry(i, optargs, new int[1]);
-					cbStatusVatID.getItems().add(String.valueOf(i));
-					cbVatID.getItems().add(String.valueOf(i));
-					remainingVatRates--;
-				} catch (JposException gvex) {}
+					if (((FiscalPrinter)service).getPrinterState() != FiscalPrinterConst.FPTR_PS_LOCKED)
+						tryit = JposConst.JPOS_PS_ONLINE;
+				} catch (JposException e) {}
 			}
-			if (remainingVatRates > 0) {
-				if (numVatRates > remainingVatRates)
-					JOptionPane.showMessageDialog(null, "Could not retrieve " + numVatRates + " VAT IDs");
-				else if (optargs != 0)
-					JOptionPane.showMessageDialog(null, "No VAT ID found (negative VAT IDs and VAT IDs " +
-							"> 0xffff not supported by POSTest2");
-				else
-					JOptionPane.showMessageDialog(null, "No VAT ID found, set optArgs for getVATEntry to\n" +
-							"correct vendor specific value and try again");
+			if (tryit == JposConst.JPOS_PS_ONLINE) {
+				int numVatRates = 0;
+				try {
+					numVatRates = ((FiscalPrinter) service).getNumVatRates();
+				} catch (JposException e) {
+				}
+				int optargs;
+				int remainingVatRates = numVatRates;
+				try {
+					optargs = Integer.parseInt(cbOptArgs.getText());
+				} catch (Exception oae) {
+					optargs = 0;
+				}
+				if (getDeviceState(service) == JposState.ENABLED) {
+					for (int i = 0; remainingVatRates > 0 && i < 0xffff; i++) {
+						try {
+							((FiscalPrinter) service).getVatEntry(i, optargs, new int[1]);
+						} catch (JposException gvex) {
+							if (gvex.getErrorCode() == JposConst.JPOS_E_ILLEGAL)
+								continue;
+							remainingVatRates = 1;
+						}
+						cbStatusVatID.getItems().add(String.valueOf(i));
+						cbVatID.getItems().add(String.valueOf(i));
+						remainingVatRates--;
+					}
+					if (remainingVatRates > 0 && getDeviceState(service) == JposState.ENABLED) {
+						if (numVatRates > remainingVatRates)
+							JOptionPane.showMessageDialog(null, "Could not retrieve " + numVatRates + " VAT IDs");
+						else if (optargs != 0)
+							JOptionPane.showMessageDialog(null, "No VAT ID found (negative VAT IDs and VAT IDs " +
+									"> 0xffff not supported by POSTest2");
+						else
+							JOptionPane.showMessageDialog(null, "No VAT ID found, set optArgs for getVATEntry to\n" +
+									"correct vendor specific value and try again");
+					}
+				}
 			}
 		}
 		cbVatID.getSelectionModel().select(0);
 		cbStatusVatID.getSelectionModel().select(0);
 	}
 
-	private void setUpCoverState() throws JposException {
-		if (((FiscalPrinter)service).getCapCoverSensor()) {
-			if (((FiscalPrinter)service).getCoverOpen()) {
-				coverLabel.setText("Open");
+	private void setUpCoverState() {
+		String text = "Unknown";
+		try {
+			if (((FiscalPrinter) service).getCapCoverSensor()) {
+				text = ((FiscalPrinter) service).getCoverOpen() ? "Open" : "Closed";
 			}
-			else {
-				coverLabel.setText("Closed");
-			}
-		}
-		else
-			coverLabel.setText("Unknown");
+		} catch (JposException e) {}
+		coverLabel.setText(text);
 	}
 
-	private void setUpDateType() throws JposException {
+	class DateTypeCodeMapper extends ErrorCodeMapper {
+		DateTypeCodeMapper() {
+			Mappings = new Object[]{
+					FiscalPrinterConstantMapper.FPTR_DT_CONF.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_CONF.getConstant(),
+					FiscalPrinterConstantMapper.FPTR_DT_EOD.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_EOD.getConstant(),
+					FiscalPrinterConstantMapper.FPTR_DT_RESET.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_RESET.getConstant(),
+					FiscalPrinterConstantMapper.FPTR_DT_RTC.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_RTC.getConstant(),
+					FiscalPrinterConstantMapper.FPTR_DT_VAT.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_VAT.getConstant(),
+					FiscalPrinterConstantMapper.FPTR_DT_START.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_START.getConstant()
+			};
+		}
+	}
+
+	private void setUpDateType() {
 		DateType.getItems().clear();
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_CONF.getConstant());
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_EOD.getConstant());
@@ -363,65 +462,46 @@ public class FiscalPrinterController extends CommonController implements Initial
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_RTC.getConstant());
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_VAT.getConstant());
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_START.getConstant());
-		switch (((FiscalPrinter)service).getDateType()) {
-			case FiscalPrinterConst.FPTR_DT_CONF:
-				DateType.getSelectionModel().select(FiscalPrinterConstantMapper.FPTR_DT_CONF.getConstant());
-				break;
-			case FiscalPrinterConst.FPTR_DT_EOD:
-				DateType.getSelectionModel().select(FiscalPrinterConstantMapper.FPTR_DT_EOD.getConstant());
-				break;
-			case FiscalPrinterConst.FPTR_DT_RESET:
-				DateType.getSelectionModel().select(FiscalPrinterConstantMapper.FPTR_DT_RESET.getConstant());
-				break;
-			case FiscalPrinterConst.FPTR_DT_VAT:
-				DateType.getSelectionModel().select(FiscalPrinterConstantMapper.FPTR_DT_VAT.getConstant());
-				break;
-			case FiscalPrinterConst.FPTR_DT_RTC:
-				DateType.getSelectionModel().select(FiscalPrinterConstantMapper.FPTR_DT_RTC.getConstant());
-				break;
-			case FiscalPrinterConst.FPTR_DT_START:
-				DateType.getSelectionModel().select(FiscalPrinterConstantMapper.FPTR_DT_START.getConstant());
-				break;
+		try {
+			DateType.getSelectionModel().select(new DateTypeCodeMapper().getName(((FiscalPrinter)service).getDateType()));
+		} catch (JposException e) {
+			DateType.getSelectionModel().select("");
 		}
 	}
 
-	private void setUpPaperState() throws JposException {
+	private void setUpPaperState() {
 		String recstate = "";
-		if (((FiscalPrinter)service).getCapRecPresent()) {
-			if (((FiscalPrinter)service).getCapRecEmptySensor() && (((FiscalPrinter)service).getRecEmpty())) {
-				recstate = "Empty";
-			}
-			else if (((FiscalPrinter)service).getCapRecNearEndSensor() && (((FiscalPrinter)service).getRecNearEnd())) {
-				recstate = "Near End";
-			}
-			else if (((FiscalPrinter)service).getCapRecNearEndSensor() || (((FiscalPrinter)service).getCapRecEmptySensor())) {
-				recstate = "Ok";
-			}
-		}
 		String jrnstate = "";
-		if (((FiscalPrinter)service).getCapJrnPresent()) {
-			if (((FiscalPrinter)service).getCapJrnEmptySensor() && (((FiscalPrinter)service).getJrnEmpty())) {
-				jrnstate = "Empty";
-			}
-			else if (((FiscalPrinter)service).getCapJrnNearEndSensor() && (((FiscalPrinter)service).getJrnNearEnd())) {
-				jrnstate = "Near End";
-			}
-			else if (((FiscalPrinter)service).getCapJrnNearEndSensor() || (((FiscalPrinter)service).getCapJrnEmptySensor())) {
-				jrnstate = "Ok";
-			}
-		}
 		String slpstate = "";
-		if (((FiscalPrinter)service).getCapSlpPresent()) {
-			if (((FiscalPrinter)service).getCapSlpEmptySensor() && (((FiscalPrinter)service).getSlpEmpty())) {
-				slpstate = "Empty";
+		try {
+			if (((FiscalPrinter) service).getCapRecPresent()) {
+				if (((FiscalPrinter) service).getCapRecEmptySensor() && (((FiscalPrinter) service).getRecEmpty())) {
+					recstate = "Empty";
+				} else if (((FiscalPrinter) service).getCapRecNearEndSensor() && (((FiscalPrinter) service).getRecNearEnd())) {
+					recstate = "Near End";
+				} else if (((FiscalPrinter) service).getCapRecNearEndSensor() || (((FiscalPrinter) service).getCapRecEmptySensor())) {
+					recstate = "Ok";
+				}
 			}
-			else if (((FiscalPrinter)service).getCapSlpNearEndSensor() && (((FiscalPrinter)service).getSlpNearEnd())) {
-				slpstate = "Near End";
+			if (((FiscalPrinter) service).getCapJrnPresent()) {
+				if (((FiscalPrinter) service).getCapJrnEmptySensor() && (((FiscalPrinter) service).getJrnEmpty())) {
+					jrnstate = "Empty";
+				} else if (((FiscalPrinter) service).getCapJrnNearEndSensor() && (((FiscalPrinter) service).getJrnNearEnd())) {
+					jrnstate = "Near End";
+				} else if (((FiscalPrinter) service).getCapJrnNearEndSensor() || (((FiscalPrinter) service).getCapJrnEmptySensor())) {
+					jrnstate = "Ok";
+				}
 			}
-			else if (((FiscalPrinter)service).getCapSlpNearEndSensor() || (((FiscalPrinter)service).getCapSlpEmptySensor())) {
-				slpstate = "Ok";
+			if (((FiscalPrinter) service).getCapSlpPresent()) {
+				if (((FiscalPrinter) service).getCapSlpEmptySensor() && (((FiscalPrinter) service).getSlpEmpty())) {
+					slpstate = "Empty";
+				} else if (((FiscalPrinter) service).getCapSlpNearEndSensor() && (((FiscalPrinter) service).getSlpNearEnd())) {
+					slpstate = "Near End";
+				} else if (((FiscalPrinter) service).getCapSlpNearEndSensor() || (((FiscalPrinter) service).getCapSlpEmptySensor())) {
+					slpstate = "Ok";
+				}
 			}
-		}
+		} catch (JposException e) {}
 		if (recstate.equals("Empty") || slpstate.equals("Empty") || jrnstate.equals("Empty"))
 			paperLabel.setText("Empty");
 		else if (recstate.equals("Near End") || slpstate.equals("Near End") || jrnstate.equals("Near End"))
@@ -430,20 +510,6 @@ public class FiscalPrinterController extends CommonController implements Initial
 			paperLabel.setText("Ok");
 		else
 			paperLabel.setText("Unknown");
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
 	}
 
 	/**
@@ -526,6 +592,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		} catch (JposException jpe) {
 			JOptionPane.showMessageDialog(null, jpe.getMessage());
 			jpe.printStackTrace();
+			duplicateReceipt.setSelected(!duplicateReceipt.isSelected());
 		}
 	}
 
@@ -536,6 +603,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		} catch (JposException jpe) {
 			JOptionPane.showMessageDialog(null, jpe.getMessage());
 			jpe.printStackTrace();
+			checkTotal.setSelected(!checkTotal.isSelected());
 		}
 	}
 
@@ -573,6 +641,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 	public void handleClearError() {
 		try {
 			((FiscalPrinter) service).clearError();
+			setupGuiObjects();
 		} catch (JposException jpe) {
 			JOptionPane.showMessageDialog(null, jpe.getMessage());
 			jpe.printStackTrace();
@@ -1687,16 +1756,6 @@ public class FiscalPrinterController extends CommonController implements Initial
 	}
 
 	@FXML
-	public void handleGetPrinterStatus(ActionEvent e) {
-		try {
-			output.setText("" + ((FiscalPrinter) service).getPrinterState());
-		} catch (JposException jpe) {
-			JOptionPane.showMessageDialog(null, jpe.getMessage());
-			jpe.printStackTrace();
-		}
-	}
-
-	@FXML
 	public void handleGetDayOpened(ActionEvent e) {
 		try {
 			output.setText("" + ((FiscalPrinter) service).getDayOpened());
@@ -2080,13 +2139,11 @@ public class FiscalPrinterController extends CommonController implements Initial
 	@Override
 	public void statusUpdateOccurred(StatusUpdateEvent sue) {
 		super.statusUpdateOccurred(sue);
-		try {
-			setUpCoverState();
-			setUpPaperState();
-			setStatusLabel();
-		} catch (JposException e) {
-			e.printStackTrace();
-		}
+		setUpCoverState();
+		setUpPaperState();
+		setStatusLabel();
+		setUpReceiptState();
+		setUpVatIDs();
 	}
 
 	public void handleGetDate(ActionEvent actionEvent) {
@@ -2131,9 +2188,10 @@ public class FiscalPrinterController extends CommonController implements Initial
 				));
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-			setUpReceiptTypes();
+			if (getDeviceState(service) == JposState.ENABLED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -2146,9 +2204,10 @@ public class FiscalPrinterController extends CommonController implements Initial
 				));
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-			setUpReceiptStations();
+			if (getDeviceState(service) == JposState.ENABLED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -2159,9 +2218,10 @@ public class FiscalPrinterController extends CommonController implements Initial
 				((FiscalPrinter) service).setMessageType(FiscalPrinterConstantMapper.getConstantNumberFromString(value));
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-			setUpMessageTypes();
+			if (getDeviceState(service) == JposState.ENABLED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -2192,5 +2252,17 @@ public class FiscalPrinterController extends CommonController implements Initial
 		}
 		else
 			statusLabel.setText("JPOS_S_BUSY");
+	}
+
+	@Override
+	public void directIOOccurred(DirectIOEvent ev) {
+		String text = null;
+		String[] lines = ev.getObject().toString().split("\n");
+		for (String line : lines) {
+			text = text == null ?
+					String.format("\n%d - %d - [%s", ev.getEventNumber(), ev.getData(), line) :
+					text + "\n        " + line;
+		}
+		Platform.runLater(new TextFieldAdder(text + "]\n", directIOMessages));
 	}
 }

@@ -29,6 +29,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import jpos.Biometrics;
+import jpos.BiometricsConst;
 import jpos.JposException;
 
 import org.apache.xerces.parsers.DOMParser;
@@ -221,7 +222,6 @@ public class BiometricsController extends CommonController implements Initializa
 		try {
 			if (deviceEnabled.isSelected()) {
 				((Biometrics) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 
 			} else {
 				((Biometrics) service).setDeviceEnabled(false);
@@ -231,20 +231,7 @@ public class BiometricsController extends CommonController implements Initializa
 			JOptionPane.showMessageDialog(null, je.getMessage());
 		}
 		RequiredStateChecker.invokeThis(this, service);
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
 	}
 
 	@FXML
@@ -689,52 +676,108 @@ public class BiometricsController extends CommonController implements Initializa
 		// Default value
 		algorithm.getItems().add(0);
 
-		String[] algorithms = null;
 		try {
-			algorithms = ((Biometrics) service).getAlgorithmList().split(";");
+			String[] algorithms = ((Biometrics) service).getAlgorithmList().split(";");
+			for (int i = 1; i <= algorithms.length; i++) {
+				algorithm.getItems().add(i);
+			}
+			algorithm.setValue(((Biometrics) service).getAlgorithm());
 		} catch (JposException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 			e.printStackTrace();
 		}
-		for (int i = 1; i <= algorithms.length; i++) {
-			algorithm.getItems().add(i);
-		}
-
-		algorithm.setValue(0);
 	}
 
 	private void setUpRealTimeDataEnabled() {
 		realTimeDataEnabled.getItems().clear();
 		realTimeDataEnabled.getItems().add(true);
 		realTimeDataEnabled.getItems().add(false);
-		realTimeDataEnabled.setValue(true);
+		try {
+			realTimeDataEnabled.setValue(((Biometrics) service).getRealTimeDataEnabled());
+		} catch (JposException e) {
+			realTimeDataEnabled.setValue(false);
+		}
+	}
+
+	class SensorOrientationCodeMapper extends ErrorCodeMapper {
+		SensorOrientationCodeMapper() {
+			Mappings = new Object[]{
+					BiometricsConstantMapper.BIO_SO_NORMAL.getContantNumber(), BiometricsConstantMapper.BIO_SO_NORMAL.getConstant(),
+					BiometricsConstantMapper.BIO_SO_RIGHT.getContantNumber(), BiometricsConstantMapper.BIO_SO_RIGHT.getConstant(),
+					BiometricsConstantMapper.BIO_SO_LEFT.getContantNumber(), BiometricsConstantMapper.BIO_SO_LEFT.getConstant(),
+					BiometricsConstantMapper.BIO_SO_INVERTED.getContantNumber(), BiometricsConstantMapper.BIO_SO_INVERTED.getConstant()
+			};
+		}
 	}
 
 	private void setUpSensorOrientation() {
 		sensorOrientation.getItems().clear();
-		sensorOrientation.getItems().add(BiometricsConstantMapper.BIO_SO_NORMAL.getConstant());
-		sensorOrientation.getItems().add(BiometricsConstantMapper.BIO_SO_RIGHT.getConstant());
-		sensorOrientation.getItems().add(BiometricsConstantMapper.BIO_SO_LEFT.getConstant());
-		sensorOrientation.getItems().add(BiometricsConstantMapper.BIO_SO_INVERTED.getConstant());
-		sensorOrientation.setValue(BiometricsConstantMapper.BIO_SO_NORMAL.getConstant());
+		try {
+			int supported = ((Biometrics)service).getCapSensorOrientation();
+			if ((BiometricsConst.BIO_CSO_NORMAL & supported) != 0)
+				sensorOrientation.getItems().add(BiometricsConstantMapper.BIO_SO_NORMAL.getConstant());
+			if ((BiometricsConst.BIO_CSO_RIGHT & supported) != 0)
+				sensorOrientation.getItems().add(BiometricsConstantMapper.BIO_SO_RIGHT.getConstant());
+			if ((BiometricsConst.BIO_CSO_INVERTED & supported) != 0)
+				sensorOrientation.getItems().add(BiometricsConstantMapper.BIO_SO_LEFT.getConstant());
+			if ((BiometricsConst.BIO_CSO_LEFT & supported) != 0)
+				sensorOrientation.getItems().add(BiometricsConstantMapper.BIO_SO_INVERTED.getConstant());
+			sensorOrientation.setValue(new SensorOrientationCodeMapper().getName(((Biometrics)service).getSensorOrientation()));
+		} catch (JposException e) {}
+	}
+
+	class SensorTypeCodeMapper extends ErrorCodeMapper {
+		SensorTypeCodeMapper() {
+			Mappings = new Object[]{
+					BiometricsConstantMapper.BIO_ST_FACIAL_FEATURES.getContantNumber(), BiometricsConstantMapper.BIO_ST_FACIAL_FEATURES.getConstant(),
+					BiometricsConstantMapper.BIO_ST_FINGERPRINT.getContantNumber(), BiometricsConstantMapper.BIO_ST_FINGERPRINT.getConstant(),
+					BiometricsConstantMapper.BIO_ST_GAIT.getContantNumber(), BiometricsConstantMapper.BIO_ST_GAIT.getConstant(),
+					BiometricsConstantMapper.BIO_ST_HAND_GEOMETRY.getContantNumber(), BiometricsConstantMapper.BIO_ST_HAND_GEOMETRY.getConstant(),
+					BiometricsConstantMapper.BIO_ST_IRIS.getContantNumber(), BiometricsConstantMapper.BIO_ST_IRIS.getConstant(),
+					BiometricsConstantMapper.BIO_ST_KEYSTROKE_DYNAMICS.getContantNumber(), BiometricsConstantMapper.BIO_ST_KEYSTROKE_DYNAMICS.getConstant(),
+					BiometricsConstantMapper.BIO_ST_LIP_MOVEMENT.getContantNumber(), BiometricsConstantMapper.BIO_ST_LIP_MOVEMENT.getConstant(),
+					BiometricsConstantMapper.BIO_ST_PASSWORD.getContantNumber(), BiometricsConstantMapper.BIO_ST_PASSWORD.getConstant(),
+					BiometricsConstantMapper.BIO_ST_RETINA.getContantNumber(), BiometricsConstantMapper.BIO_ST_RETINA.getConstant(),
+					BiometricsConstantMapper.BIO_ST_SIGNATURE_DYNAMICS.getContantNumber(), BiometricsConstantMapper.BIO_ST_SIGNATURE_DYNAMICS.getConstant(),
+					BiometricsConstantMapper.BIO_ST_THERMAL_FACE_IMAGE.getContantNumber(), BiometricsConstantMapper.BIO_ST_THERMAL_FACE_IMAGE.getConstant(),
+					BiometricsConstantMapper.BIO_ST_THERMAL_HAND_IMAGE.getContantNumber(), BiometricsConstantMapper.BIO_ST_THERMAL_HAND_IMAGE.getConstant(),
+					BiometricsConstantMapper.BIO_ST_VOICE.getContantNumber(), BiometricsConstantMapper.BIO_ST_VOICE.getConstant()
+			};
+		}
 	}
 
 	private void setUpSensorType() {
 		sensorType.getItems().clear();
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_FACIAL_FEATURES.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_FINGERPRINT.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_GAIT.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_HAND_GEOMETRY.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_IRIS.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_KEYSTROKE_DYNAMICS.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_LIP_MOVEMENT.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_PASSWORD.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_RETINA.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_SIGNATURE_DYNAMICS.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_THERMAL_FACE_IMAGE.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_THERMAL_HAND_IMAGE.getConstant());
-		sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_VOICE.getConstant());
-		sensorType.setValue(BiometricsConstantMapper.BIO_ST_FACIAL_FEATURES.getConstant());
+		try {
+			int supported = ((Biometrics)service).getCapSensorType();
+			if ((BiometricsConst.BIO_CST_FACIAL_FEATURES & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_FACIAL_FEATURES.getConstant());
+			if ((BiometricsConst.BIO_CST_VOICE & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_VOICE.getConstant());
+			if ((BiometricsConst.BIO_CST_FINGERPRINT & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_FINGERPRINT.getConstant());
+			if ((BiometricsConst.BIO_CST_IRIS & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_IRIS.getConstant());
+			if ((BiometricsConst.BIO_CST_RETINA & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_RETINA.getConstant());
+			if ((BiometricsConst.BIO_CST_HAND_GEOMETRY & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_HAND_GEOMETRY.getConstant());
+			if ((BiometricsConst.BIO_CST_SIGNATURE_DYNAMICS & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_SIGNATURE_DYNAMICS.getConstant());
+			if ((BiometricsConst.BIO_CST_KEYSTROKE_DYNAMICS & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_KEYSTROKE_DYNAMICS.getConstant());
+			if ((BiometricsConst.BIO_CST_LIP_MOVEMENT & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_LIP_MOVEMENT.getConstant());
+			if ((BiometricsConst.BIO_CST_THERMAL_FACE_IMAGE & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_THERMAL_FACE_IMAGE.getConstant());
+			if ((BiometricsConst.BIO_CST_THERMAL_HAND_IMAGE & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_THERMAL_HAND_IMAGE.getConstant());
+			if ((BiometricsConst.BIO_CST_GAIT & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_GAIT.getConstant());
+			if ((BiometricsConst.BIO_CST_PASSWORD & supported) != 0)
+				sensorType.getItems().add(BiometricsConstantMapper.BIO_ST_PASSWORD.getConstant());
+			sensorType.setValue(new SensorTypeCodeMapper().getName(((Biometrics)service).getSensorType()));
+		} catch (JposException e) {}
 	}
 
 	private void setUpIdentifyFARPrecedence() {
@@ -765,7 +808,9 @@ public class BiometricsController extends CommonController implements Initializa
 		verifyMatch_FARPrecedence.setValue(true);
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpAlgorithm();
 		setUpRealTimeDataEnabled();
 		setUpSensorOrientation();

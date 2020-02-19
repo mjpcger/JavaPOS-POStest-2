@@ -23,51 +23,23 @@ public abstract class SharableController extends BaseController implements Initi
     public CheckBox deviceEnabled;
 
     @FXML
-    @Override
-    public void handleRelease(ActionEvent e) {
-        try {
-            service.release();
-            if (deviceEnabled.isSelected() && service.getDeviceEnabled() == false) {
-                deviceEnabled.setSelected(false);
-            }
-
-            RequiredStateChecker.invokeThis(this, service);
-        } catch (JposException je) {
-            je.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed to release \""
-                    + logicalName.getSelectionModel().getSelectedItem() + "\"\nException: " + je.getMessage(),
-                    "Failed", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    @FXML
-    @Override
-    public void handleClose(ActionEvent e) {
-        super.handleClose(e);
-        if (service.getState() == JposConst.JPOS_S_CLOSED) {
-            deviceEnabled.setSelected(false);
-            dataEventEnabled.setSelected(false);
-        } else {
-            if (!deviceEnabled.isDisable()) {
-                deviceEnabled.setSelected(false);
-            }
-
-            if (dataEventEnabled != null && !dataEventEnabled.isDisable()) {
-                dataEventEnabled.setSelected(false);
-            }
-        }
-        RequiredStateChecker.invokeThis(this, service);
-        setStatusLabel();
-    }
-
-    @FXML
     public void handleOCE(ActionEvent e) {
+        if (getDeviceState(service) == JposState.CLOSED) {
+            handleOpen(e);
+        }
+        if (getDeviceState(service) != JposState.ENABLED) {
+            deviceEnabled.setSelected(true);
+            handleDeviceEnable(e);
+        }
+    }
+
+    @Override
+    public void setupGuiObjects() {
+        super.setupGuiObjects();
         try {
-            if(getDeviceState(service) == JposState.CLOSED){
-                handleOpen(e);
-            }
-        } catch (JposException e1) {
-            e1.printStackTrace();
+            deviceEnabled.setSelected(service.getState() != JposConst.JPOS_S_CLOSED && service.getDeviceEnabled());
+        } catch (JposException e) {
+            deviceEnabled.setSelected(false);
         }
     }
 }

@@ -131,8 +131,6 @@ public class BillAcceptorController extends CommonController implements Initiali
 		try {
 			if (deviceEnabled.isSelected()) {
 				((BillAcceptor) service).setDeviceEnabled(true);
-				setUpComboBoxes();
-
 			} else {
 				((BillAcceptor) service).setDeviceEnabled(false);
 			}
@@ -140,22 +138,8 @@ public class BillAcceptorController extends CommonController implements Initiali
 			je.printStackTrace();
 			JOptionPane.showMessageDialog(null, je.getMessage());
 		}
-
 		RequiredStateChecker.invokeThis(this, service);
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.CLAIMED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
 	}
 
 	@FXML
@@ -251,19 +235,14 @@ public class BillAcceptorController extends CommonController implements Initiali
 	 */
 
 	private void setUpCurrencyCode() {
-		String[] currencies = null;
-		try {
-			currencies = ((BillAcceptor) service).getDepositCodeList().split(",");
-		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
-		}
-
 		currencyCode.getItems().clear();
-		for (int i = 0; i < currencies.length; i++) {
-			currencyCode.getItems().add(currencies[i]);
-		}
-		currencyCode.setValue(currencies[0]);
+		try {
+			String[] currencies = ((BillAcceptor) service).getDepositCodeList().split(",");
+			for (int i = 0; i < currencies.length; i++) {
+				currencyCode.getItems().add(currencies[i]);
+			}
+			currencyCode.setValue(((BillAcceptor) service).getCurrencyCode());
+		} catch (JposException e) {}
 
 	}
 
@@ -272,7 +251,11 @@ public class BillAcceptorController extends CommonController implements Initiali
 		realTimeDataEnabled.getItems().clear();
 		realTimeDataEnabled.getItems().add(true);
 		realTimeDataEnabled.getItems().add(false);
-		realTimeDataEnabled.setValue(true);
+		try {
+			realTimeDataEnabled.setValue(((BillAcceptor)service).getRealTimeDataEnabled());
+		} catch (JposException e) {
+			realTimeDataEnabled.setValue(false);
+		}
 
 	}
 
@@ -290,7 +273,9 @@ public class BillAcceptorController extends CommonController implements Initiali
 		pauseDeposit_control.setValue(BillAcceptorConstantMapper.BACC_DEPOSIT_PAUSE.getConstant());
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpCurrencyCode();
 		setUpRealTimeDataEnabled();
 		setUpEndDepositSuccess();

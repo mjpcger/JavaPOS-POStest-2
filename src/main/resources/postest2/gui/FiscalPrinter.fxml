@@ -294,9 +294,8 @@
                         <Button layoutX="440.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleGetTrainingMode" prefWidth="122.0" text="Get Training Mode" />
                         <Button layoutX="440.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleGetErrorInfo" prefWidth="122.0" text="Get Error Info" />
                         <Button layoutX="440.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleGetOutputID" prefWidth="122.0" text="Get Output ID" />
-                        <Button layoutX="570.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleGetPrinterStatus" prefWidth="122.0" text="Get Printer Status" />
-                        <Button layoutX="570.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleGetDayOpened" prefWidth="122.0" text="Get Day Opened" />
-                        <Button layoutX="570.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleGetRemFisMem" text="Get Rem. Fis. Mem." />
+                        <Button layoutX="570.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleGetDayOpened" prefWidth="122.0" text="Get Day Opened" />
+                        <Button layoutX="570.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleGetRemFisMem" text="Get Rem. Fis. Mem." />
                         <TextArea fx:id="output" layoutX="100.0" layoutY="315.0" prefHeight="116.0" prefWidth="560.0" wrapText="true" />
                         <Text font="$x2" fontSmoothingType="LCD" layoutX="340.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output" />
                       </children>
@@ -318,6 +317,8 @@
                         <RadioButton fx:id="directIO_datatypeString" layoutX="358.0" layoutY="93.0" mnemonicParsing="false" text="String" />
                         <RadioButton fx:id="directIO_datatypeByteArray" layoutX="358.0" layoutY="107.0" mnemonicParsing="false" text="Byte[]" />
                         <Button layoutX="231.0" layoutY="121.0" mnemonicParsing="false" onAction="#handleDirectIO" text="DirectIO" />
+                        <TextArea fx:id="directIOMessages" layoutX="23.0" layoutY="190.0" prefHeight="150.0" prefWidth="573.0" wrapText="true" />
+                        <Text font="$x2" fontSmoothingType="LCD" layoutX="250.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direct IO Events" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -338,14 +339,16 @@
         <Pane prefHeight="92.0" styleClass="topPane">
           <children>
             <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logical name: " />
-            <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" prefHeight="21.0" prefWidth="113.0" />
+            <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" onAction="#handleSetLogicalName" prefHeight="21.0" prefWidth="113.0" />
             <Text fontSmoothingType="LCD" layoutX="277.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " />
             <Text fx:id="statusLabel" font="$x2" fontSmoothingType="LCD" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_S_CLOSED" />
             <Text fontSmoothingType="LCD" layoutX="470.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power State: " />
             <Text fx:id="powerLabel" font="$x2" fontSmoothingType="LCD" layoutX="545.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_PS_UNKNOWN" />
-            <Text fontSmoothingType="LCD" layoutX="700.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cover State: " />
+            <Text fontSmoothingType="LCD" layoutX="690.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cover State: " />
             <Text fx:id="coverLabel" font="$x2" fontSmoothingType="LCD" layoutX="770.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-            <Text fontSmoothingType="LCD" layoutX="700.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paper State: " />
+            <Text fontSmoothingType="LCD" layoutX="690.0" layoutY="48.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Receipt State: " />
+            <Text fx:id="receiptLabel" font="$x2" fontSmoothingType="LCD" layoutX="770.0" layoutY="48.5" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_S_CLOSED" />
+            <Text fontSmoothingType="LCD" layoutX="690.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paper State: " />
             <Text fx:id="paperLabel" font="$x2" fontSmoothingType="LCD" layoutX="770.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
             <Button fx:id="buttonOpen" layoutX="14.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleOpen" prefWidth="61.0" text="Open" />
             <Button fx:id="buttonClaim" layoutX="83.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleClaim" prefWidth="61.0" text="Claim" />

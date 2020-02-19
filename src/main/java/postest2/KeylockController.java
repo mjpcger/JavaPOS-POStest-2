@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -20,9 +21,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import javafx.scene.text.Text;
 import jpos.JposException;
 import jpos.Keylock;
 
+import jpos.KeylockConst;
+import jpos.events.StatusUpdateEvent;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -38,6 +42,10 @@ public class KeylockController extends SharableController implements Initializab
 	public ComboBox<String> waitForKeylockChange_keyPosition;
 	@FXML
 	public TextField waitForKeylockChange_timeout;
+	@FXML
+	public Button waitForKeylockChange;
+	@FXML
+	public Text keyPosition;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -58,29 +66,15 @@ public class KeylockController extends SharableController implements Initializab
 		try {
 			if (deviceEnabled.isSelected()) {
 				((Keylock) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((Keylock) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
-	}
-
-	@Override
-	@FXML
-	public void handleOCE(ActionEvent e) {
-		super.handleOCE(e);
-		try {
-			if(getDeviceState(service) == JposState.OPENED){
-				deviceEnabled.setSelected(true);
-				handleDeviceEnable(e);
-			}
-		} catch (JposException e1) {
-			e1.printStackTrace();
-		}
+		setupGuiObjects();
+		RequiredStateChecker.invokeThis(this, service);
 	}
 
 	/**
@@ -152,6 +146,7 @@ public class KeylockController extends SharableController implements Initializab
 		if (waitForKeylockChange_timeout.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Field should have a value!");
 		} else {
+			waitForKeylockChange.setDisable(true);
 			try {
 				((Keylock) service).waitForKeylockChange(KeylockConstantMapper.getConstantNumberFromString(
 						waitForKeylockChange_keyPosition.getSelectionModel().getSelectedItem()), 
@@ -163,25 +158,87 @@ public class KeylockController extends SharableController implements Initializab
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
 			}
+			waitForKeylockChange.setDisable(false);
 		}
 	}
 	
 	/*
 	 * Set up ComboBoxes
 	 */
-	
-	private void setUpWaitForKeylockChangeKeyPosition(){
-		waitForKeylockChange_keyPosition.getItems().clear();
-		waitForKeylockChange_keyPosition.getItems().add(KeylockConstantMapper.LOCK_KP_ANY.getConstant());
-		waitForKeylockChange_keyPosition.getItems().add(KeylockConstantMapper.LOCK_KP_ELECTRONIC.getConstant());
-		waitForKeylockChange_keyPosition.getItems().add(KeylockConstantMapper.LOCK_KP_LOCK.getConstant());
-		waitForKeylockChange_keyPosition.getItems().add(KeylockConstantMapper.LOCK_KP_NORM.getConstant());
-		waitForKeylockChange_keyPosition.getItems().add(KeylockConstantMapper.LOCK_KP_SUPR.getConstant());
-		waitForKeylockChange_keyPosition.setValue(KeylockConstantMapper.LOCK_KP_ANY.getConstant());
-	}
-	
-	private void setUpComboBoxes(){
-		setUpWaitForKeylockChangeKeyPosition();
+
+	class KeyPositionCodeMapper extends ErrorCodeMapper {
+		KeyPositionCodeMapper() {
+			Mappings = new Object[]{
+					KeylockConst.LOCK_KP_ANY, KeylockConstantMapper.LOCK_KP_ANY.getConstant(),
+					KeylockConst.LOCK_KP_LOCK, KeylockConstantMapper.LOCK_KP_LOCK.getConstant(),
+					KeylockConst.LOCK_KP_NORM, KeylockConstantMapper.LOCK_KP_NORM.getConstant(),
+					KeylockConst.LOCK_KP_SUPR, KeylockConstantMapper.LOCK_KP_SUPR.getConstant()
+			};
+		}
 	}
 
+	class EKeyPositionCodeMapper extends KeyPositionCodeMapper {
+		EKeyPositionCodeMapper() {
+			Mappings[1] = KeylockConstantMapper.LOCK_KP_ELECTRONIC.getConstant();
+		}
+	}
+
+	private void setUpWaitForKeylockChangeKeyPosition(){
+		String current = waitForKeylockChange_keyPosition.getItems().size() > 0
+				? waitForKeylockChange_keyPosition.getValue() : null;
+		waitForKeylockChange_keyPosition.getItems().clear();
+		try {
+			KeyPositionCodeMapper mapper = ((Keylock)service).getCapKeylockType() == KeylockConst.LOCK_KT_STANDARD
+					? new KeyPositionCodeMapper()
+					: new EKeyPositionCodeMapper();
+			for (int i = 0, limit = ((Keylock) service).getPositionCount(); i <= limit; i++) {
+				waitForKeylockChange_keyPosition.getItems().add(mapper.getName(i));
+			}
+		} catch (JposException e) {
+			if (getDeviceState(service) != JposState.CLOSED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
+		}
+		if (waitForKeylockChange_keyPosition.getItems().contains(current))
+			waitForKeylockChange_keyPosition.getSelectionModel().select(current);
+		else if (waitForKeylockChange_keyPosition.getItems().size() > 0)
+			waitForKeylockChange_keyPosition.getSelectionModel().select(0);
+	}
+
+	@Override
+	public void setupGuiObjects(){
+		super.setupGuiObjects();
+		setUpWaitForKeylockChangeKeyPosition();
+		setKeyPosition();
+	}
+
+	private void setKeyPosition() {
+        try {
+            if (((Keylock) service).getCapKeylockType() == KeylockConst.LOCK_KT_ELECTRONIC) {
+                byte[] ekeyval = ((Keylock)service).getElectronicKeyValue();
+                String ekeystr = "";
+                boolean ispresent = false;
+                for (byte b : ekeyval) {
+                    ekeystr += String.format("%02x", b & 0xff);
+                    ispresent = ispresent || (b != 0);
+                }
+                keyPosition.setText(ispresent ? ekeystr : "");
+            } else {
+                keyPosition.setText(new KeyPositionCodeMapper().getName(((Keylock)service).getKeyPosition()));
+            }
+        } catch (JposException e) {
+            if (getDeviceState(service) == JposState.ENABLED) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+                e.printStackTrace();
+            }
+            keyPosition.setText("");
+        }
+    }
+
+	@Override
+	public void statusUpdateOccurred(StatusUpdateEvent ev) {
+		super.statusUpdateOccurred(ev);
+		setKeyPosition();
+	}
 }

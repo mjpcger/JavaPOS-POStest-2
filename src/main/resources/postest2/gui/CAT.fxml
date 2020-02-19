@@ -19,6 +19,7 @@
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
             <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
             <CheckBox fx:id="asyncMode" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleAsyncMode" text="Asynchronous Mode" />
+            <CheckBox fx:id="trainingMode" layoutX="155.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleSetTrainingMode" text="Training Mode" />
             <TabPane fx:id="functionPane" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE">
               <stylesheets>
                 <URL value="@win7glass.css" />
@@ -28,39 +29,31 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <Label layoutX="457.0" layoutY="241.0" text="Command:" />
-                        <Label layoutX="457.0" layoutY="264.0" text="Data:" />
-                        <Label layoutX="457.0" layoutY="288.0" text="Object:" />
-                        <TextField fx:id="directIO_command" layoutX="530.0" layoutY="238.0" prefWidth="199.0" />
-                        <TextField fx:id="directIO_data" layoutX="530.0" layoutY="261.0" prefWidth="199.0" />
-                        <TextField fx:id="directIO_object" layoutX="530.0" layoutY="285.0" prefWidth="199.0" />
-                        <Button layoutX="728.0" layoutY="258.0" mnemonicParsing="false" onAction="#handleBrowseDirectIOData" text="Browse" />
-                        <Button layoutX="728.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleBrowseDirectIOObject" text="Browse" />
-                        <RadioButton fx:id="directIO_datatypeString" layoutX="790.0" layoutY="282.0" mnemonicParsing="false" text="String" />
-                        <RadioButton fx:id="directIO_datatypeByteArray" layoutX="790.0" layoutY="296.0" mnemonicParsing="false" text="Byte[]" />
-                        <Button layoutX="665.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleDirectIO" text="DirectIO" />
-                        <Button layoutX="438.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleSetAdditionalSecurityInformation" prefWidth="210.0" text="Set AdditionalSecurityInformation" />
-                        <Label layoutX="28.0" layoutY="49.0" text="Set AdditionalSecurityInformation:" />
-                        <TextField fx:id="additionalSecurityInformation" layoutX="220.0" layoutY="46.0" prefWidth="200.0" />
-                        <Button layoutX="438.0" layoutY="86.0" mnemonicParsing="false" onAction="#handleSetPaymentMedia" prefWidth="210.0" text="Set PaymentMedia" />
-                        <Label layoutX="28.0" layoutY="91.0" text="Set PaymentMedia" />
-                        <ComboBox fx:id="paymentMedia" layoutX="220.0" layoutY="88.0" prefHeight="21.0" prefWidth="200.0" />
-                        <Button layoutX="438.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleSetTrainingMode" prefWidth="210.0" text="Set TrainingMode" />
-                        <Label layoutX="28.0" layoutY="127.0" text="Set TrainingMode:" />
-                        <ComboBox id="paymentMedia" fx:id="trainingMode" layoutX="220.0" layoutY="124.0" prefHeight="21.0" prefWidth="200.0" />
-                        <Label layoutX="28.0" layoutY="244.0" text="SequenceNumber:" />
-                        <TextField id="additionalSecurityInformation" fx:id="accessDailyLog_sequenceNumber" layoutX="220.0" layoutY="241.0" prefWidth="200.0" />
-                        <Label layoutX="28.0" layoutY="280.0" text="Type:" />
-                        <ComboBox id="paymentMedia" fx:id="accessDailyLog_type" layoutX="220.0" layoutY="277.0" prefHeight="21.0" prefWidth="200.0" />
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="203.0" prefWidth="392.0" text="Access Daily Log" underline="true">
+                        <Label layoutX="457.0" layoutY="13.0" text="DirectIO" alignment="CENTER" prefWidth="272.0" underline="true">
                           <font>
                             <Font size="14.0" fx:id="x1" />
                           </font>
                         </Label>
-                        <Label layoutX="28.0" layoutY="317.0" text="Timeout" />
-                        <TextField id="additionalSecurityInformation" fx:id="accessDailyLog_timeout" layoutX="220.0" layoutY="314.0" prefWidth="200.0" />
-                        <Button layoutX="312.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleAccessDailyLog" text="Access Daily Log" />
-                        <Label alignment="CENTER" font="$x1" layoutX="457.0" layoutY="203.0" prefWidth="272.0" text="DirectIO" underline="true" />
+                        <Label layoutX="457.0" layoutY="51.0" text="Command:" />
+                        <Label layoutX="457.0" layoutY="74.0" text="Data:" />
+                        <Label layoutX="457.0" layoutY="98.0" text="Object:" />
+                        <TextField fx:id="directIO_command" layoutX="530.0" layoutY="48.0" prefWidth="199.0" />
+                        <TextField fx:id="directIO_data" layoutX="530.0" layoutY="71.0" prefWidth="199.0" />
+                        <TextField fx:id="directIO_object" layoutX="530.0" layoutY="95.0" prefWidth="199.0" />
+                        <Button layoutX="728.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleBrowseDirectIOData" text="Browse" />
+                        <Button layoutX="728.0" layoutY="93.0" mnemonicParsing="false" onAction="#handleBrowseDirectIOObject" text="Browse" />
+                        <RadioButton fx:id="directIO_datatypeString" layoutX="790.0" layoutY="92.0" mnemonicParsing="false" text="String" />
+                        <RadioButton fx:id="directIO_datatypeByteArray" layoutX="790.0" layoutY="106.0" mnemonicParsing="false" text="Byte[]" />
+                        <Button layoutX="665.0" layoutY="121.0" mnemonicParsing="false" onAction="#handleDirectIO" text="DirectIO" />
+
+                        <Label text="Access Daily Log" layoutX="28.0" layoutY="13.0" alignment="CENTER" prefWidth="392.0" font="$x1" underline="true" />
+                        <Label layoutX="28.0" layoutY="54.0" text="SequenceNumber:" />
+                        <TextField fx:id="accessDailyLog_sequenceNumber" layoutX="220.0" layoutY="51.0" id="additionalSecurityInformation" prefWidth="200.0" />
+                        <Label layoutX="28.0" layoutY="90.0" text="Type:" />
+                        <ComboBox fx:id="accessDailyLog_type" layoutX="220.0" layoutY="87.0" id="paymentMedia" prefHeight="21.0" prefWidth="200.0" />
+                        <Label layoutX="28.0" layoutY="127.0" text="Timeout" />
+                        <TextField fx:id="accessDailyLog_timeout" layoutX="220.0" layoutY="124.0" prefWidth="200.0" id="additionalSecurityInformation" />
+                        <Button layoutX="312.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleAccessDailyLog" text="Access Daily Log" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -69,20 +62,24 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <Label layoutX="39.0" layoutY="68.0" text="Sequence Number:" />
-                        <TextField id="access_sequencsNumber" fx:id="authorize_sequenceNumber" layoutX="167.0" layoutY="65.0" prefWidth="200.0" />
-                        <Label layoutX="39.0" layoutY="108.0" text="Amount:" />
-                        <TextField id="access_sequencsNumber" fx:id="authorize_amount" layoutX="167.0" layoutY="105.0" prefWidth="200.0" />
-                        <Label layoutX="39.0" layoutY="153.0" text="Tax and others :" />
-                        <TextField id="access_sequencsNumber" fx:id="authorize_taxOthers" layoutX="167.0" layoutY="150.0" prefWidth="200.0" />
-                        <Label layoutX="39.0" layoutY="193.0" text="Timeout:" />
-                        <TextField id="access_sequencsNumber" fx:id="authorize_timeout" layoutX="167.0" layoutY="190.0" prefWidth="200.0" />
-                        <Button layoutX="416.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleAuthorizeCompletion" prefWidth="155.0" text="Authorize Completion" />
-                        <Button layoutX="416.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleAuthorizePreSales" prefWidth="155.0" text="Authorize Pre-Sales" />
-                        <Button layoutX="416.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleAuthorizeVoid" prefWidth="155.0" text="Authorize Void" />
-                        <Button layoutX="416.0" layoutY="141.0" mnemonicParsing="false" onAction="#handleAuthorizeSales" prefWidth="155.0" text="Authorize Sales" />
-                        <Button layoutX="416.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleAuthorizeRefund" prefWidth="155.0" text="Authorize Refund" />
-                        <Button layoutX="416.0" layoutY="195.0" mnemonicParsing="false" onAction="#handleAuthorizeVoidPreSales" prefWidth="155.0" text="Authorize Void Pre-Sales" />
+                        <Label layoutX="28.0" layoutY="15.0" text="PaymentMedia" />
+                        <ComboBox fx:id="paymentMedia" layoutX="130.0" layoutY="10.0" prefHeight="21.0" prefWidth="200.0" />
+                        <Label layoutX="340.0" layoutY="15.0" text="AdditionalSecurityInformation:" />
+                        <TextField fx:id="additionalSecurityInformation" layoutX="520.0" layoutY="10.0" prefWidth="350.0" />
+                        <Label layoutX="28.0" layoutY="68.0" text="Sequence Number:" />
+                        <TextField id="access_sequencsNumber" fx:id="authorize_sequenceNumber" layoutX="130.0" layoutY="65.0" prefWidth="200.0" />
+                        <Label layoutX="28.0" layoutY="108.0" text="Amount:" />
+                        <TextField id="access_sequencsNumber" fx:id="authorize_amount" layoutX="130.0" layoutY="105.0" prefWidth="200.0" />
+                        <Label layoutX="28.0" layoutY="153.0" text="Tax and others :" />
+                        <TextField id="access_sequencsNumber" fx:id="authorize_taxOthers" layoutX="130.0" layoutY="150.0" prefWidth="200.0" />
+                        <Label layoutX="28.0" layoutY="193.0" text="Timeout:" />
+                        <TextField id="access_sequencsNumber" fx:id="authorize_timeout" layoutX="130.0" layoutY="190.0" prefWidth="200.0" />
+                        <Button layoutX="340.0" layoutY="58.0" onAction="#handleAuthorizeCompletion" mnemonicParsing="false" prefWidth="155.0" text="Authorize Completion" />
+                        <Button layoutX="340.0" layoutY="87.0" onAction="#handleAuthorizePreSales" mnemonicParsing="false" prefWidth="155.0" text="Authorize Pre-Sales" />
+                        <Button layoutX="340.0" layoutY="168.0" onAction="#handleAuthorizeVoid" mnemonicParsing="false" prefWidth="155.0" text="Authorize Void" />
+                        <Button layoutX="340.0" layoutY="141.0" onAction="#handleAuthorizeSales" mnemonicParsing="false" prefWidth="155.0" text="Authorize Sales" />
+                        <Button layoutX="340.0" layoutY="114.0" onAction="#handleAuthorizeRefund" mnemonicParsing="false" prefWidth="155.0" text="Authorize Refund" />
+                        <Button layoutX="340.0" layoutY="195.0" onAction="#handleAuthorizeVoidPreSales" mnemonicParsing="false" prefWidth="155.0" text="Authorize Void Pre-Sales" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -91,30 +88,35 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
-                        <Label alignment="CENTER" font="$x1" layoutX="30.0" layoutY="44.0" prefWidth="204.77734375" text="Cash Deposit" underline="true" />
-                        <Label layoutX="30.0" layoutY="74.0" text="Sequence Number:" />
-                        <TextField fx:id="cashDeposit_sequenceNumber" layoutX="142.0" layoutY="71.0" prefWidth="200.0" />
-                        <Label layoutX="30.0" layoutY="104.0" text="Amount:" />
-                        <TextField id="cashDeposit_sequenceNumber" fx:id="cashDeposit_amount" layoutX="142.0" layoutY="101.0" prefWidth="200.0" />
-                        <Label layoutX="30.0" layoutY="134.0" text="Timeout:" />
-                        <TextField id="cashDeposit_sequenceNumber" fx:id="cashDeposit_timeout" layoutX="142.0" layoutY="131.0" prefWidth="200.0" />
-                        <Button layoutX="252.0" layoutY="167.0" mnemonicParsing="false" onAction="#handleCashDeposit" text="Cash Deposit" />
-                        <Label alignment="CENTER" font="$x1" layoutX="437.0" layoutY="44.0" prefWidth="204.77734375" text="Check Card" underline="true" />
-                        <Label layoutX="437.0" layoutY="74.0" text="Sequence Number:" />
-                        <TextField id="cashDeposit_sequenceNumber" fx:id="checkCard_sequenceNumber" layoutX="549.0" layoutY="71.0" prefWidth="200.0" />
-                        <Label layoutX="437.0" layoutY="104.0" text="Timeout:" />
-                        <TextField id="cashDeposit_sequenceNumber" fx:id="checkCard_timeout" layoutX="549.0" layoutY="101.0" prefWidth="200.0" />
-                        <Button layoutX="659.0" layoutY="167.0" mnemonicParsing="false" onAction="#handleCheckCard" text="Check Card" />
-                        <Label alignment="CENTER" font="$x1" layoutX="30.0" layoutY="238.0" prefWidth="204.77734375" text="Lock Terminal" underline="true" />
-                        <Button layoutX="81.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleLockTerminal" text="Lock Terminal" />
-                        <Label alignment="CENTER" font="$x1" layoutX="437.0" layoutY="238.0" prefWidth="204.77734375" text="Unlock Terminal" underline="true" />
-                        <Button layoutX="493.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleUnlockTerminal" text="UnlockTerminal" />
+                        <Label layoutX="30.0" layoutY="24.0" text="Cash Deposit" alignment="CENTER" font="$x1" prefWidth="204.77734375" underline="true" />
+                        <Label layoutX="30.0" layoutY="54.0" text="Sequence Number:" />
+                        <TextField fx:id="cashDeposit_sequenceNumber" layoutX="142.0" layoutY="51.0" prefWidth="200.0" />
+                        <Label layoutX="30.0" layoutY="84.0" text="Amount:" />
+                        <TextField fx:id="cashDeposit_amount" layoutX="142.0" layoutY="81.0" prefWidth="200.0" id="cashDeposit_sequenceNumber" />
+                        <Label layoutX="30.0" layoutY="114.0" text="Timeout:" />
+                        <TextField fx:id="cashDeposit_timeout" layoutX="142.0" layoutY="111.0" prefWidth="200.0" id="cashDeposit_sequenceNumber"  />
+                        <Button layoutX="252.0" layoutY="147.0" onAction="#handleCashDeposit" mnemonicParsing="false" text="Cash Deposit" />
+
+                        <Label layoutX="437.0" layoutY="24.0" text="Check Card" alignment="CENTER" font="$x1" prefWidth="205.0" underline="true" />
+                        <Label layoutX="437.0" layoutY="54.0" text="Sequence Number:" />
+                        <TextField fx:id="checkCard_sequenceNumber" layoutX="549.0" layoutY="51.0" prefWidth="200.0" id="cashDeposit_sequenceNumber" />
+                        <Label layoutX="437.0" layoutY="84.0" text="Timeout:" />
+                        <TextField fx:id="checkCard_timeout" layoutX="549.0" layoutY="81.0" prefWidth="200.0" id="cashDeposit_sequenceNumber" />
+                        <Button layoutX="659.0" layoutY="147.0" onAction="#handleCheckCard" mnemonicParsing="false" text="Check Card" />
+
+                        <Label layoutX="30.0" layoutY="198.0" text="Lock Terminal" alignment="CENTER" font="$x1" prefWidth="205.0" underline="true" />
+                        <Button layoutX="81.0" layoutY="236.0" onAction="#handleLockTerminal" mnemonicParsing="false" text="Lock Terminal" />
+
+                        <Label layoutX="437.0" layoutY="198.0" text="Unlock Terminal" alignment="CENTER" font="$x1" prefWidth="204.77734375" underline="true" />
+                        <Button layoutX="493.0" layoutY="236.0" onAction="#handleUnlockTerminal" mnemonicParsing="false" text="UnlockTerminal" />
                       </children>
                     </AnchorPane>
                   </content>
                 </Tab>
               </tabs>
             </TabPane>
+            <TextArea fx:id="events" layoutX="45.0" layoutY="400.0" prefHeight="220.0" prefWidth="700.0" wrapText="true" />
+            <Text text="Events" layoutX="360.0" layoutY="395.0" font="$x1" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" underline="true" />
           </children>
         </Pane>
       </center>
@@ -122,7 +124,7 @@
         <Pane prefHeight="92.0" styleClass="topPane">
           <children>
             <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logical name: " />
-            <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" prefHeight="21.0" prefWidth="113.0" />
+            <ComboBox fx:id="logicalName" layoutX="101.0" layoutY="9.0" onAction="#handleSetLogicalName" prefHeight="21.0" prefWidth="113.0" />
             <Text fontSmoothingType="LCD" layoutX="277.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " />
             <Text fx:id="statusLabel" fontSmoothingType="LCD" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JPOS_S_CLOSED">
               <font>
