@@ -1,6 +1,6 @@
 package postest2;
 
-public class ElectronicJournalConstantMapper implements IMapWrapper {
+public class ElectronicJournalConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "CapStation", "Station" Property Constants
@@ -57,12 +57,6 @@ public class ElectronicJournalConstantMapper implements IMapWrapper {
 			return ElectronicJournalConstantMapper.EJ_MT_TAIL.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

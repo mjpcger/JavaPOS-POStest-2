@@ -119,7 +119,8 @@ public class HardTotalsController extends SharableController implements Initiali
 	@FXML
 	public void handleInfo(ActionEvent e) {
 		try {
-			String msg = DeviceProperties.getProperties(service, null);
+			IMapWrapper ccm = new CommonConstantMapper();
+			String msg = DeviceProperties.getProperties(service, ccm);
 			JTextArea jta = new JTextArea(msg);
 			@SuppressWarnings("serial")
 			JScrollPane jsp = new JScrollPane(jta) {

@@ -1,6 +1,6 @@
 package postest2;
 
-public class BiometricsConstantMapper implements IMapWrapper {
+public class BiometricsConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "SensorColor" Property Constants
@@ -309,12 +309,6 @@ public class BiometricsConstantMapper implements IMapWrapper {
 			return BiometricsConstantMapper.BIO_CST_VOICE.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

@@ -1,6 +1,6 @@
 package postest2;
 
-public class BeltConstantMapper implements IMapWrapper {
+public class BeltConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "MotionStatus" Property Constants
@@ -67,12 +67,6 @@ public class BeltConstantMapper implements IMapWrapper {
 			return BeltConstantMapper.BELT_MT_MOTOR_FAULT.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

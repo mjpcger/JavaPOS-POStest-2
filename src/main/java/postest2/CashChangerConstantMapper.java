@@ -1,6 +1,6 @@
 package postest2;
 
-public class CashChangerConstantMapper implements IMapWrapper {
+public class CashChangerConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "DeviceStatus" and "FullStatus" Property Constants
@@ -77,12 +77,6 @@ public class CashChangerConstantMapper implements IMapWrapper {
 			return CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_JAM.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

@@ -1,6 +1,6 @@
 package postest2;
 
-public class POSKeyboardConstantMapper implements IMapWrapper {
+public class POSKeyboardConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "EventTypes" Property Constants
@@ -34,12 +34,6 @@ public class POSKeyboardConstantMapper implements IMapWrapper {
 			return POSKeyboardConstantMapper.KBD_KET_KEYUP.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

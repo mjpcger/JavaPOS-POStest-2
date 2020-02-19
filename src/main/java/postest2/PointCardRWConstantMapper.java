@@ -1,6 +1,6 @@
 package postest2;
 
-public class PointCardRWConstantMapper implements IMapWrapper {
+public class PointCardRWConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "MapMode" Property Constants
@@ -180,13 +180,6 @@ public class PointCardRWConstantMapper implements IMapWrapper {
 			return PointCardRWConstantMapper.PCRW_RP_ROTATE180.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-	
 }

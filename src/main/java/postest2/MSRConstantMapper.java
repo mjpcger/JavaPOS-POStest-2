@@ -1,7 +1,7 @@
 package postest2;
 
 
-public class MSRConstantMapper implements IMapWrapper {
+public class MSRConstantMapper extends CommonConstantMapper {
 
     /////////////////////////////////////////////////////////////////////
     // "TracksToRead" Property Constants
@@ -222,14 +222,7 @@ public class MSRConstantMapper implements IMapWrapper {
 		if(MSRConstantMapper.MSR_TR_NONE.getConstant().equals(constant)) {
 			return MSRConstantMapper.MSR_TR_NONE.getContantNumber();
 		}
-		
-		
-		return Integer.parseInt(constant);
-	}
 
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-	
 }

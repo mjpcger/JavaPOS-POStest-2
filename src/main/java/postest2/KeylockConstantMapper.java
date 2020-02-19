@@ -1,6 +1,6 @@
 package postest2;
 
-public class KeylockConstantMapper implements IMapWrapper {
+public class KeylockConstantMapper extends CommonConstantMapper {
 	
 	// ///////////////////////////////////////////////////////////////////
 	// "KeyPosition" Property Constants
@@ -53,13 +53,7 @@ public class KeylockConstantMapper implements IMapWrapper {
 		if(KeylockConstantMapper.LOCK_KP_SUPR.getConstant().equals(constant)) {
 			return KeylockConstantMapper.LOCK_KP_SUPR.getContantNumber();
 		}
-		
-		return Integer.parseInt(constant);
-	}
 
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-	
 }

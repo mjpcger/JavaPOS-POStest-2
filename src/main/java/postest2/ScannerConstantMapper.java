@@ -1,6 +1,6 @@
 package postest2;
 
-public class ScannerConstantMapper implements IMapWrapper {
+public class ScannerConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "ScanDataType" Property Constants
@@ -241,12 +241,6 @@ public class ScannerConstantMapper implements IMapWrapper {
 			return ScannerConstantMapper.SCAN_SDT_UNKNOWN.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

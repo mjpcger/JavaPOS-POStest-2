@@ -1,7 +1,7 @@
 package postest2;
 
 
-public class RemoteOrderDisplayConstantMapper implements IMapWrapper {
+public class RemoteOrderDisplayConstantMapper extends CommonConstantMapper {
 
 	
 	 /////////////////////////////////////////////////////////////////////
@@ -481,11 +481,6 @@ public class RemoteOrderDisplayConstantMapper implements IMapWrapper {
 			return RemoteOrderDisplayConstantMapper.ROD_DE_TOUCH_MOVE.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
-	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
 }

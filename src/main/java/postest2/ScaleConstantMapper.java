@@ -1,6 +1,6 @@
 package postest2;
 
-public class ScaleConstantMapper implements IMapWrapper {
+public class ScaleConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "StatusNotify" Property Constants
@@ -49,12 +49,6 @@ public class ScaleConstantMapper implements IMapWrapper {
 			return ScaleConstantMapper.SCAL_SN_ENABLED.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

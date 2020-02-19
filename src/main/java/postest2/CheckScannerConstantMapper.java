@@ -1,6 +1,6 @@
 package postest2;
 
-public class CheckScannerConstantMapper implements IMapWrapper {
+public class CheckScannerConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "Color" Capability Constants
@@ -271,12 +271,6 @@ public class CheckScannerConstantMapper implements IMapWrapper {
 			return CheckScannerConstantMapper.CHK_CIF_TIFF.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

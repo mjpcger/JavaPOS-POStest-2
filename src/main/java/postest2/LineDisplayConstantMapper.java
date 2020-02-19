@@ -1,6 +1,6 @@
 package postest2;
 
-public class LineDisplayConstantMapper implements IMapWrapper {
+public class LineDisplayConstantMapper extends CommonConstantMapper {
 	
 	
 	//###################################################################
@@ -10,89 +10,130 @@ public class LineDisplayConstantMapper implements IMapWrapper {
 	/////////////////////////////////////////////////////////////////////
 	// "CapBlink" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getCapBlink)
 	public static final ConstantConverter DISP_CB_NOBLINK      = new ConstantConverter(0, "DISP_CB_NOBLINK");
+	@BelongingProperty(PropertyNames.getCapBlink)
 	public static final ConstantConverter DISP_CB_BLINKALL     = new ConstantConverter(1, "DISP_CB_BLINKALL");
+	@BelongingProperty(PropertyNames.getCapBlink)
 	public static final ConstantConverter DISP_CB_BLINKEACH    = new ConstantConverter(2, "DISP_CB_BLINKEACH");
 	
 	/////////////////////////////////////////////////////////////////////
 	// "CapCharacterSet" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getCapCharacterSet)
 	public static final ConstantConverter DISP_CCS_NUMERIC     = new ConstantConverter(0, "DISP_CCS_NUMERIC");
+	@BelongingProperty(PropertyNames.getCapCharacterSet)
 	public static final ConstantConverter DISP_CCS_ALPHA       = new ConstantConverter(1, "DISP_CCS_ALPHA");
+	@BelongingProperty(PropertyNames.getCapCharacterSet)
 	public static final ConstantConverter DISP_CCS_ASCII       = new ConstantConverter(998, "DISP_CCS_ASCII");
+	@BelongingProperty(PropertyNames.getCapCharacterSet)
 	public static final ConstantConverter DISP_CCS_KANA        = new ConstantConverter(10, "DISP_CCS_KANA");
+	@BelongingProperty(PropertyNames.getCapCharacterSet)
 	public static final ConstantConverter DISP_CCS_KANJI       = new ConstantConverter(11, "DISP_CCS_KANJI");
+	@BelongingProperty(PropertyNames.getCapCharacterSet)
 	public static final ConstantConverter DISP_CCS_UNICODE     = new ConstantConverter(997, "DISP_CCS_UNICODE");
 	
 	
 	/////////////////////////////////////////////////////////////////////
 	// "CapCursorType" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getCapCursorType)
 	public static final ConstantConverter DISP_CCT_NONE        = new ConstantConverter(0x00000000, "DISP_CCT_NONE");
+	@BelongingProperty(PropertyNames.getCapCursorType)
 	public static final ConstantConverter DISP_CCT_FIXED       = new ConstantConverter(0x00000001, "DISP_CCT_FIXED");
+	@BelongingProperty(PropertyNames.getCapCursorType)
 	public static final ConstantConverter DISP_CCT_BLOCK       = new ConstantConverter(0x00000002, "DISP_CCT_BLOCK");
+	@BelongingProperty(PropertyNames.getCapCursorType)
 	public static final ConstantConverter DISP_CCT_HALFBLOCK   = new ConstantConverter(0x00000004, "DISP_CCT_HALFBLOCK");
+	@BelongingProperty(PropertyNames.getCapCursorType)
 	public static final ConstantConverter DISP_CCT_UNDERLINE   = new ConstantConverter(0x00000008, "DISP_CCT_UNDERLINE");
+	@BelongingProperty(PropertyNames.getCapCursorType)
 	public static final ConstantConverter DISP_CCT_REVERSE     = new ConstantConverter(0x00000010, "DISP_CCT_REVERSE");
+	@BelongingProperty(PropertyNames.getCapCursorType)
 	public static final ConstantConverter DISP_CCT_OTHER       = new ConstantConverter(0x00000020, "DISP_CCT_OTHER");
 	
 	// Added in Release 1.8
+	@BelongingProperty(PropertyNames.getCapCursorType)
 	public static final ConstantConverter DISP_CCT_BLINK       = new ConstantConverter(  0x00000040, "DISP_CCT_BLINK");
 	
 	
 	/////////////////////////////////////////////////////////////////////
 	// "CapReadBack" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getCapReadBack)
 	public static final ConstantConverter DISP_CRB_NONE        = new ConstantConverter(  0x00000000, "DISP_CRB_NONE");
+	@BelongingProperty(PropertyNames.getCapReadBack)
 	public static final ConstantConverter DISP_CRB_SINGLE      = new ConstantConverter(  0x00000001, "DISP_CRB_SINGLE");
 	
 	
 	/////////////////////////////////////////////////////////////////////
 	// "CapReverse" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getCapReverse)
 	public static final ConstantConverter DISP_CR_NONE          = new ConstantConverter(  0x00000000, "DISP_CR_NONE");
+	@BelongingProperty(PropertyNames.getCapReverse)
 	public static final ConstantConverter DISP_CR_REVERSEALL    = new ConstantConverter(  0x00000001, "DISP_CR_REVERSEALL");
+	@BelongingProperty(PropertyNames.getCapReverse)
 	public static final ConstantConverter DISP_CR_REVERSEEACH   = new ConstantConverter(  0x00000002, "DISP_CR_REVERSEEACH");
 	
 	
 	/////////////////////////////////////////////////////////////////////
 	// "CharacterSet" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getCharacterSet)
 	public static final ConstantConverter DISP_CS_UNICODE      = new ConstantConverter(997, "DISP_CS_UNICODE");
+	@BelongingProperty(PropertyNames.getCharacterSet)
 	public static final ConstantConverter DISP_CS_ASCII        = new ConstantConverter(998, "DISP_CS_ASCII");
+	@BelongingProperty(PropertyNames.getCharacterSet)
 	public static final ConstantConverter DISP_CS_ANSI         = new ConstantConverter(999, "DISP_CS_ANSI");
 	
 	
 	/////////////////////////////////////////////////////////////////////
 	// "CursorType" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getCursorType)
 	public static final ConstantConverter DISP_CT_NONE        = new ConstantConverter(  0, "DISP_CT_NONE");
+	@BelongingProperty(PropertyNames.getCursorType)
 	public static final ConstantConverter DISP_CT_FIXED       = new ConstantConverter(  1, "DISP_CT_FIXED");
+	@BelongingProperty(PropertyNames.getCursorType)
 	public static final ConstantConverter DISP_CT_BLOCK       = new ConstantConverter(  2, "DISP_CT_BLOCK");
+	@BelongingProperty(PropertyNames.getCursorType)
 	public static final ConstantConverter DISP_CT_HALFBLOCK   = new ConstantConverter(  3, "DISP_CT_HALFBLOCK");
+	@BelongingProperty(PropertyNames.getCursorType)
 	public static final ConstantConverter DISP_CT_UNDERLINE   = new ConstantConverter(  4, "DISP_CT_UNDERLINE");
+	@BelongingProperty(PropertyNames.getCursorType)
 	public static final ConstantConverter DISP_CT_REVERSE     = new ConstantConverter(  5, "DISP_CT_REVERSE");
+	@BelongingProperty(PropertyNames.getCursorType)
 	public static final ConstantConverter DISP_CT_OTHER       = new ConstantConverter(  6, "DISP_CT_OTHER");
 	
 	// Added in Release 1.8
+	@BelongingProperty(PropertyNames.getCursorType)
 	public static final ConstantConverter DISP_CT_BLINK       = new ConstantConverter(  0x10000000, "DISP_CT_BLINK");
 	
 	
 	/////////////////////////////////////////////////////////////////////
 	// "MarqueeType" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getMarqueeType)
 	public static final ConstantConverter DISP_MT_NONE         = new ConstantConverter(0, "DISP_MT_NONE");
+	@BelongingProperty(PropertyNames.getMarqueeType)
 	public static final ConstantConverter DISP_MT_UP           = new ConstantConverter(1, "DISP_MT_UP");
+	@BelongingProperty(PropertyNames.getMarqueeType)
 	public static final ConstantConverter DISP_MT_DOWN         = new ConstantConverter(2, "DISP_MT_DOWN");
+	@BelongingProperty(PropertyNames.getMarqueeType)
 	public static final ConstantConverter DISP_MT_LEFT         = new ConstantConverter(3, "DISP_MT_LEFT");
+	@BelongingProperty(PropertyNames.getMarqueeType)
 	public static final ConstantConverter DISP_MT_RIGHT        = new ConstantConverter(4, "DISP_MT_RIGHT");
+	@BelongingProperty(PropertyNames.getMarqueeType)
 	public static final ConstantConverter DISP_MT_INIT         = new ConstantConverter(5, "DISP_MT_INIT");
 	
 	
 	/////////////////////////////////////////////////////////////////////
 	// "MarqueeFormat" Property Constants
 	/////////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getMarqueeFormat)
 	public static final ConstantConverter DISP_MF_WALK         = new ConstantConverter(0, "DISP_MF_WALK");
+	@BelongingProperty(PropertyNames.getMarqueeFormat)
 	public static final ConstantConverter DISP_MF_PLACE        = new ConstantConverter(1, "DISP_MF_PLACE");
 	
 	
@@ -398,13 +439,7 @@ public class LineDisplayConstantMapper implements IMapWrapper {
 		if(LineDisplayConstantMapper.DISP_BM_BOTTOM.getConstant().equals(constant)) {
 			return LineDisplayConstantMapper.DISP_BM_BOTTOM.getContantNumber();
 		}
-		
-		return Integer.parseInt(constant);
 
-	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
 }

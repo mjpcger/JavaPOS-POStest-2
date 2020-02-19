@@ -1,6 +1,6 @@
 package postest2;
 
-public class FiscalPrinterConstantMapper implements IMapWrapper {
+public class FiscalPrinterConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "AdjustmentType" arguments in diverse methods
@@ -407,7 +407,6 @@ public class FiscalPrinterConstantMapper implements IMapWrapper {
 	public static final ConstantConverter FPTR_EL_FATAL =  new ConstantConverter(3, "FPTR_EL_FATAL");
 	@BelongingProperty(PropertyNames.getErrorLevel)
 	public static final ConstantConverter FPTR_EL_BLOCKED =  new ConstantConverter(4, "FPTR_EL_BLOCKED");
-	
 	
 	public static int getConstantNumberFromString(String constant) {
 		
@@ -1283,13 +1282,6 @@ public class FiscalPrinterConstantMapper implements IMapWrapper {
 			return FiscalPrinterConstantMapper.FPTR_DL_VOID_ITEM.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

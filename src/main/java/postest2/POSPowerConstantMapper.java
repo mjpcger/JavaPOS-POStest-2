@@ -1,6 +1,6 @@
 package postest2;
 
-public class POSPowerConstantMapper implements IMapWrapper {
+public class POSPowerConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "CapUPSChargeState" Capability and "UPSChargeState" Property
@@ -83,12 +83,6 @@ public class POSPowerConstantMapper implements IMapWrapper {
 			return POSPowerConstantMapper.PWR_REASON_DENY.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

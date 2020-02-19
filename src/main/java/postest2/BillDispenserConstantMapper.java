@@ -1,6 +1,6 @@
 package postest2;
 
-public class BillDispenserConstantMapper implements IMapWrapper {
+public class BillDispenserConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "DeviceStatus" Property Constants
@@ -33,11 +33,6 @@ public class BillDispenserConstantMapper implements IMapWrapper {
 			return BillDispenserConstantMapper.BDSP_STATUS_JAM.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
-	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
 }

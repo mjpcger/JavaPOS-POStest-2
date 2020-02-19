@@ -24,9 +24,9 @@ public class DeviceProperties {
 							if (objectMap != null) {
 								ArrayList<String> al = BelongingPropertyChecker.invokeThis(objectMap, methodName);
 								if (!al.isEmpty()) {
-									properties += method.getName().substring(3) + ": ";
 									Iterator<String> iterator = al.iterator();
 									int rightValue = (Integer) method.invoke(object, null);
+									properties += method.getName().substring(3) + ": ";
 									while (iterator.hasNext()) {
 										String value = iterator.next().toString();
 										int temp = (Integer) Class.forName(objectMap.getClass().getName())

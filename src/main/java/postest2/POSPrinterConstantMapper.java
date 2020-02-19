@@ -1,6 +1,6 @@
 package postest2;
 
-public class POSPrinterConstantMapper implements IMapWrapper {
+public class POSPrinterConstantMapper extends CommonConstantMapper {
 
 
 	// ###################################################################
@@ -1028,10 +1028,8 @@ public class POSPrinterConstantMapper implements IMapWrapper {
 		if (POSPrinterConstantMapper.PTR_CART_CLEANING.getConstant().equals(constant)) {
 			return POSPrinterConstantMapper.PTR_CART_CLEANING.getContantNumber();
 		}
-		
-		// Return Int value - for example for Bitmap width (User can specify a size)
-		return Integer.parseInt(constant);
 
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
 
 	public static String getPageModeDescriptorConstantName(int constantNumber) {
@@ -1055,10 +1053,5 @@ public class POSPrinterConstantMapper implements IMapWrapper {
 			return POSPrinterConstantMapper.PTR_PM_OPAQUE.getConstant();
 		}
 		return "" + constantNumber;
-	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
 	}
 }

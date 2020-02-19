@@ -1,7 +1,7 @@
 package postest2;
 
 
-public class LightsConstantMapper implements IMapWrapper { 
+public class LightsConstantMapper extends CommonConstantMapper {
 	
 	// ///////////////////////////////////////////////////////////////////
 	// "CapAlarm" Property Constants
@@ -84,14 +84,7 @@ public class LightsConstantMapper implements IMapWrapper {
 		if(LightsConstantMapper.LGT_COLOR_PRIMARY.getConstant().equals(constant)) {
 			return LightsConstantMapper.LGT_COLOR_PRIMARY.getContantNumber();
 		}
-		
-		return Integer.parseInt(constant);
-	}
 
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-	
-	
 }

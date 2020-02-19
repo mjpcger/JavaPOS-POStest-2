@@ -1,6 +1,6 @@
 package postest2;
 
-public class BillAcceptorConstantMapper implements IMapWrapper {
+public class BillAcceptorConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "DepositStatus" Property Constants
@@ -84,12 +84,6 @@ public class BillAcceptorConstantMapper implements IMapWrapper {
 			return BillAcceptorConstantMapper.BACC_STATUS_DEPOSIT_JAM.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

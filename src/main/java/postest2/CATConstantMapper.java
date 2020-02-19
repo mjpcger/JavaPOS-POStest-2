@@ -1,6 +1,6 @@
 package postest2;
 
-public class CATConstantMapper implements IMapWrapper {
+public class CATConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// Payment Condition Constants
@@ -267,12 +267,6 @@ public class CATConstantMapper implements IMapWrapper {
 			return CATConstantMapper.CAT_DL_REPORTING_SETTLEMENT.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

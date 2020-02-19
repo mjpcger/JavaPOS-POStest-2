@@ -1,6 +1,6 @@
 package postest2;
 
-public class MICRConstantMapper implements IMapWrapper {
+public class MICRConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "CheckType" Property Constants
@@ -61,12 +61,6 @@ public class MICRConstantMapper implements IMapWrapper {
 			return MICRConstantMapper.MICR_CT_UNKNOWN.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

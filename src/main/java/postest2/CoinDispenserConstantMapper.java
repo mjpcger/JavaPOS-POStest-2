@@ -1,6 +1,6 @@
 package postest2;
 
-public class CoinDispenserConstantMapper implements IMapWrapper {
+public class CoinDispenserConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "DispenserStatus" Property Constants
@@ -14,11 +14,6 @@ public class CoinDispenserConstantMapper implements IMapWrapper {
 			"COIN_STATUS_NEAREMPTY");
 	@BelongingProperty(PropertyNames.getDispenserStatus)
 	public static final ConstantConverter COIN_STATUS_JAM = new ConstantConverter(4, "COIN_STATUS_JAM");
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
 
 	/**
 	 * Get Constant Number from String - Needed because ComboBoxes just hold the
@@ -48,6 +43,6 @@ public class CoinDispenserConstantMapper implements IMapWrapper {
 			return CoinDispenserConstantMapper.COIN_STATUS_OK.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
 }

@@ -35,6 +35,12 @@ public enum PropertyNames {
 	
 	/* *** CoinDispenser *** */
 	getDispenserStatus,
+
+	/* *** Common *** */
+	getCapPowerReporting,
+	getPowerNotify,
+	getPowerState,
+	getState,
 	
 	/* *** ElectronicJournal *** */
 	getCapStation,
@@ -66,7 +72,16 @@ public enum PropertyNames {
 	
 	/* *** Lights *** */
 	getCapAlarm,
-	
+
+	/* *** LineDisplay *** */
+	getCapBlink,
+	getCapCursorType,
+	getCapReadBack,
+	getCapReverse,
+	getCursorType,
+	getMarqueeFormat,
+	getMarqueeType,
+
 	/* *** MICR *** */
 	getCheckType,
 	

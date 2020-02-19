@@ -1,6 +1,6 @@
 package postest2;
 
-public class ElectronicValueRWConstantMapper implements IMapWrapper {
+public class ElectronicValueRWConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "CapCardSensor" Property Constants
@@ -139,12 +139,6 @@ public class ElectronicValueRWConstantMapper implements IMapWrapper {
 			return ElectronicValueRWConstantMapper.EVRW_TA_TRANSACTION.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

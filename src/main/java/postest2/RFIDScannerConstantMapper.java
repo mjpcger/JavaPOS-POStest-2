@@ -1,6 +1,6 @@
 package postest2;
 
-public class RFIDScannerConstantMapper implements IMapWrapper {
+public class RFIDScannerConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "CapMultipleProtocols", "CurrentTagProtocol", and
@@ -140,13 +140,6 @@ public class RFIDScannerConstantMapper implements IMapWrapper {
 			return RFIDScannerConstantMapper.RFID_RT_ID_PARTIALUSERDATA.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

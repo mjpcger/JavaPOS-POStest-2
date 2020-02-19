@@ -1,6 +1,6 @@
 package postest2;
 
-public class PINPadConstantMapper implements IMapWrapper {
+public class PINPadConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "AvailablePromptsList" and "Prompt" Property Constants
@@ -193,12 +193,6 @@ public class PINPadConstantMapper implements IMapWrapper {
 			return PINPadConstantMapper.PPAD_TRANS_ADMIN.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-	
 }

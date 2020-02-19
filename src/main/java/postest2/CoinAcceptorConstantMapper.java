@@ -1,6 +1,6 @@
 package postest2;
 
-public class CoinAcceptorConstantMapper implements IMapWrapper {
+public class CoinAcceptorConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "EndDeposit" Method Constants
@@ -99,12 +99,6 @@ public class CoinAcceptorConstantMapper implements IMapWrapper {
 			return CoinAcceptorConstantMapper.CACC_DEPOSIT_RESTART.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

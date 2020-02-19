@@ -1,6 +1,6 @@
 package postest2;
 
-public class SmartCardRWConstantMapper implements IMapWrapper {
+public class SmartCardRWConstantMapper extends CommonConstantMapper {
 
 	// ###################################################################
 	// #### Smart Card Constants
@@ -189,12 +189,6 @@ public class SmartCardRWConstantMapper implements IMapWrapper {
 			return SmartCardRWConstantMapper.SC_TRANS_PROTOCOL_T1.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

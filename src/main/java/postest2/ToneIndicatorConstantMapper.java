@@ -1,6 +1,6 @@
 package postest2;
 
-public class ToneIndicatorConstantMapper implements IMapWrapper {
+public class ToneIndicatorConstantMapper extends CommonConstantMapper {
 	// ###################################################################
 	// #### Tone Indicator Constants
 	// ###################################################################
@@ -16,12 +16,6 @@ public class ToneIndicatorConstantMapper implements IMapWrapper {
 		if (ToneIndicatorConstantMapper.TONE_MT_NONE.getConstant().equals(constant)) {
 			return ToneIndicatorConstantMapper.TONE_MT_NONE.getContantNumber();
 		}
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }

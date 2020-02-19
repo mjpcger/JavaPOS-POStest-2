@@ -1,6 +1,6 @@
 package postest2;
 
-public class GateConstantMapper implements IMapWrapper {
+public class GateConstantMapper extends CommonConstantMapper {
 
 	// ///////////////////////////////////////////////////////////////////
 	// "GateStatus" Property Constants
@@ -32,12 +32,6 @@ public class GateConstantMapper implements IMapWrapper {
 			return GateConstantMapper.GATE_GS_MALFUNCTION.getContantNumber();
 		}
 
-		return Integer.parseInt(constant);
+		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
-	
-	@Override
-	public IMapWrapper getTheClass() {
-		return this;
-	}
-
 }
