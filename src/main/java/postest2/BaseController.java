@@ -1,5 +1,6 @@
 package postest2;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -72,6 +73,9 @@ public abstract class BaseController implements Initializable, DataListener, Sta
     @FXML
     @RequiredState(JposState.OPENEDNOTENABLED)
     public CheckBox powerNotify;
+    @FXML
+    @RequiredState(JposState.OPENED)
+    public CheckBox autoDisable;
 
     // DirectIO
     @FXML
@@ -129,8 +133,15 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         setPowerNotify();
         setPowerLabel();
         setDataEventEnabled();
+        setAutoDisable();
     }
 
+    private void setAutoDisable() {
+        if (autoDisable != null) {
+            autoDisable.setSelected("true".equals(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(),
+                    "getAutoDisable")));
+        }
+    }
     private void setDataEventEnabled() {
         if (dataEventEnabled != null) {
             Method getDataEventEnabled = getMethod(service, "getDataEventEnabled");
@@ -165,9 +176,7 @@ public abstract class BaseController implements Initializable, DataListener, Sta
 
     @FXML
     public void handleOpen(ActionEvent e) {
-        directIO_datatypeByteArray.setToggleGroup(directIO_datatypeGroup);
-        directIO_datatypeString.setToggleGroup(directIO_datatypeGroup);
-        directIO_datatypeByteArray.setSelected(true);
+        setUpDirectIO();
 
         try {
             if (logicalName.getValue() != null && !logicalName.getValue().isEmpty()) {
@@ -315,6 +324,23 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         }
     }
 
+    @FXML
+    public void handleAutoDisable(ActionEvent e) {
+        if (autoDisable != null) {
+            Method setAutoDisable = getMethod(service, "setAutoDisable");
+            if (setAutoDisable != null) {
+                try {
+                    setAutoDisable.invoke(service, autoDisable.isSelected());
+                    return;
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                    ex.printStackTrace();
+                }
+            }
+            autoDisable.setSelected(!autoDisable.isSelected());
+        }
+    }
+
     Method getMethod(Object object, String name) {
         try {
             Method methods[] = Class.forName(object.getClass().getName()).getMethods();
@@ -421,6 +447,15 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         if (!LogicalNameGetter.getLogicalNamesByCategory(devCategory).isEmpty()) {
             logicalName.setItems(LogicalNameGetter.getLogicalNamesByCategory(devCategory));
         }
+    }
+
+    private void setUpDirectIO() {
+        if (directIO_datatypeByteArray != null) {
+            directIO_datatypeByteArray.setToggleGroup(directIO_datatypeGroup);
+            directIO_datatypeByteArray.setSelected(true);
+        }
+        if (directIO_datatypeString != null)
+            directIO_datatypeString.setToggleGroup(directIO_datatypeGroup);
     }
 
     /**
@@ -575,6 +610,7 @@ public abstract class BaseController implements Initializable, DataListener, Sta
     public void dataOccurred(DataEvent dataEvent) {
         if (dataEventEnabled instanceof CheckBox)
             dataEventEnabled.setSelected(false);
+        Platform.runLater(new GuiUpdater());
     }
 
     @Override
@@ -622,6 +658,14 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         @Override
         public void run() {
             TextField.appendText(Message);
+        }
+    }
+
+    public class GuiUpdater implements Runnable {
+        @Override
+        public void run() {
+            RequiredStateChecker.invokeThis(BaseController.this, service);
+            setupGuiObjects();
         }
     }
 }
