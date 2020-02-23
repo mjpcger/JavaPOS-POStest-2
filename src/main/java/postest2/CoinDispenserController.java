@@ -203,25 +203,10 @@ public class CoinDispenserController extends CommonController implements Initial
 		setupGuiObjects();
 	}
 
-	class DispenserStatusCodeMapper extends ErrorCodeMapper {
-		DispenserStatusCodeMapper() {
-			Mappings = new Object[]{
-					CoinDispenserConst.COIN_STATUS_OK, "COIN_STATUS_OK",
-					CoinDispenserConst.COIN_STATUS_EMPTY, "COIN_STATUS_EMPTY",
-					CoinDispenserConst.COIN_STATUS_NEAREMPTY, "COIN_STATUS_NEAREMPTY",
-					CoinDispenserConst.COIN_STATUS_JAM, "COIN_STATUS_JAM"
-			};
-		}
-	}
-
 	@Override
 	public void setupGuiObjects() {
 		super.setupGuiObjects();
-		try {
-			dispenserStatus.setText(new DispenserStatusCodeMapper().getName(((CoinDispenser)service).getDispenserStatus()));
-		} catch (Exception e) {
-			dispenserStatus.setText("");
-		}
+		dispenserStatus.setText(DeviceProperties.getPropertyValue(service, new CoinDispenserConstantMapper(), "getDispenserStatus"));
 	}
 
 	/*

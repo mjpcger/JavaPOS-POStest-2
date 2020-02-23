@@ -403,50 +403,18 @@ public abstract class BaseController implements Initializable, DataListener, Sta
         }
     }
 
-    class StateCodeMapper extends ErrorCodeMapper {
-        StateCodeMapper() {
-            super();
-            Mappings = new Object[]{
-                    JposConst.JPOS_S_CLOSED, "JPOS_S_CLOSED",
-                    JposConst.JPOS_S_IDLE, "JPOS_S_IDLE",
-                    JposConst.JPOS_S_BUSY, "JPOS_S_BUSY",
-                    JposConst.JPOS_S_ERROR, "JPOS_S_ERROR"
-            };
-        }
-    }
-
     /**
      * Set StatusLabel corresponding to the Device Status
      */
     void setStatusLabel() {
-        statusLabel.setText(new StateCodeMapper().getName(service.getState()));
-    }
-
-    class PowerStateCodeMapper extends ErrorCodeMapper {
-        PowerStateCodeMapper() {
-            super();
-            Mappings = new Object[]{
-                    JposConst.JPOS_PS_UNKNOWN, "JPOS_PS_UNKNOWN",
-                    JposConst.JPOS_PS_ONLINE, "JPOS_PS_ONLINE",
-                    JposConst.JPOS_PS_OFF, "JPOS_PS_OFF",
-                    JposConst.JPOS_PS_OFFLINE, "JPOS_PS_OFFLINE",
-                    JposConst.JPOS_PS_OFF_OFFLINE, "JPOS_PS_OFF_OFFLINE"
-            };
-        }
+        statusLabel.setText(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(), "getState"));
     }
 
     /**
      * Set PowerState label corresponding to the Power status
      */
     public void setPowerLabel() {
-        Method getPowerState = getMethod(service, "getPowerState");
-        int powerState;
-        try {
-            powerState = (int) getPowerState.invoke(service);
-        } catch (Exception e) {
-            powerState = JposConst.JPOS_PS_UNKNOWN;
-        }
-        powerLabel.setText(new PowerStateCodeMapper().getName(powerState));
+        powerLabel.setText(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(), "getPowerState"));
     }
 
     protected void setUpLogicalNameComboBox(String devCategory) {

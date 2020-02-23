@@ -521,17 +521,6 @@ public class CATController extends CommonController implements Initializable, Er
 		}
 	}
 
-	class PaymentMediaCodeMapper extends ErrorCodeMapper {
-		PaymentMediaCodeMapper() {
-			Mappings = new Object[]{
-					CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getContantNumber(), CATConstantMapper.CAT_MEDIA_UNSPECIFIED.getConstant(),
-					CATConstantMapper.CAT_MEDIA_CREDIT.getContantNumber(), CATConstantMapper.CAT_MEDIA_CREDIT.getConstant(),
-					CATConstantMapper.CAT_MEDIA_DEBIT.getContantNumber(), CATConstantMapper.CAT_MEDIA_DEBIT.getConstant(),
-					CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getContantNumber(), CATConstantMapper.CAT_MEDIA_ELECTRONIC_MONEY.getConstant()
-			};
-		}
-	}
-
 	/*
 	 * Set up ComboBoxes
 	 */
@@ -553,11 +542,7 @@ public class CATController extends CommonController implements Initializable, Er
 	}
 
 	private void setPaymentMedia() {
-		try {
-			paymentMedia.setValue(new PaymentMediaCodeMapper().getName(((CAT) service).getPaymentMedia()));
-		} catch (JposException e) {
-			paymentMedia.setValue(new PaymentMediaCodeMapper().getName(CATConst.CAT_MEDIA_UNSPECIFIED));
-		}
+		paymentMedia.setValue(DeviceProperties.getPropertyValue(service, new CATConstantMapper(), "getPaymentMedia"));
 	}
 
 	private void setAsyncMode() {

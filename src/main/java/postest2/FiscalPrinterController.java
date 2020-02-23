@@ -320,29 +320,8 @@ public class FiscalPrinterController extends CommonController implements Initial
 		vatRate.setText("");
 	}
 
-	class PrinterStateCodeMapper extends ErrorCodeMapper {
-		PrinterStateCodeMapper() {
-			Mappings = new Object[]{
-					FiscalPrinterConst.FPTR_PS_MONITOR, "MONITOR",
-					FiscalPrinterConst.FPTR_PS_FISCAL_RECEIPT, "FISCAL RECEIPT",
-					FiscalPrinterConst.FPTR_PS_FISCAL_RECEIPT_TOTAL, "FISCAL RECEIPT TOTAL",
-					FiscalPrinterConst.FPTR_PS_FISCAL_RECEIPT_ENDING, "FISCAL RECEIPT ENDING",
-					FiscalPrinterConst.FPTR_PS_FISCAL_DOCUMENT, "FISCAL DOCUMENT",
-					FiscalPrinterConst.FPTR_PS_FIXED_OUTPUT, "FIXED OUTPUT",
-					FiscalPrinterConst.FPTR_PS_ITEM_LIST, "ITEM LIST",
-					FiscalPrinterConst.FPTR_PS_LOCKED, "LOCKED",
-					FiscalPrinterConst.FPTR_PS_NONFISCAL, "NONFISCAL",
-					FiscalPrinterConst.FPTR_PS_REPORT, "REPORT"
-			};
-		}
-	}
-
 	private void setUpReceiptState() {
-		int recstate = FiscalPrinterConst.FPTR_PS_LOCKED;
-		try {
-			recstate = ((FiscalPrinter)service).getPrinterState();
-		} catch (JposException e) {}
-		receiptLabel.setText(new PrinterStateCodeMapper().getName(recstate));
+		receiptLabel.setText(DeviceProperties.getPropertyValue(service, new FiscalPrinterConstantMapper(), "getPrinterState"));
 	}
 
 	private void setUpLineNumbers() {
@@ -441,19 +420,6 @@ public class FiscalPrinterController extends CommonController implements Initial
 		coverLabel.setText(text);
 	}
 
-	class DateTypeCodeMapper extends ErrorCodeMapper {
-		DateTypeCodeMapper() {
-			Mappings = new Object[]{
-					FiscalPrinterConstantMapper.FPTR_DT_CONF.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_CONF.getConstant(),
-					FiscalPrinterConstantMapper.FPTR_DT_EOD.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_EOD.getConstant(),
-					FiscalPrinterConstantMapper.FPTR_DT_RESET.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_RESET.getConstant(),
-					FiscalPrinterConstantMapper.FPTR_DT_RTC.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_RTC.getConstant(),
-					FiscalPrinterConstantMapper.FPTR_DT_VAT.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_VAT.getConstant(),
-					FiscalPrinterConstantMapper.FPTR_DT_START.getContantNumber(), FiscalPrinterConstantMapper.FPTR_DT_START.getConstant()
-			};
-		}
-	}
-
 	private void setUpDateType() {
 		DateType.getItems().clear();
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_CONF.getConstant());
@@ -462,11 +428,7 @@ public class FiscalPrinterController extends CommonController implements Initial
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_RTC.getConstant());
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_VAT.getConstant());
 		DateType.getItems().add(FiscalPrinterConstantMapper.FPTR_DT_START.getConstant());
-		try {
-			DateType.getSelectionModel().select(new DateTypeCodeMapper().getName(((FiscalPrinter)service).getDateType()));
-		} catch (JposException e) {
-			DateType.getSelectionModel().select("");
-		}
+		DateType.getSelectionModel().select(DeviceProperties.getPropertyValue(service, new FiscalPrinterConstantMapper(), "getDateType"));
 	}
 
 	private void setUpPaperState() {

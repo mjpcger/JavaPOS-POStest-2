@@ -159,27 +159,10 @@ public class GateController extends SharableController implements Initializable 
 		}
 	}
 
-	class GateStatusCodeMapper extends ErrorCodeMapper {
-		GateStatusCodeMapper() {
-			Mappings = new Object[]{
-					GateConst.GATE_GS_CLOSED, "GATE_GS_CLOSED",
-					GateConst.GATE_GS_OPEN, "GATE_GS_OPEN",
-					GateConst.GATE_GS_BLOCKED, "GATE_GS_BLOCKED",
-					GateConst.GATE_GS_MALFUNCTION, "GATE_GS_MALFUNCTION"
-			};
-		}
-	}
-
 	@Override
 	public void setupGuiObjects() {
 		super.setupGuiObjects();
-		try {
-			gateStatus.setText(((Gate) service).getCapGateStatus()
-					? new GateStatusCodeMapper().getName(((Gate) service).getGetStatus())
-					: "");
-		} catch (JposException e) {
-			gateStatus.setText("");
-		}
+		gateStatus.setText(DeviceProperties.getPropertyValue(service, new GateConstantMapper(), "getGetStatus"));
 	}
 
 	@Override

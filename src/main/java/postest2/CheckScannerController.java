@@ -431,18 +431,6 @@ public class CheckScannerController extends CommonController implements Initiali
 	 * Set Up Combo Boxes
 	 */
 
-	class ColorCodeMapper extends ErrorCodeMapper {
-		ColorCodeMapper() {
-			Mappings = new Object[]{
-					CheckScannerConstantMapper.CHK_CL_MONO.getContantNumber(), CheckScannerConstantMapper.CHK_CL_MONO.getConstant(),
-					CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getContantNumber(), CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getConstant(),
-					CheckScannerConstantMapper.CHK_CL_16.getContantNumber(), CheckScannerConstantMapper.CHK_CL_16.getConstant(),
-					CheckScannerConstantMapper.CHK_CL_256.getContantNumber(), CheckScannerConstantMapper.CHK_CL_256.getConstant(),
-					CheckScannerConstantMapper.CHK_CL_FULL.getContantNumber(), CheckScannerConstantMapper.CHK_CL_FULL.getConstant()
-			};
-		}
-	}
-
 	private void setUpColor() {
 		color.getItems().clear();
 		color.getItems().add(CheckScannerConstantMapper.CHK_CL_16.getConstant());
@@ -450,11 +438,7 @@ public class CheckScannerController extends CommonController implements Initiali
 		color.getItems().add(CheckScannerConstantMapper.CHK_CL_FULL.getConstant());
 		color.getItems().add(CheckScannerConstantMapper.CHK_CL_GRAYSCALE.getConstant());
 		color.getItems().add(CheckScannerConstantMapper.CHK_CL_MONO.getConstant());
-		try {
-			color.setValue(new ColorCodeMapper().getName(((CheckScanner)service).getColor()));
-		} catch (JposException e) {
-			color.setValue(new ColorCodeMapper().getName(CheckScannerConst.CHK_CL_MONO));
-		}
+		color.setValue(DeviceProperties.getPropertyValue(service, new CheckScannerConstantMapper(), "getColor"));
 	}
 
 	private void setUpConcurrentMICR() {
@@ -468,18 +452,6 @@ public class CheckScannerController extends CommonController implements Initiali
 		}
 	}
 
-	class ImageFormatCodeMapper extends ErrorCodeMapper {
-		ImageFormatCodeMapper() {
-			Mappings = new Object[]{
-					CheckScannerConstantMapper.CHK_IF_BMP.getContantNumber(),CheckScannerConstantMapper.CHK_IF_BMP.getConstant(),
-					CheckScannerConstantMapper.CHK_IF_GIF.getContantNumber(),CheckScannerConstantMapper.CHK_IF_GIF.getConstant(),
-					CheckScannerConstantMapper.CHK_IF_JPEG.getContantNumber(),CheckScannerConstantMapper.CHK_IF_JPEG.getConstant(),
-					CheckScannerConstantMapper.CHK_IF_NATIVE.getContantNumber(),CheckScannerConstantMapper.CHK_IF_NATIVE.getConstant(),
-					CheckScannerConstantMapper.CHK_IF_TIFF.getContantNumber(),CheckScannerConstantMapper.CHK_IF_TIFF.getConstant()
-			};
-		}
-	}
-
 	private void setUpImageFormat() {
 		imageFormat.getItems().clear();
 		imageFormat.getItems().add(CheckScannerConstantMapper.CHK_IF_BMP.getConstant());
@@ -487,22 +459,7 @@ public class CheckScannerController extends CommonController implements Initiali
 		imageFormat.getItems().add(CheckScannerConstantMapper.CHK_IF_JPEG.getConstant());
 		imageFormat.getItems().add(CheckScannerConstantMapper.CHK_IF_NATIVE.getConstant());
 		imageFormat.getItems().add(CheckScannerConstantMapper.CHK_IF_TIFF.getConstant());
-		try {
-			imageFormat.setValue(new ImageFormatCodeMapper().getName(((CheckScanner)service).getImageFormat()));
-		} catch (JposException e) {
-			imageFormat.setValue(new ImageFormatCodeMapper().getName(CheckScannerConst.CHK_IF_TIFF));
-		}
-	}
-
-	class MapModeCodeMapper extends ErrorCodeMapper {
-		MapModeCodeMapper(){
-			Mappings = new Object[]{
-					CheckScannerConstantMapper.CHK_MM_DOTS.getContantNumber(), CheckScannerConstantMapper.CHK_MM_DOTS.getConstant(),
-					CheckScannerConstantMapper.CHK_MM_ENGLISH.getContantNumber(), CheckScannerConstantMapper.CHK_MM_ENGLISH.getConstant(),
-					CheckScannerConstantMapper.CHK_MM_METRIC.getContantNumber(), CheckScannerConstantMapper.CHK_MM_METRIC.getConstant(),
-					CheckScannerConstantMapper.CHK_MM_TWIPS.getContantNumber(), CheckScannerConstantMapper.CHK_MM_TWIPS.getConstant()
-			};
-		}
+		imageFormat.setValue(DeviceProperties.getPropertyValue(service, new CheckScannerConstantMapper(), "getImageFormat"));
 	}
 
 	private void setUpMapMode() {
@@ -511,11 +468,7 @@ public class CheckScannerController extends CommonController implements Initiali
 		mapMode.getItems().add(CheckScannerConstantMapper.CHK_MM_ENGLISH.getConstant());
 		mapMode.getItems().add(CheckScannerConstantMapper.CHK_MM_METRIC.getConstant());
 		mapMode.getItems().add(CheckScannerConstantMapper.CHK_MM_TWIPS.getConstant());
-		try {
-			mapMode.setValue(new MapModeCodeMapper().getName(((CheckScanner)service).getMapMode()));
-		} catch (JposException e) {
-			mapMode.setValue(new MapModeCodeMapper().getName(CheckScannerConst.CHK_MM_ENGLISH));
-		}
+		mapMode.setValue(DeviceProperties.getPropertyValue(service, new CheckScannerConstantMapper(), "getMapMode"));
 	}
 
 	private void setUpQuality() {
