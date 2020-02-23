@@ -56,6 +56,7 @@ public enum PropertyNames {
 	getContractorId,
 	getCountryCode,
 	getDateType,
+	getErrorStation,
 	getFiscalReceiptStation,
 	getFiscalReceiptType,
 	getMessageType,
