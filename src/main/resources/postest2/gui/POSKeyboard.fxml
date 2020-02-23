@@ -18,6 +18,9 @@
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
             <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
+            <CheckBox fx:id="autoDisable" layoutX="14.0" layoutY="40.0" onAction="#handleAutoDisable" prefHeight="21.0" prefWidth="124.0" text="AutoDisable"/>
+            <Label text="EventTypes" layoutX="155" layoutY="43" />
+            <ComboBox fx:id="eventTypes" layoutX="225" layoutY="37" onAction="#handleSetEventTypes" />
             <Text fx:id="keyText" fontSmoothingType="LCD" layoutX="189.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press a key">
               <font>
                 <Font name="System Bold" size="22.0" />

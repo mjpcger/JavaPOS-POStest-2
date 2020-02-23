@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 
 import javax.swing.JOptionPane;
@@ -34,6 +35,9 @@ public class POSKeyboardController extends CommonController implements Initializ
 	@FXML
 	@RequiredState(JposState.ENABLED)
 	public Text keyText;
+	@FXML
+	@RequiredState(JposState.OPENED)
+	public ComboBox<String> eventTypes;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -53,29 +57,35 @@ public class POSKeyboardController extends CommonController implements Initializ
 	
 	@Override
 	public void dataOccurred(DataEvent e) {
+		super.dataOccurred(e);
 		try {
 			String type = ((POSKeyboard) service).getPOSKeyEventType() == POSKeyboardConst.KBD_ET_DOWN ? " Pressed "
 					: " Released ";
 			keyText.setText("POS key " + Integer.toString(((POSKeyboard) service).getPOSKeyData()) + type);
+			if (getDeviceState(service) == JposState.ENABLED)
+				((POSKeyboard)service).setDataEventEnabled(true);
 		} catch (JposException jpe) {
 			JOptionPane.showMessageDialog(null, "Exception in getKeyPosition(): " + jpe.getMessage(),
 					"Failed", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
+
 	@FXML
 	public void handleDeviceEnable(ActionEvent e) {
 		try {
 			if (deviceEnabled.isSelected()) {
 				((POSKeyboard) service).setDeviceEnabled(true);
+				((POSKeyboard)service).setDataEventEnabled(true);
+				keyText.setText("Press a key");
 			} else {
 				((POSKeyboard) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -137,8 +147,31 @@ public class POSKeyboardController extends CommonController implements Initializ
 			JOptionPane.showMessageDialog(null, "Statistics are not supported!", "Statistics",
 					JOptionPane.ERROR_MESSAGE);
 		}
-
 		statistics = "";
 	}
 
+	@FXML
+	public void handleSetEventTypes(ActionEvent e) {
+		try {
+			((POSKeyboard)service).setEventTypes(
+					POSKeyboardConstantMapper.getConstantNumberFromString(eventTypes.getValue()));
+		} catch (JposException ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void setupGuiObjects() {
+		POSKeyboardConstantMapper mapper = new POSKeyboardConstantMapper();
+		super.setupGuiObjects();
+		eventTypes.getItems().clear();
+		String current = DeviceProperties.getPropertyValue(service, mapper, "getEventTypes");
+		eventTypes.getItems().add(POSKeyboardConstantMapper.KBD_ET_DOWN.getConstant());
+		if ("true".equals(DeviceProperties.getPropertyValue(service, mapper, "getCapKeyUp"))) {
+			eventTypes.getItems().add(POSKeyboardConstantMapper.KBD_ET_DOWN.getConstant());
+		}
+		if (current != null)
+			eventTypes.getSelectionModel().select(current);
+	}
 }
