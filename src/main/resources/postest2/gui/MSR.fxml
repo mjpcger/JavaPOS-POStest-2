@@ -18,7 +18,10 @@
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
             <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
-            <TabPane fx:id="functionPane" layoutX="33.0" layoutY="71.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE" visible="${deviceEnabled.selected}">
+            <CheckBox fx:id="dataEventEnabled" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleDataEventEnable" text="DataEvent enabled" />
+            <Label text="Show Data" layoutX="155" layoutY="40" />
+            <ComboBox fx:id="showData" layoutX="220" layoutY="35" prefWidth="100" onAction="#handleShowData" />
+            <TabPane fx:id="functionPane" layoutX="14.0" layoutY="71.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE" visible="${deviceEnabled.selected}">
               <stylesheets>
                 <URL value="@win7glass.css" />
               </stylesheets>
@@ -27,43 +30,45 @@
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="200.0">
                       <children>
-                        <Label layoutX="15.0" layoutY="366.0" text="Command:" />
-                        <Label layoutX="15.0" layoutY="389.0" text="Data:" />
-                        <Label layoutX="15.0" layoutY="413.0" text="Object:" />
-                        <TextField fx:id="directIO_command" layoutX="88.0" layoutY="363.0" prefWidth="199.0" />
-                        <TextField fx:id="directIO_data" layoutX="88.0" layoutY="386.0" prefWidth="199.0" />
-                        <TextField fx:id="directIO_object" layoutX="88.0" layoutY="410.0" prefWidth="199.0" />
-                        <Button layoutX="286.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleBrowseDirectIOData" text="Browse" />
-                        <Button layoutX="287.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleBrowseDirectIOObject" text="Browse" />
-                        <RadioButton fx:id="directIO_datatypeString" layoutX="349.0" layoutY="407.0" mnemonicParsing="false" text="String" />
-                        <RadioButton fx:id="directIO_datatypeByteArray" layoutX="349.0" layoutY="421.0" mnemonicParsing="false" text="Byte[]" />
-                        <Button layoutX="223.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleDirectIO" text="DirectIO" />
-                        <Label layoutX="15.0" layoutY="76.0" text="Set DecodeData:" />
-                        <ComboBox fx:id="decodeData" layoutX="188.0" layoutY="74.0" prefHeight="21.0" prefWidth="157.0" />
-                        <Button layoutX="357.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleSetDecodeData" prefWidth="171.0" text="SetDecodeData" />
-                        <Label layoutX="15.0" layoutY="111.0" text="Set ErrorReportingType:" />
-                        <ComboBox fx:id="errorReportingType" layoutX="188.0" layoutY="109.0" prefHeight="21.0" prefWidth="157.0" />
-                        <Button layoutX="357.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleSetErrorReportingType" prefWidth="171.0" text="SetErrorReportingType" />
-                        <Label layoutX="15.0" layoutY="148.0" text="Set ParseDecodeData:" />
-                        <ComboBox fx:id="parseDecodeData" layoutX="188.0" layoutY="146.0" prefHeight="21.0" prefWidth="157.0" />
-                        <Button layoutX="357.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleSetParseDecodeData" prefWidth="171.0" text="SetParseDecodeData" />
-                        <Label layoutX="15.0" layoutY="184.0" text="Set TracksToRead:" />
-                        <ComboBox fx:id="tracksToRead" layoutX="188.0" layoutY="182.0" prefHeight="21.0" prefWidth="157.0" />
-                        <Button layoutX="357.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleSetTracksToRead" prefWidth="171.0" text="SetTracksToRead" />
-                        <Label layoutX="15.0" layoutY="219.0" text="Set TracksToWrite:" />
-                        <ComboBox fx:id="tracksToWrite" layoutX="188.0" layoutY="217.0" prefHeight="21.0" prefWidth="157.0" />
-                        <Button layoutX="357.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleSetTracksToWrite" prefWidth="171.0" text="SetTracksToWrite" />
-                        <Label layoutX="15.0" layoutY="253.0" text="Set TransmitSentinels:" />
-                        <ComboBox fx:id="transmitSentinels" layoutX="188.0" layoutY="251.0" prefHeight="21.0" prefWidth="157.0" />
-                        <Button layoutX="357.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleSetTransmitSentinels" prefWidth="171.0" text="SetTransmitSentinels" />
-                        <Label layoutX="15.0" layoutY="288.0" text="Set WriteCardType" />
-                        <Button layoutX="357.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleSetWriteCardType" prefWidth="171.0" text="SetWriteCardType" />
-                        <TextField fx:id="writeCardType" layoutX="188.0" layoutY="285.0" prefWidth="157.0" />
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="332.0" prefWidth="272.0" text="DirectIO" underline="true">
+                        <Label layoutX="15.0" layoutY="306.0" text="Command:" />
+                        <Label layoutX="15.0" layoutY="329.0" text="Data:" />
+                        <Label layoutX="15.0" layoutY="353.0" text="Object:" />
+                        <TextField fx:id="directIO_command" layoutX="88.0" layoutY="303.0" prefWidth="199.0" />
+                        <TextField fx:id="directIO_data" layoutX="88.0" layoutY="326.0" prefWidth="199.0" />
+                        <TextField fx:id="directIO_object" layoutX="88.0" layoutY="350.0" prefWidth="199.0" />
+                        <Button layoutX="286.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleBrowseDirectIOData" text="Browse" />
+                        <Button layoutX="287.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleBrowseDirectIOObject" text="Browse" />
+                        <RadioButton fx:id="directIO_datatypeString" layoutX="349.0" layoutY="347.0" mnemonicParsing="false" text="String" />
+                        <RadioButton fx:id="directIO_datatypeByteArray" layoutX="349.0" layoutY="361.0" mnemonicParsing="false" text="Byte[]" />
+                        <Button layoutX="223.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleDirectIO" text="DirectIO" />
+                        <Label layoutX="420" layoutY="410" text="Track Data" underline="true">
                           <font>
                             <Font size="14.0" fx:id="x1" />
                           </font>
                         </Label>
+                        <ListView fx:id="trackData" layoutX="15.0" layoutY="440.0" prefHeight="107.0" prefWidth="895.0" />
+                        <Label layoutX="15.0" layoutY="16.0" text="Set DecodeData:" />
+                        <ComboBox fx:id="decodeData" layoutX="188.0" layoutY="12.0" prefHeight="21.0" prefWidth="157.0" />
+                        <Button layoutX="357.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleSetDecodeData" prefWidth="171.0" text="SetDecodeData" />
+                        <Label layoutX="15.0" layoutY="51.0" text="Set ErrorReportingType:" />
+                        <ComboBox fx:id="errorReportingType" layoutX="188.0" layoutY="47.0" prefHeight="21.0" prefWidth="157.0" />
+                        <Button layoutX="357.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleSetErrorReportingType" prefWidth="171.0" text="SetErrorReportingType" />
+                        <Label layoutX="15.0" layoutY="88.0" text="Set ParseDecodeData:" />
+                        <ComboBox fx:id="parseDecodeData" layoutX="188.0" layoutY="84.0" prefHeight="21.0" prefWidth="157.0" />
+                        <Button layoutX="357.0" layoutY="83.0" mnemonicParsing="false" onAction="#handleSetParseDecodeData" prefWidth="171.0" text="SetParseDecodeData" />
+                        <Label layoutX="15.0" layoutY="124.0" text="Set TracksToRead:" />
+                        <ComboBox fx:id="tracksToRead" layoutX="188.0" layoutY="120.0" prefHeight="21.0" prefWidth="157.0" />
+                        <Button layoutX="357.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleSetTracksToRead" prefWidth="171.0" text="SetTracksToRead" />
+                        <Label layoutX="15.0" layoutY="159.0" text="Set TracksToWrite:" />
+                        <ComboBox fx:id="tracksToWrite" layoutX="188.0" layoutY="155.0" prefHeight="21.0" prefWidth="157.0" />
+                        <Button layoutX="357.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleSetTracksToWrite" prefWidth="171.0" text="SetTracksToWrite" />
+                        <Label layoutX="15.0" layoutY="193.0" text="Set TransmitSentinels:" />
+                        <ComboBox fx:id="transmitSentinels" layoutX="188.0" layoutY="189.0" prefHeight="21.0" prefWidth="157.0" />
+                        <Button layoutX="357.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleSetTransmitSentinels" prefWidth="171.0" text="SetTransmitSentinels" />
+                        <Label layoutX="15.0" layoutY="228.0" text="Set WriteCardType" />
+                        <Button layoutX="357.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleSetWriteCardType" prefWidth="171.0" text="SetWriteCardType" />
+                        <TextField fx:id="writeCardType" layoutX="188.0" layoutY="225.0" prefWidth="157.0" />
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="272.0" prefWidth="272.0" text="DirectIO" underline="true" font="$x1" />
                       </children>
                     </AnchorPane>
                   </content>
@@ -117,7 +122,7 @@
             </TabPane>
             <TabPane fx:id="notEnabledTab" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE" visible="${!deviceEnabled.selected}">
               <tabs>
-                <Tab text="Screen Mode">
+                <Tab text="Encryption">
                   <content>
                     <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
