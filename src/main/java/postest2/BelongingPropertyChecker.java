@@ -21,55 +21,75 @@ public class BelongingPropertyChecker {
 
 		ArrayList<String> stringConstants = new ArrayList<String>();
 
-		for (int i = 0; i < fields.length; i++) {
+		for (Field field : fields) {
 
-			if (fields[i].isAnnotationPresent(BelongingProperty.class)) {
-				BelongingProperty belongingProperty = fields[i].getAnnotation(BelongingProperty.class);
+			if (field.isAnnotationPresent(BelongingProperty.class)) {
+				BelongingProperty belongingProperty = field.getAnnotation(BelongingProperty.class);
 				PropertyNames names = belongingProperty.value();
-				
-				if (methodName.equals("getProtocolMask")) {
-					methodName = "getCapMultipleProtocols";
-				}
-				
-				if (methodName.equals("getUPSChargeState")) {
-					methodName = "getCapUPSChargeState";
-				}
-				
-				if (methodName.equals("getCapTracksToWrite")) {
-					methodName = "getCapTracksToRead";
-				}
-				
-				if (methodName.equals("getStation")) {
-					methodName = "getCapStation";
+
+				if (mapper instanceof RFIDScannerConstantMapper) {
+					if (methodName.equals("getProtocolMask")) {
+						methodName = "getCapMultipleProtocols";
+					}
 				}
 
-				if (methodName.equals("getCapJrnColor") || methodName.equals("getCapRecColor")
-						|| methodName.equals("getCapSlpColor")) {
-					methodName = "getCapColor";
+				if (mapper instanceof POSPowerConstantMapper) {
+					if (methodName.equals("getUPSChargeState")) {
+						methodName = "getCapUPSChargeState";
+					}
 				}
 
-				if (methodName.equals("getCapJrnCartridgeSensor")
-						|| methodName.equals("getCapRecCartridgeSensor")
-						|| methodName.equals("getCapSlpCartridgeSensor")
-						|| methodName.equals("getJrnCartridgeState")
-						|| methodName.equals("getRecCartridgeState")
-						|| methodName.equals("getSlpCartridgeState")) {
-					methodName = "getCapCartridge";
+				if (mapper instanceof PointCardRWConstantMapper) {
+					if (methodName.equals("getCapTracksToWrite")) {
+						methodName = "getCapTracksToRead";
+					}
 				}
 
-				if (methodName.equals("getCapRecRuledLine") || methodName.equals("getCapSlpRuledLine")) {
-					methodName = "getCapRuledLine";
+				if (mapper instanceof ElectronicJournalConstantMapper) {
+					if (methodName.equals("getStation")) {
+						methodName = "getCapStation";
+					}
 				}
 
-				if (methodName.equals("getErrorStation") || methodName.equals("getPageModeStation")) {
-					methodName = "getPTRStation";
+				if (mapper instanceof MSRConstantMapper) {
+					if (methodName.equals("getCapWritableTracks") || methodName.equals("getTracksToWrite")) {
+						methodName = "getTracksToRead";
+					}
+
+					if (methodName.equals("getDataEncryptionAlgorithm")) {
+						methodName = "getCapDataEncryption";
+					}
+				}
+
+				if (mapper instanceof POSPrinterConstantMapper) {
+					if (methodName.equals("getCapJrnColor") || methodName.equals("getCapRecColor")
+							|| methodName.equals("getCapSlpColor")) {
+						methodName = "getCapColor";
+					}
+
+					if (methodName.equals("getCapJrnCartridgeSensor")
+							|| methodName.equals("getCapRecCartridgeSensor")
+							|| methodName.equals("getCapSlpCartridgeSensor")
+							|| methodName.equals("getJrnCartridgeState")
+							|| methodName.equals("getRecCartridgeState")
+							|| methodName.equals("getSlpCartridgeState")) {
+						methodName = "getCapCartridge";
+					}
+
+					if (methodName.equals("getCapRecRuledLine") || methodName.equals("getCapSlpRuledLine")) {
+						methodName = "getCapRuledLine";
+					}
+
+					if (methodName.equals("getErrorStation") || methodName.equals("getPageModeStation")) {
+						methodName = "getPTRStation";
+					}
 				}
 
 				if (methodName.equals(names.toString())) {
-					if (ConstantConverter.class.isAssignableFrom(fields[i].getType())) {
+					if (ConstantConverter.class.isAssignableFrom(field.getType())) {
 						ConstantConverter c = null;
 						try {
-							c = (ConstantConverter) fields[i].get(mapper.getClass());
+							c = (ConstantConverter) field.get(mapper.getClass());
 						} catch (IllegalArgumentException e) {
 							e.printStackTrace();
 						} catch (IllegalAccessException e) {
@@ -78,11 +98,8 @@ public class BelongingPropertyChecker {
 						stringConstants.add(c.getConstant());
 					}
 				}
-
 			}
-
 		}
 		return stringConstants;
-
 	}
 }
