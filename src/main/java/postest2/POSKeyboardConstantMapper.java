@@ -7,6 +7,7 @@ public class POSKeyboardConstantMapper extends CommonConstantMapper {
 	// ///////////////////////////////////////////////////////////////////
 	@BelongingProperty(PropertyNames.getEventTypes)
 	public static final ConstantConverter KBD_ET_DOWN = new ConstantConverter(1, "KBD_ET_DOWN");
+	@BelongingProperty(PropertyNames.getEventTypes)
 	public static final ConstantConverter KBD_ET_DOWN_UP = new ConstantConverter(2, "KBD_ET_DOWN_UP");
 
 	// ///////////////////////////////////////////////////////////////////
