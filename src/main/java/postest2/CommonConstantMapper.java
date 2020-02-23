@@ -59,57 +59,73 @@ public class CommonConstantMapper implements IMapWrapper {
 
     public static int getConstantNumberFromString(String constant){
 
-		if(CommonConstantMapper.JPOS_PR_NONE.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PR_NONE.getContantNumber();
+		if(JPOS_PR_NONE.getConstant().equals(constant)) {
+			return JPOS_PR_NONE.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_PR_STANDARD.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PR_STANDARD.getContantNumber();
+		if(JPOS_PR_STANDARD.getConstant().equals(constant)) {
+			return JPOS_PR_STANDARD.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_PR_ADVANCED.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PR_ADVANCED.getContantNumber();
+		if(JPOS_PR_ADVANCED.getConstant().equals(constant)) {
+			return JPOS_PR_ADVANCED.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_CH_INTERNAL.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_CH_INTERNAL.getContantNumber();
+		if(JPOS_CH_INTERNAL.getConstant().equals(constant)) {
+			return JPOS_CH_INTERNAL.getContantNumber();
 		}
 		
-		if(CommonConstantMapper.JPOS_CH_EXTERNAL.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_CH_EXTERNAL.getContantNumber();
+		if(JPOS_CH_EXTERNAL.getConstant().equals(constant)) {
+			return JPOS_CH_EXTERNAL.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_CH_INTERACTIVE.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_CH_INTERACTIVE.getContantNumber();
+		if(JPOS_CH_INTERACTIVE.getConstant().equals(constant)) {
+			return JPOS_CH_INTERACTIVE.getContantNumber();
 		}
 
 
-		if(CommonConstantMapper.JPOS_PN_DISABLED.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PN_DISABLED.getContantNumber();
+		if(JPOS_PN_DISABLED.getConstant().equals(constant)) {
+			return JPOS_PN_DISABLED.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_PN_ENABLED.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PN_ENABLED.getContantNumber();
+		if(JPOS_PN_ENABLED.getConstant().equals(constant)) {
+			return JPOS_PN_ENABLED.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_PS_UNKNOWN.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PS_UNKNOWN.getContantNumber();
+		if(JPOS_PS_UNKNOWN.getConstant().equals(constant)) {
+			return JPOS_PS_UNKNOWN.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_PS_ONLINE.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PS_ONLINE.getContantNumber();
+		if(JPOS_PS_ONLINE.getConstant().equals(constant)) {
+			return JPOS_PS_ONLINE.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_PS_OFF.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PS_OFF.getContantNumber();
+		if(JPOS_PS_OFF.getConstant().equals(constant)) {
+			return JPOS_PS_OFF.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_PS_OFFLINE.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PS_OFFLINE.getContantNumber();
+		if(JPOS_PS_OFFLINE.getConstant().equals(constant)) {
+			return JPOS_PS_OFFLINE.getContantNumber();
 		}
 
-		if(CommonConstantMapper.JPOS_PS_OFF_OFFLINE.getConstant().equals(constant)) {
-			return CommonConstantMapper.JPOS_PS_OFF_OFFLINE.getContantNumber();
+		if(JPOS_PS_OFF_OFFLINE.getConstant().equals(constant)) {
+			return JPOS_PS_OFF_OFFLINE.getContantNumber();
+		}
+
+		if(JPOS_S_CLOSED.getConstant().equals(constant)) {
+			return JPOS_S_CLOSED.getContantNumber();
+		}
+
+		if(JPOS_S_IDLE.getConstant().equals(constant)) {
+			return JPOS_S_IDLE.getContantNumber();
+		}
+
+		if(JPOS_S_BUSY.getConstant().equals(constant)) {
+			return JPOS_S_BUSY.getContantNumber();
+		}
+
+		if(JPOS_S_ERROR.getConstant().equals(constant)) {
+			return JPOS_S_ERROR.getContantNumber();
 		}
 
 		return Integer.parseInt(constant);
