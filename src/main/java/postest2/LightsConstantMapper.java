@@ -37,52 +37,52 @@ public class LightsConstantMapper extends CommonConstantMapper {
 	
 	public static int getConstantNumberFromString(String constant){
 
-		if(LightsConstantMapper.LGT_ALARM_CUSTOM1.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_ALARM_CUSTOM1.getContantNumber();
+		if(LGT_ALARM_CUSTOM1.getConstant().equals(constant)) {
+			return LGT_ALARM_CUSTOM1.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_ALARM_CUSTOM2.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_ALARM_CUSTOM2.getContantNumber();
+		if(LGT_ALARM_CUSTOM2.getConstant().equals(constant)) {
+			return LGT_ALARM_CUSTOM2.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_ALARM_FAST.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_ALARM_FAST.getContantNumber();
+		if(LGT_ALARM_FAST.getConstant().equals(constant)) {
+			return LGT_ALARM_FAST.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_ALARM_MEDIUM.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_ALARM_MEDIUM.getContantNumber();
+		if(LGT_ALARM_MEDIUM.getConstant().equals(constant)) {
+			return LGT_ALARM_MEDIUM.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_ALARM_NOALARM.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_ALARM_NOALARM.getContantNumber();
+		if(LGT_ALARM_NOALARM.getConstant().equals(constant)) {
+			return LGT_ALARM_NOALARM.getContantNumber();
 		}
 		
-		if(LightsConstantMapper.LGT_ALARM_SLOW.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_ALARM_SLOW.getContantNumber();
+		if(LGT_ALARM_SLOW.getConstant().equals(constant)) {
+			return LGT_ALARM_SLOW.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_COLOR_CUSTOM1.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_COLOR_CUSTOM1.getContantNumber();
+		if(LGT_COLOR_CUSTOM1.getConstant().equals(constant)) {
+			return LGT_COLOR_CUSTOM1.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_COLOR_CUSTOM2.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_COLOR_CUSTOM2.getContantNumber();
+		if(LGT_COLOR_CUSTOM2.getConstant().equals(constant)) {
+			return LGT_COLOR_CUSTOM2.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_COLOR_CUSTOM3.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_COLOR_CUSTOM3.getContantNumber();
+		if(LGT_COLOR_CUSTOM3.getConstant().equals(constant)) {
+			return LGT_COLOR_CUSTOM3.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_COLOR_CUSTOM4.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_COLOR_CUSTOM4.getContantNumber();
+		if(LGT_COLOR_CUSTOM4.getConstant().equals(constant)) {
+			return LGT_COLOR_CUSTOM4.getContantNumber();
 		}
 
-		if(LightsConstantMapper.LGT_COLOR_CUSTOM5.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_COLOR_CUSTOM5.getContantNumber();
+		if(LGT_COLOR_CUSTOM5.getConstant().equals(constant)) {
+			return LGT_COLOR_CUSTOM5.getContantNumber();
 		}
 		
-		if(LightsConstantMapper.LGT_COLOR_PRIMARY.getConstant().equals(constant)) {
-			return LightsConstantMapper.LGT_COLOR_PRIMARY.getContantNumber();
+		if(LGT_COLOR_PRIMARY.getConstant().equals(constant)) {
+			return LGT_COLOR_PRIMARY.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

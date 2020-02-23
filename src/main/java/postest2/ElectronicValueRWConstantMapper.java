@@ -67,76 +67,76 @@ public class ElectronicValueRWConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (ElectronicValueRWConstantMapper.EVRW_LS_OK.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_LS_OK.getContantNumber();
+		if (EVRW_LS_OK.getConstant().equals(constant)) {
+			return EVRW_LS_OK.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_LS_NEARFULL.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_LS_NEARFULL.getContantNumber();
+		if (EVRW_LS_NEARFULL.getConstant().equals(constant)) {
+			return EVRW_LS_NEARFULL.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_LS_FULL.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_LS_FULL.getContantNumber();
+		if (EVRW_LS_FULL.getConstant().equals(constant)) {
+			return EVRW_LS_FULL.getContantNumber();
 		}
 		
-		if (ElectronicValueRWConstantMapper.EVRW_DS_NOCARD.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_DS_NOCARD.getContantNumber();
+		if (EVRW_DS_NOCARD.getConstant().equals(constant)) {
+			return EVRW_DS_NOCARD.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_DS_DETECTED.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_DS_DETECTED.getContantNumber();
+		if (EVRW_DS_DETECTED.getConstant().equals(constant)) {
+			return EVRW_DS_DETECTED.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_DS_ENTERED.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_DS_ENTERED.getContantNumber();
+		if (EVRW_DS_ENTERED.getConstant().equals(constant)) {
+			return EVRW_DS_ENTERED.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_DS_CAPTURED.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_DS_CAPTURED.getContantNumber();
+		if (EVRW_DS_CAPTURED.getConstant().equals(constant)) {
+			return EVRW_DS_CAPTURED.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_CDC_RWCONTROL.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_CDC_RWCONTROL.getContantNumber();
+		if (EVRW_CDC_RWCONTROL.getConstant().equals(constant)) {
+			return EVRW_CDC_RWCONTROL.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_CDC_APPLICATIONCONTROL.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_CDC_APPLICATIONCONTROL.getContantNumber();
+		if (EVRW_CDC_APPLICATIONCONTROL.getConstant().equals(constant)) {
+			return EVRW_CDC_APPLICATIONCONTROL.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_CCS_ENTRY.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_CCS_ENTRY.getContantNumber();
+		if (EVRW_CCS_ENTRY.getConstant().equals(constant)) {
+			return EVRW_CCS_ENTRY.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_CCS_DETECT.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_CCS_DETECT.getContantNumber();
+		if (EVRW_CCS_DETECT.getConstant().equals(constant)) {
+			return EVRW_CCS_DETECT.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_CCS_CAPTURE.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_CCS_CAPTURE.getContantNumber();
+		if (EVRW_CCS_CAPTURE.getConstant().equals(constant)) {
+			return EVRW_CCS_CAPTURE.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_AL_REPORTING.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_AL_REPORTING.getContantNumber();
+		if (EVRW_AL_REPORTING.getConstant().equals(constant)) {
+			return EVRW_AL_REPORTING.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_AL_SETTLEMENT.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_AL_SETTLEMENT.getContantNumber();
+		if (EVRW_AL_SETTLEMENT.getConstant().equals(constant)) {
+			return EVRW_AL_SETTLEMENT.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_BD_ANY.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_BD_ANY.getContantNumber();
+		if (EVRW_BD_ANY.getConstant().equals(constant)) {
+			return EVRW_BD_ANY.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_BD_SPECIFIC.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_BD_SPECIFIC.getContantNumber();
+		if (EVRW_BD_SPECIFIC.getConstant().equals(constant)) {
+			return EVRW_BD_SPECIFIC.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_TA_NORMAL.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_TA_NORMAL.getContantNumber();
+		if (EVRW_TA_NORMAL.getConstant().equals(constant)) {
+			return EVRW_TA_NORMAL.getContantNumber();
 		}
 
-		if (ElectronicValueRWConstantMapper.EVRW_TA_TRANSACTION.getConstant().equals(constant)) {
-			return ElectronicValueRWConstantMapper.EVRW_TA_TRANSACTION.getContantNumber();
+		if (EVRW_TA_TRANSACTION.getConstant().equals(constant)) {
+			return EVRW_TA_TRANSACTION.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

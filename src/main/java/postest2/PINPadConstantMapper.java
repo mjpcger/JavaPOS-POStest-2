@@ -85,112 +85,112 @@ public class PINPadConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (PINPadConstantMapper.PPAD_LANG_NONE.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_LANG_NONE.getContantNumber();
+		if (PPAD_LANG_NONE.getConstant().equals(constant)) {
+			return PPAD_LANG_NONE.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_LANG_ONE.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_LANG_ONE.getContantNumber();
+		if (PPAD_LANG_ONE.getConstant().equals(constant)) {
+			return PPAD_LANG_ONE.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_LANG_PINRESTRICTED.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_LANG_PINRESTRICTED.getContantNumber();
+		if (PPAD_LANG_PINRESTRICTED.getConstant().equals(constant)) {
+			return PPAD_LANG_PINRESTRICTED.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_LANG_UNRESTRICTED.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_LANG_UNRESTRICTED.getContantNumber();
+		if (PPAD_LANG_UNRESTRICTED.getConstant().equals(constant)) {
+			return PPAD_LANG_UNRESTRICTED.getContantNumber();
 		}
 		
-		if (PINPadConstantMapper.PPAD_DISP_UNRESTRICTED.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_DISP_UNRESTRICTED.getContantNumber();
+		if (PPAD_DISP_UNRESTRICTED.getConstant().equals(constant)) {
+			return PPAD_DISP_UNRESTRICTED.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_DISP_PINRESTRICTED.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_DISP_PINRESTRICTED.getContantNumber();
+		if (PPAD_DISP_PINRESTRICTED.getConstant().equals(constant)) {
+			return PPAD_DISP_PINRESTRICTED.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_DISP_RESTRICTED_LIST.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_DISP_RESTRICTED_LIST.getContantNumber();
+		if (PPAD_DISP_RESTRICTED_LIST.getConstant().equals(constant)) {
+			return PPAD_DISP_RESTRICTED_LIST.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_DISP_RESTRICTED_ORDER.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_DISP_RESTRICTED_ORDER.getContantNumber();
+		if (PPAD_DISP_RESTRICTED_ORDER.getConstant().equals(constant)) {
+			return PPAD_DISP_RESTRICTED_ORDER.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_DISP_NONE.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_DISP_NONE.getContantNumber();
+		if (PPAD_DISP_NONE.getConstant().equals(constant)) {
+			return PPAD_DISP_NONE.getContantNumber();
 		}
 		
-		if (PINPadConstantMapper.PPAD_MSG_ENTERPIN.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_ENTERPIN.getContantNumber();
+		if (PPAD_MSG_ENTERPIN.getConstant().equals(constant)) {
+			return PPAD_MSG_ENTERPIN.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_MSG_PLEASEWAIT.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_PLEASEWAIT.getContantNumber();
+		if (PPAD_MSG_PLEASEWAIT.getConstant().equals(constant)) {
+			return PPAD_MSG_PLEASEWAIT.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_MSG_ENTERVALIDPIN.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_ENTERVALIDPIN.getContantNumber();
+		if (PPAD_MSG_ENTERVALIDPIN.getConstant().equals(constant)) {
+			return PPAD_MSG_ENTERVALIDPIN.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_MSG_RETRIESEXCEEDED.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_RETRIESEXCEEDED.getContantNumber();
+		if (PPAD_MSG_RETRIESEXCEEDED.getConstant().equals(constant)) {
+			return PPAD_MSG_RETRIESEXCEEDED.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_MSG_APPROVED.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_APPROVED.getContantNumber();
+		if (PPAD_MSG_APPROVED.getConstant().equals(constant)) {
+			return PPAD_MSG_APPROVED.getContantNumber();
 		}
 		
-		if (PINPadConstantMapper.PPAD_MSG_DECLINED.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_DECLINED.getContantNumber();
+		if (PPAD_MSG_DECLINED.getConstant().equals(constant)) {
+			return PPAD_MSG_DECLINED.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_MSG_CANCELED.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_CANCELED.getContantNumber();
+		if (PPAD_MSG_CANCELED.getConstant().equals(constant)) {
+			return PPAD_MSG_CANCELED.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_MSG_AMOUNTOK.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_AMOUNTOK.getContantNumber();
+		if (PPAD_MSG_AMOUNTOK.getConstant().equals(constant)) {
+			return PPAD_MSG_AMOUNTOK.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_MSG_NOTREADY.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_NOTREADY.getContantNumber();
+		if (PPAD_MSG_NOTREADY.getConstant().equals(constant)) {
+			return PPAD_MSG_NOTREADY.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_MSG_IDLE.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_IDLE.getContantNumber();
+		if (PPAD_MSG_IDLE.getConstant().equals(constant)) {
+			return PPAD_MSG_IDLE.getContantNumber();
 		}
 		
-		if (PINPadConstantMapper.PPAD_MSG_SLIDE_CARD.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_SLIDE_CARD.getContantNumber();
+		if (PPAD_MSG_SLIDE_CARD.getConstant().equals(constant)) {
+			return PPAD_MSG_SLIDE_CARD.getContantNumber();
 		}
 		
-		if (PINPadConstantMapper.PPAD_MSG_INSERTCARD.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_INSERTCARD.getContantNumber();
+		if (PPAD_MSG_INSERTCARD.getConstant().equals(constant)) {
+			return PPAD_MSG_INSERTCARD.getContantNumber();
 		}
 		
-		if (PINPadConstantMapper.PPAD_MSG_SELECTCARDTYPE.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_MSG_SELECTCARDTYPE.getContantNumber();
+		if (PPAD_MSG_SELECTCARDTYPE.getConstant().equals(constant)) {
+			return PPAD_MSG_SELECTCARDTYPE.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_TRANS_DEBIT.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_TRANS_DEBIT.getContantNumber();
+		if (PPAD_TRANS_DEBIT.getConstant().equals(constant)) {
+			return PPAD_TRANS_DEBIT.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_TRANS_CREDIT.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_TRANS_CREDIT.getContantNumber();
+		if (PPAD_TRANS_CREDIT.getConstant().equals(constant)) {
+			return PPAD_TRANS_CREDIT.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_TRANS_INQ.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_TRANS_INQ.getContantNumber();
+		if (PPAD_TRANS_INQ.getConstant().equals(constant)) {
+			return PPAD_TRANS_INQ.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_TRANS_RECONCILE.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_TRANS_RECONCILE.getContantNumber();
+		if (PPAD_TRANS_RECONCILE.getConstant().equals(constant)) {
+			return PPAD_TRANS_RECONCILE.getContantNumber();
 		}
 
-		if (PINPadConstantMapper.PPAD_TRANS_ADMIN.getConstant().equals(constant)) {
-			return PINPadConstantMapper.PPAD_TRANS_ADMIN.getContantNumber();
+		if (PPAD_TRANS_ADMIN.getConstant().equals(constant)) {
+			return PPAD_TRANS_ADMIN.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

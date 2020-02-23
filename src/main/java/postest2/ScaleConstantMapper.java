@@ -25,28 +25,28 @@ public class ScaleConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (ScaleConstantMapper.SCAL_WU_GRAM.getConstant().equals(constant)) {
-			return ScaleConstantMapper.SCAL_WU_GRAM.getContantNumber();
+		if (SCAL_WU_GRAM.getConstant().equals(constant)) {
+			return SCAL_WU_GRAM.getContantNumber();
 		}
 
-		if (ScaleConstantMapper.SCAL_WU_KILOGRAM.getConstant().equals(constant)) {
-			return ScaleConstantMapper.SCAL_WU_KILOGRAM.getContantNumber();
+		if (SCAL_WU_KILOGRAM.getConstant().equals(constant)) {
+			return SCAL_WU_KILOGRAM.getContantNumber();
 		}
 		
-		if (ScaleConstantMapper.SCAL_WU_OUNCE.getConstant().equals(constant)) {
-			return ScaleConstantMapper.SCAL_WU_OUNCE.getContantNumber();
+		if (SCAL_WU_OUNCE.getConstant().equals(constant)) {
+			return SCAL_WU_OUNCE.getContantNumber();
 		}
 
-		if (ScaleConstantMapper.SCAL_WU_POUND.getConstant().equals(constant)) {
-			return ScaleConstantMapper.SCAL_WU_POUND.getContantNumber();
+		if (SCAL_WU_POUND.getConstant().equals(constant)) {
+			return SCAL_WU_POUND.getContantNumber();
 		}
 
-		if (ScaleConstantMapper.SCAL_SN_DISABLED.getConstant().equals(constant)) {
-			return ScaleConstantMapper.SCAL_SN_DISABLED.getContantNumber();
+		if (SCAL_SN_DISABLED.getConstant().equals(constant)) {
+			return SCAL_SN_DISABLED.getContantNumber();
 		}
 
-		if (ScaleConstantMapper.SCAL_SN_ENABLED.getConstant().equals(constant)) {
-			return ScaleConstantMapper.SCAL_SN_ENABLED.getContantNumber();
+		if (SCAL_SN_ENABLED.getConstant().equals(constant)) {
+			return SCAL_SN_ENABLED.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

@@ -37,44 +37,44 @@ public class CashChangerConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (CashChangerConstantMapper.CHAN_STATUS_OK.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_OK.getContantNumber();
+		if (CHAN_STATUS_OK.getConstant().equals(constant)) {
+			return CHAN_STATUS_OK.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_EMPTY.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_EMPTY.getContantNumber();
+		if (CHAN_STATUS_EMPTY.getConstant().equals(constant)) {
+			return CHAN_STATUS_EMPTY.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_NEAREMPTY.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_NEAREMPTY.getContantNumber();
+		if (CHAN_STATUS_NEAREMPTY.getConstant().equals(constant)) {
+			return CHAN_STATUS_NEAREMPTY.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_FULL.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_FULL.getContantNumber();
+		if (CHAN_STATUS_FULL.getConstant().equals(constant)) {
+			return CHAN_STATUS_FULL.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_NEARFULL.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_NEARFULL.getContantNumber();
+		if (CHAN_STATUS_NEARFULL.getConstant().equals(constant)) {
+			return CHAN_STATUS_NEARFULL.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_JAM.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_JAM.getContantNumber();
+		if (CHAN_STATUS_JAM.getConstant().equals(constant)) {
+			return CHAN_STATUS_JAM.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_START.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_START.getContantNumber();
+		if (CHAN_STATUS_DEPOSIT_START.getConstant().equals(constant)) {
+			return CHAN_STATUS_DEPOSIT_START.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_END.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_END.getContantNumber();
+		if (CHAN_STATUS_DEPOSIT_END.getConstant().equals(constant)) {
+			return CHAN_STATUS_DEPOSIT_END.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_COUNT.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_COUNT.getContantNumber();
+		if (CHAN_STATUS_DEPOSIT_COUNT.getConstant().equals(constant)) {
+			return CHAN_STATUS_DEPOSIT_COUNT.getContantNumber();
 		}
 
-		if (CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_JAM.getConstant().equals(constant)) {
-			return CashChangerConstantMapper.CHAN_STATUS_DEPOSIT_JAM.getContantNumber();
+		if (CHAN_STATUS_DEPOSIT_JAM.getConstant().equals(constant)) {
+			return CHAN_STATUS_DEPOSIT_JAM.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

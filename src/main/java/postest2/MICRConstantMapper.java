@@ -29,36 +29,36 @@ public class MICRConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 		
-		if (MICRConstantMapper.MICR_CC_USA.getConstant().equals(constant)) {
-			return MICRConstantMapper.MICR_CC_USA.getContantNumber();
+		if (MICR_CC_USA.getConstant().equals(constant)) {
+			return MICR_CC_USA.getContantNumber();
 		}
 
-		if (MICRConstantMapper.MICR_CC_CANADA.getConstant().equals(constant)) {
-			return MICRConstantMapper.MICR_CC_CANADA.getContantNumber();
+		if (MICR_CC_CANADA.getConstant().equals(constant)) {
+			return MICR_CC_CANADA.getContantNumber();
 		}
 
-		if (MICRConstantMapper.MICR_CC_MEXICO.getConstant().equals(constant)) {
-			return MICRConstantMapper.MICR_CC_MEXICO.getContantNumber();
+		if (MICR_CC_MEXICO.getConstant().equals(constant)) {
+			return MICR_CC_MEXICO.getContantNumber();
 		}
 		
-		if (MICRConstantMapper.MICR_CC_CMC7.getConstant().equals(constant)) {
-			return MICRConstantMapper.MICR_CC_CMC7.getContantNumber();
+		if (MICR_CC_CMC7.getConstant().equals(constant)) {
+			return MICR_CC_CMC7.getContantNumber();
 		}
 
-		if (MICRConstantMapper.MICR_CC_UNKNOWN.getConstant().equals(constant)) {
-			return MICRConstantMapper.MICR_CC_UNKNOWN.getContantNumber();
+		if (MICR_CC_UNKNOWN.getConstant().equals(constant)) {
+			return MICR_CC_UNKNOWN.getContantNumber();
 		}
 
-		if (MICRConstantMapper.MICR_CT_PERSONAL.getConstant().equals(constant)) {
-			return MICRConstantMapper.MICR_CT_PERSONAL.getContantNumber();
+		if (MICR_CT_PERSONAL.getConstant().equals(constant)) {
+			return MICR_CT_PERSONAL.getContantNumber();
 		}
 
-		if (MICRConstantMapper.MICR_CT_BUSINESS.getConstant().equals(constant)) {
-			return MICRConstantMapper.MICR_CT_BUSINESS.getContantNumber();
+		if (MICR_CT_BUSINESS.getConstant().equals(constant)) {
+			return MICR_CT_BUSINESS.getContantNumber();
 		}
 
-		if (MICRConstantMapper.MICR_CT_UNKNOWN.getConstant().equals(constant)) {
-			return MICRConstantMapper.MICR_CT_UNKNOWN.getContantNumber();
+		if (MICR_CT_UNKNOWN.getConstant().equals(constant)) {
+			return MICR_CT_UNKNOWN.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

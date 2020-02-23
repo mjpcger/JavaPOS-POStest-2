@@ -18,20 +18,20 @@ public class POSKeyboardConstantMapper extends CommonConstantMapper {
 	
 	public static int getConstantNumberFromString(String constant) {
 
-		if (POSKeyboardConstantMapper.KBD_ET_DOWN.getConstant().equals(constant)) {
-			return POSKeyboardConstantMapper.KBD_ET_DOWN.getContantNumber();
+		if (KBD_ET_DOWN.getConstant().equals(constant)) {
+			return KBD_ET_DOWN.getContantNumber();
 		}
 		
-		if (POSKeyboardConstantMapper.KBD_ET_DOWN_UP.getConstant().equals(constant)) {
-			return POSKeyboardConstantMapper.KBD_ET_DOWN_UP.getContantNumber();
+		if (KBD_ET_DOWN_UP.getConstant().equals(constant)) {
+			return KBD_ET_DOWN_UP.getContantNumber();
 		}
 		
-		if (POSKeyboardConstantMapper.KBD_KET_KEYDOWN.getConstant().equals(constant)) {
-			return POSKeyboardConstantMapper.KBD_KET_KEYDOWN.getContantNumber();
+		if (KBD_KET_KEYDOWN.getConstant().equals(constant)) {
+			return KBD_KET_KEYDOWN.getContantNumber();
 		}
 		
-		if (POSKeyboardConstantMapper.KBD_KET_KEYUP.getConstant().equals(constant)) {
-			return POSKeyboardConstantMapper.KBD_KET_KEYUP.getContantNumber();
+		if (KBD_KET_KEYUP.getConstant().equals(constant)) {
+			return KBD_KET_KEYUP.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

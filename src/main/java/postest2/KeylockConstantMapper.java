@@ -8,6 +8,7 @@ public class KeylockConstantMapper extends CommonConstantMapper {
 	// "StatusUpdateEvent" Event: "status" Parameter
 	// ///////////////////////////////////////////////////////////////////
 	public static final ConstantConverter LOCK_KP_ANY = new ConstantConverter(0, "LOCK_KP_ANY"); // WaitForKeylockChange Only
+	@BelongingProperty(PropertyNames.getDeviceStatus)
 	public static final ConstantConverter LOCK_KP_ELECTRONIC = new ConstantConverter(0, "LOCK_KP_ELECTRONIC"); // StatusUpdateEvent Only
 	@BelongingProperty(PropertyNames.getDeviceStatus)
 	public static final ConstantConverter LOCK_KP_LOCK = new ConstantConverter(1, "LOCK_KP_LOCK");
@@ -26,32 +27,32 @@ public class KeylockConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant){
 		
-		if(KeylockConstantMapper.LOCK_KT_STANDARD.getConstant().equals(constant)) {
-			return KeylockConstantMapper.LOCK_KT_STANDARD.getContantNumber();
+		if(LOCK_KT_STANDARD.getConstant().equals(constant)) {
+			return LOCK_KT_STANDARD.getContantNumber();
 		}
 
-		if(KeylockConstantMapper.LOCK_KT_ELECTRONIC.getConstant().equals(constant)) {
-			return KeylockConstantMapper.LOCK_KT_ELECTRONIC.getContantNumber();
+		if(LOCK_KT_ELECTRONIC.getConstant().equals(constant)) {
+			return LOCK_KT_ELECTRONIC.getContantNumber();
 		}
 
-		if(KeylockConstantMapper.LOCK_KP_ANY.getConstant().equals(constant)) {
-			return KeylockConstantMapper.LOCK_KP_ANY.getContantNumber();
+		if(LOCK_KP_ANY.getConstant().equals(constant)) {
+			return LOCK_KP_ANY.getContantNumber();
 		}
 
-		if(KeylockConstantMapper.LOCK_KP_ELECTRONIC.getConstant().equals(constant)) {
-			return KeylockConstantMapper.LOCK_KP_ELECTRONIC.getContantNumber();
+		if(LOCK_KP_ELECTRONIC.getConstant().equals(constant)) {
+			return LOCK_KP_ELECTRONIC.getContantNumber();
 		}
 
-		if(KeylockConstantMapper.LOCK_KP_LOCK.getConstant().equals(constant)) {
-			return KeylockConstantMapper.LOCK_KP_LOCK.getContantNumber();
+		if(LOCK_KP_LOCK.getConstant().equals(constant)) {
+			return LOCK_KP_LOCK.getContantNumber();
 		}
 
-		if(KeylockConstantMapper.LOCK_KP_NORM.getConstant().equals(constant)) {
-			return KeylockConstantMapper.LOCK_KP_NORM.getContantNumber();
+		if(LOCK_KP_NORM.getConstant().equals(constant)) {
+			return LOCK_KP_NORM.getContantNumber();
 		}
 
-		if(KeylockConstantMapper.LOCK_KP_SUPR.getConstant().equals(constant)) {
-			return KeylockConstantMapper.LOCK_KP_SUPR.getContantNumber();
+		if(LOCK_KP_SUPR.getConstant().equals(constant)) {
+			return LOCK_KP_SUPR.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

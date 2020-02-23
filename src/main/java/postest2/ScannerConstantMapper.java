@@ -89,156 +89,156 @@ public class ScannerConstantMapper extends CommonConstantMapper {
 	
 	public static int getConstantNumberFromString(String constant) {
 
-		if (ScannerConstantMapper.SCAN_SDT_UPCA.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCA.getContantNumber();
+		if (SCAN_SDT_UPCA.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCA.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPCE.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCE.getContantNumber();
+		if (SCAN_SDT_UPCE.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCE.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_JAN8.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_JAN8.getContantNumber();
+		if (SCAN_SDT_JAN8.getConstant().equals(constant)) {
+			return SCAN_SDT_JAN8.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_EAN8.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_EAN8.getContantNumber();
+		if (SCAN_SDT_EAN8.getConstant().equals(constant)) {
+			return SCAN_SDT_EAN8.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_JAN13.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_JAN13.getContantNumber();
+		if (SCAN_SDT_JAN13.getConstant().equals(constant)) {
+			return SCAN_SDT_JAN13.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_EAN13.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_EAN13.getContantNumber();
+		if (SCAN_SDT_EAN13.getConstant().equals(constant)) {
+			return SCAN_SDT_EAN13.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_TF.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_TF.getContantNumber();
+		if (SCAN_SDT_TF.getConstant().equals(constant)) {
+			return SCAN_SDT_TF.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_ITF.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_ITF.getContantNumber();
+		if (SCAN_SDT_ITF.getConstant().equals(constant)) {
+			return SCAN_SDT_ITF.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_Codabar.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_Codabar.getContantNumber();
+		if (SCAN_SDT_Codabar.getConstant().equals(constant)) {
+			return SCAN_SDT_Codabar.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_Code39.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_Code39.getContantNumber();
+		if (SCAN_SDT_Code39.getConstant().equals(constant)) {
+			return SCAN_SDT_Code39.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_Code93.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_Code93.getContantNumber();
+		if (SCAN_SDT_Code93.getConstant().equals(constant)) {
+			return SCAN_SDT_Code93.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_Code128.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_Code128.getContantNumber();
+		if (SCAN_SDT_Code128.getConstant().equals(constant)) {
+			return SCAN_SDT_Code128.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPCA_S.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCA_S.getContantNumber();
+		if (SCAN_SDT_UPCA_S.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCA_S.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPCE_S.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCE_S.getContantNumber();
+		if (SCAN_SDT_UPCE_S.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCE_S.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPCD1.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCD1.getContantNumber();
+		if (SCAN_SDT_UPCD1.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCD1.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPCD2.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCD2.getContantNumber();
+		if (SCAN_SDT_UPCD2.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCD2.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPCD3.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCD3.getContantNumber();
+		if (SCAN_SDT_UPCD3.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCD3.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPCD4.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCD4.getContantNumber();
+		if (SCAN_SDT_UPCD4.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCD4.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPCD5.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPCD5.getContantNumber();
+		if (SCAN_SDT_UPCD5.getConstant().equals(constant)) {
+			return SCAN_SDT_UPCD5.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_EAN8_S.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_EAN8_S.getContantNumber();
+		if (SCAN_SDT_EAN8_S.getConstant().equals(constant)) {
+			return SCAN_SDT_EAN8_S.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_EAN13_S.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_EAN13_S.getContantNumber();
+		if (SCAN_SDT_EAN13_S.getConstant().equals(constant)) {
+			return SCAN_SDT_EAN13_S.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_EAN128.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_EAN128.getContantNumber();
+		if (SCAN_SDT_EAN128.getConstant().equals(constant)) {
+			return SCAN_SDT_EAN128.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_OCRA.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_OCRA.getContantNumber();
+		if (SCAN_SDT_OCRA.getConstant().equals(constant)) {
+			return SCAN_SDT_OCRA.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_OCRB.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_OCRB.getContantNumber();
+		if (SCAN_SDT_OCRB.getConstant().equals(constant)) {
+			return SCAN_SDT_OCRB.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_RSS14.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_RSS14.getContantNumber();
+		if (SCAN_SDT_RSS14.getConstant().equals(constant)) {
+			return SCAN_SDT_RSS14.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_RSS_EXPANDED.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_RSS_EXPANDED.getContantNumber();
+		if (SCAN_SDT_RSS_EXPANDED.getConstant().equals(constant)) {
+			return SCAN_SDT_RSS_EXPANDED.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_GS1DATABAR.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_GS1DATABAR.getContantNumber();
+		if (SCAN_SDT_GS1DATABAR.getConstant().equals(constant)) {
+			return SCAN_SDT_GS1DATABAR.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_GS1DATABAR_E.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_GS1DATABAR_E.getContantNumber();
+		if (SCAN_SDT_GS1DATABAR_E.getConstant().equals(constant)) {
+			return SCAN_SDT_GS1DATABAR_E.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_CCA.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_CCA.getContantNumber();
+		if (SCAN_SDT_CCA.getConstant().equals(constant)) {
+			return SCAN_SDT_CCA.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_PDF417.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_PDF417.getContantNumber();
+		if (SCAN_SDT_PDF417.getConstant().equals(constant)) {
+			return SCAN_SDT_PDF417.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_MAXICODE.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_MAXICODE.getContantNumber();
+		if (SCAN_SDT_MAXICODE.getConstant().equals(constant)) {
+			return SCAN_SDT_MAXICODE.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_DATAMATRIX.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_DATAMATRIX.getContantNumber();
+		if (SCAN_SDT_DATAMATRIX.getConstant().equals(constant)) {
+			return SCAN_SDT_DATAMATRIX.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_QRCODE.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_QRCODE.getContantNumber();
+		if (SCAN_SDT_QRCODE.getConstant().equals(constant)) {
+			return SCAN_SDT_QRCODE.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UQRCODE.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UQRCODE.getContantNumber();
+		if (SCAN_SDT_UQRCODE.getConstant().equals(constant)) {
+			return SCAN_SDT_UQRCODE.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_AZTEC.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_AZTEC.getContantNumber();
+		if (SCAN_SDT_AZTEC.getConstant().equals(constant)) {
+			return SCAN_SDT_AZTEC.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UPDF417.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UPDF417.getContantNumber();
+		if (SCAN_SDT_UPDF417.getConstant().equals(constant)) {
+			return SCAN_SDT_UPDF417.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_OTHER.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_OTHER.getContantNumber();
+		if (SCAN_SDT_OTHER.getConstant().equals(constant)) {
+			return SCAN_SDT_OTHER.getContantNumber();
 		}
 		
-		if (ScannerConstantMapper.SCAN_SDT_UNKNOWN.getConstant().equals(constant)) {
-			return ScannerConstantMapper.SCAN_SDT_UNKNOWN.getContantNumber();
+		if (SCAN_SDT_UNKNOWN.getConstant().equals(constant)) {
+			return SCAN_SDT_UNKNOWN.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

@@ -16,20 +16,20 @@ public class GateConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (GateConstantMapper.GATE_GS_CLOSED.getConstant().equals(constant)) {
-			return GateConstantMapper.GATE_GS_CLOSED.getContantNumber();
+		if (GATE_GS_CLOSED.getConstant().equals(constant)) {
+			return GATE_GS_CLOSED.getContantNumber();
 		}
 
-		if (GateConstantMapper.GATE_GS_OPEN.getConstant().equals(constant)) {
-			return GateConstantMapper.GATE_GS_OPEN.getContantNumber();
+		if (GATE_GS_OPEN.getConstant().equals(constant)) {
+			return GATE_GS_OPEN.getContantNumber();
 		}
 
-		if (GateConstantMapper.GATE_GS_BLOCKED.getConstant().equals(constant)) {
-			return GateConstantMapper.GATE_GS_BLOCKED.getContantNumber();
+		if (GATE_GS_BLOCKED.getConstant().equals(constant)) {
+			return GATE_GS_BLOCKED.getContantNumber();
 		}
 
-		if (GateConstantMapper.GATE_GS_MALFUNCTION.getConstant().equals(constant)) {
-			return GateConstantMapper.GATE_GS_MALFUNCTION.getContantNumber();
+		if (GATE_GS_MALFUNCTION.getConstant().equals(constant)) {
+			return GATE_GS_MALFUNCTION.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

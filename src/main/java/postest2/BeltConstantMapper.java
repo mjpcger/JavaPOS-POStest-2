@@ -31,40 +31,40 @@ public class BeltConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (constant.equals(BeltConstantMapper.BELT_RIC_BACKWARD.getConstant())) {
-			return BeltConstantMapper.BELT_RIC_BACKWARD.getContantNumber();
+		if (constant.equals(BELT_RIC_BACKWARD.getConstant())) {
+			return BELT_RIC_BACKWARD.getContantNumber();
 		}
 
-		if (constant.equals(BeltConstantMapper.BELT_RIC_FORWARD.getConstant())) {
-			return BeltConstantMapper.BELT_RIC_FORWARD.getContantNumber();
+		if (constant.equals(BELT_RIC_FORWARD.getConstant())) {
+			return BELT_RIC_FORWARD.getContantNumber();
 		}
 
-		if (constant.equals(BeltConstantMapper.BELT_AIC_BACKWARD.getConstant())) {
-			return BeltConstantMapper.BELT_AIC_BACKWARD.getContantNumber();
+		if (constant.equals(BELT_AIC_BACKWARD.getConstant())) {
+			return BELT_AIC_BACKWARD.getContantNumber();
 		}
 
-		if (constant.equals(BeltConstantMapper.BELT_AIC_FORWARD.getConstant())) {
-			return BeltConstantMapper.BELT_AIC_FORWARD.getContantNumber();
+		if (constant.equals(BELT_AIC_FORWARD.getConstant())) {
+			return BELT_AIC_FORWARD.getContantNumber();
 		}
 
-		if (constant.equals(BeltConstantMapper.BELT_MT_FORWARD.getConstant())) {
-			return BeltConstantMapper.BELT_MT_FORWARD.getContantNumber();
+		if (constant.equals(BELT_MT_FORWARD.getConstant())) {
+			return BELT_MT_FORWARD.getContantNumber();
 		}
 
-		if (constant.equals(BeltConstantMapper.BELT_MT_BACKWARD.getConstant())) {
-			return BeltConstantMapper.BELT_MT_BACKWARD.getContantNumber();
+		if (constant.equals(BELT_MT_BACKWARD.getConstant())) {
+			return BELT_MT_BACKWARD.getContantNumber();
 		}
 
-		if (constant.equals(BeltConstantMapper.BELT_MT_STOPPED.getConstant())) {
-			return BeltConstantMapper.BELT_MT_STOPPED.getContantNumber();
+		if (constant.equals(BELT_MT_STOPPED.getConstant())) {
+			return BELT_MT_STOPPED.getContantNumber();
 		}
 
-		if (constant.equals(BeltConstantMapper.BELT_MT_EMERGENCY.getConstant())) {
-			return BeltConstantMapper.BELT_MT_EMERGENCY.getContantNumber();
+		if (constant.equals(BELT_MT_EMERGENCY.getConstant())) {
+			return BELT_MT_EMERGENCY.getContantNumber();
 		}
 
-		if (constant.equals(BeltConstantMapper.BELT_MT_MOTOR_FAULT.getConstant())) {
-			return BeltConstantMapper.BELT_MT_MOTOR_FAULT.getContantNumber();
+		if (constant.equals(BELT_MT_MOTOR_FAULT.getConstant())) {
+			return BELT_MT_MOTOR_FAULT.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

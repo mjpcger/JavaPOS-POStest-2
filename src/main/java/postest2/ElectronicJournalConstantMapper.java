@@ -25,36 +25,36 @@ public class ElectronicJournalConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (ElectronicJournalConstantMapper.EJ_S_RECEIPT.getConstant().equals(constant)) {
-			return ElectronicJournalConstantMapper.EJ_S_RECEIPT.getContantNumber();
+		if (EJ_S_RECEIPT.getConstant().equals(constant)) {
+			return EJ_S_RECEIPT.getContantNumber();
 		}
 
-		if (ElectronicJournalConstantMapper.EJ_S_SLIP.getConstant().equals(constant)) {
-			return ElectronicJournalConstantMapper.EJ_S_SLIP.getContantNumber();
+		if (EJ_S_SLIP.getConstant().equals(constant)) {
+			return EJ_S_SLIP.getContantNumber();
 		}
 
-		if (ElectronicJournalConstantMapper.EJ_S_JOURNAL.getConstant().equals(constant)) {
-			return ElectronicJournalConstantMapper.EJ_S_JOURNAL.getContantNumber();
+		if (EJ_S_JOURNAL.getConstant().equals(constant)) {
+			return EJ_S_JOURNAL.getContantNumber();
 		}
 
-		if (ElectronicJournalConstantMapper.EJ_MT_SESSION_BEG.getConstant().equals(constant)) {
-			return ElectronicJournalConstantMapper.EJ_MT_SESSION_BEG.getContantNumber();
+		if (EJ_MT_SESSION_BEG.getConstant().equals(constant)) {
+			return EJ_MT_SESSION_BEG.getContantNumber();
 		}
 
-		if (ElectronicJournalConstantMapper.EJ_MT_SESSION_END.getConstant().equals(constant)) {
-			return ElectronicJournalConstantMapper.EJ_MT_SESSION_END.getContantNumber();
+		if (EJ_MT_SESSION_END.getConstant().equals(constant)) {
+			return EJ_MT_SESSION_END.getContantNumber();
 		}
 
-		if (ElectronicJournalConstantMapper.EJ_MT_DOCUMENT.getConstant().equals(constant)) {
-			return ElectronicJournalConstantMapper.EJ_MT_DOCUMENT.getContantNumber();
+		if (EJ_MT_DOCUMENT.getConstant().equals(constant)) {
+			return EJ_MT_DOCUMENT.getContantNumber();
 		}
 
-		if (ElectronicJournalConstantMapper.EJ_MT_HEAD.getConstant().equals(constant)) {
-			return ElectronicJournalConstantMapper.EJ_MT_HEAD.getContantNumber();
+		if (EJ_MT_HEAD.getConstant().equals(constant)) {
+			return EJ_MT_HEAD.getContantNumber();
 		}
 
-		if (ElectronicJournalConstantMapper.EJ_MT_TAIL.getConstant().equals(constant)) {
-			return ElectronicJournalConstantMapper.EJ_MT_TAIL.getContantNumber();
+		if (EJ_MT_TAIL.getConstant().equals(constant)) {
+			return EJ_MT_TAIL.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

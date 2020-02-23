@@ -489,568 +489,568 @@ public class POSPrinterConstantMapper extends CommonConstantMapper {
 	 */
 	public static int getConstantNumberFromString(String constant){
 		
-		if(POSPrinterConstantMapper.PTR_CN_DISABLED.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CN_DISABLED.getContantNumber();
+		if(PTR_CN_DISABLED.getConstant().equals(constant)) {
+			return PTR_CN_DISABLED.getContantNumber();
 		}
 
-		if(POSPrinterConstantMapper.PTR_CN_ENABLED.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CN_ENABLED.getContantNumber();
+		if(PTR_CN_ENABLED.getConstant().equals(constant)) {
+			return PTR_CN_ENABLED.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_S_JOURNAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_S_JOURNAL.getContantNumber();
+		if (PTR_S_JOURNAL.getConstant().equals(constant)) {
+			return PTR_S_JOURNAL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_S_RECEIPT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_S_RECEIPT.getContantNumber();
+		if (PTR_S_RECEIPT.getConstant().equals(constant)) {
+			return PTR_S_RECEIPT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_S_SLIP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_S_SLIP.getContantNumber();
+		if (PTR_S_SLIP.getConstant().equals(constant)) {
+			return PTR_S_SLIP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_S_JOURNAL_RECEIPT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_S_JOURNAL_RECEIPT.getContantNumber();
+		if (PTR_S_JOURNAL_RECEIPT.getConstant().equals(constant)) {
+			return PTR_S_JOURNAL_RECEIPT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_S_JOURNAL_SLIP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_S_JOURNAL_SLIP.getContantNumber();
+		if (PTR_S_JOURNAL_SLIP.getConstant().equals(constant)) {
+			return PTR_S_JOURNAL_SLIP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_S_RECEIPT_SLIP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_S_RECEIPT_SLIP.getContantNumber();
+		if (PTR_S_RECEIPT_SLIP.getConstant().equals(constant)) {
+			return PTR_S_RECEIPT_SLIP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_TWO_RECEIPT_JOURNAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_TWO_RECEIPT_JOURNAL.getContantNumber();
+		if (PTR_TWO_RECEIPT_JOURNAL.getConstant().equals(constant)) {
+			return PTR_TWO_RECEIPT_JOURNAL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_TWO_SLIP_JOURNAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_TWO_SLIP_JOURNAL.getContantNumber();
+		if (PTR_TWO_SLIP_JOURNAL.getConstant().equals(constant)) {
+			return PTR_TWO_SLIP_JOURNAL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_TWO_SLIP_RECEIPT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_TWO_SLIP_RECEIPT.getContantNumber();
+		if (PTR_TWO_SLIP_RECEIPT.getConstant().equals(constant)) {
+			return PTR_TWO_SLIP_RECEIPT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CCS_ALPHA.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CCS_ALPHA.getContantNumber();
+		if (PTR_CCS_ALPHA.getConstant().equals(constant)) {
+			return PTR_CCS_ALPHA.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CCS_ASCII.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CCS_ASCII.getContantNumber();
+		if (PTR_CCS_ASCII.getConstant().equals(constant)) {
+			return PTR_CCS_ASCII.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CCS_KANA.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CCS_KANA.getContantNumber();
+		if (PTR_CCS_KANA.getConstant().equals(constant)) {
+			return PTR_CCS_KANA.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CCS_KANJI.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CCS_KANJI.getContantNumber();
+		if (PTR_CCS_KANJI.getConstant().equals(constant)) {
+			return PTR_CCS_KANJI.getContantNumber();
 		}
 		
-		if (POSPrinterConstantMapper.PTR_CCS_UNICODE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CCS_UNICODE.getContantNumber();
+		if (PTR_CCS_UNICODE.getConstant().equals(constant)) {
+			return PTR_CCS_UNICODE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CS_UNICODE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CS_UNICODE.getContantNumber();
+		if (PTR_CS_UNICODE.getConstant().equals(constant)) {
+			return PTR_CS_UNICODE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CS_ASCII.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CS_ASCII.getContantNumber();
+		if (PTR_CS_ASCII.getConstant().equals(constant)) {
+			return PTR_CS_ASCII.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CS_ANSI.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CS_ANSI.getContantNumber();
+		if (PTR_CS_ANSI.getConstant().equals(constant)) {
+			return PTR_CS_ANSI.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_MM_DOTS.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_MM_DOTS.getContantNumber();
+		if (PTR_MM_DOTS.getConstant().equals(constant)) {
+			return PTR_MM_DOTS.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_MM_TWIPS.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_MM_TWIPS.getContantNumber();
+		if (PTR_MM_TWIPS.getConstant().equals(constant)) {
+			return PTR_MM_TWIPS.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_MM_ENGLISH.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_MM_ENGLISH.getContantNumber();
+		if (PTR_MM_ENGLISH.getConstant().equals(constant)) {
+			return PTR_MM_ENGLISH.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_MM_METRIC.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_MM_METRIC.getContantNumber();
+		if (PTR_MM_METRIC.getConstant().equals(constant)) {
+			return PTR_MM_METRIC.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_PRIMARY.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_PRIMARY.getContantNumber();
+		if (PTR_COLOR_PRIMARY.getConstant().equals(constant)) {
+			return PTR_COLOR_PRIMARY.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_CUSTOM1.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_CUSTOM1.getContantNumber();
+		if (PTR_COLOR_CUSTOM1.getConstant().equals(constant)) {
+			return PTR_COLOR_CUSTOM1.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_CUSTOM2.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_CUSTOM2.getContantNumber();
+		if (PTR_COLOR_CUSTOM2.getConstant().equals(constant)) {
+			return PTR_COLOR_CUSTOM2.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_CUSTOM3.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_CUSTOM3.getContantNumber();
+		if (PTR_COLOR_CUSTOM3.getConstant().equals(constant)) {
+			return PTR_COLOR_CUSTOM3.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_CUSTOM4.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_CUSTOM4.getContantNumber();
+		if (PTR_COLOR_CUSTOM4.getConstant().equals(constant)) {
+			return PTR_COLOR_CUSTOM4.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_CUSTOM5.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_CUSTOM5.getContantNumber();
+		if (PTR_COLOR_CUSTOM5.getConstant().equals(constant)) {
+			return PTR_COLOR_CUSTOM5.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_CUSTOM6.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_CUSTOM6.getContantNumber();
+		if (PTR_COLOR_CUSTOM6.getConstant().equals(constant)) {
+			return PTR_COLOR_CUSTOM6.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_CYAN.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_CYAN.getContantNumber();
+		if (PTR_COLOR_CYAN.getConstant().equals(constant)) {
+			return PTR_COLOR_CYAN.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_MAGENTA.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_MAGENTA.getContantNumber();
+		if (PTR_COLOR_MAGENTA.getConstant().equals(constant)) {
+			return PTR_COLOR_MAGENTA.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_YELLOW.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_YELLOW.getContantNumber();
+		if (PTR_COLOR_YELLOW.getConstant().equals(constant)) {
+			return PTR_COLOR_YELLOW.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_COLOR_FULL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_COLOR_FULL.getContantNumber();
+		if (PTR_COLOR_FULL.getConstant().equals(constant)) {
+			return PTR_COLOR_FULL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_BITMAP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_BITMAP.getContantNumber();
+		if (PTR_PM_BITMAP.getConstant().equals(constant)) {
+			return PTR_PM_BITMAP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_BARCODE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_BARCODE.getContantNumber();
+		if (PTR_PM_BARCODE.getConstant().equals(constant)) {
+			return PTR_PM_BARCODE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_BM_ROTATE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_BM_ROTATE.getContantNumber();
+		if (PTR_PM_BM_ROTATE.getConstant().equals(constant)) {
+			return PTR_PM_BM_ROTATE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_BC_ROTATE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_BC_ROTATE.getContantNumber();
+		if (PTR_PM_BC_ROTATE.getConstant().equals(constant)) {
+			return PTR_PM_BC_ROTATE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_OPAQUE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_OPAQUE.getContantNumber();
+		if (PTR_PM_OPAQUE.getConstant().equals(constant)) {
+			return PTR_PM_OPAQUE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PD_LEFT_TO_RIGHT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PD_LEFT_TO_RIGHT.getContantNumber();
+		if (PTR_PD_LEFT_TO_RIGHT.getConstant().equals(constant)) {
+			return PTR_PD_LEFT_TO_RIGHT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PD_BOTTOM_TO_TOP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PD_BOTTOM_TO_TOP.getContantNumber();
+		if (PTR_PD_BOTTOM_TO_TOP.getConstant().equals(constant)) {
+			return PTR_PD_BOTTOM_TO_TOP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PD_RIGHT_TO_LEFT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PD_RIGHT_TO_LEFT.getContantNumber();
+		if (PTR_PD_RIGHT_TO_LEFT.getConstant().equals(constant)) {
+			return PTR_PD_RIGHT_TO_LEFT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PD_TOP_TO_BOTTOM.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PD_TOP_TO_BOTTOM.getContantNumber();
+		if (PTR_PD_TOP_TO_BOTTOM.getConstant().equals(constant)) {
+			return PTR_PD_TOP_TO_BOTTOM.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_PAGE_MODE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_PAGE_MODE.getContantNumber();
+		if (PTR_PM_PAGE_MODE.getConstant().equals(constant)) {
+			return PTR_PM_PAGE_MODE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_PRINT_SAVE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_PRINT_SAVE.getContantNumber();
+		if (PTR_PM_PRINT_SAVE.getConstant().equals(constant)) {
+			return PTR_PM_PRINT_SAVE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_NORMAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_NORMAL.getContantNumber();
+		if (PTR_PM_NORMAL.getConstant().equals(constant)) {
+			return PTR_PM_NORMAL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PM_CANCEL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PM_CANCEL.getContantNumber();
+		if (PTR_PM_CANCEL.getConstant().equals(constant)) {
+			return PTR_PM_CANCEL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CP_FULLCUT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CP_FULLCUT.getContantNumber();
+		if (PTR_CP_FULLCUT.getConstant().equals(constant)) {
+			return PTR_CP_FULLCUT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BC_LEFT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BC_LEFT.getContantNumber();
+		if (PTR_BC_LEFT.getConstant().equals(constant)) {
+			return PTR_BC_LEFT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BC_CENTER.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BC_CENTER.getContantNumber();
+		if (PTR_BC_CENTER.getConstant().equals(constant)) {
+			return PTR_BC_CENTER.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BC_RIGHT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BC_RIGHT.getContantNumber();
+		if (PTR_BC_RIGHT.getConstant().equals(constant)) {
+			return PTR_BC_RIGHT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BC_TEXT_NONE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BC_TEXT_NONE.getContantNumber();
+		if (PTR_BC_TEXT_NONE.getConstant().equals(constant)) {
+			return PTR_BC_TEXT_NONE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BC_TEXT_ABOVE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BC_TEXT_ABOVE.getContantNumber();
+		if (PTR_BC_TEXT_ABOVE.getConstant().equals(constant)) {
+			return PTR_BC_TEXT_ABOVE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BC_TEXT_BELOW.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BC_TEXT_BELOW.getContantNumber();
+		if (PTR_BC_TEXT_BELOW.getConstant().equals(constant)) {
+			return PTR_BC_TEXT_BELOW.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCA.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCA.getContantNumber();
+		if (PTR_BCS_UPCA.getConstant().equals(constant)) {
+			return PTR_BCS_UPCA.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCE.getContantNumber();
+		if (PTR_BCS_UPCE.getConstant().equals(constant)) {
+			return PTR_BCS_UPCE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_JAN8.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_JAN8.getContantNumber();
+		if (PTR_BCS_JAN8.getConstant().equals(constant)) {
+			return PTR_BCS_JAN8.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_EAN8.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_EAN8.getContantNumber();
+		if (PTR_BCS_EAN8.getConstant().equals(constant)) {
+			return PTR_BCS_EAN8.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_JAN13.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_JAN13.getContantNumber();
+		if (PTR_BCS_JAN13.getConstant().equals(constant)) {
+			return PTR_BCS_JAN13.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_EAN13.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_EAN13.getContantNumber();
+		if (PTR_BCS_EAN13.getConstant().equals(constant)) {
+			return PTR_BCS_EAN13.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_TF.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_TF.getContantNumber();
+		if (PTR_BCS_TF.getConstant().equals(constant)) {
+			return PTR_BCS_TF.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_ITF.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_ITF.getContantNumber();
+		if (PTR_BCS_ITF.getConstant().equals(constant)) {
+			return PTR_BCS_ITF.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_Codabar.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_Codabar.getContantNumber();
+		if (PTR_BCS_Codabar.getConstant().equals(constant)) {
+			return PTR_BCS_Codabar.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_Code39.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_Code39.getContantNumber();
+		if (PTR_BCS_Code39.getConstant().equals(constant)) {
+			return PTR_BCS_Code39.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_Code93.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_Code93.getContantNumber();
+		if (PTR_BCS_Code93.getConstant().equals(constant)) {
+			return PTR_BCS_Code93.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_Code128.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_Code128.getContantNumber();
+		if (PTR_BCS_Code128.getConstant().equals(constant)) {
+			return PTR_BCS_Code128.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCA_S.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCA_S.getContantNumber();
+		if (PTR_BCS_UPCA_S.getConstant().equals(constant)) {
+			return PTR_BCS_UPCA_S.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCE_S.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCE_S.getContantNumber();
+		if (PTR_BCS_UPCE_S.getConstant().equals(constant)) {
+			return PTR_BCS_UPCE_S.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCD1.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCD1.getContantNumber();
+		if (PTR_BCS_UPCD1.getConstant().equals(constant)) {
+			return PTR_BCS_UPCD1.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCD2.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCD2.getContantNumber();
+		if (PTR_BCS_UPCD2.getConstant().equals(constant)) {
+			return PTR_BCS_UPCD2.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCD3.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCD3.getContantNumber();
+		if (PTR_BCS_UPCD3.getConstant().equals(constant)) {
+			return PTR_BCS_UPCD3.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCD4.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCD4.getContantNumber();
+		if (PTR_BCS_UPCD4.getConstant().equals(constant)) {
+			return PTR_BCS_UPCD4.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPCD5.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPCD5.getContantNumber();
+		if (PTR_BCS_UPCD5.getConstant().equals(constant)) {
+			return PTR_BCS_UPCD5.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_EAN8_S.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_EAN8_S.getContantNumber();
+		if (PTR_BCS_EAN8_S.getConstant().equals(constant)) {
+			return PTR_BCS_EAN8_S.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_EAN13_S.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_EAN13_S.getContantNumber();
+		if (PTR_BCS_EAN13_S.getConstant().equals(constant)) {
+			return PTR_BCS_EAN13_S.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_EAN128.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_EAN128.getContantNumber();
+		if (PTR_BCS_EAN128.getConstant().equals(constant)) {
+			return PTR_BCS_EAN128.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_OCRA.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_OCRA.getContantNumber();
+		if (PTR_BCS_OCRA.getConstant().equals(constant)) {
+			return PTR_BCS_OCRA.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_OCRB.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_OCRB.getContantNumber();
+		if (PTR_BCS_OCRB.getConstant().equals(constant)) {
+			return PTR_BCS_OCRB.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_Code128_Parsed.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_Code128_Parsed.getContantNumber();
+		if (PTR_BCS_Code128_Parsed.getConstant().equals(constant)) {
+			return PTR_BCS_Code128_Parsed.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_RSS14.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_RSS14.getContantNumber();
+		if (PTR_BCS_RSS14.getConstant().equals(constant)) {
+			return PTR_BCS_RSS14.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_RSS_EXPANDED.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_RSS_EXPANDED.getContantNumber();
+		if (PTR_BCS_RSS_EXPANDED.getConstant().equals(constant)) {
+			return PTR_BCS_RSS_EXPANDED.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_GS1DATABAR.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_GS1DATABAR.getContantNumber();
+		if (PTR_BCS_GS1DATABAR.getConstant().equals(constant)) {
+			return PTR_BCS_GS1DATABAR.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_GS1DATABAR_E.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_GS1DATABAR_E.getContantNumber();
+		if (PTR_BCS_GS1DATABAR_E.getConstant().equals(constant)) {
+			return PTR_BCS_GS1DATABAR_E.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_GS1DATABAR_S.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_GS1DATABAR_S.getContantNumber();
+		if (PTR_BCS_GS1DATABAR_S.getConstant().equals(constant)) {
+			return PTR_BCS_GS1DATABAR_S.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_GS1DATABAR_E_S.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_GS1DATABAR_E_S.getContantNumber();
+		if (PTR_BCS_GS1DATABAR_E_S.getConstant().equals(constant)) {
+			return PTR_BCS_GS1DATABAR_E_S.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_PDF417.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_PDF417.getContantNumber();
+		if (PTR_BCS_PDF417.getConstant().equals(constant)) {
+			return PTR_BCS_PDF417.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_MAXICODE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_MAXICODE.getContantNumber();
+		if (PTR_BCS_MAXICODE.getConstant().equals(constant)) {
+			return PTR_BCS_MAXICODE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_DATAMATRIX.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_DATAMATRIX.getContantNumber();
+		if (PTR_BCS_DATAMATRIX.getConstant().equals(constant)) {
+			return PTR_BCS_DATAMATRIX.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_QRCODE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_QRCODE.getContantNumber();
+		if (PTR_BCS_QRCODE.getConstant().equals(constant)) {
+			return PTR_BCS_QRCODE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UQRCODE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UQRCODE.getContantNumber();
+		if (PTR_BCS_UQRCODE.getConstant().equals(constant)) {
+			return PTR_BCS_UQRCODE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_AZTEC.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_AZTEC.getContantNumber();
+		if (PTR_BCS_AZTEC.getConstant().equals(constant)) {
+			return PTR_BCS_AZTEC.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_UPDF417.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_UPDF417.getContantNumber();
+		if (PTR_BCS_UPDF417.getConstant().equals(constant)) {
+			return PTR_BCS_UPDF417.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BCS_OTHER.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BCS_OTHER.getContantNumber();
+		if (PTR_BCS_OTHER.getConstant().equals(constant)) {
+			return PTR_BCS_OTHER.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BM_ASIS.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BM_ASIS.getContantNumber();
+		if (PTR_BM_ASIS.getConstant().equals(constant)) {
+			return PTR_BM_ASIS.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BM_LEFT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BM_LEFT.getContantNumber();
+		if (PTR_BM_LEFT.getConstant().equals(constant)) {
+			return PTR_BM_LEFT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BM_CENTER.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BM_CENTER.getContantNumber();
+		if (PTR_BM_CENTER.getConstant().equals(constant)) {
+			return PTR_BM_CENTER.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BM_RIGHT.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BM_RIGHT.getContantNumber();
+		if (PTR_BM_RIGHT.getConstant().equals(constant)) {
+			return PTR_BM_RIGHT.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BMT_BMP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BMT_BMP.getContantNumber();
+		if (PTR_BMT_BMP.getConstant().equals(constant)) {
+			return PTR_BMT_BMP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BMT_JPEG.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BMT_JPEG.getContantNumber();
+		if (PTR_BMT_JPEG.getConstant().equals(constant)) {
+			return PTR_BMT_JPEG.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_BMT_GIF.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_BMT_GIF.getContantNumber();
+		if (PTR_BMT_GIF.getConstant().equals(constant)) {
+			return PTR_BMT_GIF.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_RP_NORMAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_RP_NORMAL.getContantNumber();
+		if (PTR_RP_NORMAL.getConstant().equals(constant)) {
+			return PTR_RP_NORMAL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_RP_RIGHT90.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_RP_RIGHT90.getContantNumber();
+		if (PTR_RP_RIGHT90.getConstant().equals(constant)) {
+			return PTR_RP_RIGHT90.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_RP_LEFT90.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_RP_LEFT90.getContantNumber();
+		if (PTR_RP_LEFT90.getConstant().equals(constant)) {
+			return PTR_RP_LEFT90.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_RP_ROTATE180.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_RP_ROTATE180.getContantNumber();
+		if (PTR_RP_ROTATE180.getConstant().equals(constant)) {
+			return PTR_RP_ROTATE180.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_RP_BARCODE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_RP_BARCODE.getContantNumber();
+		if (PTR_RP_BARCODE.getConstant().equals(constant)) {
+			return PTR_RP_BARCODE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_RP_BITMAP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_RP_BITMAP.getContantNumber();
+		if (PTR_RP_BITMAP.getConstant().equals(constant)) {
+			return PTR_RP_BITMAP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_L_TOP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_L_TOP.getContantNumber();
+		if (PTR_L_TOP.getConstant().equals(constant)) {
+			return PTR_L_TOP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_L_BOTTOM.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_L_BOTTOM.getContantNumber();
+		if (PTR_L_BOTTOM.getConstant().equals(constant)) {
+			return PTR_L_BOTTOM.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_TP_TRANSACTION.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_TP_TRANSACTION.getContantNumber();
+		if (PTR_TP_TRANSACTION.getConstant().equals(constant)) {
+			return PTR_TP_TRANSACTION.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_TP_NORMAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_TP_NORMAL.getContantNumber();
+		if (PTR_TP_NORMAL.getConstant().equals(constant)) {
+			return PTR_TP_NORMAL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_MF_TO_TAKEUP.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_MF_TO_TAKEUP.getContantNumber();
+		if (PTR_MF_TO_TAKEUP.getConstant().equals(constant)) {
+			return PTR_MF_TO_TAKEUP.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_MF_TO_CUTTER.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_MF_TO_CUTTER.getContantNumber();
+		if (PTR_MF_TO_CUTTER.getConstant().equals(constant)) {
+			return PTR_MF_TO_CUTTER.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_MF_TO_CURRENT_TOF.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_MF_TO_CURRENT_TOF.getContantNumber();
+		if (PTR_MF_TO_CURRENT_TOF.getConstant().equals(constant)) {
+			return PTR_MF_TO_CURRENT_TOF.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_MF_TO_NEXT_TOF.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_MF_TO_NEXT_TOF.getContantNumber();
+		if (PTR_MF_TO_NEXT_TOF.getConstant().equals(constant)) {
+			return PTR_MF_TO_NEXT_TOF.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PS_UNKNOWN.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PS_UNKNOWN.getContantNumber();
+		if (PTR_PS_UNKNOWN.getConstant().equals(constant)) {
+			return PTR_PS_UNKNOWN.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PS_SIDE1.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PS_SIDE1.getContantNumber();
+		if (PTR_PS_SIDE1.getConstant().equals(constant)) {
+			return PTR_PS_SIDE1.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PS_SIDE2.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PS_SIDE2.getContantNumber();
+		if (PTR_PS_SIDE2.getConstant().equals(constant)) {
+			return PTR_PS_SIDE2.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_PS_OPPOSITE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_PS_OPPOSITE.getContantNumber();
+		if (PTR_PS_OPPOSITE.getConstant().equals(constant)) {
+			return PTR_PS_OPPOSITE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_RL_HORIZONTAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_RL_HORIZONTAL.getContantNumber();
+		if (PTR_RL_HORIZONTAL.getConstant().equals(constant)) {
+			return PTR_RL_HORIZONTAL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_RL_VERTICAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_RL_VERTICAL.getContantNumber();
+		if (PTR_RL_VERTICAL.getConstant().equals(constant)) {
+			return PTR_RL_VERTICAL.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_LS_SINGLE_SOLID_LINE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_LS_SINGLE_SOLID_LINE.getContantNumber();
+		if (PTR_LS_SINGLE_SOLID_LINE.getConstant().equals(constant)) {
+			return PTR_LS_SINGLE_SOLID_LINE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_LS_DOUBLE_SOLID_LINE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_LS_DOUBLE_SOLID_LINE.getContantNumber();
+		if (PTR_LS_DOUBLE_SOLID_LINE.getConstant().equals(constant)) {
+			return PTR_LS_DOUBLE_SOLID_LINE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_LS_BROKEN_LINE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_LS_BROKEN_LINE.getContantNumber();
+		if (PTR_LS_BROKEN_LINE.getConstant().equals(constant)) {
+			return PTR_LS_BROKEN_LINE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_LS_CHAIN_LINE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_LS_CHAIN_LINE.getContantNumber();
+		if (PTR_LS_CHAIN_LINE.getConstant().equals(constant)) {
+			return PTR_LS_CHAIN_LINE.getContantNumber();
 		}
 		
-		if (POSPrinterConstantMapper.PTR_EL_NONE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_EL_NONE.getContantNumber();
+		if (PTR_EL_NONE.getConstant().equals(constant)) {
+			return PTR_EL_NONE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_EL_RECOVERABLE.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_EL_RECOVERABLE.getContantNumber();
+		if (PTR_EL_RECOVERABLE.getConstant().equals(constant)) {
+			return PTR_EL_RECOVERABLE.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_EL_FATAL.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_EL_FATAL.getContantNumber();
+		if (PTR_EL_FATAL.getConstant().equals(constant)) {
+			return PTR_EL_FATAL.getContantNumber();
 		}
 		
-		if (POSPrinterConstantMapper.PTR_CN_DISABLED.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CN_DISABLED.getContantNumber();
+		if (PTR_CN_DISABLED.getConstant().equals(constant)) {
+			return PTR_CN_DISABLED.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CN_ENABLED.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CN_ENABLED.getContantNumber();
+		if (PTR_CN_ENABLED.getConstant().equals(constant)) {
+			return PTR_CN_ENABLED.getContantNumber();
 		}
 		
-		if (POSPrinterConstantMapper.PTR_CART_UNKNOWN.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CART_UNKNOWN.getContantNumber();
+		if (PTR_CART_UNKNOWN.getConstant().equals(constant)) {
+			return PTR_CART_UNKNOWN.getContantNumber();
 		}
 		
-		if (POSPrinterConstantMapper.PTR_CART_OK.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CART_OK.getContantNumber();
+		if (PTR_CART_OK.getConstant().equals(constant)) {
+			return PTR_CART_OK.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CART_REMOVED.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CART_REMOVED.getContantNumber();
+		if (PTR_CART_REMOVED.getConstant().equals(constant)) {
+			return PTR_CART_REMOVED.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CART_EMPTY.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CART_EMPTY.getContantNumber();
+		if (PTR_CART_EMPTY.getConstant().equals(constant)) {
+			return PTR_CART_EMPTY.getContantNumber();
 		}
 		
-		if (POSPrinterConstantMapper.PTR_CART_NEAREND.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CART_NEAREND.getContantNumber();
+		if (PTR_CART_NEAREND.getConstant().equals(constant)) {
+			return PTR_CART_NEAREND.getContantNumber();
 		}
 
-		if (POSPrinterConstantMapper.PTR_CART_CLEANING.getConstant().equals(constant)) {
-			return POSPrinterConstantMapper.PTR_CART_CLEANING.getContantNumber();
+		if (PTR_CART_CLEANING.getConstant().equals(constant)) {
+			return PTR_CART_CLEANING.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}
 
 	public static String getPageModeDescriptorConstantName(int constantNumber) {
-		if (constantNumber == POSPrinterConstantMapper.PTR_PM_BITMAP.getContantNumber()) {
-			return POSPrinterConstantMapper.PTR_PM_BITMAP.getConstant();
+		if (constantNumber == PTR_PM_BITMAP.getContantNumber()) {
+			return PTR_PM_BITMAP.getConstant();
 		}
 
-		if (constantNumber == POSPrinterConstantMapper.PTR_PM_BARCODE.getContantNumber()) {
-			return POSPrinterConstantMapper.PTR_PM_BARCODE.getConstant();
+		if (constantNumber == PTR_PM_BARCODE.getContantNumber()) {
+			return PTR_PM_BARCODE.getConstant();
 		}
 
-		if (constantNumber == POSPrinterConstantMapper.PTR_PM_BM_ROTATE.getContantNumber()) {
-			return POSPrinterConstantMapper.PTR_PM_BM_ROTATE.getConstant();
+		if (constantNumber == PTR_PM_BM_ROTATE.getContantNumber()) {
+			return PTR_PM_BM_ROTATE.getConstant();
 		}
 
-		if (constantNumber == POSPrinterConstantMapper.PTR_PM_BC_ROTATE.getContantNumber()) {
-			return POSPrinterConstantMapper.PTR_PM_BC_ROTATE.getConstant();
+		if (constantNumber == PTR_PM_BC_ROTATE.getContantNumber()) {
+			return PTR_PM_BC_ROTATE.getConstant();
 		}
 
-		if (constantNumber == POSPrinterConstantMapper.PTR_PM_OPAQUE.getContantNumber()) {
-			return POSPrinterConstantMapper.PTR_PM_OPAQUE.getConstant();
+		if (constantNumber == PTR_PM_OPAQUE.getContantNumber()) {
+			return PTR_PM_OPAQUE.getConstant();
 		}
 		return "" + constantNumber;
 	}

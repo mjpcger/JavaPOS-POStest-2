@@ -13,8 +13,8 @@ public class ToneIndicatorConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (ToneIndicatorConstantMapper.TONE_MT_NONE.getConstant().equals(constant)) {
-			return ToneIndicatorConstantMapper.TONE_MT_NONE.getContantNumber();
+		if (TONE_MT_NONE.getConstant().equals(constant)) {
+			return TONE_MT_NONE.getContantNumber();
 		}
 		return CommonConstantMapper.getConstantNumberFromString(constant);
 	}

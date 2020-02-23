@@ -17,20 +17,20 @@ public class BillDispenserConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (BillDispenserConstantMapper.BDSP_STATUS_OK.getConstant().equals(constant)) {
-			return BillDispenserConstantMapper.BDSP_STATUS_OK.getContantNumber();
+		if (BDSP_STATUS_OK.getConstant().equals(constant)) {
+			return BDSP_STATUS_OK.getContantNumber();
 		}
 
-		if (BillDispenserConstantMapper.BDSP_STATUS_EMPTY.getConstant().equals(constant)) {
-			return BillDispenserConstantMapper.BDSP_STATUS_EMPTY.getContantNumber();
+		if (BDSP_STATUS_EMPTY.getConstant().equals(constant)) {
+			return BDSP_STATUS_EMPTY.getContantNumber();
 		}
 
-		if (BillDispenserConstantMapper.BDSP_STATUS_NEAREMPTY.getConstant().equals(constant)) {
-			return BillDispenserConstantMapper.BDSP_STATUS_NEAREMPTY.getContantNumber();
+		if (BDSP_STATUS_NEAREMPTY.getConstant().equals(constant)) {
+			return BDSP_STATUS_NEAREMPTY.getContantNumber();
 		}
 
-		if (BillDispenserConstantMapper.BDSP_STATUS_JAM.getConstant().equals(constant)) {
-			return BillDispenserConstantMapper.BDSP_STATUS_JAM.getContantNumber();
+		if (BDSP_STATUS_JAM.getConstant().equals(constant)) {
+			return BDSP_STATUS_JAM.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

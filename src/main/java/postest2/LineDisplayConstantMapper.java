@@ -204,240 +204,240 @@ public class LineDisplayConstantMapper extends CommonConstantMapper {
 	 */
 	public static int getConstantNumberFromString(String constant){
 		
-		if(LineDisplayConstantMapper.DISP_CB_NOBLINK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CB_NOBLINK.getContantNumber();
+		if(DISP_CB_NOBLINK.getConstant().equals(constant)) {
+			return DISP_CB_NOBLINK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CB_BLINKALL.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CB_BLINKALL.getContantNumber();
+		if(DISP_CB_BLINKALL.getConstant().equals(constant)) {
+			return DISP_CB_BLINKALL.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CB_BLINKEACH.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CB_BLINKEACH.getContantNumber();
+		if(DISP_CB_BLINKEACH.getConstant().equals(constant)) {
+			return DISP_CB_BLINKEACH.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCS_NUMERIC.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCS_NUMERIC.getContantNumber();
+		if(DISP_CCS_NUMERIC.getConstant().equals(constant)) {
+			return DISP_CCS_NUMERIC.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCS_ALPHA.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCS_ALPHA.getContantNumber();
+		if(DISP_CCS_ALPHA.getConstant().equals(constant)) {
+			return DISP_CCS_ALPHA.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCS_ASCII.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCS_ASCII.getContantNumber();
+		if(DISP_CCS_ASCII.getConstant().equals(constant)) {
+			return DISP_CCS_ASCII.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCS_KANA.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCS_KANA.getContantNumber();
+		if(DISP_CCS_KANA.getConstant().equals(constant)) {
+			return DISP_CCS_KANA.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCS_KANJI.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCS_KANJI.getContantNumber();
+		if(DISP_CCS_KANJI.getConstant().equals(constant)) {
+			return DISP_CCS_KANJI.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCS_UNICODE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCS_UNICODE.getContantNumber();
+		if(DISP_CCS_UNICODE.getConstant().equals(constant)) {
+			return DISP_CCS_UNICODE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCT_NONE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCT_NONE.getContantNumber();
+		if(DISP_CCT_NONE.getConstant().equals(constant)) {
+			return DISP_CCT_NONE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCT_FIXED.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCT_FIXED.getContantNumber();
+		if(DISP_CCT_FIXED.getConstant().equals(constant)) {
+			return DISP_CCT_FIXED.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCT_BLOCK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCT_BLOCK.getContantNumber();
+		if(DISP_CCT_BLOCK.getConstant().equals(constant)) {
+			return DISP_CCT_BLOCK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCT_HALFBLOCK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCT_HALFBLOCK.getContantNumber();
+		if(DISP_CCT_HALFBLOCK.getConstant().equals(constant)) {
+			return DISP_CCT_HALFBLOCK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCT_UNDERLINE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCT_UNDERLINE.getContantNumber();
+		if(DISP_CCT_UNDERLINE.getConstant().equals(constant)) {
+			return DISP_CCT_UNDERLINE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCT_REVERSE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCT_REVERSE.getContantNumber();
+		if(DISP_CCT_REVERSE.getConstant().equals(constant)) {
+			return DISP_CCT_REVERSE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCT_OTHER.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCT_OTHER.getContantNumber();
+		if(DISP_CCT_OTHER.getConstant().equals(constant)) {
+			return DISP_CCT_OTHER.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CCT_BLINK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CCT_BLINK.getContantNumber();
+		if(DISP_CCT_BLINK.getConstant().equals(constant)) {
+			return DISP_CCT_BLINK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CRB_NONE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CRB_NONE.getContantNumber();
+		if(DISP_CRB_NONE.getConstant().equals(constant)) {
+			return DISP_CRB_NONE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CRB_SINGLE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CRB_SINGLE.getContantNumber();
+		if(DISP_CRB_SINGLE.getConstant().equals(constant)) {
+			return DISP_CRB_SINGLE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CR_NONE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CR_NONE.getContantNumber();
+		if(DISP_CR_NONE.getConstant().equals(constant)) {
+			return DISP_CR_NONE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CR_REVERSEALL.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CR_REVERSEALL.getContantNumber();
+		if(DISP_CR_REVERSEALL.getConstant().equals(constant)) {
+			return DISP_CR_REVERSEALL.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CR_REVERSEEACH.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CR_REVERSEEACH.getContantNumber();
+		if(DISP_CR_REVERSEEACH.getConstant().equals(constant)) {
+			return DISP_CR_REVERSEEACH.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CS_UNICODE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CS_UNICODE.getContantNumber();
+		if(DISP_CS_UNICODE.getConstant().equals(constant)) {
+			return DISP_CS_UNICODE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CS_ASCII.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CS_ASCII.getContantNumber();
+		if(DISP_CS_ASCII.getConstant().equals(constant)) {
+			return DISP_CS_ASCII.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CS_ANSI.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CS_ANSI.getContantNumber();
+		if(DISP_CS_ANSI.getConstant().equals(constant)) {
+			return DISP_CS_ANSI.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CT_NONE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CT_NONE.getContantNumber();
+		if(DISP_CT_NONE.getConstant().equals(constant)) {
+			return DISP_CT_NONE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CT_FIXED.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CT_FIXED.getContantNumber();
+		if(DISP_CT_FIXED.getConstant().equals(constant)) {
+			return DISP_CT_FIXED.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CT_BLOCK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CT_BLOCK.getContantNumber();
+		if(DISP_CT_BLOCK.getConstant().equals(constant)) {
+			return DISP_CT_BLOCK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CT_HALFBLOCK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CT_HALFBLOCK.getContantNumber();
+		if(DISP_CT_HALFBLOCK.getConstant().equals(constant)) {
+			return DISP_CT_HALFBLOCK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CT_UNDERLINE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CT_UNDERLINE.getContantNumber();
+		if(DISP_CT_UNDERLINE.getConstant().equals(constant)) {
+			return DISP_CT_UNDERLINE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CT_REVERSE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CT_REVERSE.getContantNumber();
+		if(DISP_CT_REVERSE.getConstant().equals(constant)) {
+			return DISP_CT_REVERSE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CT_OTHER.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CT_OTHER.getContantNumber();
+		if(DISP_CT_OTHER.getConstant().equals(constant)) {
+			return DISP_CT_OTHER.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_CT_BLINK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_CT_BLINK.getContantNumber();
+		if(DISP_CT_BLINK.getConstant().equals(constant)) {
+			return DISP_CT_BLINK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_MT_NONE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_MT_NONE.getContantNumber();
+		if(DISP_MT_NONE.getConstant().equals(constant)) {
+			return DISP_MT_NONE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_MT_UP.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_MT_UP.getContantNumber();
+		if(DISP_MT_UP.getConstant().equals(constant)) {
+			return DISP_MT_UP.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_MT_DOWN.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_MT_DOWN.getContantNumber();
+		if(DISP_MT_DOWN.getConstant().equals(constant)) {
+			return DISP_MT_DOWN.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_MT_LEFT.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_MT_LEFT.getContantNumber();
+		if(DISP_MT_LEFT.getConstant().equals(constant)) {
+			return DISP_MT_LEFT.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_MT_RIGHT.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_MT_RIGHT.getContantNumber();
+		if(DISP_MT_RIGHT.getConstant().equals(constant)) {
+			return DISP_MT_RIGHT.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_MT_INIT.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_MT_INIT.getContantNumber();
+		if(DISP_MT_INIT.getConstant().equals(constant)) {
+			return DISP_MT_INIT.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_MF_WALK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_MF_WALK.getContantNumber();
+		if(DISP_MF_WALK.getConstant().equals(constant)) {
+			return DISP_MF_WALK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_MF_PLACE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_MF_PLACE.getContantNumber();
+		if(DISP_MF_PLACE.getConstant().equals(constant)) {
+			return DISP_MF_PLACE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_GT_SINGLE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_GT_SINGLE.getContantNumber();
+		if(DISP_GT_SINGLE.getConstant().equals(constant)) {
+			return DISP_GT_SINGLE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_DT_NORMAL.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_DT_NORMAL.getContantNumber();
+		if(DISP_DT_NORMAL.getConstant().equals(constant)) {
+			return DISP_DT_NORMAL.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_DT_BLINK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_DT_BLINK.getContantNumber();
+		if(DISP_DT_BLINK.getConstant().equals(constant)) {
+			return DISP_DT_BLINK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_DT_REVERSE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_DT_REVERSE.getContantNumber();
+		if(DISP_DT_REVERSE.getConstant().equals(constant)) {
+			return DISP_DT_REVERSE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_DT_BLINK_REVERSE.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_DT_BLINK_REVERSE.getContantNumber();
+		if(DISP_DT_BLINK_REVERSE.getConstant().equals(constant)) {
+			return DISP_DT_BLINK_REVERSE.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_ST_UP.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_ST_UP.getContantNumber();
+		if(DISP_ST_UP.getConstant().equals(constant)) {
+			return DISP_ST_UP.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_ST_DOWN.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_ST_DOWN.getContantNumber();
+		if(DISP_ST_DOWN.getConstant().equals(constant)) {
+			return DISP_ST_DOWN.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_ST_LEFT.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_ST_LEFT.getContantNumber();
+		if(DISP_ST_LEFT.getConstant().equals(constant)) {
+			return DISP_ST_LEFT.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_ST_RIGHT.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_ST_RIGHT.getContantNumber();
+		if(DISP_ST_RIGHT.getConstant().equals(constant)) {
+			return DISP_ST_RIGHT.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_SD_OFF.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_SD_OFF.getContantNumber();
+		if(DISP_SD_OFF.getConstant().equals(constant)) {
+			return DISP_SD_OFF.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_SD_ON.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_SD_ON.getContantNumber();
+		if(DISP_SD_ON.getConstant().equals(constant)) {
+			return DISP_SD_ON.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_SD_BLINK.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_SD_BLINK.getContantNumber();
+		if(DISP_SD_BLINK.getConstant().equals(constant)) {
+			return DISP_SD_BLINK.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_BM_ASIS.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_BM_ASIS.getContantNumber();
+		if(DISP_BM_ASIS.getConstant().equals(constant)) {
+			return DISP_BM_ASIS.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_BM_LEFT.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_BM_LEFT.getContantNumber();
+		if(DISP_BM_LEFT.getConstant().equals(constant)) {
+			return DISP_BM_LEFT.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_BM_CENTER.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_BM_CENTER.getContantNumber();
+		if(DISP_BM_CENTER.getConstant().equals(constant)) {
+			return DISP_BM_CENTER.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_BM_RIGHT.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_BM_RIGHT.getContantNumber();
+		if(DISP_BM_RIGHT.getConstant().equals(constant)) {
+			return DISP_BM_RIGHT.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_BM_TOP.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_BM_TOP.getContantNumber();
+		if(DISP_BM_TOP.getConstant().equals(constant)) {
+			return DISP_BM_TOP.getContantNumber();
 		}
 		
-		if(LineDisplayConstantMapper.DISP_BM_BOTTOM.getConstant().equals(constant)) {
-			return LineDisplayConstantMapper.DISP_BM_BOTTOM.getContantNumber();
+		if(DISP_BM_BOTTOM.getConstant().equals(constant)) {
+			return DISP_BM_BOTTOM.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

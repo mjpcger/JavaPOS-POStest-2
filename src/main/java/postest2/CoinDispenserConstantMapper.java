@@ -23,24 +23,24 @@ public class CoinDispenserConstantMapper extends CommonConstantMapper {
 	 * @return
 	 */
 	public static int getConstantNumberFromString(String constant){
-		if(CoinDispenserConstantMapper.COIN_STATUS_OK.getConstant().equals(constant)) {
-			return CoinDispenserConstantMapper.COIN_STATUS_OK.getContantNumber();
+		if(COIN_STATUS_OK.getConstant().equals(constant)) {
+			return COIN_STATUS_OK.getContantNumber();
 		}
 
-		if(CoinDispenserConstantMapper.COIN_STATUS_NEAREMPTY.getConstant().equals(constant)) {
-			return CoinDispenserConstantMapper.COIN_STATUS_NEAREMPTY.getContantNumber();
+		if(COIN_STATUS_NEAREMPTY.getConstant().equals(constant)) {
+			return COIN_STATUS_NEAREMPTY.getContantNumber();
 		}
 
-		if(CoinDispenserConstantMapper.COIN_STATUS_EMPTY.getConstant().equals(constant)) {
-			return CoinDispenserConstantMapper.COIN_STATUS_EMPTY.getContantNumber();
+		if(COIN_STATUS_EMPTY.getConstant().equals(constant)) {
+			return COIN_STATUS_EMPTY.getContantNumber();
 		}
 
-		if(CoinDispenserConstantMapper.COIN_STATUS_JAM.getConstant().equals(constant)) {
-			return CoinDispenserConstantMapper.COIN_STATUS_JAM.getContantNumber();
+		if(COIN_STATUS_JAM.getConstant().equals(constant)) {
+			return COIN_STATUS_JAM.getContantNumber();
 		}
 
-		if(CoinDispenserConstantMapper.COIN_STATUS_OK.getConstant().equals(constant)) {
-			return CoinDispenserConstantMapper.COIN_STATUS_OK.getContantNumber();
+		if(COIN_STATUS_OK.getConstant().equals(constant)) {
+			return COIN_STATUS_OK.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);

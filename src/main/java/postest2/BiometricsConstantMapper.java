@@ -133,180 +133,180 @@ public class BiometricsConstantMapper extends CommonConstantMapper {
 
 	public static int getConstantNumberFromString(String constant) {
 
-		if (BiometricsConstantMapper.BIO_SC_MONO.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SC_MONO.getContantNumber();
+		if (BIO_SC_MONO.getConstant().equals(constant)) {
+			return BIO_SC_MONO.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_SC_GRAYSCALE.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SC_GRAYSCALE.getContantNumber();
+		if (BIO_SC_GRAYSCALE.getConstant().equals(constant)) {
+			return BIO_SC_GRAYSCALE.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_SC_16.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SC_16.getContantNumber();
+		if (BIO_SC_16.getConstant().equals(constant)) {
+			return BIO_SC_16.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_SC_256.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SC_256.getContantNumber();
+		if (BIO_SC_256.getConstant().equals(constant)) {
+			return BIO_SC_256.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_SC_FULL.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SC_FULL.getContantNumber();
+		if (BIO_SC_FULL.getConstant().equals(constant)) {
+			return BIO_SC_FULL.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSO_NORMAL.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSO_NORMAL.getContantNumber();
+		if (BIO_CSO_NORMAL.getConstant().equals(constant)) {
+			return BIO_CSO_NORMAL.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSO_RIGHT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSO_RIGHT.getContantNumber();
+		if (BIO_CSO_RIGHT.getConstant().equals(constant)) {
+			return BIO_CSO_RIGHT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSO_INVERTED.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSO_INVERTED.getContantNumber();
+		if (BIO_CSO_INVERTED.getConstant().equals(constant)) {
+			return BIO_CSO_INVERTED.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSO_LEFT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSO_LEFT.getContantNumber();
+		if (BIO_CSO_LEFT.getConstant().equals(constant)) {
+			return BIO_CSO_LEFT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSC_MONO.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSC_MONO.getContantNumber();
+		if (BIO_CSC_MONO.getConstant().equals(constant)) {
+			return BIO_CSC_MONO.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSC_GRAYSCALE.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSC_GRAYSCALE.getContantNumber();
+		if (BIO_CSC_GRAYSCALE.getConstant().equals(constant)) {
+			return BIO_CSC_GRAYSCALE.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSC_16.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSC_16.getContantNumber();
+		if (BIO_CSC_16.getConstant().equals(constant)) {
+			return BIO_CSC_16.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSC_256.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSC_256.getContantNumber();
+		if (BIO_CSC_256.getConstant().equals(constant)) {
+			return BIO_CSC_256.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CSC_FULL.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CSC_FULL.getContantNumber();
+		if (BIO_CSC_FULL.getConstant().equals(constant)) {
+			return BIO_CSC_FULL.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_SO_INVERTED.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SO_INVERTED.getContantNumber();
+		if (BIO_SO_INVERTED.getConstant().equals(constant)) {
+			return BIO_SO_INVERTED.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_SO_LEFT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SO_LEFT.getContantNumber();
+		if (BIO_SO_LEFT.getConstant().equals(constant)) {
+			return BIO_SO_LEFT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_SO_NORMAL.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SO_NORMAL.getContantNumber();
+		if (BIO_SO_NORMAL.getConstant().equals(constant)) {
+			return BIO_SO_NORMAL.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_SO_RIGHT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_SO_RIGHT.getContantNumber();
+		if (BIO_SO_RIGHT.getConstant().equals(constant)) {
+			return BIO_SO_RIGHT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_FACIAL_FEATURES.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_FACIAL_FEATURES.getContantNumber();
+		if (BIO_ST_FACIAL_FEATURES.getConstant().equals(constant)) {
+			return BIO_ST_FACIAL_FEATURES.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_FINGERPRINT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_FINGERPRINT.getContantNumber();
+		if (BIO_ST_FINGERPRINT.getConstant().equals(constant)) {
+			return BIO_ST_FINGERPRINT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_GAIT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_GAIT.getContantNumber();
+		if (BIO_ST_GAIT.getConstant().equals(constant)) {
+			return BIO_ST_GAIT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_HAND_GEOMETRY.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_HAND_GEOMETRY.getContantNumber();
+		if (BIO_ST_HAND_GEOMETRY.getConstant().equals(constant)) {
+			return BIO_ST_HAND_GEOMETRY.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_IRIS.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_IRIS.getContantNumber();
+		if (BIO_ST_IRIS.getConstant().equals(constant)) {
+			return BIO_ST_IRIS.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_KEYSTROKE_DYNAMICS.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_KEYSTROKE_DYNAMICS.getContantNumber();
+		if (BIO_ST_KEYSTROKE_DYNAMICS.getConstant().equals(constant)) {
+			return BIO_ST_KEYSTROKE_DYNAMICS.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_LIP_MOVEMENT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_LIP_MOVEMENT.getContantNumber();
+		if (BIO_ST_LIP_MOVEMENT.getConstant().equals(constant)) {
+			return BIO_ST_LIP_MOVEMENT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_PASSWORD.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_PASSWORD.getContantNumber();
+		if (BIO_ST_PASSWORD.getConstant().equals(constant)) {
+			return BIO_ST_PASSWORD.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_RETINA.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_RETINA.getContantNumber();
+		if (BIO_ST_RETINA.getConstant().equals(constant)) {
+			return BIO_ST_RETINA.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_SIGNATURE_DYNAMICS.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_SIGNATURE_DYNAMICS.getContantNumber();
+		if (BIO_ST_SIGNATURE_DYNAMICS.getConstant().equals(constant)) {
+			return BIO_ST_SIGNATURE_DYNAMICS.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_THERMAL_FACE_IMAGE.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_THERMAL_FACE_IMAGE.getContantNumber();
+		if (BIO_ST_THERMAL_FACE_IMAGE.getConstant().equals(constant)) {
+			return BIO_ST_THERMAL_FACE_IMAGE.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_THERMAL_HAND_IMAGE.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_THERMAL_HAND_IMAGE.getContantNumber();
+		if (BIO_ST_THERMAL_HAND_IMAGE.getConstant().equals(constant)) {
+			return BIO_ST_THERMAL_HAND_IMAGE.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_ST_VOICE.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_ST_VOICE.getContantNumber();
+		if (BIO_ST_VOICE.getConstant().equals(constant)) {
+			return BIO_ST_VOICE.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_FACIAL_FEATURES.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_FACIAL_FEATURES.getContantNumber();
+		if (BIO_CST_FACIAL_FEATURES.getConstant().equals(constant)) {
+			return BIO_CST_FACIAL_FEATURES.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_FINGERPRINT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_FINGERPRINT.getContantNumber();
+		if (BIO_CST_FINGERPRINT.getConstant().equals(constant)) {
+			return BIO_CST_FINGERPRINT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_GAIT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_GAIT.getContantNumber();
+		if (BIO_CST_GAIT.getConstant().equals(constant)) {
+			return BIO_CST_GAIT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_HAND_GEOMETRY.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_HAND_GEOMETRY.getContantNumber();
+		if (BIO_CST_HAND_GEOMETRY.getConstant().equals(constant)) {
+			return BIO_CST_HAND_GEOMETRY.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_IRIS.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_IRIS.getContantNumber();
+		if (BIO_CST_IRIS.getConstant().equals(constant)) {
+			return BIO_CST_IRIS.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_KEYSTROKE_DYNAMICS.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_KEYSTROKE_DYNAMICS.getContantNumber();
+		if (BIO_CST_KEYSTROKE_DYNAMICS.getConstant().equals(constant)) {
+			return BIO_CST_KEYSTROKE_DYNAMICS.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_LIP_MOVEMENT.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_LIP_MOVEMENT.getContantNumber();
+		if (BIO_CST_LIP_MOVEMENT.getConstant().equals(constant)) {
+			return BIO_CST_LIP_MOVEMENT.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_PASSWORD.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_PASSWORD.getContantNumber();
+		if (BIO_CST_PASSWORD.getConstant().equals(constant)) {
+			return BIO_CST_PASSWORD.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_RETINA.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_RETINA.getContantNumber();
+		if (BIO_CST_RETINA.getConstant().equals(constant)) {
+			return BIO_CST_RETINA.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_SIGNATURE_DYNAMICS.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_SIGNATURE_DYNAMICS.getContantNumber();
+		if (BIO_CST_SIGNATURE_DYNAMICS.getConstant().equals(constant)) {
+			return BIO_CST_SIGNATURE_DYNAMICS.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_THERMAL_FACE_IMAGE.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_THERMAL_FACE_IMAGE.getContantNumber();
+		if (BIO_CST_THERMAL_FACE_IMAGE.getConstant().equals(constant)) {
+			return BIO_CST_THERMAL_FACE_IMAGE.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_THERMAL_HAND_IMAGE.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_THERMAL_HAND_IMAGE.getContantNumber();
+		if (BIO_CST_THERMAL_HAND_IMAGE.getConstant().equals(constant)) {
+			return BIO_CST_THERMAL_HAND_IMAGE.getContantNumber();
 		}
 
-		if (BiometricsConstantMapper.BIO_CST_VOICE.getConstant().equals(constant)) {
-			return BiometricsConstantMapper.BIO_CST_VOICE.getContantNumber();
+		if (BIO_CST_VOICE.getConstant().equals(constant)) {
+			return BIO_CST_VOICE.getContantNumber();
 		}
 
 		return CommonConstantMapper.getConstantNumberFromString(constant);
