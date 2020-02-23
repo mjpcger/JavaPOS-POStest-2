@@ -43,9 +43,6 @@ public class ElectronicJournalController extends CommonController implements Ini
 	@RequiredState(JposState.OPENED)
 	public CheckBox asyncMode;
 	@FXML
-	@RequiredState(JposState.OPENED)
-	public CheckBox autoDisable;
-	@FXML
 	@RequiredState(JposState.ENABLED)
 	public CheckBox storageEnabled;
 	@FXML
@@ -200,17 +197,6 @@ public class ElectronicJournalController extends CommonController implements Ini
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
 			asyncMode.setSelected(!asyncMode.isSelected());
-		}
-	}
-
-	@FXML
-	public void handleAutoDisable(ActionEvent e) {
-		try {
-			((ElectronicJournal) service).setAutoDisable(autoDisable.isSelected());
-		} catch (JposException e1) {
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-			e1.printStackTrace();
-			autoDisable.setSelected(!autoDisable.isSelected());
 		}
 	}
 
@@ -537,14 +523,6 @@ public class ElectronicJournalController extends CommonController implements Ini
 		}
 	}
 
-	private void setAutoDisable() {
-		try {
-			autoDisable.setSelected(((ElectronicJournal)service).getAutoDisable());
-		} catch (JposException e) {
-			autoDisable.setSelected(false);
-		}
-	}
-
 	private void setUpRetrieveCurrentMarkerMarkerType() {
 		retrieveCurrentMarker_markerType.getItems().clear();
 		retrieveCurrentMarker_markerType.getItems().add(
@@ -596,14 +574,6 @@ public class ElectronicJournalController extends CommonController implements Ini
 		setUpRetrieveMarkerByDateTimeMarkerType();
 		setUpRetrieveMarkerMarkerType();
 		setAsyncMode();
-		setAutoDisable();
-	}
-
-	@Override
-	public void dataOccurred(DataEvent errorEvent) {
-		super.dataOccurred(errorEvent);
-        RequiredStateChecker.invokeThis(this, service);
-		setupGuiObjects();
 	}
 
 	@Override
