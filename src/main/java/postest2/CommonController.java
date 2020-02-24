@@ -39,10 +39,6 @@ public abstract class CommonController extends BaseController implements Initial
 	@Override
 	public void setupGuiObjects() {
 		super.setupGuiObjects();
-		try {
-			deviceEnabled.setSelected(service.getState() != JposConst.JPOS_S_CLOSED && service.getDeviceEnabled());
-		} catch (JposException e) {
-			deviceEnabled.setSelected(false);
-		}
+		deviceEnabled.setSelected(getDeviceState(service) == JposState.ENABLED);
 	}
 }
