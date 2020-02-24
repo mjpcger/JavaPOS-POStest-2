@@ -129,9 +129,9 @@ public enum PropertyNames {
 	getSlpPrintSide, 
 	
 	/* *** RFIDScanner *** */
-	getCapMultipleProtocols, // getProtocolMask
+	getProtocolMask, // getCapMultipleProtocols
 	getCapWriteTag,
-	
+
 	/* *** Scale *** */
 	getStatusNotify,
 	getWeightUnit,
@@ -146,8 +146,8 @@ public enum PropertyNames {
 	getCapIsoEmvMode,
 	getCapTransmissionProtocol,
 	getTransmissionProtocol,
-	
-	/* *** ToneIndicator *** */
+
+    /* *** ToneIndicator *** */
 	getMelodyType
 	
 }

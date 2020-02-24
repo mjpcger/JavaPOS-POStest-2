@@ -6,30 +6,31 @@ public class RFIDScannerConstantMapper extends CommonConstantMapper {
 	// "CapMultipleProtocols", "CurrentTagProtocol", and
 	// "ProtocolMask" Property Constants
 	// ///////////////////////////////////////////////////////////////////
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_EPC0 = new ConstantConverter(0x00000001, "RFID_PR_EPC0");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_0PLUS = new ConstantConverter(0x00000002, "RFID_PR_0PLUS");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_EPC1 = new ConstantConverter(0x00000004, "RFID_PR_EPC1");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_EPC1G2 = new ConstantConverter(0x00000008, "RFID_PR_EPC1G2");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_EPC2 = new ConstantConverter(0x00000010, "RFID_PR_EPC2");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_ISO14443A = new ConstantConverter(0x00001000,
 			"RFID_PR_ISO14443A");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_ISO14443B = new ConstantConverter(0x00002000,
 			"RFID_PR_ISO14443B");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_ISO15693 = new ConstantConverter(0x00003000,
 			"RFID_PR_ISO15693");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_ISO180006B = new ConstantConverter(0x00004000,
 			"RFID_PR_ISO180006B");
-	@BelongingProperty(PropertyNames.getCapMultipleProtocols)
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_OTHER = new ConstantConverter(0x01000000, "RFID_PR_OTHER");
+	@BelongingProperty(PropertyNames.getProtocolMask)
 	public static final ConstantConverter RFID_PR_ALL = new ConstantConverter(0x40000000, "RFID_PR_ALL");
 
 	// ///////////////////////////////////////////////////////////////////

@@ -28,8 +28,8 @@ public class BelongingPropertyChecker {
 				PropertyNames names = belongingProperty.value();
 
 				if (mapper instanceof RFIDScannerConstantMapper) {
-					if (methodName.equals("getProtocolMask")) {
-						methodName = "getCapMultipleProtocols";
+					if (methodName.equals("getCapMultipleProtocols")) {
+						methodName = "getProtocolMask";
 					}
 				}
 

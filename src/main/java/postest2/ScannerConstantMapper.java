@@ -200,11 +200,19 @@ public class ScannerConstantMapper extends CommonConstantMapper {
 		if (SCAN_SDT_GS1DATABAR_E.getConstant().equals(constant)) {
 			return SCAN_SDT_GS1DATABAR_E.getContantNumber();
 		}
-		
+
 		if (SCAN_SDT_CCA.getConstant().equals(constant)) {
 			return SCAN_SDT_CCA.getContantNumber();
 		}
-		
+
+		if (SCAN_SDT_CCB.getConstant().equals(constant)) {
+			return SCAN_SDT_CCB.getContantNumber();
+		}
+
+		if (SCAN_SDT_CCC.getConstant().equals(constant)) {
+			return SCAN_SDT_CCC.getContantNumber();
+		}
+
 		if (SCAN_SDT_PDF417.getConstant().equals(constant)) {
 			return SCAN_SDT_PDF417.getContantNumber();
 		}
