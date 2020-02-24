@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 import javax.swing.JOptionPane;
@@ -22,6 +24,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import jpos.JposException;
 import jpos.Scanner;
 
+import jpos.events.DataEvent;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -34,13 +37,17 @@ public class ScannerController extends CommonController implements Initializable
 	public Pane functionPane;
 
 	@FXML
-	public ComboBox<Boolean> decodeData;
+	public CheckBox decodeData;
+
+	@FXML
+	public Label scanData;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new Scanner();
 		((Scanner) service).addStatusUpdateListener(this);
+		((Scanner) service).addDataListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("Scanner");
 	}
@@ -55,15 +62,16 @@ public class ScannerController extends CommonController implements Initializable
 		try {
 			if (deviceEnabled.isSelected()) {
 				((Scanner) service).setDeviceEnabled(true);
-				setUpComboBoxes();
+				((Scanner)service).setDataEventEnabled(true);
 			} else {
 				((Scanner) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+		setupGuiObjects();
+		RequiredStateChecker.invokeThis(this, service);
 	}
 
 	/**
@@ -132,10 +140,11 @@ public class ScannerController extends CommonController implements Initializable
 	@FXML
 	public void handleSetDecodeData(ActionEvent e) {
 		try {
-			((Scanner) service).setDecodeData(decodeData.getSelectionModel().getSelectedItem());
+			((Scanner) service).setDecodeData(decodeData.isSelected());
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
+			decodeData.setSelected(!decodeData.isSelected());
 		}
 	}
 
@@ -144,14 +153,26 @@ public class ScannerController extends CommonController implements Initializable
 	 */
 
 	private void setUpDecodeData() {
-		decodeData.getItems().clear();
-		decodeData.getItems().add(true);
-		decodeData.getItems().add(false);
-		decodeData.setValue(true);
+		decodeData.setSelected("true".equals(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(), "getDecodeData")));
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpDecodeData();
+		scanData.setText(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(), "getScanData"));
 	}
 
+	@Override
+	public void dataOccurred(DataEvent ev) {
+		super.dataOccurred(ev);
+		if (getDeviceState(service) == JposState.ENABLED) {
+			try {
+				((Scanner)service).setDataEventEnabled(true);
+			} catch (JposException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
+		}
+	}
 }

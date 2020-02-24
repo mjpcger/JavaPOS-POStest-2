@@ -19,10 +19,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import javafx.scene.text.Text;
 import jpos.CashDrawer;
 import jpos.JposException;
 import jpos.MotionSensor;
 
+import jpos.events.StatusUpdateEvent;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -38,6 +40,9 @@ public class MotionSensorController extends SharableController implements Initia
 	public TextField timeout;
 	@FXML
 	public TextField waitForMotion_timeout;
+	@FXML
+	@RequiredState(JposState.ENABLED)
+	public Text motion;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -53,6 +58,24 @@ public class MotionSensorController extends SharableController implements Initia
 	 * ***********************************************************************
 	 */
 
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		setUpTimeout();
+		setUpMotion();
+	}
+
+	private void setUpMotion() {
+		motion.setText(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(), "getMotion"));
+	}
+
+	private void setUpTimeout() {
+		String current = timeout.getText();
+		if (current == null || current.equals("")) {
+			timeout.setText(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(), "getTimeout"));
+		}
+	}
+
 	@FXML
 	public void handleDeviceEnable(ActionEvent e) {
 		try {
@@ -61,11 +84,12 @@ public class MotionSensorController extends SharableController implements Initia
 			} else {
 				((MotionSensor) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -165,4 +189,9 @@ public class MotionSensorController extends SharableController implements Initia
 		}
 	}
 
+	@Override
+	public void statusUpdateOccurred(StatusUpdateEvent ev) {
+		super.statusUpdateOccurred(ev);
+		setUpMotion();
+	}
 }

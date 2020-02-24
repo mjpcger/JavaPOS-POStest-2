@@ -60,10 +60,7 @@ public class ScaleController extends CommonController implements Initializable, 
 	public Text lastStatus;
 	@FXML
 	@RequiredState(JposState.OPENEDNOTENABLED)
-	public Label statusNotifyLabel;
-	@FXML
-	@RequiredState(JposState.OPENEDNOTENABLED)
-	public ComboBox<String> statusNotify;
+	public CheckBox statusNotify;
 	@FXML
 	public ComboBox<Boolean> zeroValid;
 
@@ -94,30 +91,16 @@ public class ScaleController extends CommonController implements Initializable, 
 				if (unitPrice.getText().equals("")){
 					unitPrice.setText(Long.toString(((Scale)service).getUnitPrice()));
 				}
-				salesPrice.setText("" + ((Scale) service).getSalesPrice());
-				salesPrice.setEditable(false);
-				setUpComboBoxes();
 			} else {
 				((Scale) service).setDeviceEnabled(false);
 				lastStatus.setText("");
-			}
-			RequiredStateChecker.invokeThis(this, service);
-			if (!((Scale) service).getCapStatusUpdate()) {
-				if (deviceEnabled.isSelected()) {
-					lastStatusLabel.setDisable(true);
-				} else {
-					statusNotify.setDisable(true);
-					statusNotifyLabel.setDisable(true);
-				}
-			}
-			else if (deviceEnabled.isSelected() && ScaleConstantMapper.getConstantNumberFromString(statusNotify
-					.getSelectionModel().getSelectedItem()) == ScaleConst.SCAL_SN_DISABLED) {
-				lastStatusLabel.setDisable(true);
 			}
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	@Override
@@ -136,7 +119,6 @@ public class ScaleController extends CommonController implements Initializable, 
 		try {
 			if (!((Scale) service).getCapStatusUpdate()) {
 				statusNotify.setDisable(true);
-				statusNotifyLabel.setDisable(true);
 			}
 		} catch (JposException ex) {
 			ex.printStackTrace();
@@ -149,7 +131,6 @@ public class ScaleController extends CommonController implements Initializable, 
 		try {
 			if (!((Scale) service).getCapStatusUpdate()) {
 				statusNotify.setDisable(true);
-				statusNotifyLabel.setDisable(true);
 			}
 			lastStatus.setText("");
 		} catch (JposException ex) {
@@ -166,7 +147,6 @@ public class ScaleController extends CommonController implements Initializable, 
 			}
 			else {
 				statusNotify.setDisable(true);
-				statusNotifyLabel.setDisable(true);
 			}
 		} catch (JposException ex) {
 			ex.printStackTrace();
@@ -249,11 +229,12 @@ public class ScaleController extends CommonController implements Initializable, 
 	@FXML
 	public void handleSetStatusNotify(ActionEvent e) {
 		try {
-			((Scale) service).setStatusNotify(ScaleConstantMapper.getConstantNumberFromString(statusNotify
-					.getSelectionModel().getSelectedItem()));
+			((Scale) service).setStatusNotify(statusNotify.isSelected() ?
+					ScaleConst.SCAL_SN_ENABLED : ScaleConst.SCAL_SN_DISABLED);
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
+			statusNotify.setSelected(!statusNotify.isSelected());
 		}
 	}
 
@@ -355,21 +336,38 @@ public class ScaleController extends CommonController implements Initializable, 
 	 */
 
 	private void setUpStatusNotify() {
-		statusNotify.getItems().clear();
-		statusNotify.getItems().add(ScaleConstantMapper.SCAL_SN_DISABLED.getConstant());
-		statusNotify.getItems().add(ScaleConstantMapper.SCAL_SN_ENABLED.getConstant());
-		statusNotify.setValue(ScaleConstantMapper.SCAL_SN_DISABLED.getConstant());
+		ScaleConstantMapper mapper = new ScaleConstantMapper();
+		if ("true".equals(DeviceProperties.getPropertyValue(service, mapper, "getCapStatusUpdate"))) {
+			String current = DeviceProperties.getPropertyValue(service, mapper, "getStatusNotify");
+			statusNotify.setSelected(ScaleConstantMapper.SCAL_SN_ENABLED.getConstant().equals(current));
+			if (!ScaleConstantMapper.SCAL_SN_ENABLED.getConstant().equals(current)) {
+				lastStatusLabel.setDisable(true);
+			}
+		} else {
+			lastStatusLabel.setDisable(true);
+			statusNotify.setDisable(true);
+		}
 	}
 
 	private void setUpZeroValid() {
 		zeroValid.getItems().clear();
 		zeroValid.getItems().add(true);
 		zeroValid.getItems().add(false);
-		zeroValid.setValue(false);
+		zeroValid.getSelectionModel().select(
+				"true".equals(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(), "getZeroValid")));
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		setUpSalesPrice();
+		setUpStatusNotify();
 		setUpZeroValid();
+	}
+
+	private void setUpSalesPrice() {
+		salesPrice.setText(DeviceProperties.getPropertyValue(service, new ScaleConstantMapper(), "getSalesPrice"));
+		salesPrice.setEditable(false);
 	}
 
 	@Override

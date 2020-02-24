@@ -18,6 +18,7 @@
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
             <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
+            <CheckBox fx:id="autoDisable" layoutX="435" layoutY="14" mnemonicParsing="false" onAction="#handleAutoDisable" text="Auto disable" />
             <Pane fx:id="functionPane" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" styleClass="whiteBackground">
               <children>
                 <Label layoutX="26.0" layoutY="127.0" text="Command:" />
@@ -31,9 +32,9 @@
                 <RadioButton fx:id="directIO_datatypeString" layoutX="360.0" layoutY="168.0" mnemonicParsing="false" text="String" />
                 <RadioButton fx:id="directIO_datatypeByteArray" layoutX="360.0" layoutY="182.0" mnemonicParsing="false" text="Byte[]" />
                 <Button layoutX="234.0" layoutY="197.0" mnemonicParsing="false" onAction="#handleDirectIO" text="DirectIO" />
-                <Button layoutX="261.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleSetDecodeData" text="Set DecodeData" />
-                <Label layoutX="26.0" layoutY="52.0" text="Set DecodeData:" />
-                <ComboBox fx:id="decodeData" layoutX="130.0" layoutY="49.0" prefHeight="21.0" prefWidth="113.0" />
+                <CheckBox fx:id="decodeData" layoutX="26.0" layoutY="52.0" text="Decode Data" onAction="#handleSetDecodeData" />
+                <Label text="Scan Data: " layoutX="150" layoutY="52" />
+                <Label fx:id="scanData" layoutX="220" layoutY="52" />
                 <Label alignment="CENTER" layoutX="26.0" layoutY="99.0" prefWidth="272.0" text="DirectIO" underline="true">
                   <font>
                     <Font size="14.0" />
