@@ -683,8 +683,11 @@ public class BiometricsController extends CommonController implements Initializa
 			}
 			algorithm.setValue(((Biometrics) service).getAlgorithm());
 		} catch (JposException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
+			JposState devicestate = getDeviceState(service);
+			if (devicestate == JposState.CLAIMED || devicestate == JposState.ENABLED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
 		}
 	}
 

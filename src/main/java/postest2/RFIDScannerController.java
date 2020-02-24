@@ -101,15 +101,15 @@ public class RFIDScannerController extends CommonController implements Initializ
 		try {
 			if (deviceEnabled.isSelected()) {
 				((RFIDScanner) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((RFIDScanner) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+		setupGuiObjects();
+		RequiredStateChecker.invokeThis(this, service);
 	}
 
 	/**
@@ -496,6 +496,7 @@ public class RFIDScannerController extends CommonController implements Initializ
 	 */
 	
 	private void setUpProtocolMask() {
+		String common = DeviceProperties.getPropertyValue(service, new RFIDScannerConstantMapper(), "getProtocolMask");
 		protocolMask.getItems().clear();
 		protocolMask.getItems().add(RFIDScannerConstantMapper.RFID_PR_0PLUS.getConstant());
 		protocolMask.getItems().add(RFIDScannerConstantMapper.RFID_PR_ALL.getConstant());
@@ -508,7 +509,8 @@ public class RFIDScannerController extends CommonController implements Initializ
 		protocolMask.getItems().add(RFIDScannerConstantMapper.RFID_PR_ISO15693.getConstant());
 		protocolMask.getItems().add(RFIDScannerConstantMapper.RFID_PR_ISO180006B.getConstant());
 		protocolMask.getItems().add(RFIDScannerConstantMapper.RFID_PR_OTHER.getConstant());
-		protocolMask.setValue(RFIDScannerConstantMapper.RFID_PR_0PLUS.getConstant());
+		if (common != null && common.length() > 0)
+			protocolMask.getSelectionModel().select(common);
 	}
 
 	private void setUpReadStartReadTagsCmd() {
@@ -521,9 +523,9 @@ public class RFIDScannerController extends CommonController implements Initializ
 		readStartReadTags_cmd.setValue(RFIDScannerConstantMapper.RFID_RT_ID.getConstant());
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
 		setUpProtocolMask();
 		setUpReadStartReadTagsCmd();
 	}
-	
 }

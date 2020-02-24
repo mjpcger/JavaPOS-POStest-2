@@ -112,12 +112,12 @@ public class PINPadController extends CommonController implements Initializable 
 			} else {
 				((PINPad) service).setDeviceEnabled(false);
 			}
-			setUpTransactionType();
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
 		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -278,13 +278,22 @@ public class PINPadController extends CommonController implements Initializable 
 
 	}
 
-	private void setUpTransactionType() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
+		setUpTRansactionType();
+	}
+
+	private void setUpTRansactionType() {
+		String current = DeviceProperties.getPropertyValue(service, new PINPadConstantMapper(), "getTransactionType");
 		transactionType.getItems().clear();
 		transactionType.getItems().add(PINPadConstantMapper.PPAD_TRANS_DEBIT.getConstant());
 		transactionType.getItems().add(PINPadConstantMapper.PPAD_TRANS_CREDIT.getConstant());
 		transactionType.getItems().add(PINPadConstantMapper.PPAD_TRANS_INQ.getConstant());
 		transactionType.getItems().add(PINPadConstantMapper.PPAD_TRANS_RECONCILE.getConstant());
 		transactionType.getItems().add(PINPadConstantMapper.PPAD_TRANS_ADMIN.getConstant());
+		if (current != null && current.length() > 0)
+			transactionType.getSelectionModel().select(current);
 	}
 
 	/**
