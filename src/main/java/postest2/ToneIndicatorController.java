@@ -84,15 +84,15 @@ public class ToneIndicatorController extends SharableController implements Initi
 		try {
 			if (deviceEnabled.isSelected()) {
 				((ToneIndicator) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((ToneIndicator) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -188,8 +188,7 @@ public class ToneIndicatorController extends SharableController implements Initi
 	@FXML
 	public void handleSetMelodyType(ActionEvent e) {
 		try {
-			((ToneIndicator) service).setMelodyType(ToneIndicatorConstantMapper.getConstantNumberFromString(melodyType
-					.getSelectionModel().getSelectedItem()));
+			((ToneIndicator) service).setMelodyType(melodyType.getSelectionModel().getSelectedIndex());
 		} catch (JposException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 			e1.printStackTrace();
@@ -322,6 +321,16 @@ public class ToneIndicatorController extends SharableController implements Initi
 		}
 	}
 
+	@FXML
+	public void handleClearOutput(ActionEvent actionEvent) {
+		try {
+			((ToneIndicator) service).clearOutput();
+		} catch (JposException e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+			e1.printStackTrace();
+		}
+	}
+
 	/*
 	 * Set up ComboBoxes
 	 */
@@ -329,13 +338,31 @@ public class ToneIndicatorController extends SharableController implements Initi
 	// Not properly initialized due to missing values in the ToneIndicatorConst
 	// Interface
 	private void setUpMelodyType() {
+		int maxmelody = 0;
+		int melody = 0;
+		try {
+			melody = ((ToneIndicator)service).getMelodyType();
+			maxmelody = ((ToneIndicator)service).getCapMelody();
+		} catch (JposException e) {
+			if (getDeviceState(service) == JposState.ENABLED) {
+				e.printStackTrace();
+			}
+		}
 		melodyType.getItems().clear();
 		melodyType.getItems().add(ToneIndicatorConstantMapper.TONE_MT_NONE.getConstant());
-		melodyType.setValue(ToneIndicatorConstantMapper.TONE_MT_NONE.getConstant());
+		melodyType.getSelectionModel().select(0);
+		if (maxmelody > 0) {
+			for (int i = 1; i <= maxmelody; i++) {
+				melodyType.getItems().add("TONE_MT_TYPE" + i);
+				if (melody == i)
+					melodyType.getSelectionModel().select(1);
+			}
+		}
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpMelodyType();
 	}
-
 }

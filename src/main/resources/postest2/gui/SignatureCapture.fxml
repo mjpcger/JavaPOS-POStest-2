@@ -18,6 +18,7 @@
             <CheckBox fx:id="deviceEnabled" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeviceEnable" text="Device enabled" />
             <CheckBox fx:id="freezeEvents" layoutX="155.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleFreezeEvents" text="Freeze events" />
             <CheckBox fx:id="powerNotify" layoutX="295.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Power notify" />
+            <CheckBox fx:id="autoDisable" layoutX="435.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePowerNotify" text="Auto disable" />
             <Pane fx:id="functionPane" layoutX="14.0" layoutY="70.0" prefHeight="590.0" prefWidth="910.0" styleClass="whiteBackground">
               <children>
                 <Label layoutX="23.0" layoutY="270.0" text="Command:" />
@@ -31,17 +32,7 @@
                 <RadioButton fx:id="directIO_datatypeString" layoutX="356.0" layoutY="312.0" mnemonicParsing="false" text="String" />
                 <RadioButton fx:id="directIO_datatypeByteArray" layoutX="356.0" layoutY="326.0" mnemonicParsing="false" text="Byte[]" />
                 <Button layoutX="231.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleDirectIO" text="DirectIO" />
-                <Button layoutX="320.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleSetRealTimeDataEnabled" text="Set RealTimeDataEnabled" />
-                <Label layoutX="23.0" layoutY="41.0" text="Set RealTimeDataEnabled:" />
-                <ComboBox fx:id="realTimeDataEnabled" layoutX="174.0" layoutY="38.0" prefHeight="21.0" prefWidth="138.0">
-                  <items>
-                    <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Item 1" />
-                      <String fx:value="Item 2" />
-                      <String fx:value="Item 3" />
-                    </FXCollections>
-                  </items>
-                </ComboBox>
+                <CheckBox fx:id="realTimeDataEnabled" layoutX="23.0" layoutY="41.0" onAction="#handleSetRealTimeDataEnabled" text="Realtime data enabled" />
                 <Label alignment="CENTER" layoutX="23.0" layoutY="125.0" prefWidth="232.0" text="Begin Capture" underline="true">
                   <font>
                     <Font size="14.0" fx:id="x1" />

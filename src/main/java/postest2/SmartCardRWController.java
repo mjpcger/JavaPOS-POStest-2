@@ -23,6 +23,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import jpos.JposException;
 import jpos.SmartCardRW;
 
+import jpos.SmartCardRWConst;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -35,7 +36,7 @@ public class SmartCardRWController extends CommonController implements Initializ
 	public Pane functionPane;
 
 	@FXML
-	public TextField SCSlot;
+	public ComboBox<Integer> SCSlot;
 	@FXML
 	public TextField readData_count;
 	@FXML
@@ -72,15 +73,15 @@ public class SmartCardRWController extends CommonController implements Initializ
 		try {
 			if (deviceEnabled.isSelected()) {
 				((SmartCardRW) service).setDeviceEnabled(true);
-				setUpComboBoxes();
 			} else {
 				((SmartCardRW) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -199,15 +200,13 @@ public class SmartCardRWController extends CommonController implements Initializ
 
 	@FXML
 	public void handleSetSCSlot(ActionEvent e) {
-		if (SCSlot.getText().isEmpty()) {
+		Integer current = SCSlot.getSelectionModel().getSelectedItem();
+		if (current == null) {
 			JOptionPane.showMessageDialog(null, "Parameter is not specified");
 		} else {
 			try {
-				((SmartCardRW) service).setSCSlot(Integer.parseInt(SCSlot.getText()));
-			} catch (NumberFormatException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage());
-				e1.printStackTrace();
-			} catch (JposException e1) {
+				((SmartCardRW) service).setSCSlot(current);
+			} catch (Exception e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 				e1.printStackTrace();
 			}
@@ -262,12 +261,50 @@ public class SmartCardRWController extends CommonController implements Initializ
 	 */
 
 	private void setUpInterfaceMode() {
+		int capmode = 0;
+		try {
+			capmode = ((SmartCardRW) service).getCapInterfaceMode();
+		} catch (JposException e) {
+			if (getDeviceState(service) != JposState.CLOSED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
+		}
 		interfaceMode.getItems().clear();
-		interfaceMode.getItems().add(SmartCardRWConstantMapper.SC_MODE_APDU.getConstant());
-		interfaceMode.getItems().add(SmartCardRWConstantMapper.SC_MODE_BLOCK.getConstant());
-		interfaceMode.getItems().add(SmartCardRWConstantMapper.SC_MODE_TRANS.getConstant());
-		interfaceMode.getItems().add(SmartCardRWConstantMapper.SC_MODE_XML.getConstant());
-		interfaceMode.setValue(SmartCardRWConstantMapper.SC_MODE_APDU.getConstant());
+		if ((capmode & SmartCardRWConst.SC_CMODE_APDU) != 0)
+			interfaceMode.getItems().add(SmartCardRWConstantMapper.SC_MODE_APDU.getConstant());
+		if ((capmode & SmartCardRWConst.SC_CMODE_BLOCK) != 0)
+			interfaceMode.getItems().add(SmartCardRWConstantMapper.SC_MODE_BLOCK.getConstant());
+		if ((capmode & SmartCardRWConst.SC_CMODE_TRANS) != 0)
+			interfaceMode.getItems().add(SmartCardRWConstantMapper.SC_MODE_TRANS.getConstant());
+		if ((capmode & SmartCardRWConst.SC_CMODE_XML) != 0)
+			interfaceMode.getItems().add(SmartCardRWConstantMapper.SC_MODE_XML.getConstant());
+		String current = DeviceProperties.getPropertyValue(service, new SmartCardRWConstantMapper(), "getInterfaceMode");
+		if (current != null && current.length() > 0)
+			interfaceMode.getSelectionModel().select(current);
+	}
+
+	private void setUpSCSlot() {
+		int capslots = 0;
+		int slot = 0;
+		try {
+			capslots = ((SmartCardRW) service).getCapSCSlots();
+			slot = ((SmartCardRW) service).getSCSlot();
+			if (getDeviceState(service) == JposState.ENABLED) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
+		}
+		SCSlot.getItems().clear();
+		for (int i = 0; capslots != 0; i++) {
+			if ((capslots & (1 << i)) != 0) {
+				capslots &= ~(1 << i);
+				SCSlot.getItems().add(i);
+				if (slot == 1 << i) {
+					SCSlot.getSelectionModel().select(i);
+				}
+			}
+		}
 	}
 
 	private void setUpReadDataAction() {
@@ -290,7 +327,9 @@ public class SmartCardRWController extends CommonController implements Initializ
 		writeData_action.setValue(SmartCardRWConstantMapper.SC_STORE_DATA.getConstant());
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpInterfaceMode();
 		setUpReadDataAction();
 		setUpWriteDataAction();

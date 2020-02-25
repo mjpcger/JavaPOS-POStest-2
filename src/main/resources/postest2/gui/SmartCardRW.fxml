@@ -36,7 +36,7 @@
                 <Button layoutX="317.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleSetInterfaceMode" prefWidth="124.0" text="Set InterfaceMode" />
                 <Label layoutX="27.0" layoutY="71.0" text="Set SCSlot:" />
                 <Button layoutX="317.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleSetSCSlot" prefWidth="124.0" text="Set SCSlot" />
-                <TextField fx:id="SCSlot" layoutX="141.0" layoutY="68.0" prefWidth="148.778" />
+                <ComboBox fx:id="SCSlot" layoutX="141.0" layoutY="68.0" prefWidth="148.778" />
                 <Label layoutX="28.0" layoutY="178.0" text="Count:" />
                 <TextField id="value_sequenceNumber" fx:id="readData_count" layoutX="140.0" layoutY="175.0" prefWidth="148.778" />
                 <Label layoutX="28.0" layoutY="211.0" text="Data:" />

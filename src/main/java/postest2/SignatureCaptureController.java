@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -23,6 +24,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import jpos.JposException;
 import jpos.SignatureCapture;
 
+import jpos.events.DataEvent;
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -38,13 +40,14 @@ public class SignatureCaptureController extends CommonController implements Init
 	public TextField beginCapture_formName;
 
 	@FXML
-	public ComboBox<Boolean> realTimeDataEnabled;
+	public CheckBox realTimeDataEnabled;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setUpTooltips();
 		service = new SignatureCapture();
 		((SignatureCapture) service).addStatusUpdateListener(this);
+		((SignatureCapture) service).addDataListener(this);
 		RequiredStateChecker.invokeThis(this, service);
 		setUpLogicalNameComboBox("SignatureCapture");
 	}
@@ -59,15 +62,16 @@ public class SignatureCaptureController extends CommonController implements Init
 		try {
 			if (deviceEnabled.isSelected()) {
 				((SignatureCapture) service).setDeviceEnabled(true);
-				setUpComboBoxes();
+				((SignatureCapture) service).setDataEventEnabled(true);
 			} else {
 				((SignatureCapture) service).setDeviceEnabled(false);
 			}
-			RequiredStateChecker.invokeThis(this, service);
 		} catch (JposException je) {
 			JOptionPane.showMessageDialog(null, je.getMessage());
 			je.printStackTrace();
 		}
+		RequiredStateChecker.invokeThis(this, service);
+		setupGuiObjects();
 	}
 
 	/**
@@ -136,11 +140,13 @@ public class SignatureCaptureController extends CommonController implements Init
 	@FXML
 	public void handleSetRealTimeDataEnabled(ActionEvent e) {
 		try {
-			((SignatureCapture) service).setRealTimeDataEnabled(realTimeDataEnabled.getSelectionModel()
-					.getSelectedItem());
+			((SignatureCapture) service).setRealTimeDataEnabled(realTimeDataEnabled.isSelected());
 		} catch (JposException e1) {
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-			e1.printStackTrace();
+			if (getDeviceState(service) != JposState.CLOSED) {
+				JOptionPane.showMessageDialog(null, e1.getMessage());
+				e1.printStackTrace();
+			}
+			realTimeDataEnabled.setSelected(!realTimeDataEnabled.isSelected());
 		}
 	}
 
@@ -173,13 +179,25 @@ public class SignatureCaptureController extends CommonController implements Init
 	 */
 
 	private void setUpRealTimeDataEnabled() {
-		realTimeDataEnabled.getItems().clear();
-		realTimeDataEnabled.getItems().add(true);
-		realTimeDataEnabled.getItems().add(false);
-		realTimeDataEnabled.setValue(true);
+		realTimeDataEnabled.setSelected("true".equals(DeviceProperties.getPropertyValue(service, new CommonConstantMapper(), "getRealTimeDataEnabled")));
 	}
 
-	private void setUpComboBoxes() {
+	@Override
+	public void setupGuiObjects() {
+		super.setupGuiObjects();
 		setUpRealTimeDataEnabled();
+	}
+
+	@Override
+	public void dataOccurred(DataEvent ev) {
+		super.dataOccurred(ev);
+		if (getDeviceState(service) == JposState.ENABLED) {
+			try {
+				((SignatureCapture)service).setDataEventEnabled(true);
+			} catch (JposException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				e.printStackTrace();
+			}
+		}
 	}
 }

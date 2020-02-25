@@ -79,6 +79,8 @@
                 <Button layoutX="210.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleSound" text="Sound" />
                 <Label alignment="CENTER" font="$x1" layoutX="364.0" layoutY="294.0" prefWidth="252.0" text="Sound Immediate" underline="true" />
                 <Button layoutX="435.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleSoundImmediate" text="SoundImmediate" />
+                <Label alignment="CENTER_LEFT" font="$x1" layoutX="435.0" layoutY="414.0" prefWidth="252.0" text="Clear Output" underline="true" />
+                <Button layoutX="435.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleClearOutput" text="ClearOutput" />
                 <Label alignment="CENTER" font="$x1" layoutX="16.0" layoutY="414.0" prefWidth="270.0" text="DirectIO" underline="true" />
               </children>
             </Pane>

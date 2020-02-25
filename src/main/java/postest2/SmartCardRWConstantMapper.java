@@ -21,9 +21,13 @@ public class SmartCardRWConstantMapper extends CommonConstantMapper {
 	// ///////////////////////////////////////////////////////////////////
 	// "InterfaceMode" Property Constants
 	// ///////////////////////////////////////////////////////////////////
+	@BelongingProperty(PropertyNames.getInterfaceMode)
 	public static final ConstantConverter SC_MODE_TRANS = new ConstantConverter(1, "SC_MODE_TRANS");
+	@BelongingProperty(PropertyNames.getInterfaceMode)
 	public static final ConstantConverter SC_MODE_BLOCK = new ConstantConverter(2, "SC_MODE_BLOCK");
+	@BelongingProperty(PropertyNames.getInterfaceMode)
 	public static final ConstantConverter SC_MODE_APDU = new ConstantConverter(4, "SC_MODE_APDU");
+	@BelongingProperty(PropertyNames.getInterfaceMode)
 	public static final ConstantConverter SC_MODE_XML = new ConstantConverter(8, "SC_MODE_XML");
 	
 	// ///////////////////////////////////////////////////////////////////
