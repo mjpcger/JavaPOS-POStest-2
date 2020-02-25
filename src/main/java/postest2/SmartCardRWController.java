@@ -290,6 +290,7 @@ public class SmartCardRWController extends CommonController implements Initializ
 		try {
 			capslots = ((SmartCardRW) service).getCapSCSlots();
 			slot = ((SmartCardRW) service).getSCSlot();
+		} catch (JposException e) {
 			if (getDeviceState(service) == JposState.ENABLED) {
 				JOptionPane.showMessageDialog(null, e.getMessage());
 				e.printStackTrace();
