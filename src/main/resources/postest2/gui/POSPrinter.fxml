@@ -86,7 +86,7 @@
                         <TextField fx:id="barcodeData" layoutX="132.0" layoutY="196.0" prefWidth="135.0" />
                         <ComboBox id="symbologyCheckbox" fx:id="barcodeSymbology" layoutX="132.0" layoutY="126.0" prefHeight="21.0" prefWidth="135.0" />
                         <ComboBox id="textPositionCheckbox" fx:id="barcodeTextPosition" layoutX="132.0" layoutY="173.0" prefHeight="21.0" prefWidth="135.0" />
-                        <ComboBox id="alignmentCheckbox" fx:id="barcodeAlignment" layoutX="132.0" layoutY="150.0" prefHeight="21.0" prefWidth="135.0" />
+                        <ComboBox id="alignmentCheckbox" editable="true" fx:id="barcodeAlignment" layoutX="132.0" layoutY="150.0" prefHeight="21.0" prefWidth="135.0" />
                         <Button layoutX="132.0" layoutY="232.0" mnemonicParsing="false" onAction="#handlePrintBarcode" prefWidth="135.0" text="Print Barcode" />
                         <Button layoutX="285.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleRotateSpecial" text="Rotate Special" />
                       </children>
@@ -103,7 +103,7 @@
                         <Label layoutX="140.0" layoutY="196.0" text="Bitmap Width:" />
                         <ComboBox fx:id="bitmapWidth" editable="true" layoutX="113.0" layoutY="217.0" prefHeight="21.0" prefWidth="156.0" />
                         <Label layoutX="140.0" layoutY="255.0" text="Bitmap Alignment:" />
-                        <ComboBox fx:id="bitmapAlignment" layoutX="113.0" layoutY="276.0" prefHeight="21.0" prefWidth="156.0" />
+                        <ComboBox fx:id="bitmapAlignment" editable="true" layoutX="113.0" layoutY="276.0" prefHeight="21.0" prefWidth="156.0" />
                         <Label layoutX="140.0" layoutY="320.0" text="Bitmap Number:" />
                         <ComboBox fx:id="bitmapNumber" layoutX="113.0" layoutY="341.0" prefHeight="21.0" prefWidth="156.0" />
                         <Button layoutX="381.0" layoutY="131.0" mnemonicParsing="false" onAction="#handlePrintBitmap" prefWidth="135.0" text="Print Bitmap" />
